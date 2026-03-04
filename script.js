@@ -112,3 +112,17 @@ function clearResult() {
 
 }
 
+// زر البحث
+document.getElementById("search-btn").addEventListener("click", function() {
+    let value = document.getElementById("search-box").value;
+    if(value.trim() === "") {
+        alert("اكتب شيء للبحث!");
+    } else {
+        alert("بحث عن: " + value);
+        // هنا ممكن تضيف كود البحث الفعلي
+    }
+});
+// زر المسح
+document.getElementById("clear-btn").addEventListener("click", function() {
+    document.getElementById("search-box").value = "";
+});
