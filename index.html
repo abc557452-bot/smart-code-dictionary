@@ -1,48 +1,24 @@
 <!DOCTYPE html>
-
 <html lang="ar">
-
 <head>
-
-<meta charset="UTF-8">
-
-<title>قاموس الكود الذكي - MVP</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <title>قاموس الكود الذكي - MVP</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+
 <h1>🚀 قاموس الكود الذكي</h1>
 
-
-
 <div class="container">
+    <input type="text" id="search-box" placeholder="اكتب مصطلح مثل: for loop, navigation, cipher">
+    <br><br>
+    <button id="search-btn">بحث</button>
+    <button id="clear-btn">مسح</button>
 
-<input type="text" id="search" placeholder="اكتب مصطلح مثل: for loop, navigation, cipher">
-
-<br><br>
-<button onclick="generate()">بحث</button>
-
-<button onclick="clearResult()">مسح</button>
-
-
-
-<div id="result"></div>
-
+    <div id="result"></div>
 </div>
 
-
-
-<script src="script.js"></script>
+<!-- ربط JS مرة واحدة قبل نهاية body -->
 <script src="js/main.js"></script>
 </body>
-<!-- ملفات JS -->
-<script src="js/search.js"></script>
-<script src="js/clear.js"></script>
-
-
 </html>
-
-
-
