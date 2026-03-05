@@ -1,7 +1,12 @@
- function searchTerm(){
+function searchTerm(){
 
 let input = document.getElementById("searchBox").value.toLowerCase();
 let result = document.getElementById("result");
+
+if(input === ""){
+result.innerHTML = "";
+return;
+}
 
 let found = dictionary.find(item => item.term === input);
 
