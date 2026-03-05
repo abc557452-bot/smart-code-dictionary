@@ -5,15 +5,17 @@
 */
 
 function searchTerm(){
-    let input = document.getElementById("searchBox").value.toLowerCase();
+    let input = document.getElementById("searchBox").value.toLowerCase().trim();
     let result = document.getElementById("result");
 
+    // لو مربع البحث فارغ → يمسح النتيجة
     if(input === ""){
         result.innerHTML = "";
         return;
     }
 
-    let found = dictionary.find(item => item.term === input);
+    // البحث في dictionary
+    let found = dictionary.find(item => item.term.toLowerCase() === input);
 
     if(found){
         result.innerHTML =
@@ -23,7 +25,6 @@ function searchTerm(){
         "<code>"+found.example+"</code>";
     }
     else{
-        result.innerHTML = "لم نجد المصطلح";
+        result.innerHTML = "لم نجد الكود";
     }
 }
-
