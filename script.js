@@ -1,16 +1,24 @@
-       / زر البحث
-document.getElementById("search-btn").addEventListener("click", function() {
-    let value = document.getElementById("search-box").value;
-    if(value.trim() === "") {
-        alert("اكتب شيء للبحث!");
-    } else {
-        // هنا الكود الفعلي للبحث
-        document.getElementById("result").innerText = "نتيجة البحث عن: " + value;
-    }
-});
+ function searchTerm(){
 
-// زر المسح
-document.getElementById("clear-btn").addEventListener("click", function() {
-    document.getElementById("search-box").value = "";
-    document.getElementById("result").innerText = "";
-});
+let input = document.getElementById("searchBox").value.toLowerCase();
+let result = document.getElementById("result");
+
+let found = dictionary.find(item => item.term === input);
+
+if(found){
+
+result.innerHTML =
+"<h2>"+found.term+"</h2>"+
+"<p>"+found.definition+"</p>"+
+"<p>"+found.arabic+"</p>"+
+"<code>"+found.example+"</code>";
+
+}
+
+else{
+
+result.innerHTML = "لم نجد المصطلح";
+
+}
+
+}
