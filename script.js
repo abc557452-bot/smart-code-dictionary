@@ -1,9 +1,13 @@
-function searchTerm(){
+/*
+  Smart Code Dictionary - Navigation & Encryption
+  Created by badriah alhajri © 2026
+  All rights reserved
+*/
 
+function searchTerm(){
     let input = document.getElementById("searchBox").value.toLowerCase();
     let result = document.getElementById("result");
 
-    // إذا مربع البحث فارغ → يمسح النتيجة
     if(input === ""){
         result.innerHTML = "";
         return;
