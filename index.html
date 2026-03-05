@@ -1,26 +1,19 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <title>قاموس الكود الذكي - MVP</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Smart Code Dictionary</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<h1>🚀 قاموس الكود الذكي</h1>
+<h1>قاموس الكود الذكي</h1>
 
-<div class="container">
-    <input type="text" id="search-box" placeholder="اكتب مصطلح مثل: for loop, navigation, cipher">
-    <br><br>
-    <buttoid="search-btn">بحث</button>
-    <buttonid="clear-btn">مسح</button>
+<input type="text" id="searchBox" placeholder="اكتب المصطلح">
 
-    <divid="result"></div>
-</div>
+<button onclick="searchTerm()">بحث</button>
 
-<!-- ربط JS مرة واحدة قبل نهاية body -->
-
-</body>
 <div id="result"></div>
 
 <script src="data.js"></script>
@@ -29,3 +22,4 @@
 </body>
 </html>
 
+  
