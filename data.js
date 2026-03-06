@@ -5,8 +5,8 @@ All rights reserved
 */
 
 const dictionary = [
-  
 
+{
 term: "variable",
 definition: "A container used to store data values.",
 arabic: "متغير يستخدم لتخزين القيم.",
@@ -32,7 +32,7 @@ term: "class",
 definition: "Blueprint for creating objects.",
 arabic: "مخطط لإنشاء الكائنات.",
 example: "class Car:"
-}
+},
 { term: "variable", definition: "A container used to store data values.", arabic: "متغير يستخدم لتخزين القيم.", example: "x = 5" },
   { term: "constant", definition: "A value that cannot be changed.", arabic: "قيمة لا يمكن تغييرها.", example: "PI = 3.14" },
   { term: "function", definition: "Reusable block of code.", arabic: "كتلة كود قابلة لإعادة الاستخدام.", example: "def hello(): print('hello')" },
@@ -84,4 +84,4 @@ example: "class Car:"
   { term: "split", definition: "Split string by delimiter.", arabic: "تقسيم النص حسب الفاصل.", example: "'a,b,c'.split(',')" },
   { term: "join", definition: "Join list into string.", arabic: "دمج قائمة إلى نص.", example: "','.join(['a','b','c'])" }
 ];
-];
+
