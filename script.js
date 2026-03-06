@@ -17,7 +17,7 @@ searchBox.addEventListener("input", searchTerm);
 function searchTerm(){
     let input = searchBox.value.toLowerCase().trim();
     if(input === ""){
-        result.innerHTML = "<p>مرحبا أحمد! ابحث عن أي مصطلح برمجي أعلاه.</p>";
+        result.innerHTML = "<p>مرحبا حمدأ! ابحث عن أي مصطلح برمجي أعلاه.</p>";
         return;
     }
 
@@ -26,13 +26,17 @@ function searchTerm(){
     if(matches.length > 0){
         result.innerHTML = "";
         matches.forEach(item => {
-            result.innerHTML +=
-                "<h2>"+item.term+"</h2>"+
-                "<p>"+item.definition+"</p>"+
-                "<p>"+item.arabic+"</p>"+
-                "<code>"+item.example+"</code><hr>";
+            result.innerHTML += `
+                <div class="result-item">
+                    <h2>${item.term}</h2>
+                    <p>${item.definition}</p>
+                    <p>${item.arabic}</p>
+                    <code>${item.example}</code>
+                </div>
+            `;
         });
     } else {
-        result.innerHTML = "لم نجد الكود";
+        result.innerHTML = "<p>لم نجد الكود</p>";
     }
 }
+
