@@ -7,18 +7,23 @@ All rights reserved
 // ترتيب القاموس أبجدياً
 dictionary.sort((a, b) => a.term.localeCompare(b.term));
 
+let searchBox = document.getElementById("searchBox");
+let result = document.getElementById("result");
+
+// البحث أثناء الكتابة
+searchBox.addEventListener("input", searchTerm);
+
 function searchTerm() {
 
-    let input = document.getElementById("searchBox").value.toLowerCase().trim();
-    let result = document.getElementById("result");
+    let input = searchBox.value.toLowerCase().trim();
 
     if (input === "") {
         result.innerHTML = "";
         return;
     }
 
-    // البحث داخل القاموس
-    let found = dictionary.find(item => 
+    // البحث في القاموس
+    let found = dictionary.find(item =>
         item.term.toLowerCase().includes(input)
     );
 
@@ -37,3 +42,4 @@ function searchTerm() {
     }
 
 }
+
