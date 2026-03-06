@@ -24,7 +24,13 @@ term: "function",
 definition: "Reusable block of code.",
 arabic: "كتلة كود قابلة لإعادة الاستخدام.",
 example: "def hello(): print('hello')"
+},
+
+{
+term: "class",
+definition: "Blueprint for creating objects.",
+arabic: "مخطط لإنشاء الكائنات.",
+example: "class Car:"
 }
 
 ];
-
