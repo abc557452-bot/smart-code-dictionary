@@ -16,19 +16,75 @@
         #result code { display: block; background: #f0f0f0; padding: 5px; margin: 5px 0; }
         hr { border: 0; border-top: 1px solid #ccc; margin: 10px 0; }
     </style>
+<head>
+    <meta charset="UTF-8">
+    <title>قاموس الكود الذكي</title>
+    <style>
+        /* الكود الجديد هنا */
+        #header {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* لتوسيط كل شيء */
+            margin-bottom: 30px;
+        }
+
+        #header h1 {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 36px;
+            color: #2c3e50;
+            margin-left: 15px;
+        }
+
+        #logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        #searchBox {
+            width: 80%;
+            max-width: 600px;
+            padding: 18px;
+            font-size: 20px;
+            border-radius: 12px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+            transition: border-color 0.3s;
+        }
+
+        #searchBox:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        /* نتائج القاموس (كما عملنا سابقاً) */
+        .result-item {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .result-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        #result code {
+            display: block;
+            background: #e8f5e9;
+            padding: 8px;
+            border-radius: 5px;
+            margin: 5px 0 10px 0;
+            font-size: 15px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin: 10px 0;
+        }
+    </style>
 </head>
-<body>
-
-<div id="header">
-    <img src="code-icon.png" alt="Code Icon" id="logo">
-    <h1>قاموس الكود الذكي</h1>
-</div>
-<input type="text" id="searchBox" placeholder="ابحث عن مصطلح برمجي">
-<div id="result"></div>
-
-<!-- ملفات القاموس والكود -->
-<script src="data.js"></script>
-<script src="script.js"></script>
-
-</body>
-</html>
