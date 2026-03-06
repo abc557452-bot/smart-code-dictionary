@@ -6,33 +6,6 @@ All rights reserved
 
 const dictionary = [
 
-{
-term: "variable",
-definition: "A container used to store data values.",
-arabic: "متغير يستخدم لتخزين القيم.",
-example: "x = 5"
-},
-
-{
-term: "loop",
-definition: "A structure that repeats code.",
-arabic: "هيكل لتكرار الأوامر.",
-example: "for i in range(5): print(i)"
-},
-
-{
-term: "function",
-definition: "Reusable block of code.",
-arabic: "كتلة كود قابلة لإعادة الاستخدام.",
-example: "def hello(): print('hello')"
-},
-
-{
-term: "class",
-definition: "Blueprint for creating objects.",
-arabic: "مخطط لإنشاء الكائنات.",
-example: "class Car:"
-},
 { term: "variable", definition: "A container used to store data values.", arabic: "متغير يستخدم لتخزين القيم.", example: "x = 5" },
   { term: "constant", definition: "A value that cannot be changed.", arabic: "قيمة لا يمكن تغييرها.", example: "PI = 3.14" },
   { term: "function", definition: "Reusable block of code.", arabic: "كتلة كود قابلة لإعادة الاستخدام.", example: "def hello(): print('hello')" },
