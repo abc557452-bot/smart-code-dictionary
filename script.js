@@ -5,41 +5,34 @@ All rights reserved
 */
 
 // ترتيب القاموس أبجدياً
-dictionary.sort((a, b) => a.term.localeCompare(b.term));
+dictionary.sort((a,b) => a.term.localeCompare(b.term));
 
 let searchBox = document.getElementById("searchBox");
 let result = document.getElementById("result");
 
-// البحث أثناء الكتابة
+result.innerHTML = "<p>مرحبا أحمد! ابحث عن أي مصطلح برمجي أعلاه.</p>";
+
 searchBox.addEventListener("input", searchTerm);
 
-function searchTerm() {
-
+function searchTerm(){
     let input = searchBox.value.toLowerCase().trim();
-
-    if (input === "") {
-        result.innerHTML = "";
+    if(input === ""){
+        result.innerHTML = "<p>مرحبا أحمد! ابحث عن أي مصطلح برمجي أعلاه.</p>";
         return;
     }
 
-    // البحث في القاموس
-    let found = dictionary.find(item =>
-        item.term.toLowerCase().includes(input)
-    );
+    let matches = dictionary.filter(item => item.term.toLowerCase().includes(input));
 
-    if (found) {
-
-        result.innerHTML =
-            "<h2>" + found.term + "</h2>" +
-            "<p>" + found.definition + "</p>" +
-            "<p>" + found.arabic + "</p>" +
-            "<code>" + found.example + "</code>";
-
+    if(matches.length > 0){
+        result.innerHTML = "";
+        matches.forEach(item => {
+            result.innerHTML +=
+                "<h2>"+item.term+"</h2>"+
+                "<p>"+item.definition+"</p>"+
+                "<p>"+item.arabic+"</p>"+
+                "<code>"+item.example+"</code><hr>";
+        });
     } else {
-
         result.innerHTML = "لم نجد الكود";
-
     }
-
 }
-
