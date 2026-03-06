@@ -11,14 +11,16 @@ dictionary.sort((a,b) => a.term.localeCompare(b.term));
 let searchBox = document.getElementById("searchBox");
 let result = document.getElementById("result");
 
-result.innerHTML = "<p>مرحبا أحمد! ابحث عن أي مصطلح برمجي أعلاه.</p>";
+result.innerHTML = "<p>ابحث عن أي مصطلح برمجي من قاموس الكود الذكي.</p>";
+
 
 searchBox.addEventListener("input", searchTerm);
 
 function searchTerm(){
     let input = searchBox.value.toLowerCase().trim();
     if(input === ""){
-        result.innerHTML = "<p>مرحبا أحمد! ابحث عن أي مصطلح برمجي أعلاه.</p>";
+     result.innerHTML = "<p>ابحث عن أي مصطلح برمجي من قاموس الكود الذكي.</p>";
+
         return;
     }
 
