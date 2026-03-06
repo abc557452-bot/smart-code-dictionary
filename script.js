@@ -5,19 +5,19 @@ All rights reserved
 */
 
 // ترتيب القاموس أبجدياً
-dictionary.sort((a,b) => a.term.localeCompare(b.term));
+‫ dictionary.sort((a,b) => a.term.localeCompare(b.term));
 
 let searchBox = document.getElementById("searchBox");
 let result = document.getElementById("result");
 
-result.innerHTML = "<p>مرحبا أحمد! ابحث عن أي مصطلح برمجي أعلاه.</p>";
+result.innerHTML = "<p>مرحبا badriah! ابحث عن أي مصطلح برمجي أعلاه.</p>";
 
 searchBox.addEventListener("input", searchTerm);
 
 function searchTerm(){
     let input = searchBox.value.toLowerCase().trim();
     if(input === ""){
-        result.innerHTML = "<p>مرحبا حمدأ! ابحث عن أي مصطلح برمجي أعلاه.</p>";
+        result.innerHTML = "<p>مرحبا badriah! ابحث عن أي مصطلح برمجي أعلاه.</p>";
         return;
     }
 
