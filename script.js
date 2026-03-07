@@ -41,4 +41,4 @@ function searchTerm(){
     } else {
         result.innerHTML = "<p>لم نجد الكود</p>";
     }
-}
+};
