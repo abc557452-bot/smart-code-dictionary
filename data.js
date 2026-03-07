@@ -15,7 +15,11 @@ const dictionary = [
     { term: "if statement", definition: "Conditional code execution.", arabic: "تنفيذ كود مشروط.", example: "if x > 0: print(x)" },
     { term: "else", definition: "Default conditional branch.", arabic: "الفرع الافتراضي في الشرط.", example: "else: print('negative')" },
     { term: "boolean", definition: "True or False value.", arabic: "قيمة صحيحة أو خاطئة.", example: "flag = True" },
-    
+    {
+title: "Algorithm",
+definition: "Step-by-step problem solving method.",
+arabic: "خوارزمية لحل مشكلة خطوة بخطوة."
+},
     // التشفير
     { term: "encryption", definition: "Process of encoding data.", arabic: "عملية تشفير البيانات.", example: "import hashlib; hashlib.sha256(b'data').hexdigest()" },
     { term: "decryption", definition: "Process of decoding encrypted data.", arabic: "عملية فك تشفير البيانات.", example: "# يعتمد على طريقة التشفير" },
@@ -29,7 +33,31 @@ const dictionary = [
     { term: "gps coordinate", definition: "Latitude & Longitude value.", arabic: "قيمة خط العرض والطول.", example: "lat, lon = 29.3759, 47.9774" },
     { term: "waypoint", definition: "A reference point for navigation.", arabic: "نقطة مرجعية للملاحة.", example: "waypoint = {'lat':29.3, 'lon':47.9}" },
     { term: "bearing", definition: "Direction from one point to another.", arabic: "اتجاه من نقطة إلى أخرى.", example: "bearing = calculate_bearing(A, B)" },
-    
+    {
+title: "GPS",
+definition: "Global positioning system used for navigation.",
+arabic: "نظام تحديد المواقع العالمي للملاحة."
+},
+{
+title: "Latitude",
+definition: "North-south geographic coordinate.",
+arabic: "خط العرض."
+},
+{
+title: "Longitude",
+definition: "East-west geographic coordinate.",
+arabic: "خط الطول."
+},
+{
+title: "Waypoint",
+definition: "Specific point in a navigation route.",
+arabic: "نقطة محددة في مسار الملاحة."
+},
+{
+title: "Heading",
+definition: "Direction in which an object moves.",
+arabic: "اتجاه الحركة."
+}
     // برمجة إضافية
     { term: "array", definition: "Ordered collection of elements.", arabic: "مصفوفة من العناصر المرتبة.", example: "arr = [1,2,3]" },
     { term: "dictionary", definition: "Collection of key-value pairs.", arabic: "مجموعة من أزواج المفتاح والقيمة.", example: "d = {'a':1, 'b':2}" },
@@ -70,5 +98,33 @@ const dictionary = [
     { term: "data structure", definition: "Organized way to store data.", arabic: "طريقة منظمة لتخزين البيانات.", example: "stack = []" },
     { term: "binary search", definition: "Search in sorted data.", arabic: "البحث في بيانات مرتبة.", example: "def bsearch(arr, x): pass" },
     { term: "linear search", definition: "Search sequentially.", arabic: "البحث بشكل متتابع.", example: "for i in arr: if i==x: return i" },
+  
     { term: "recursion depth", definition: "Maximum recursion levels.", arabic: "أقصى مستويات الاستدعاء الذاتي.", example: "import sys; sys.setrecursionlimit(1000)" }
+{
+title: "Compiler",
+definition: "Program that converts code to machine language.",
+arabic: "برنامج يحول الكود إلى لغة الآلة."
+},
+{
+title: "Interpreter",
+definition: "Program that executes code line by line.",
+arabic: "برنامج ينفذ الكود سطر بسطر."
+},
+{
+title: "Debugging",
+definition: "Process of fixing software errors.",
+arabic: "تصحيح أخطاء البرنامج."
+},
+{
+title: "Library",
+definition: "Collection of reusable code.",
+arabic: "مكتبة أكواد جاهزة."
+},
+{
+title: "Framework",
+definition: "Structure used to build applications.",
+arabic: "إطار لبناء التطبيقات."
+}
 ];
+
+
