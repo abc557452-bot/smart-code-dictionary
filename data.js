@@ -365,6 +365,735 @@ title: "End-to-End Encryption",
 definition: "Encryption where only users can read messages.",
 arabic: "تشفير لا يقرأ الرسالة فيه إلا المرسل والمستقبل."
 },
+    //مصطلحات تشفير احترافية جداً (هكر أخلاقي / أمن سيبراني)
+{
+title: "Brute Force Attack",
+definition: "Trying every possible key to break encryption.",
+arabic: "هجوم يعتمد على تجربة كل المفاتيح لفك التشفير."
+},
+
+{
+title: "Man in the Middle",
+definition: "Attack where communication between two parties is intercepted.",
+arabic: "هجوم يتم فيه اعتراض الاتصال بين طرفين."
+},
+
+{
+title: "Phishing",
+definition: "Fraud attempt to steal sensitive information.",
+arabic: "محاولة احتيال لسرقة المعلومات الحساسة."
+},
+
+{
+title: "Malware",
+definition: "Malicious software designed to harm systems.",
+arabic: "برمجيات خبيثة تهدف لإلحاق الضرر بالنظام."
+},
+
+{
+title: "Spyware",
+definition: "Software that secretly monitors user activity.",
+arabic: "برنامج يتجسس على نشاط المستخدم."
+},
+
+{
+title: "Ransomware",
+definition: "Malware that locks data until ransom is paid.",
+arabic: "برنامج خبيث يقفل البيانات حتى دفع فدية."
+},
+
+{
+title: "Keylogger",
+definition: "Software that records keyboard input.",
+arabic: "برنامج يسجل ضغطات لوحة المفاتيح."
+},
+
+{
+title: "Zero Day",
+definition: "Vulnerability unknown to developers.",
+arabic: "ثغرة أمنية غير معروفة للمطورين."
+},
+
+{
+title: "Exploit",
+definition: "Code used to take advantage of a vulnerability.",
+arabic: "كود يستخدم لاستغلال ثغرة أمنية."
+},
+
+{
+title: "Penetration Testing",
+definition: "Testing system security by simulating attacks.",
+arabic: "اختبار أمان النظام عبر محاكاة الهجمات."
+},
+
+{
+title: "Security Audit",
+definition: "Evaluation of system security.",
+arabic: "مراجعة شاملة لأمان النظام."
+},
+
+{
+title: "Vulnerability",
+definition: "Weakness that can be exploited by attackers.",
+arabic: "نقطة ضعف يمكن استغلالها."
+},
+
+{
+title: "Firewall Rule",
+definition: "Rule controlling allowed network traffic.",
+arabic: "قاعدة تحدد حركة المرور المسموح بها."
+},
+
+{
+title: "Intrusion Detection",
+definition: "System that detects unauthorized access.",
+arabic: "نظام يكتشف محاولات الاختراق."
+},
+
+{
+title: "Intrusion Prevention",
+definition: "System that blocks detected attacks.",
+arabic: "نظام يمنع الهجمات المكتشفة."
+},
+
+{
+title: "Security Token",
+definition: "Digital key used for authentication.",
+arabic: "رمز أمان رقمي للتحقق."
+},
+
+{
+title: "Biometric Authentication",
+definition: "Identity verification using physical traits.",
+arabic: "التحقق من الهوية باستخدام الخصائص الحيوية."
+},
+
+{
+title: "Two Factor Authentication",
+definition: "Security using two verification methods.",
+arabic: "نظام أمان يستخدم طريقتين للتحقق."
+},
+
+{
+title: "Access Control",
+definition: "System restricting resource access.",
+arabic: "نظام يحدد من يمكنه الوصول للموارد."
+},
+
+{
+title: "Security Policy",
+definition: "Rules defining system security practices.",
+arabic: "سياسات تحدد قواعد الأمان."
+},
+
+{
+title: "Encryption Key",
+definition: "Value used in encryption algorithm.",
+arabic: "قيمة تستخدم في خوارزمية التشفير."
+},
+
+{
+title: "Session Key",
+definition: "Temporary encryption key for one session.",
+arabic: "مفتاح تشفير مؤقت لجلسة واحدة."
+},
+
+{
+title: "Root Access",
+definition: "Highest level system privileges.",
+arabic: "أعلى صلاحيات في النظام."
+},
+
+{
+title: "Privilege Escalation",
+definition: "Gaining higher access rights.",
+arabic: "الحصول على صلاحيات أعلى بشكل غير مشروع."
+},
+
+{
+title: "Sandbox",
+definition: "Isolated environment for testing programs.",
+arabic: "بيئة معزولة لاختبار البرامج."
+},
+
+{
+title: "Security Patch",
+definition: "Update fixing security vulnerabilities.",
+arabic: "تحديث لإصلاح الثغرات الأمنية."
+},
+
+{
+title: "Threat",
+definition: "Potential cause of harm to a system.",
+arabic: "خطر محتمل يهدد النظام."
+},
+
+{
+title: "Risk Assessment",
+definition: "Process of identifying security risks.",
+arabic: "عملية تقييم المخاطر الأمنية."
+},
+
+{
+title: "Incident Response",
+definition: "Handling and managing security breaches.",
+arabic: "التعامل مع الحوادث الأمنية."
+},
+
+{
+title: "Security Breach",
+definition: "Unauthorized access to data.",
+arabic: "اختراق أمني للبيانات."
+},
+
+{
+title: "Data Leak",
+definition: "Exposure of confidential information.",
+arabic: "تسريب معلومات سرية."
+},
+
+{
+title: "Secure Boot",
+definition: "Startup process verifying trusted software.",
+arabic: "تشغيل النظام مع التحقق من البرامج الموثوقة."
+},
+
+{
+title: "Security Certificate",
+definition: "Digital document verifying identity online.",
+arabic: "شهادة رقمية للتحقق من الهوية على الإنترنت."
+},
+
+{
+title: "Encryption Protocol",
+definition: "Protocol used for secure communication.",
+arabic: "بروتوكول يستخدم للتواصل الآمن."
+},
+
+{
+title: "Security Layer",
+definition: "Additional protection layer for systems.",
+arabic: "طبقة حماية إضافية للنظام."
+},
+
+{
+title: "Authentication Server",
+definition: "Server responsible for verifying identity.",
+arabic: "خادم مسؤول عن التحقق من الهوية."
+},
+
+{
+title: "Credential",
+definition: "Information used to verify identity.",
+arabic: "بيانات تستخدم للتحقق من الهوية."
+},
+
+{
+title: "Secure Login",
+definition: "Protected method for accessing accounts.",
+arabic: "طريقة آمنة لتسجيل الدخول."
+},
+
+{
+title: "Encryption Module",
+definition: "Software component responsible for encryption.",
+arabic: "وحدة برمجية مسؤولة عن التشفير."
+},
+    //مصطلحات جديدة خاصة بالمبرمجين فقط   (أشياء يستخدمونها يومياً في الكود)
+
+
+{
+
+title: "Object",
+
+definition: "Instance of a class containing data and methods.",
+
+arabic: "كائن برمجي يحتوي بيانات ودوال."
+
+},
+
+
+
+{
+
+title: "Class",
+
+definition: "Blueprint used to create objects.",
+
+arabic: "قالب يستخدم لإنشاء الكائنات."
+
+},
+
+
+
+{
+
+title: "Inheritance",
+
+definition: "Mechanism where one class inherits properties from another.",
+
+arabic: "وراثة الخصائص من كلاس آخر."
+
+},
+
+
+
+{
+
+title: "Encapsulation",
+
+definition: "Bundling data and methods into a single unit.",
+
+arabic: "تجميع البيانات والدوال في وحدة واحدة."
+
+},
+
+
+
+{
+
+title: "Polymorphism",
+
+definition: "Ability to use one interface for multiple data types.",
+
+arabic: "استخدام واجهة واحدة لأنواع متعددة."
+
+},
+
+
+
+{
+
+title: "Constructor",
+
+definition: "Special method used to initialize objects.",
+
+arabic: "دالة خاصة لإنشاء الكائن."
+
+},
+
+
+
+{
+
+title: "Destructor",
+
+definition: "Method executed when object is destroyed.",
+
+arabic: "دالة تعمل عند حذف الكائن."
+
+},
+
+
+
+{
+
+title: "Parameter",
+
+definition: "Input variable passed to a function.",
+
+arabic: "متغير يتم تمريره إلى الدالة."
+
+},
+
+
+
+{
+
+title: "Argument",
+
+definition: "Actual value passed to a function parameter.",
+
+arabic: "القيمة التي ترسل إلى الدالة."
+
+},
+
+
+
+{
+
+title: "Return Value",
+
+definition: "Result returned by a function.",
+
+arabic: "القيمة التي تعيدها الدالة."
+
+},
+
+
+
+{
+
+title: "Boolean",
+
+definition: "Data type representing true or false.",
+
+arabic: "نوع بيانات يمثل صحيح أو خطأ."
+
+},
+
+
+
+{
+
+title: "String",
+
+definition: "Sequence of characters.",
+
+arabic: "سلسلة من الأحرف."
+
+},
+
+
+
+{
+
+title: "Integer",
+
+definition: "Whole number data type.",
+
+arabic: "عدد صحيح."
+
+},
+
+
+
+{
+
+title: "Float",
+
+definition: "Number containing decimals.",
+
+arabic: "عدد يحتوي على فاصلة عشرية."
+
+},
+
+
+
+{
+
+title: "Array",
+
+definition: "Collection of multiple values.",
+
+arabic: "مصفوفة تحتوي عدة قيم."
+
+},
+
+
+
+{
+
+title: "Index",
+
+definition: "Position of an element in an array.",
+
+arabic: "موقع العنصر داخل المصفوفة."
+
+},
+
+
+
+{
+
+title: "Iteration",
+
+definition: "Repeating a block of code multiple times.",
+
+arabic: "تكرار تنفيذ الكود."
+
+},
+
+
+
+{
+
+title: "Recursion",
+
+definition: "Function calling itself repeatedly.",
+
+arabic: "دالة تستدعي نفسها."
+
+},
+
+
+
+{
+
+title: "Syntax",
+
+definition: "Rules that define correct code structure.",
+
+arabic: "قواعد كتابة الكود."
+
+},
+
+
+
+{
+
+title: "Runtime",
+
+definition: "Period when program is executing.",
+
+arabic: "وقت تشغيل البرنامج."
+
+},
+
+
+
+{
+
+title: "Compilation",
+
+definition: "Process of translating code to machine language.",
+
+arabic: "تحويل الكود إلى لغة الآلة."
+
+},
+
+
+
+{
+
+title: "Memory",
+
+definition: "Storage used by programs during execution.",
+
+arabic: "الذاكرة المستخدمة أثناء تشغيل البرنامج."
+
+},
+
+
+
+{
+
+title: "Garbage Collection",
+
+definition: "Automatic memory cleanup process.",
+
+arabic: "تنظيف الذاكرة تلقائياً."
+
+},
+
+
+
+{
+
+title: "Dependency",
+
+definition: "External library required by a project.",
+
+arabic: "مكتبة يعتمد عليها المشروع."
+
+},
+
+
+
+{
+
+title: "Package",
+
+definition: "Bundle of code distributed together.",
+
+arabic: "حزمة كود برمجية."
+
+},
+
+
+
+{
+
+title: "Module",
+
+definition: "File containing reusable code.",
+
+arabic: "ملف يحتوي كود قابل لإعادة الاستخدام."
+
+},
+
+
+
+{
+
+title: "Import",
+
+definition: "Statement used to include modules.",
+
+arabic: "أمر لاستيراد مكتبة."
+
+},
+
+
+
+{
+
+title: "Export",
+
+definition: "Making functions available to other modules.",
+
+arabic: "تصدير الدوال للاستخدام في ملفات أخرى."
+
+},
+
+
+
+{
+
+title: "Environment",
+
+definition: "System configuration for running programs.",
+
+arabic: "بيئة تشغيل البرنامج."
+
+},
+
+
+
+{
+
+title: "Virtual Environment",
+
+definition: "Isolated environment for project dependencies.",
+
+arabic: "بيئة معزولة للمشروع."
+
+},
+
+
+
+{
+
+title: "Build",
+
+definition: "Process of compiling source code.",
+
+arabic: "عملية تجهيز البرنامج للتشغيل."
+
+},
+
+
+
+{
+
+title: "Release",
+
+definition: "Published version of software.",
+
+arabic: "نسخة منشورة من البرنامج."
+
+},
+
+
+
+{
+
+title: "Update",
+
+definition: "New version improving software.",
+
+arabic: "تحديث للبرنامج."
+
+},
+
+
+
+{
+
+title: "Rollback",
+
+definition: "Reverting to previous version.",
+
+arabic: "الرجوع لنسخة سابقة."
+
+},
+
+
+
+{
+
+title: "Debug Mode",
+
+definition: "Mode used for testing and finding errors.",
+
+arabic: "وضع لاكتشاف الأخطاء."
+
+},
+
+
+
+{
+
+title: "Production",
+
+definition: "Live environment used by users.",
+
+arabic: "بيئة التشغيل الحقيقية."
+
+},
+
+
+
+{
+
+title: "Prototype",
+
+definition: "Early model of software.",
+
+arabic: "نموذج أولي للبرنامج."
+
+},
+
+
+
+{
+
+title: "Architecture",
+
+definition: "Overall design of a system.",
+
+arabic: "تصميم هيكل النظام."
+
+},
+
+
+
+{
+
+title: "Scalability",
+
+definition: "Ability of system to grow.",
+
+arabic: "قدرة النظام على التوسع."
+
+},
+
+
+
+{
+
+title: "Optimization",
+
+definition: "Improving efficiency of code.",
+
+arabic: "تحسين كفاءة الكود."
+
+},
+
+
+
+{
+
+title: "Latency",
+
+definition: "Delay before data transfer.",
+
+arabic: "زمن التأخير."
+
+},
+
+
+
     // navigation = مصطلحات الملاحة
 
     { term: "latitude", definition: "Horizontal coordinate on Earth.", arabic: "خط العرض على الأرض.", example: "lat = 29.3759" },
