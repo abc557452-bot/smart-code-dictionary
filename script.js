@@ -41,33 +41,4 @@ function searchTerm(){
     } else {
         result.innerHTML = "<p>لم نجد الكود</p>";
     }
-};
- 
-// === ابدأ الكود الجديد للفلترة وعرض المصطلحات ===
-const allTerms = [
-  ...terms,
-  ...navigation,
-  ...programming,
-  ...encryption,
-  ...pythonAI,
-  ...extraTerms
-];
-
-function removeDuplicates(data) {
-  const seen = new Set();
-  return data.filter(item => {
-    const key = item.title.toLowerCase();
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  });
 }
-
-const uniqueTerms = removeDuplicates(allTerms);
-
-uniqueTerms.forEach(term => {
-  const div = document.createElement("div");
-  div.innerHTML = `<strong>${term.title}</strong>: ${term.arabic}`;
-  result.appendChild(div);
-});
-// === انتهى الكود الجديد ===
