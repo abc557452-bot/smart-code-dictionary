@@ -41,7 +41,7 @@ function searchTerm(){
     } else {
         result.innerHTML = "<p>لم نجد الكود</p>";
     }
-}
+};
  
 // === ابدأ الكود الجديد للفلترة وعرض المصطلحات ===
 const allTerms = [
