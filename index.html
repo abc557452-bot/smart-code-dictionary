@@ -13,7 +13,7 @@
         #header {
             display: flex;
             align-items: center;
-            justify-content: center; /* لتوسيط كل شيء */
+            justify-content: center;
             margin-bottom: 30px;
         }
 
@@ -43,6 +43,10 @@
         }
 
         /* ===== تصميم نتائج القاموس ===== */
+        #result {
+            text-align: right; /* لتنسيق النص العربي */
+        }
+
         .result-item {
             background: #fff;
             padding: 15px;
@@ -92,13 +96,13 @@
     <input type="text" id="searchBox" placeholder="ابحث عن مصطلح برمجي">
 
     <!-- ===== نتائج البحث ===== -->
-    <div id="result"></div>
+    <div id="result">
+        <p>ابحث عن أي مصطلح برمجي من قاموس الكود الذكي.</p>
+    </div>
 
     <!-- ===== ملفات القاموس والكود ===== -->
-    <!-- 1. بيانات القاموس -->
-<script src="data.js"></script>
-<script src="script.js"></script>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
-
