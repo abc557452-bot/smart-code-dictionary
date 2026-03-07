@@ -45,32 +45,41 @@ function searchTerm(){
  
 
 window.addEventListener("DOMContentLoaded", () => {
-  const result = document.getElementById("result");
+  try {
+    const result = document.getElementById("result");
+    if (!result) return; // إذا ما في div#result يتجاهل الكود
 
-  const allTerms = [
-    ...terms,
-    ...navigation,
-    ...programming,
-    ...encryption,
-    ...pythonAI,
-    ...extraTerms
-  ];
+    const allTerms = [
+      ...terms,
+      ...navigation,
+      ...programming,
+      ...encryption,
+      ...pythonAI,
+      ...extraTerms
+    ];
 
-  function removeDuplicates(data) {
-    const seen = new Set();
-    return data.filter(item => {
-      const key = item.title.toLowerCase();
-      if (seen.has(key)) return false;
-      seen.add(key);
-      return true;
+    // فلترة التكرار
+    function removeDuplicates(data) {
+      const seen = new Set();
+      return data.filter(item => {
+        const key = item.title.toLowerCase();
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+
+    const uniqueTerms = removeDuplicates(allTerms);
+
+    // عرض المصطلحات
+    uniqueTerms.forEach(term => {
+      const div = document.createElement("div");
+      div.innerHTML = `<strong>${term.title}</strong>: ${term.arabic}`;
+      result.appendChild(div);
     });
+
+  } catch (err) {
+    console.error("Error in displaying terms:", err);
+    // الكود هنا لا يقف عن أي شيء آخر
   }
-
-  const uniqueTerms = removeDuplicates(allTerms);
-
-  uniqueTerms.forEach(term => {
-    const div = document.createElement("div");
-    div.innerHTML = `<strong>${term.title}</strong>: ${term.arabic}`;
-    result.appendChild(div);
-  });
 });
