@@ -1125,7 +1125,7 @@ arabic: "نقطة محددة في مسار الملاحة."
 title: "Heading",
 definition: "Direction in which an object moves.",
 arabic: "اتجاه الحركة."
-}
+},
     {
 title: "Navigation",
 definition: "The process of planning and controlling movement from one place to another.",
@@ -1775,7 +1775,7 @@ arabic: "استخدام النموذج المدرب للتنبؤ."
     { term: "binary search", definition: "Search in sorted data.", arabic: "البحث في بيانات مرتبة.", example: "def bsearch(arr, x): pass" },
     { term: "linear search", definition: "Search sequentially.", arabic: "البحث بشكل متتابع.", example: "for i in arr: if i==x: return i" },
   
-    { term: "recursion depth", definition: "Maximum recursion levels.", arabic: "أقصى مستويات الاستدعاء الذاتي.", example: "import sys; sys.setrecursionlimit(1000)" }
+    { term: "recursion depth", definition: "Maximum recursion levels.", arabic: "أقصى مستويات الاستدعاء الذاتي.", example: "import sys; sys.setrecursionlimit(1000)" },
 {
 title: "Compiler",
 definition: "Program that converts code to machine language.",
@@ -1800,7 +1800,7 @@ arabic: "مكتبة أكواد جاهزة."
 title: "Framework",
 definition: "Structure used to build applications.",
 arabic: "إطار لبناء التطبيقات."
-}
+},
 ];
 
 
