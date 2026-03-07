@@ -43,39 +43,34 @@ function searchTerm(){
     }
 }
  
-// 1. دمج كل الأقسام
-const allTerms = [
-  ...terms,
-  ...navigation,
-  ...programming,
-  ...encryption,
-  ...pythonAI,
-  ...extraTerms
-];
 
-// 2. فلترة التكرار
-function removeDuplicates(data) {
-  const seen = new Set();
-  return data.filter(item => {
-    const key = item.title.toLowerCase();
-    if (seen.has(key)) return false;
-    seen.add(key);
-    return true;
-  });
-}
+window.addEventListener("DOMContentLoaded", () => {
+  const result = document.getElementById("result");
 
-// 3. مصطلحات فريدة بعد الفلترة
-const uniqueTerms = removeDuplicates(allTerms);
+  const allTerms = [
+    ...terms,
+    ...navigation,
+    ...programming,
+    ...encryption,
+    ...pythonAI,
+    ...extraTerms
+  ];
 
-// 4. مثال على عرضها في الصفحة
-function displayTerms() {
-  const container = document.getElementById("termsContainer"); // تأكد من وجود div بالـ id هذا
-  container.innerHTML = ""; // تفريغ أي محتوى سابق
+  function removeDuplicates(data) {
+    const seen = new Set();
+    return data.filter(item => {
+      const key = item.title.toLowerCase();
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+
+  const uniqueTerms = removeDuplicates(allTerms);
+
   uniqueTerms.forEach(term => {
     const div = document.createElement("div");
     div.innerHTML = `<strong>${term.title}</strong>: ${term.arabic}`;
-    container.appendChild(div);
+    result.appendChild(div);
   });
-}
-
-displayTerms(); // استدعاء الوظيفة للعرض
+});
