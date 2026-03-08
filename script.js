@@ -1,8 +1,4 @@
-<!--
-  Smart Code Dictionary - Navigation & Encryption
-  Created by badriah alhajri © 2026
-  All rights reserved
--->
+
   
  let searchBox = document.getElementById("searchBox");
 let result = document.getElementById("result");
