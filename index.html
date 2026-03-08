@@ -8,15 +8,28 @@
 
 <body>
 
+<div class="container">
+
 <h1>قاموس الكود الذكي</h1>
 
-<input id="searchBox" type="text" placeholder="ابحث عن مصطلح برمجي">
+<div class="search-box">
 
-<div id="result">
-ابحث عن أي مصطلح برمجي...
+<input
+type="text"
+id="searchInput"
+placeholder="ابحث عن مصطلح برمجي..."
+>
+
+<button onclick="searchTerm()">بحث</button>
+
+<button onclick="clearSearch()">مسح</button>
+
 </div>
 
-<script src="data.js"></script>
+<div id="results"></div>
+
+</div>
+
 <script src="script.js"></script>
 
 </body>
