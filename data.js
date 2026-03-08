@@ -3,7 +3,7 @@
   Created by badriah alhajri © 2026
   All rights reserved
 -->
-‫أُرسلت من الـ const dictionary = [
+‫ const dictionary = [
 
 {
 term:"Variable",
