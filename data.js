@@ -178,7 +178,6 @@ definition:"هجوم خداعي لسرقة المعلومات الحساسة.",
 author:"badriah",
 year:"2026"
 
-
 };
 object:{
 code:"SC-PY-007",
@@ -257,14 +256,7 @@ author:"badriah",
 year:"2026"
 },
 
-debugging:{
-code:"SC-PY-009",
-title:"Debugging",
-field:"Programming",
-definition:"عملية اكتشاف الأخطاء في الكود وإصلاحها.",
-author:"badriah",
-year:"2026"
-},
+
 
 compiler:{
 code:"SC-PY-010",
@@ -302,14 +294,6 @@ author:"badriah",
 year:"2026"
 },
 
-framework:{
-code:"SC-PY-014",
-title:"Framework",
-field:"Programming",
-definition:"هيكل عمل يساعد المطور على بناء التطبيقات.",
-author:"badriah",
-year:"2026"
-},
 
 framework:{
 code:"SC-PY-014",
