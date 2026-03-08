@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="ar">
+
 <head>
 <meta charset="UTF-8">
-<title>قاموس الكود الذكي</title>
+<title>Smart Code Dictionary</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -10,14 +11,15 @@
 
 <div class="container">
 
-<h1>قاموس الكود الذكي</h1>
+<h1>Smart Code Dictionary</h1>
 
 <div class="search-box">
 
-<input
+<input 
 type="text"
 id="searchInput"
-placeholder="ابحث عن مصطلح برمجي..."
+placeholder="ابحث عن مصطلح..."
+onkeyup="suggestWords()"
 >
 
 <button onclick="searchTerm()">بحث</button>
@@ -25,6 +27,8 @@ placeholder="ابحث عن مصطلح برمجي..."
 <button onclick="clearSearch()">مسح</button>
 
 </div>
+
+<div id="suggestions"></div>
 
 <div id="results"></div>
 
@@ -34,5 +38,3 @@ placeholder="ابحث عن مصطلح برمجي..."
 
 </body>
 </html>
-
-
