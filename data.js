@@ -1,8 +1,4 @@
-<!--
-  Smart Code Dictionary - Navigation & Encryption
-  Created by badriah alhajri © 2026
-  All rights reserved
--->
+
 // مصطلحات المبرمجين
 const conctCode = [
   {title:"Variable", definition:"A storage for data in programming.", arabic:"متغير لتخزين البيانات في البرمجة.", example:"let x = 5;"},
