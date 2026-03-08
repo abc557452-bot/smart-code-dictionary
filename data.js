@@ -5,7 +5,7 @@ All rights reserved
 */
 //terms = مصطلحات عامة
 
-const dictionary = [
+const terms = [
     { term: "variable", definition: "A container used to store data values.", arabic: "متغير يستخدم لتخزين القيم.", example: "x = 5" },
     { term: "constant", definition: "A value that cannot be changed.", arabic: "قيمة لا يمكن تغييرها.", example: "PI = 3.14" },
     { term: "loop", definition: "Structure that repeats code.", arabic: "هيكل لتكرار الأوامر.", example: "for i in range(5): print(i)" },
@@ -121,8 +121,9 @@ title: "Algorithm",
 definition: "Step-by-step problem solving method.",
 arabic: "خوارزمية لحل مشكلة خطوة بخطوة."
 },
+];    
     // التشفير
-    { term: "encryption", definition: "Process of encoding data.", arabic: "عملية تشفير البيانات.", example: "import hashlib; hashlib.sha256(b'data').hexdigest()" },
+ const encryption = [   { term: "encryption", definition: "Process of encoding data.", arabic: "عملية تشفير البيانات.", example: "import hashlib; hashlib.sha256(b'data').hexdigest()" },
     { term: "decryption", definition: "Process of decoding encrypted data.", arabic: "عملية فك تشفير البيانات.", example: "# يعتمد على طريقة التشفير" },
     { term: "hashing", definition: "Converting data into a fixed-length hash.", arabic: "تحويل البيانات إلى قيمة ثابتة الطول.", example: "hashlib.md5(b'data').hexdigest()" },
     { term: "public key", definition: "A key used for encrypting data.", arabic: "مفتاح عام لتشفير البيانات.", example: "# مفاتيح RSA" },
@@ -366,7 +367,7 @@ definition: "Encryption where only users can read messages.",
 arabic: "تشفير لا يقرأ الرسالة فيه إلا المرسل والمستقبل."
 },
     //مصطلحات تشفير احترافية جداً (هكر أخلاقي / أمن سيبراني)
-{
+ const cyberSecurityTerms = [ {
 title: "Brute Force Attack",
 definition: "Trying every possible key to break encryption.",
 arabic: "هجوم يعتمد على تجربة كل المفاتيح لفك التشفير."
@@ -599,10 +600,12 @@ title: "Encryption Module",
 definition: "Software component responsible for encryption.",
 arabic: "وحدة برمجية مسؤولة عن التشفير."
 },
+                     ];
     //مصطلحات جديدة خاصة بالمبرمجين فقط   (أشياء يستخدمونها يومياً في الكود)
 
 
-{
+const conctCode =[
+    {
 
 title: "Object",
 
@@ -1092,11 +1095,11 @@ arabic: "زمن التأخير."
 
 },
 
-
+];
 
     // navigation = مصطلحات الملاحة
 
-    { term: "latitude", definition: "Horizontal coordinate on Earth.", arabic: "خط العرض على الأرض.", example: "lat = 29.3759" },
+const  navigation = [   { term: "latitude", definition: "Horizontal coordinate on Earth.", arabic: "خط العرض على الأرض.", example: "lat = 29.3759" },
     { term: "longitude", definition: "Vertical coordinate on Earth.", arabic: "خط الطول على الأرض.", example: "lon = 47.9774" },
     { term: "gps coordinate", definition: "Latitude & Longitude value.", arabic: "قيمة خط العرض والطول.", example: "lat, lon = 29.3759, 47.9774" },
     { term: "waypoint", definition: "A reference point for navigation.", arabic: "نقطة مرجعية للملاحة.", example: "waypoint = {'lat':29.3, 'lon':47.9}" },
@@ -1372,8 +1375,9 @@ definition: "Monitoring movement of an object.",
 arabic: "تتبع حركة جسم."
 },
 
-//مصطلحات Python والذكاء الاصطناعي
-{
+];
+                     //مصطلحات Python والذكاء الاصطناعي
+const python = [ {
 
 title: "Python",
 
@@ -1731,10 +1735,10 @@ arabic: "استخدام النموذج المدرب للتنبؤ."
 
 },
 
-
+];
 
     // programming = البرمجة الإضافية
-
+const programming = [
     { term: "array", definition: "Ordered collection of elements.", arabic: "مصفوفة من العناصر المرتبة.", example: "arr = [1,2,3]" },
     { term: "dictionary", definition: "Collection of key-value pairs.", arabic: "مجموعة من أزواج المفتاح والقيمة.", example: "d = {'a':1, 'b':2}" },
     { term: "set", definition: "Collection of unique elements.", arabic: "مجموعة من العناصر الفريدة.", example: "s = {1,2,3}" },
