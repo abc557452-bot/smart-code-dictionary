@@ -1,49 +1,18 @@
+const dictionary = {
 
-  
- let searchBox = document.getElementById("searchBox");
-let result = document.getElementById("result");
+encryption:{
+code:"SC-003",
+title:"Encryption",
+field:"التشفير",
+definition:"عملية تحويل البيانات إلى صيغة مشفرة لحمايتها."
+},
 
-searchBox.addEventListener("input", searchTerm);
-
-function searchTerm(){
-
-let input = searchBox.value.toLowerCase().trim();
-
-if(input === ""){
-result.innerHTML="ابحث عن أي مصطلح برمجي...";
-return;
+python:{
+code:"SC-001",
+title:"Python",
+field:"البرمجة",
+definition:"لغة برمجة تستخدم في الذكاء الاصطناعي وتحليل البيانات."
 }
 
-let matches = dictionary.filter(item =>
-item.term.toLowerCase().includes(input)
-);
+};
 
-if(matches.length>0){
-
-result.innerHTML="";
-
-matches.forEach(item =>{
-
-result.innerHTML+=`
-<div class="result-item">
-
-<h2>${item.term}</h2>
-
-<p>${item.definition}</p>
-
-<p>${item.arabic}</p>
-
-<code>${item.example}</code>
-
-</div>
-`;
-
-});
-
-}else{
-
-result.innerHTML="لم نجد المصطلح";
-
-}
-
-}
