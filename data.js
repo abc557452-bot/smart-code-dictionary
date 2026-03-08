@@ -367,250 +367,18 @@ definition: "Encryption where only users can read messages.",
 arabic: "تشفير لا يقرأ الرسالة فيه إلا المرسل والمستقبل."
 },
                      
-//مصطلحات تشفير هكر اخلاقي الامن سيبراني
 
 
-const cyberSecurityTerms = [
+‫// مصطلحات المبرمجين
+const conctCode = [
+  {title:"Variable", definition:"A storage for data in programming.", arabic:"متغير لتخزين البيانات في البرمجة.", example:"let x = 5;"},
+  {title:"Function", definition:"A reusable block of code that performs a task.", arabic:"دالة: قطعة قابلة لإعادة الاستخدام من الكود تؤدي مهمة معينة.", example:"function greet() { console.log('Hello'); }"},
+  {title:"Loop", definition:"A way to repeat code multiple times.", arabic:"حلقة: طريقة لتكرار تنفيذ الكود عدة مرات.", example:"for (let i = 0; i < 5; i++) { console.log(i); }"},
+  {title:"Array", definition:"An ordered collection of elements.", arabic:"مصفوفة: مجموعة مرتبة من العناصر.", example:"let arr = [1,2,3];"},
+  {title:"Object", definition:"A collection of key-value pairs.", arabic:"كائن: مجموعة من أزواج المفتاح والقيمة.", example:"let person = {name:'Ali', age:25};"},
+  {title:"Class", definition:"A blueprint for creating objects.", arabic:"فئة: مخطط لإنشاء كائنات.", example:"class Person { constructor(name){ this.name=name; } }"},
+  {title:"Event", definition:"An action that occurs in the system.", arabic:"حدث: إجراء يحدث في النظام.", example:"button.addEventListener('click', () => {});"},
 
-
-     {
-title: "Brute Force Attack",
-definition: "Trying every possible key to break encryption.",
-arabic: "هجوم يعتمد على تجربة كل المفاتيح لفك التشفير."
-},
-
-{
-title: "Man in the Middle",
-definition: "Attack where communication between two parties is intercepted.",
-arabic: "هجوم يتم فيه اعتراض الاتصال بين طرفين."
-},
-
-{
-title: "Phishing",
-definition: "Fraud attempt to steal sensitive information.",
-arabic: "محاولة احتيال لسرقة المعلومات الحساسة."
-},
-
-{
-title: "Malware",
-definition: "Malicious software designed to harm systems.",
-arabic: "برمجيات خبيثة تهدف لإلحاق الضرر بالنظام."
-},
-
-{
-title: "Spyware",
-definition: "Software that secretly monitors user activity.",
-arabic: "برنامج يتجسس على نشاط المستخدم."
-},
-
-{
-title: "Ransomware",
-definition: "Malware that locks data until ransom is paid.",
-arabic: "برنامج خبيث يقفل البيانات حتى دفع فدية."
-},
-
-{
-title: "Keylogger",
-definition: "Software that records keyboard input.",
-arabic: "برنامج يسجل ضغطات لوحة المفاتيح."
-},
-
-{
-title: "Zero Day",
-definition: "Vulnerability unknown to developers.",
-arabic: "ثغرة أمنية غير معروفة للمطورين."
-},
-
-{
-title: "Exploit",
-definition: "Code used to take advantage of a vulnerability.",
-arabic: "كود يستخدم لاستغلال ثغرة أمنية."
-},
-
-{
-title: "Penetration Testing",
-definition: "Testing system security by simulating attacks.",
-arabic: "اختبار أمان النظام عبر محاكاة الهجمات."
-},
-
-{
-title: "Security Audit",
-definition: "Evaluation of system security.",
-arabic: "مراجعة شاملة لأمان النظام."
-},
-
-{
-title: "Vulnerability",
-definition: "Weakness that can be exploited by attackers.",
-arabic: "نقطة ضعف يمكن استغلالها."
-},
-
-{
-title: "Firewall Rule",
-definition: "Rule controlling allowed network traffic.",
-arabic: "قاعدة تحدد حركة المرور المسموح بها."
-},
-
-{
-title: "Intrusion Detection",
-definition: "System that detects unauthorized access.",
-arabic: "نظام يكتشف محاولات الاختراق."
-},
-
-{
-title: "Intrusion Prevention",
-definition: "System that blocks detected attacks.",
-arabic: "نظام يمنع الهجمات المكتشفة."
-},
-
-{
-title: "Security Token",
-definition: "Digital key used for authentication.",
-arabic: "رمز أمان رقمي للتحقق."
-},
-
-{
-title: "Biometric Authentication",
-definition: "Identity verification using physical traits.",
-arabic: "التحقق من الهوية باستخدام الخصائص الحيوية."
-},
-
-{
-title: "Two Factor Authentication",
-definition: "Security using two verification methods.",
-arabic: "نظام أمان يستخدم طريقتين للتحقق."
-},
-
-{
-title: "Access Control",
-definition: "System restricting resource access.",
-arabic: "نظام يحدد من يمكنه الوصول للموارد."
-},
-
-{
-title: "Security Policy",
-definition: "Rules defining system security practices.",
-arabic: "سياسات تحدد قواعد الأمان."
-},
-
-{
-title: "Encryption Key",
-definition: "Value used in encryption algorithm.",
-arabic: "قيمة تستخدم في خوارزمية التشفير."
-},
-
-{
-title: "Session Key",
-definition: "Temporary encryption key for one session.",
-arabic: "مفتاح تشفير مؤقت لجلسة واحدة."
-},
-
-{
-title: "Root Access",
-definition: "Highest level system privileges.",
-arabic: "أعلى صلاحيات في النظام."
-},
-
-{
-title: "Privilege Escalation",
-definition: "Gaining higher access rights.",
-arabic: "الحصول على صلاحيات أعلى بشكل غير مشروع."
-},
-
-{
-title: "Sandbox",
-definition: "Isolated environment for testing programs.",
-arabic: "بيئة معزولة لاختبار البرامج."
-},
-
-{
-title: "Security Patch",
-definition: "Update fixing security vulnerabilities.",
-arabic: "تحديث لإصلاح الثغرات الأمنية."
-},
-
-{
-title: "Threat",
-definition: "Potential cause of harm to a system.",
-arabic: "خطر محتمل يهدد النظام."
-},
-
-{
-title: "Risk Assessment",
-definition: "Process of identifying security risks.",
-arabic: "عملية تقييم المخاطر الأمنية."
-},
-
-{
-title: "Incident Response",
-definition: "Handling and managing security breaches.",
-arabic: "التعامل مع الحوادث الأمنية."
-},
-
-{
-title: "Security Breach",
-definition: "Unauthorized access to data.",
-arabic: "اختراق أمني للبيانات."
-},
-
-{
-title: "Data Leak",
-definition: "Exposure of confidential information.",
-arabic: "تسريب معلومات سرية."
-},
-
-{
-title: "Secure Boot",
-definition: "Startup process verifying trusted software.",
-arabic: "تشغيل النظام مع التحقق من البرامج الموثوقة."
-},
-
-{
-title: "Security Certificate",
-definition: "Digital document verifying identity online.",
-arabic: "شهادة رقمية للتحقق من الهوية على الإنترنت."
-},
-
-{
-title: "Encryption Protocol",
-definition: "Protocol used for secure communication.",
-arabic: "بروتوكول يستخدم للتواصل الآمن."
-},
-
-{
-title: "Security Layer",
-definition: "Additional protection layer for systems.",
-arabic: "طبقة حماية إضافية للنظام."
-},
-
-{
-title: "Authentication Server",
-definition: "Server responsible for verifying identity.",
-arabic: "خادم مسؤول عن التحقق من الهوية."
-},
-
-{
-title: "Credential",
-definition: "Information used to verify identity.",
-arabic: "بيانات تستخدم للتحقق من الهوية."
-},
-
-{
-title: "Secure Login",
-definition: "Protected method for accessing accounts.",
-arabic: "طريقة آمنة لتسجيل الدخول."
-},
-
-{
-title: "Encryption Module",
-definition: "Software component responsible for encryption.",
-arabic: "وحدة برمجية مسؤولة عن التشفير."
-},
-];
-    //مصطلحات جديدة خاصة بالمبرمجين فقط   (أشياء يستخدمونها يومياً في الكود)
-
-
-const conctCode =[
     {
 
 title: "Object",
@@ -1101,8 +869,262 @@ arabic: "زمن التأخير."
 
 },
 
+
+    {title:"API", definition:"Application Programming Interface.", arabic:"واجهة برمجة التطبيقات.", example:"fetch('https://api.example.com/data');"},
 ];
 
+
+// مصطلحات التشفير والأمن السيبراني والهكر الأخلاقي
+const cyberSecurityTerms = [
+  {title:"Encryption", definition:"Process of converting data into coded form to prevent unauthorized access.", arabic:"عملية تحويل البيانات إلى شكل مشفر لمنع الوصول غير المصرح به.", example:"AES, RSA"},
+  {title:"Decryption", definition:"Process of converting encrypted data back to its original form.", arabic:"عملية تحويل البيانات المشفرة إلى شكلها الأصلي.", example:"AES.decrypt(cipherText)"},
+  {title:"Firewall", definition:"A network security system that monitors and controls incoming and outgoing traffic.", arabic:"نظام أمني للشبكة يراقب ويتحكم بحركة المرور الواردة والصادرة.", example:"Configuring firewall rules to block ports"},
+  {title:"Penetration Testing", definition:"Simulated cyber attack to test the security of a system.", arabic:"هجوم محاكى لاختبار أمان النظام.", example:"Using Kali Linux to test vulnerabilities"},
+  {title:"Malware", definition:"Software designed to harm or exploit systems.", arabic:"برنامج مصمم لإلحاق الضرر أو استغلال الأنظمة.", example:"Viruses, Trojans, Ransomware"},
+  {title:"Phishing", definition:"A cyber attack to trick users into giving sensitive information.", arabic:"هجوم إلكتروني لخداع المستخدمين للحصول على معلومات حساسة.", example:"Fake emails requesting passwords"},
+  {title:"Two-Factor Authentication", definition:"Security process that requires two separate forms of identification.", arabic:"عملية أمان تتطلب شكلين منفصلين للتحقق.", example:"Password + SMS code"},
+  {title:"VPN", definition:"Virtual Private Network, encrypts your internet traffic.", arabic:"شبكة خاصة افتراضية، تقوم بتشفير حركة الإنترنت.", example:"Connect to VPN before accessing public Wi-Fi"},
+  {title:"Ethical Hacking", definition:"Authorized hacking to find and fix security vulnerabilities.", arabic:"اختراق مصرح به لاكتشاف وإصلاح ثغرات الأمان.", example:"Certified Ethical Hacker (CEH) testing"},
+  {title:"Cybersecurity", definition:"Protection of internet-connected systems from cyber threats.", arabic:"حماية الأنظمة المتصلة بالإنترنت من التهديدات الإلكترونية.", example:"Implementing firewalls, antivirus, and monitoring"},
+];
+
+
+
+     {
+title: "Brute Force Attack",
+definition: "Trying every possible key to break encryption.",
+arabic: "هجوم يعتمد على تجربة كل المفاتيح لفك التشفير."
+},
+
+{
+title: "Man in the Middle",
+definition: "Attack where communication between two parties is intercepted.",
+arabic: "هجوم يتم فيه اعتراض الاتصال بين طرفين."
+},
+
+{
+title: "Phishing",
+definition: "Fraud attempt to steal sensitive information.",
+arabic: "محاولة احتيال لسرقة المعلومات الحساسة."
+},
+
+{
+title: "Malware",
+definition: "Malicious software designed to harm systems.",
+arabic: "برمجيات خبيثة تهدف لإلحاق الضرر بالنظام."
+},
+
+{
+title: "Spyware",
+definition: "Software that secretly monitors user activity.",
+arabic: "برنامج يتجسس على نشاط المستخدم."
+},
+
+{
+title: "Ransomware",
+definition: "Malware that locks data until ransom is paid.",
+arabic: "برنامج خبيث يقفل البيانات حتى دفع فدية."
+},
+
+{
+title: "Keylogger",
+definition: "Software that records keyboard input.",
+arabic: "برنامج يسجل ضغطات لوحة المفاتيح."
+},
+
+{
+title: "Zero Day",
+definition: "Vulnerability unknown to developers.",
+arabic: "ثغرة أمنية غير معروفة للمطورين."
+},
+
+{
+title: "Exploit",
+definition: "Code used to take advantage of a vulnerability.",
+arabic: "كود يستخدم لاستغلال ثغرة أمنية."
+},
+
+{
+title: "Penetration Testing",
+definition: "Testing system security by simulating attacks.",
+arabic: "اختبار أمان النظام عبر محاكاة الهجمات."
+},
+
+{
+title: "Security Audit",
+definition: "Evaluation of system security.",
+arabic: "مراجعة شاملة لأمان النظام."
+},
+
+{
+title: "Vulnerability",
+definition: "Weakness that can be exploited by attackers.",
+arabic: "نقطة ضعف يمكن استغلالها."
+},
+
+{
+title: "Firewall Rule",
+definition: "Rule controlling allowed network traffic.",
+arabic: "قاعدة تحدد حركة المرور المسموح بها."
+},
+
+{
+title: "Intrusion Detection",
+definition: "System that detects unauthorized access.",
+arabic: "نظام يكتشف محاولات الاختراق."
+},
+
+{
+title: "Intrusion Prevention",
+definition: "System that blocks detected attacks.",
+arabic: "نظام يمنع الهجمات المكتشفة."
+},
+
+{
+title: "Security Token",
+definition: "Digital key used for authentication.",
+arabic: "رمز أمان رقمي للتحقق."
+},
+
+{
+title: "Biometric Authentication",
+definition: "Identity verification using physical traits.",
+arabic: "التحقق من الهوية باستخدام الخصائص الحيوية."
+},
+
+{
+title: "Two Factor Authentication",
+definition: "Security using two verification methods.",
+arabic: "نظام أمان يستخدم طريقتين للتحقق."
+},
+
+{
+title: "Access Control",
+definition: "System restricting resource access.",
+arabic: "نظام يحدد من يمكنه الوصول للموارد."
+},
+
+{
+title: "Security Policy",
+definition: "Rules defining system security practices.",
+arabic: "سياسات تحدد قواعد الأمان."
+},
+
+{
+title: "Encryption Key",
+definition: "Value used in encryption algorithm.",
+arabic: "قيمة تستخدم في خوارزمية التشفير."
+},
+
+{
+title: "Session Key",
+definition: "Temporary encryption key for one session.",
+arabic: "مفتاح تشفير مؤقت لجلسة واحدة."
+},
+
+{
+title: "Root Access",
+definition: "Highest level system privileges.",
+arabic: "أعلى صلاحيات في النظام."
+},
+
+{
+title: "Privilege Escalation",
+definition: "Gaining higher access rights.",
+arabic: "الحصول على صلاحيات أعلى بشكل غير مشروع."
+},
+
+{
+title: "Sandbox",
+definition: "Isolated environment for testing programs.",
+arabic: "بيئة معزولة لاختبار البرامج."
+},
+
+{
+title: "Security Patch",
+definition: "Update fixing security vulnerabilities.",
+arabic: "تحديث لإصلاح الثغرات الأمنية."
+},
+
+{
+title: "Threat",
+definition: "Potential cause of harm to a system.",
+arabic: "خطر محتمل يهدد النظام."
+},
+
+{
+title: "Risk Assessment",
+definition: "Process of identifying security risks.",
+arabic: "عملية تقييم المخاطر الأمنية."
+},
+
+{
+title: "Incident Response",
+definition: "Handling and managing security breaches.",
+arabic: "التعامل مع الحوادث الأمنية."
+},
+
+{
+title: "Security Breach",
+definition: "Unauthorized access to data.",
+arabic: "اختراق أمني للبيانات."
+},
+
+{
+title: "Data Leak",
+definition: "Exposure of confidential information.",
+arabic: "تسريب معلومات سرية."
+},
+
+{
+title: "Secure Boot",
+definition: "Startup process verifying trusted software.",
+arabic: "تشغيل النظام مع التحقق من البرامج الموثوقة."
+},
+
+{
+title: "Security Certificate",
+definition: "Digital document verifying identity online.",
+arabic: "شهادة رقمية للتحقق من الهوية على الإنترنت."
+},
+
+{
+title: "Encryption Protocol",
+definition: "Protocol used for secure communication.",
+arabic: "بروتوكول يستخدم للتواصل الآمن."
+},
+
+{
+title: "Security Layer",
+definition: "Additional protection layer for systems.",
+arabic: "طبقة حماية إضافية للنظام."
+},
+
+{
+title: "Authentication Server",
+definition: "Server responsible for verifying identity.",
+arabic: "خادم مسؤول عن التحقق من الهوية."
+},
+
+{
+title: "Credential",
+definition: "Information used to verify identity.",
+arabic: "بيانات تستخدم للتحقق من الهوية."
+},
+
+{
+title: "Secure Login",
+definition: "Protected method for accessing accounts.",
+arabic: "طريقة آمنة لتسجيل الدخول."
+},
+
+{
+title: "Encryption Module",
+definition: "Software component responsible for encryption.",
+arabic: "وحدة برمجية مسؤولة عن التشفير."
+},
+];
+    
     // navigation = مصطلحات الملاحة
 
 const  navigation = [   { term: "latitude", definition: "Horizontal coordinate on Earth.", arabic: "خط العرض على الأرض.", example: "lat = 29.3759" },
