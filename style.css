@@ -3,65 +3,52 @@
   Created by badriah alhajri © 2026
   All rights reserved
 -->
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
-    padding: 30px;
+body{
+font-family: Arial;
+background:#f5f5f5;
+text-align:center;
+padding:40px;
 }
 
-#searchBox {
-    width: 100%;
-    padding: 12px;
-    font-size: 18px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
-    transition: border-color 0.3s;
+h1{
+color:#2c3e50;
 }
 
-#searchBox:focus {
-    border-color: #4CAF50;
-    outline: none;
+#searchBox{
+width:80%;
+max-width:600px;
+padding:15px;
+font-size:18px;
+border-radius:10px;
+border:1px solid #ccc;
+margin-bottom:30px;
 }
 
-#result h2 {
-    margin: 5px 0;
-    color: #2c3e50;
-    font-size: 20px;
+#result{
+text-align:right;
+max-width:800px;
+margin:auto;
 }
 
-#result p {
-    margin: 2px 0;
-    font-size: 16px;
+.result-item{
+background:white;
+padding:15px;
+margin-bottom:15px;
+border-radius:10px;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
 }
 
-#result code {
-    display: block;
-    background: #e8f5e9;
-    padding: 8px;
-    border-radius: 5px;
-    margin: 5px 0 10px 0;
-    font-size: 15px;
+.result-item h2{
+margin:0;
+color:#2c3e50;
 }
 
-.result-item {
-    background: #fff;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
+code{
+background:#e8f5e9;
+display:block;
+padding:8px;
+margin-top:8px;
+border-radius:5px;
+text-align:left;
 }
 
-.result-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-hr {
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 10px 0;
-}
