@@ -1,8 +1,8 @@
 /*
-Smart Code Dictionary - Navigation & Encryption
-Created by badriah alhajri © 2026
-All rights reserved
-*/
+  Smart Code Dictionary - Navigation & Encryption
+  Created by badriah alhajri © 2026
+  All rights reserved
+*
 //terms = مصطلحات عامة
 
 const terms = [
@@ -369,7 +369,7 @@ arabic: "تشفير لا يقرأ الرسالة فيه إلا المرسل وا
                      
 
 
-‫// مصطلحات المبرمجين
+// مصطلحات المبرمجين
 const conctCode = [
   {title:"Variable", definition:"A storage for data in programming.", arabic:"متغير لتخزين البيانات في البرمجة.", example:"let x = 5;"},
   {title:"Function", definition:"A reusable block of code that performs a task.", arabic:"دالة: قطعة قابلة لإعادة الاستخدام من الكود تؤدي مهمة معينة.", example:"function greet() { console.log('Hello'); }"},
@@ -558,7 +558,6 @@ arabic: "مصفوفة تحتوي عدة قيم."
 },
 
 
-
 {
 
 title: "Index",
@@ -568,7 +567,6 @@ definition: "Position of an element in an array.",
 arabic: "موقع العنصر داخل المصفوفة."
 
 },
-
 
 
 {
@@ -582,7 +580,6 @@ arabic: "تكرار تنفيذ الكود."
 },
 
 
-
 {
 
 title: "Recursion",
@@ -592,7 +589,6 @@ definition: "Function calling itself repeatedly.",
 arabic: "دالة تستدعي نفسها."
 
 },
-
 
 
 {
@@ -606,7 +602,6 @@ arabic: "قواعد كتابة الكود."
 },
 
 
-
 {
 
 title: "Runtime",
@@ -616,8 +611,6 @@ definition: "Period when program is executing.",
 arabic: "وقت تشغيل البرنامج."
 
 },
-
-
 
 {
 
@@ -629,8 +622,6 @@ arabic: "تحويل الكود إلى لغة الآلة."
 
 },
 
-
-
 {
 
 title: "Memory",
@@ -640,8 +631,6 @@ definition: "Storage used by programs during execution.",
 arabic: "الذاكرة المستخدمة أثناء تشغيل البرنامج."
 
 },
-
-
 
 {
 
@@ -653,8 +642,6 @@ arabic: "تنظيف الذاكرة تلقائياً."
 
 },
 
-
-
 {
 
 title: "Dependency",
@@ -664,8 +651,6 @@ definition: "External library required by a project.",
 arabic: "مكتبة يعتمد عليها المشروع."
 
 },
-
-
 
 {
 
@@ -677,8 +662,6 @@ arabic: "حزمة كود برمجية."
 
 },
 
-
-
 {
 
 title: "Module",
@@ -689,8 +672,6 @@ arabic: "ملف يحتوي كود قابل لإعادة الاستخدام."
 
 },
 
-
-
 {
 
 title: "Import",
@@ -700,20 +681,13 @@ definition: "Statement used to include modules.",
 arabic: "أمر لاستيراد مكتبة."
 
 },
-
-
-
 {
-
 title: "Export",
 
 definition: "Making functions available to other modules.",
 
 arabic: "تصدير الدوال للاستخدام في ملفات أخرى."
-
 },
-
-
 
 {
 
@@ -725,10 +699,7 @@ arabic: "بيئة تشغيل البرنامج."
 
 },
 
-
-
 {
-
 title: "Virtual Environment",
 
 definition: "Isolated environment for project dependencies.",
@@ -736,8 +707,6 @@ definition: "Isolated environment for project dependencies.",
 arabic: "بيئة معزولة للمشروع."
 
 },
-
-
 
 {
 
@@ -886,9 +855,6 @@ const cyberSecurityTerms = [
   {title:"VPN", definition:"Virtual Private Network, encrypts your internet traffic.", arabic:"شبكة خاصة افتراضية، تقوم بتشفير حركة الإنترنت.", example:"Connect to VPN before accessing public Wi-Fi"},
   {title:"Ethical Hacking", definition:"Authorized hacking to find and fix security vulnerabilities.", arabic:"اختراق مصرح به لاكتشاف وإصلاح ثغرات الأمان.", example:"Certified Ethical Hacker (CEH) testing"},
   {title:"Cybersecurity", definition:"Protection of internet-connected systems from cyber threats.", arabic:"حماية الأنظمة المتصلة بالإنترنت من التهديدات الإلكترونية.", example:"Implementing firewalls, antivirus, and monitoring"},
-];
-
-
 
      {
 title: "Brute Force Attack",
