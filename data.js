@@ -1,4 +1,8 @@
-
+<!--
+  Smart Code Dictionary - Navigation & Encryption
+  Created by badriah alhajri © 2026
+  All rights reserved
+-->
 // مصطلحات المبرمجين
 const conctCode = [
   {title:"Variable", definition:"A storage for data in programming.", arabic:"متغير لتخزين البيانات في البرمجة.", example:"let x = 5;"},
@@ -24,6 +28,24 @@ const cyberSecurityTerms = [
   {title:"Ethical Hacking", definition:"Authorized hacking to find and fix security vulnerabilities.", arabic:"اختراق مصرح به لاكتشاف وإصلاح ثغرات الأمان.", example:"Certified Ethical Hacker (CEH) testing"},
   {title:"Cybersecurity", definition:"Protection of internet-connected systems from cyber threats.", arabic:"حماية الأنظمة المتصلة بالإنترنت من التهديدات الإلكترونية.", example:"Implementing firewalls, antivirus, and monitoring"}
 ];
+/مصطلحات عامة
+
+const generalTerms = [
+{title:"Algorithm",definition:"Step-by-step procedure to solve a problem.",arabic:"خوارزمية: خطوات مرتبة لحل مشكلة.",example:"Sorting algorithm"},
+{title:"Database",definition:"Organized collection of data.",arabic:"قاعدة بيانات: مجموعة منظمة من البيانات.",example:"MySQL, MongoDB"},
+{title:"Server",definition:"A computer that provides data to other computers.",arabic:"خادم: جهاز يقدم خدمات أو بيانات لأجهزة أخرى.",example:"Web server"},
+{title:"Client",definition:"A device or program that requests services from a server.",arabic:"عميل: جهاز أو برنامج يطلب خدمة من الخادم.",example:"Browser"},
+{title:"Bug",definition:"Error or flaw in software.",arabic:"خطأ برمجي في النظام.",example:"Fixing bugs"}
+];
+//مصطلحات  الملاحة
+const navigationTerms = [
+{title:"Latitude",definition:"Distance north or south of the equator.",arabic:"خط العرض: المسافة شمال أو جنوب خط الاستواء.",example:"25.285°N"},
+{title:"Longitude",definition:"Distance east or west of the prime meridian.",arabic:"خط الطول: المسافة شرق أو غرب خط غرينتش.",example:"51.531°E"},
+{title:"GPS",definition:"Global Positioning System used to determine location.",arabic:"نظام تحديد المواقع العالمي.",example:"Phone GPS"},
+{title:"Waypoint",definition:"Specific coordinate used in navigation.",arabic:"نقطة طريق تستخدم لتحديد المسار.",example:"Flight waypoint"},
+{title:"Navigation System",definition:"System used to guide movement.",arabic:"نظام يستخدم لتوجيه الحركة.",example:"Aircraft navigation"}
+];
+
 
 
 
