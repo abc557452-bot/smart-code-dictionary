@@ -177,7 +177,7 @@ field:"Cyber Security",
 definition:"هجوم خداعي لسرقة المعلومات الحساسة.",
 author:"badriah",
 year:"2026"
-}
+
 
 };
 object:{
@@ -432,8 +432,12 @@ field:"Cyber Security",
 definition:"هجوم يغرق الخادم بطلبات كثيرة لتعطيله.",
 author:"badriah",
 year:"2026"
-{
-
-  ;{ 
-
-
+},
+malware:{
+code:"SC-CY-003",
+title:"Malware",
+field:"Cyber Security",
+definition:"برمجيات خبيثة تهدف إلى اختراق الأنظمة.",
+author:"badriah",
+year:"2026"
+  }
