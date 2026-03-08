@@ -3,6 +3,21 @@
   Created by badriah alhajri © 2026
   All rights reserved
 -->
+const dictionary = [
+{
+term:"Variable",
+definition:"A storage for data in programming",
+arabic:"متغير لتخزين البيانات",
+example:"let x = 5;"
+},
+{
+term:"Encryption",
+definition:"Process of converting data into coded form",
+arabic:"عملية تحويل البيانات إلى شكل مشفر",
+example:"AES"
+}
+];
+  
 // مصطلحات المبرمجين
 const conctCode = [
   {title:"Variable", definition:"A storage for data in programming.", arabic:"متغير لتخزين البيانات في البرمجة.", example:"let x = 5;"},
