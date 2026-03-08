@@ -367,7 +367,7 @@ definition: "Encryption where only users can read messages.",
 arabic: "تشفير لا يقرأ الرسالة فيه إلا المرسل والمستقبل."
 },
     //مصطلحات تشفير احترافية جداً (هكر أخلاقي / أمن سيبراني)
-const cyberSecurityTerms = [
+const cyberSecurity = [
 
      {
 title: "Brute Force Attack",
