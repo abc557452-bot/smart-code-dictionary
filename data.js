@@ -3,9 +3,7 @@
   Created by badriah alhajri © 2026
   All rights reserved
 -->
-‫ const dictionary = [
-
-{
+const dictionary = [ {
 term:"Variable",
 definition:"Storage for data in programming",
 arabic:"متغير لتخزين البيانات",
