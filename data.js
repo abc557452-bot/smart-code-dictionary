@@ -1,8 +1,4 @@
-<!--
-  Smart Code Dictionary - Navigation & Encryption
-  Created by badriah alhajri © 2026
-  All rights reserved
--->
+
 const dictionary = [ {
 term:"Variable",
 definition:"Storage for data in programming",
