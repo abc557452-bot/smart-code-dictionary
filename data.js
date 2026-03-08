@@ -367,7 +367,8 @@ definition: "Encryption where only users can read messages.",
 arabic: "تشفير لا يقرأ الرسالة فيه إلا المرسل والمستقبل."
 },
     //مصطلحات تشفير احترافية جداً (هكر أخلاقي / أمن سيبراني)
- const cyberSecurityTerms = [ {
+ const cyberSecurityTerms = [ 
+     {
 title: "Brute Force Attack",
 definition: "Trying every possible key to break encryption.",
 arabic: "هجوم يعتمد على تجربة كل المفاتيح لفك التشفير."
@@ -600,7 +601,7 @@ title: "Encryption Module",
 definition: "Software component responsible for encryption.",
 arabic: "وحدة برمجية مسؤولة عن التشفير."
 },
-                     ];
+];
     //مصطلحات جديدة خاصة بالمبرمجين فقط   (أشياء يستخدمونها يومياً في الكود)
 
 
