@@ -1,31 +1,62 @@
-// Smart Code Dictionary - Enhanced Search & Display
-// Created by badriah alhajri © 2026
-// All rights reserved
+/* Smart Code Dictionary - Enhanced Search & Display
+/* Created by badriah alhajri © 2026
+/* All rights reserved
 
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-<meta charset="UTF-8">
-<title>قاموس الكود الذكي</title>
-<style>
-body { font-family: Arial, sans-serif; background:#f5f5f5; color:#333; padding:30px; text-align:center; }
-#searchBox { width:80%; max-width:600px; padding:18px; font-size:20px; border-radius:12px; border:1px solid #ccc; margin-bottom:20px; text-align:right; }
-#result { text-align:right; }
-.result-item { background:#fff; padding:15px; margin-bottom:15px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
-.result-item h2 { margin:0 0 5px 0; color:#2c3e50; }
-.result-item p { margin:2px 0; }
-.result-item code { display:block; background:#e8f5e9; padding:8px; border-radius:5px; margin:5px 0 10px 0; font-size:15px; text-align:left; }
-</style>
-</head>
-<body>
 
-<h1>قاموس الكود الذكي</h1>
-<input type="text" id="searchBox" placeholder="ابحث عن أي مصطلح برمجي">
-<div id="result"><p>ابحث عن أي مصطلح برمجي من قاموس الكود الذكي.</p></div>
+window.addEventListener("DOMContentLoaded", () => {
+  try {
+    const searchBox = document.getElementById("searchBox");
+    const result = document.getElementById("result");
+    if (!searchBox || !result) return;
 
-<script src="data.js"></script>
-<script src="script.js"></script>
+    // دمج كل الأقسام في قائمة واحدة
+    const allTerms = [...conctCode, ...cyberSecurityTerms];
 
-</body>
-</html>
+    // فلترة التكرار
+    function removeDuplicates(data) {
+      const seen = new Set();
+      return data.filter(item => {
+        const key = item.title ? item.title.toLowerCase() : "";
+        if (seen.has(key) || !key) return false;
+        seen.add(key);
+        return true;
+      });
+    }
 
+    const uniqueTerms = removeDuplicates(allTerms);
+
+    // عرض رسالة ترحيب
+    result.innerHTML = "<p>ابحث عن أي مصطلح برمجي من قاموس الكود الذكي.</p>";
+
+    function searchTerm() {
+      let input = searchBox.value.toLowerCase().trim();
+      if (input === "") {
+        result.innerHTML = "<p>ابحث عن أي مصطلح برمجي من قاموس الكود الذكي.</p>";
+        return;
+      }
+
+      const matches = uniqueTerms.filter(item => item.title && item.title.toLowerCase().includes(input));
+
+      if (matches.length > 0) {
+        result.innerHTML = "";
+        matches.forEach(item => {
+          result.innerHTML += `
+            <div class="result-item">
+              <h2>${item.title || ""}</h2>
+              <p>${item.definition || ""}</p>
+              <p>${item.arabic || ""}</p>
+              <code>${item.example || ""}</code>
+            </div>
+          `;
+        });
+      } else {
+        result.innerHTML = "<p>لم نجد الكود</p>";
+      }
+    }
+
+    searchBox.addEventListener("input", searchTerm);
+
+  } catch (err) {
+    console.error("Error in Smart Code Dictionary:", err);
+  }
+});
