@@ -18,11 +18,11 @@ author:"badriah",
 year:"2026"
 },
 
-encryption:{
-code:"SC-CR-001",
-title:"Encryption",
-field:"Cryptography",
-definition:"تحويل البيانات إلى صيغة مشفرة لحمايتها.",
+variable:{
+code:"SC-PY-003",
+title:"Variable",
+field:"Programming",
+definition:"مكان في الذاكرة لتخزين البيانات.",
 author:"badriah",
 year:"2026"
 },
@@ -32,6 +32,15 @@ code:"SC-NAV-001",
 title:"GPS",
 field:"Navigation",
 definition:"نظام تحديد المواقع العالمي.",
+author:"badriah",
+year:"2026"
+},
+
+encryption:{
+code:"SC-CR-001",
+title:"Encryption",
+field:"Cryptography",
+definition:"تحويل البيانات إلى صيغة مشفرة لحمايتها.",
 author:"badriah",
 year:"2026"
 },
@@ -47,68 +56,58 @@ year:"2026"
 
 };
 
+const result = document.getElementById("results");
+const suggestionsBox = document.getElementById("suggestions");
+
 function searchTerm(){
+    let input = document.getElementById("searchInput").value.toLowerCase();
 
-let input=document.getElementById("searchInput").value.toLowerCase();
+    if(input === "") {
+        result.innerHTML = "";  // ما يظهر شيء إذا لم يُكتب شيء
+        suggestionsBox.innerHTML = "";
+        return;
+    }
 
-let result=document.getElementById("results");
-
-if(dictionary[input]){
-
-let d=dictionary[input];
-
-result.innerHTML=
-
-"<h3>"+d.code+"</h3>"+
-
-"<h2>"+d.title+"</h2>"+
-
-"<p><b>المجال:</b> "+d.field+"</p>"+
-
-"<p>"+d.definition+"</p>"+
-
-"<hr>"+
-
-"<p>تم إعداده من قبل: "+d.author+"</p>"+
-
-"<p>سنة الإعداد: "+d.year+"</p>";
-
-}
-
-else{
-
-result.innerHTML="لم يتم العثور على المصطلح";
-
-}
-
+    if(dictionary[input]){
+        let d = dictionary[input];
+        result.innerHTML =
+        "<h3>"+d.code+"</h3>"+
+        "<h2>"+d.title+"</h2>"+
+        "<p><b>المجال:</b> "+d.field+"</p>"+
+        "<p>"+d.definition+"</p>"+
+        "<hr>"+
+        "<p style='font-size:14px; color:#ccc;'>تم إعداده من قبل "+d.author+" | "+d.year+"</p>";
+        suggestionsBox.innerHTML = ""; // إخفاء الاقتراح بعد البحث
+    } else {
+        result.innerHTML = "<p style='color:#f88;'>لم يتم العثور على المصطلح</p>";
+    }
 }
 
 function clearSearch(){
-
-document.getElementById("searchInput").value="";
-
-document.getElementById("results").innerHTML="";
-
-document.getElementById("suggestions").innerHTML="";
-
+    document.getElementById("searchInput").value = "";
+    result.innerHTML = "";
+    suggestionsBox.innerHTML = "";
 }
 
 function suggestWords(){
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let suggestions = "";
 
-let input=document.getElementById("searchInput").value.toLowerCase();
+    if(input === "") {
+        suggestionsBox.innerHTML = "";
+        return;
+    }
 
-let suggestions="";
-
-for(let key in dictionary){
-
-if(key.startsWith(input) && input!=""){
-
-suggestions+=key+"<br>";
-
+    for(let key in dictionary){
+        if(key.startsWith(input)){
+            suggestions += "<p style='margin:0; cursor:pointer;' onclick='fillInput(\""+key+"\")'>"+key+"</p>";
+        }
+    }
+    suggestionsBox.innerHTML = suggestions;
 }
 
+function fillInput(word){
+    document.getElementById("searchInput").value = word;
+    searchTerm();
 }
 
-document.getElementById("suggestions").innerHTML=suggestions;
-
-}
