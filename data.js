@@ -1,8 +1,6 @@
-/*
-  Smart Code Dictionary - Navigation & Encryption
-  Created by badriah alhajri © 2026
-  All rights reserved
-*
+// Smart Code Dictionary - Enhanced Search & Display
+// Created by badriah alhajri © 2026
+// All rights reserved
 //terms = مصطلحات عامة
 
 const terms = [
