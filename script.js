@@ -11,7 +11,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (!searchBox || !result) return;
 
     // دمج كل الأقسام في قائمة واحدة
-    const allTerms = [...conctCode, ...cyberSecurityTerms];
+const allTerms = [...conctCode, ...cyberSecurityTerms, ...generalTerms, ...navigationTerms];
 
     // فلترة التكرار
     function removeDuplicates(data) {
