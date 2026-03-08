@@ -1,4 +1,4 @@
-  const dictionary = {
+ const dictionary = {
 
 python:{
 code:"SC-PY-001",
@@ -23,64 +23,24 @@ year:"2026"
 gps:{
 code:"SC-NAV-001",
 title:"GPS",
-aliases:["gps system","global positioning system"],
+aliases:["gps system"],
 field:"Navigation",
 definition:"نظام تحديد المواقع العالمي.",
 author:"badriah",
 year:"2026"
 },
 
-waypoint:{
-code:"SC-NAV-002",
-title:"Waypoint",
-aliases:["wp"],
-field:"Navigation",
-definition:"نقطة محددة في مسار الملاحة.",
-author:"badriah",
-year:"2026"
-},
-
-encryptionKey:{
+encryption:{
 code:"SC-CR-001",
-title:"Key",
-aliases:["key","encryption key"],
+title:"Encryption",
+aliases:["encrypt","cryptography"],
 field:"Cryptography",
-definition:"قيمة تستخدم لتشفير أو فك تشفير البيانات.",
+definition:"تحويل البيانات إلى صيغة مشفرة لحمايتها.",
 author:"badriah",
 year:"2026"
 },
 
-publicKey:{
-code:"SC-CR-002",
-title:"Public Key",
-aliases:["pub key"],
-field:"Cryptography",
-definition:"مفتاح تشفير متاح للجميع في التشفير غير المتماثل.",
-author:"badriah",
-year:"2026"
-},
-
-privateKey:{
-code:"SC-CR-003",
-title:"Private Key",
-aliases:["priv key"],
-field:"Cryptography",
-definition:"مفتاح سري يستخدم لفك التشفير.",
-author:"badriah",
-year:"2026"
-},
-
-digitalSignature:{
-code:"SC-CR-004",
-title:"Digital Signature",
-aliases:["digital sign"],
-field:"Cryptography",
-definition:"توقيع إلكتروني للتحقق من هوية المرسل.",
-author:"badriah",
-year:"2026"
-},
-
-cyberSecurity:{
+cybersecurity:{
 code:"SC-CY-001",
 title:"Cyber Security",
 aliases:["cyber sec","info security"],
@@ -88,36 +48,69 @@ field:"Cyber Security",
 definition:"حماية الأنظمة والشبكات من الهجمات الرقمية.",
 author:"badriah",
 year:"2026"
-},
-
-firewall:{
-code:"SC-CY-002",
-title:"Firewall",
-aliases:["fw"],
-field:"Cyber Security",
-definition:"نظام أمني يراقب حركة البيانات في الشبكة.",
-author:"badriah",
-year:"2026"
-},
-
-malware:{
-code:"SC-CY-003",
-title:"Malware",
-aliases:["malicious software"],
-field:"Cyber Security",
-definition:"برمجيات خبيثة تهدف إلى اختراق الأنظمة.",
-author:"badriah",
-year:"2026"
-},
-
-phishing:{
-code:"SC-CY-004",
-title:"Phishing",
-aliases:["phish"],
-field:"Cyber Security",
-definition:"هجوم خداعي لسرقة المعلومات الحساسة.",
-author:"badriah",
-year:"2026"
 }
 
 };
+
+const result = document.getElementById("results");
+const suggestionsBox = document.getElementById("suggestions");
+
+function searchTerm(){
+    let input = document.getElementById("searchInput").value.toLowerCase();
+
+    if(input === "") {
+        result.innerHTML = "";
+        suggestionsBox.innerHTML = "";
+        return;
+    }
+
+    let found = false;
+    for(let key in dictionary){
+        let d = dictionary[key];
+        if(key === input || (d.aliases && d.aliases.some(a => a.toLowerCase() === input))){
+            result.innerHTML =
+            "<h3>"+d.code+"</h3>"+
+            "<h2>"+d.title+"</h2>"+
+            "<p><b>المجال:</b> "+d.field+"</p>"+
+            "<p>"+d.definition+"</p>"+
+            "<hr>"+
+            "<p style='font-size:14px; color:#ccc;'>تم إعداده من قبل "+d.author+" | "+d.year+"</p>";
+            suggestionsBox.innerHTML = "";
+            found = true;
+            break;
+        }
+    }
+
+    if(!found){
+        result.innerHTML = "<p style='color:#f88;'>لم يتم العثور على المصطلح</p>";
+    }
+}
+
+function clearSearch(){
+    document.getElementById("searchInput").value = "";
+    result.innerHTML = "";
+    suggestionsBox.innerHTML = "";
+}
+
+function suggestWords(){
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let suggestions = "";
+
+    if(input === "") {
+        suggestionsBox.innerHTML = "";
+        return;
+    }
+
+    for(let key in dictionary){
+        let d = dictionary[key];
+        if(key.startsWith(input) || (d.aliases && d.aliases.some(a => a.toLowerCase().startsWith(input)))){
+            suggestions += "<p style='margin:0; cursor:pointer;' onclick='fillInput(\""+key+"\")'>"+key+"</p>";
+        }
+    }
+    suggestionsBox.innerHTML = suggestions;
+}
+
+function fillInput(word){
+    document.getElementById("searchInput").value = word;
+    searchTerm();
+}
