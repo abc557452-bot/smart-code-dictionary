@@ -178,7 +178,7 @@ definition:"هجوم خداعي لسرقة المعلومات الحساسة.",
 author:"badriah",
 year:"2026"
 
-};
+},
 object:{
 code:"SC-PY-007",
 title:"Object",
@@ -238,7 +238,9 @@ code:"SC-PY-013",
 title:"Library",
 field:"Programming",
 definition:"مجموعة من الأكواد الجاهزة لإعادة الاستخدام.",
-author:"object:{
+author:"badriah",
+},
+  object:{
 code:"SC-PY-007",
 title:"Object",
 field:"Programming",
