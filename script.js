@@ -4,7 +4,7 @@
   All rights reserved
 -->
 
-/ ترتيب القاموس أبجدياً
+// ترتيب القاموس أبجدياً
 dictionary.sort((a,b) => a.term.localeCompare(b.term));
 
 let searchBox = document.getElementById("searchBox");
