@@ -43,7 +43,7 @@ const cyberSecurityTerms = [
   {title:"Ethical Hacking", definition:"Authorized hacking to find and fix security vulnerabilities.", arabic:"اختراق مصرح به لاكتشاف وإصلاح ثغرات الأمان.", example:"Certified Ethical Hacker (CEH) testing"},
   {title:"Cybersecurity", definition:"Protection of internet-connected systems from cyber threats.", arabic:"حماية الأنظمة المتصلة بالإنترنت من التهديدات الإلكترونية.", example:"Implementing firewalls, antivirus, and monitoring"}
 ];
-/مصطلحات عامة
+//مصطلحات عامة
 
 const generalTerms = [
 {title:"Algorithm",definition:"Step-by-step procedure to solve a problem.",arabic:"خوارزمية: خطوات مرتبة لحل مشكلة.",example:"Sorting algorithm"},
