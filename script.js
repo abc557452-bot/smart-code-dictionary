@@ -16,10 +16,11 @@ window.addEventListener("DOMContentLoaded", () => {
       ...programming, // مصطلحات برمجة
       ...encryption,  // مصطلحات تشفير
       ...pythonAI,    // مصطلحات ذكاء اصطناعي
-      ...extraTerms   //      أي إضافات مستقبلية
+      ...extraTerms,   //      أي إضافات مستقبلية
 ...cyberSecurityTerms, //مصطلحات تشفير هكر اخلاقي الامن سيبراني
 
-...conctCode, //مصلطحات مبرمجين 
+...conctCode, //مصطلحات جديدة خاصة بالمبرمجين فقط   (أشياء يستخدمونها يومياً في الكود)
+ 
 
     ];
 
