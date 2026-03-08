@@ -366,8 +366,12 @@ title: "End-to-End Encryption",
 definition: "Encryption where only users can read messages.",
 arabic: "تشفير لا يقرأ الرسالة فيه إلا المرسل والمستقبل."
 },
-    //مصطلحات تشفير احترافية جداً (هكر أخلاقي / أمن سيبراني)
-const cyberSecurity = [
+                     
+//مصطلحات تشفير هكر اخلاقي الامن سيبراني
+
+
+const cyberSecurityTerms = [
+
 
      {
 title: "Brute Force Attack",
