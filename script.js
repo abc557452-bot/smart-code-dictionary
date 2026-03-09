@@ -101,16 +101,30 @@ function suggestWords(){
         return;
     }
 
-    for(let key in dictionary){
-        let d = dictionary[key];
-        if(key.startsWith(input) || (d.aliases && d.aliases.some(a => a.toLowerCase().startsWith(input)))){
-            suggestions += "<p style='margin:0; cursor:pointer;' onclick='fillInput(\""+key+"\")'>"+key+"</p>";
-        }
-    }
-    suggestionsBox.innerHTML = suggestions;
+   for(let key in dictionary){
+
+let d = dictionary[key];
+
+if(
+key.toLowerCase() === input ||
+(d.title && d.title.toLowerCase().includes(input)) ||
+(d.definition && d.definition.toLowerCase().includes(input)) ||
+(d.field && d.field.toLowerCase().includes(input))
+){
+
+result.innerHTML =
+"<h3>"+d.code+"</h3>"+
+"<h2>"+d.title+"</h2>"+
+"<p><b>المجال:</b> "+d.field+"</p>"+
+"<p>"+d.definition+"</p>"+
+"<hr>"+
+"<p style='font-size:14px; color:#ccc;'>تم إعداده من قبل "+d.author+" | "+d.year+"</p>";
+
+suggestionsBox.innerHTML = "";
+found = true;
+break;
+}
 }
 
-function fillInput(word){
-    document.getElementById("searchInput").value = word;
-    searchTerm();
-}
+
+
