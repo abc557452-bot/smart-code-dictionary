@@ -1,4 +1,4 @@
-const dictionary ={
+const dictionary =[
 python:{
 code:"SC-PY-001",
 title:"Python",
@@ -364,4 +364,4 @@ field:"Cyber Security",
 definition:"هجوم يغرق الخادم بطلبات كثيرة لتعطيله.",
 author:"badriah",
 year:"2026"
-},
+},]
