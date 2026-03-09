@@ -83,3 +83,27 @@ document.getElementById("searchInput").value = word;
 searchTerm();
 
 }
+function showAllTerms(){
+
+let output = "";
+
+for(let key in dictionary){
+
+let d = dictionary[key];
+
+output +=
+"<h3>"+d.code+"</h3>"+
+"<h2>"+d.title+"</h2>"+
+"<p><b>المجال:</b> "+d.field+"</p>"+
+"<p>"+d.definition+"</p>"+
+"<hr>";
+
+}
+
+result.innerHTML = output;
+suggestionsBox.innerHTML = "";
+
+}
+
+
+
