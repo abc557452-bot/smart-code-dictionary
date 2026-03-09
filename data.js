@@ -364,4 +364,4 @@ field:"Cyber Security",
 definition:"هجوم يغرق الخادم بطلبات كثيرة لتعطيله.",
 author:"badriah",
 year:"2026"
-},]
+} ];
