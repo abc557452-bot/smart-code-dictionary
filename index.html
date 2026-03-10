@@ -4,6 +4,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Smart Code Dictionary</title>
+
+<!-- CSS لتنسيق الكود وزر النسخ -->
+<style>
+.term pre {
+    background-color: #f4f4f4;   /* خلفية فاتحة للكود */
+    border: 1px solid #ccc;      /* حدود خفيفة */
+    padding: 10px;               /* مسافة داخلية */
+    overflow-x: auto;            /* شريط تمرير أفقي إذا الكود طويل */
+    white-space: pre-wrap;       /* يلتف النص بدل ما يختفي */
+    font-family: monospace;      /* خط ثابت للكود */
+}
+.term button {
+    margin-top: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.search-box button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+</style>
+
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -23,9 +46,8 @@ onkeyup="searchTerm(); suggestWords();"
 >
 
 <button onclick="searchTerm()">بحث</button>
-
 <button onclick="clearSearch()">مسح</button>
-l<button onclick="showAllTerms()">عرض جميع المصطلحات</button>
+<button onclick="showAllTerms()">عرض جميع المصطلحات</button>
 
 </div>
 
@@ -35,6 +57,7 @@ l<button onclick="showAllTerms()">عرض جميع المصطلحات</button>
 
 </div>
 
+<!-- سكربتات القاموس والوظائف -->
 <script src="data.js"></script>
 <script src="script.js"></script>
 
