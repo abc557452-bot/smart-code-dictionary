@@ -24,6 +24,7 @@ code:"SC-PY-003",
 title:"Variable",
 field:"Programming",
 definition:"مكان في الذاكرة لتخزين البيانات.",
+  keywords:["variable","data","value","memory"],
 author:"badriah",
 year:"2026"
 },
@@ -42,8 +43,25 @@ code:"SC-PY-005",
 title:"Loop",
 field:"Programming",
 definition:"بنية برمجية تكرر تنفيذ الكود.",
+  keywords:["loop","for","while","iteration"],
 author:"badriah",
 year:"2026"
+},
+{
+code:"SC-PR-006",
+title:"API",
+field:"Programming",
+definition:"واجهة تسمح للتطبيقات بالتواصل مع بعضها البعض.",
+keywords:["api","interface","integration"],
+author:"badriah",
+year:"2026",
+example_code:`
+// مثال بايثون على استخدام API
+import requests
+
+response = requests.get("https://api.example.com/data")
+print(response.json())
+`
 },
 
 {
@@ -62,6 +80,48 @@ field:"Navigation",
 definition:"نظام تحديد المواقع العالمي.",
 author:"badriah",
 year:"2026"
+},
+{
+code:"SC-PR-009",
+title:"Inheritance",
+field:"Programming",
+definition:"آلية في البرمجة الكائنية تسمح لClass أن يرث خصائص وسلوكيات Class آخر.",
+keywords:["inheritance","oop","subclass","parent"],
+author:"badriah",
+year:"2026",
+example_code:`
+// مثال بايثون على Inheritance
+class Vehicle:
+    def drive(self):
+        print("Driving")
+
+class Car(Vehicle):
+    pass
+
+c = Car()
+c.drive()
+`
+},
+{
+code:"SC-PR-010",
+title:"Encapsulation",
+field:"Programming",
+definition:"آلية لإخفاء بيانات الكائن والتحكم بالوصول إليها.",
+keywords:["encapsulation","oop","private","protected"],
+author:"badriah",
+year:"2026",
+example_code:`
+// مثال بايثون على Encapsulation
+class Account:
+    def __init__(self, balance):
+        self.__balance = balance
+
+    def get_balance(self):
+        return self.__balance
+
+acc = Account(1000)
+print(acc.get_balance())
+`
 },
 
 {
@@ -168,6 +228,7 @@ code:"SC-CY-003",
 title:"Malware",
 field:"Cyber Security",
 definition:"برمجيات خبيثة تهدف إلى اختراق الأنظمة.",
+  keywords:["malware","virus","trojan","attack","hack"],
 author:"badriah",
 year:"2026"
 },
@@ -182,23 +243,42 @@ year:"2026"
 
 },
 {
-code:"SC-PY-007",
+code:"SC-PR-008",
 title:"Object",
 field:"Programming",
-definition:"كيان يحتوي على بيانات وعمليات في البرمجة الكائنية.",
+definition:"نسخة من Class تحتوي على بيانات وسلوكيات محددة.",
+keywords:["object","instance","class","oop"],
 author:"badriah",
-year:"2026"
+year:"2026",
+example_code:`
+// مثال بايثون على Object
+class Car:
+    def __init__(self, model):
+        self.model = model
+
+my_car = Car("Tesla")
+print(my_car.model)
+`
 },
 
 {
-code:"SC-PY-008",
+code:"SC-PR-007",
 title:"Class",
 field:"Programming",
-definition:"قالب لإنشاء الكائنات في البرمجة الكائنية.",
+definition:"هيكل يستخدم لتعريف كائنات بخصائص وسلوكيات محددة في البرمجة الكائنية.",
+keywords:["class","object","oop","blueprint"],
 author:"badriah",
-year:"2026"
-},
+year:"2026",
+example_code:`
+// مثال بايثون على Class
+class Person:
+    def __init__(self, name):
+        self.name = name
 
+p = Person("Ahmed")
+print(p.name)
+`
+},
 {
 code:"SC-PY-009",
 title:"Debugging",
