@@ -1,449 +1,53 @@
 const dictionary =[
-{
-code:"SC-PY-001",
-title:"Python",
-field:"Programming",
-  definition:"لغة برمجة تستخدم في الذكاء الاصطناعي وتحليل البيانات.",
-  keywords:["python","programming","coding","ai"],
-author:"badriah",
-year:"2026"
-},
 
-{
-code:"SC-PY-002",
-title:"Algorithm",
-field:"Programming",
-definition:"مجموعة خطوات منطقية لحل مشكلة برمجية.",
-  keywords:["algorithm","logic","steps"],
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-PY-003",
-title:"Variable",
-field:"Programming",
-definition:"مكان في الذاكرة لتخزين البيانات.",
-  keywords:["variable","data","value","memory"],
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-PY-004",
-title:"Function",
-field:"Programming",
-definition:"كتلة كود تنفذ مهمة محددة.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-PY-005",
-title:"Loop",
-field:"Programming",
-definition:"بنية برمجية تكرر تنفيذ الكود.",
-  keywords:["loop","for","while","iteration"],
-author:"badriah",
-year:"2026"
-},
-{
-code:"SC-PR-006",
-title:"API",
-field:"Programming",
-definition:"واجهة تسمح للتطبيقات بالتواصل مع بعضها البعض.",
-keywords:["api","interface","integration"],
-author:"badriah",
-year:"2026",
-example_code:`
-// مثال بايثون على استخدام API
-import requests
-
-response = requests.get("https://api.example.com/data")
-print(response.json())
-`
-},
-
-{
-code:"SC-PY-006",
-title:"Array",
-field:"Programming",
-definition:"هيكل بيانات يخزن مجموعة عناصر.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-NAV-001",
-title:"GPS",
-field:"Navigation",
-definition:"نظام تحديد المواقع العالمي.",
-author:"badriah",
-year:"2026"
-},
-{
-code:"SC-PR-009",
-title:"Inheritance",
-field:"Programming",
-definition:"آلية في البرمجة الكائنية تسمح لClass أن يرث خصائص وسلوكيات Class آخر.",
-keywords:["inheritance","oop","subclass","parent"],
-author:"badriah",
-year:"2026",
-example_code:`
-// مثال بايثون على Inheritance
-class Vehicle:
-    def drive(self):
-        print("Driving")
-
-class Car(Vehicle):
-    pass
-
-c = Car()
-c.drive()
-`
-},
-{
-code:"SC-PR-010",
-title:"Encapsulation",
-field:"Programming",
-definition:"آلية لإخفاء بيانات الكائن والتحكم بالوصول إليها.",
-keywords:["encapsulation","oop","private","protected"],
-author:"badriah",
-year:"2026",
-example_code:`
-// مثال بايثون على Encapsulation
-class Account:
-    def __init__(self, balance):
-        self.__balance = balance
-
-    def get_balance(self):
-        return self.__balance
-
-acc = Account(1000)
-print(acc.get_balance())
-`
-},
-
-{
-code:"SC-NAV-002",
-title:"Navigation",
-field:"Navigation",
-definition:"علم تحديد الموقع والاتجاه والمسار.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-NAV-003",
-title:"Satellite",
-field:"Navigation",
-definition:"قمر صناعي يستخدم للاتصالات والملاحة.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-NAV-004",
-title:"Coordinate",
-field:"Navigation",
-definition:"نقطة تحدد موقعاً على الخريطة.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-NAV-005",
-title:"Latitude",
-field:"Navigation",
-definition:"خطوط العرض التي تحدد الموقع شمالاً أو جنوباً.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-NAV-006",
-title:"Longitude",
-field:"Navigation",
-definition:"خطوط الطول التي تحدد الموقع شرقاً أو غرباً.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-CR-001",
-title:"Encryption",
-field:"Cryptography",
-definition:"تحويل البيانات إلى صيغة مشفرة لحمايتها.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-CR-002",
-title:"Decryption",
-field:"Cryptography",
-definition:"فك تشفير البيانات وإعادتها للحالة الأصلية.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-CR-003",
-title:"Hash",
-field:"Cryptography",
-definition:"تحويل البيانات إلى قيمة ثابتة للتحقق من سلامتها.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-CR-004",
-title:"Cipher",
-field:"Cryptography",
-definition:"خوارزمية تستخدم لتشفير وفك تشفير البيانات.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-CY-001",
-title:"Cyber Security",
-field:"Cyber Security",
-definition:"حماية الأنظمة والشبكات من الهجمات الرقمية.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-CY-002",
-title:"Firewall",
-field:"Cyber Security",
-definition:"نظام أمني يراقب حركة البيانات في الشبكة.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-CY-003",
-title:"Malware",
-field:"Cyber Security",
-definition:"برمجيات خبيثة تهدف إلى اختراق الأنظمة.",
-  keywords:["malware","virus","trojan","attack","hack"],
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-CY-004",
-title:"Phishing",
-field:"Cyber Security",
-definition:"هجوم خداعي لسرقة المعلومات الحساسة.",
-author:"badriah",
-year:"2026"
-
-},
-{
-code:"SC-PR-008",
-title:"Object",
-field:"Programming",
-definition:"نسخة من Class تحتوي على بيانات وسلوكيات محددة.",
-keywords:["object","instance","class","oop"],
-author:"badriah",
-year:"2026",
-example_code:`
-// مثال بايثون على Object
-class Car:
-    def __init__(self, model):
-        self.model = model
-
-my_car = Car("Tesla")
-print(my_car.model)
-`
-},
-
-{
-code:"SC-PR-007",
-title:"Class",
-field:"Programming",
-definition:"هيكل يستخدم لتعريف كائنات بخصائص وسلوكيات محددة في البرمجة الكائنية.",
-keywords:["class","object","oop","blueprint"],
-author:"badriah",
-year:"2026",
-example_code:`
-// مثال بايثون على Class
-class Person:
-    def __init__(self, name):
-        self.name = name
-
-p = Person("Ahmed")
-print(p.name)
-`
-},
-{
-code:"SC-PY-009",
-title:"Debugging",
-field:"Programming",
-definition:"عملية اكتشاف الأخطاء في الكود وإصلاحها.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-PY-010",
-title:"Compiler",
-field:"Programming",
-definition:"برنامج يحول الكود المصدري إلى كود قابل للتنفيذ.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-PY-011",
-title:"Interpreter",
-field:"Programming",
-definition:"برنامج ينفذ الكود سطراً بسطر.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-PY-012",
-title:"Syntax",
-field:"Programming",
-definition:"القواعد التي تحدد كيفية كتابة الكود.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-PY-013",
-title:"Library",
-field:"Programming",
-definition:"مجموعة من الأكواد الجاهزة لإعادة الاستخدام.",
-author:"badriah",
-  year:"2026"
-},
-  
-
-{
-code:"SC-PY-014",
-title:"Framework",
-field:"Programming",
-definition:"هيكل عمل يساعد المطور على بناء التطبيقات.",
-author:"c",
-year:"2026"
-},
-{
-code:"SC-NAV-007",
-title:"Heading",
-field:"Navigation",
-definition:"الاتجاه الذي تتحرك فيه المركبة.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-NAV-008",
-title:"Bearing",
-field:"Navigation",
-definition:"الزاوية بين الاتجاه الحالي والهدف.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-NAV-009",
-title:"Waypoint",
-field:"Navigation",
-definition:"نقطة محددة في مسار الملاحة.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-NAV-010",
-title:"Altitude",
-field:"Navigation",
-definition:"الارتفاع عن مستوى سطح البحر.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-NAV-011",
-title:"Route",
-field:"Navigation",
-definition:"المسار المحدد للوصول إلى وجهة معينة.",
-author:"badriah",
-year:"2026"
-},
-{
-code:"SC-CR-005",
-title:"Key",
-field:"Cryptography",
-definition:"قيمة تستخدم لتشفير أو فك تشفير البيانات.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-CR-006",
-title:"Public Key",
-field:"Cryptography",
-definition:"مفتاح تشفير متاح للجميع في التشفير غير المتماثل.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-CR-007",
-title:"Private Key",
-field:"Cryptography",
-definition:"مفتاح سري يستخدم لفك التشفير.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-CR-008",
-title:"Digital Signature",
-field:"Cryptography",
-definition:"توقيع إلكتروني للتحقق من هوية المرسل.",
-author:"badriah",
-year:"2026"
-},
-{
-code:"SC-CY-005",
-title:"Virus",
-field:"Cyber Security",
-definition:"برنامج خبيث ينتشر بين الأجهزة.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-CY-006",
-title:"Trojan",
-field:"Cyber Security",
-definition:"برنامج خبيث يتخفى كبرنامج شرعي.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-CY-007",
-title:"Ransomware",
-field:"Cyber Security",
-definition:"برنامج يشفّر الملفات ويطلب فدية لفكها.",
-author:"badriah",
-year:"2026"
-},
-
-{
-code:"SC-CY-008",
-title:"DDoS Attack",
-field:"Cyber Security",
-definition:"هجوم يغرق الخادم بطلبات كثيرة لتعطيله.",
-author:"badriah",
-year:"2026"
-} ];
+{code:"SC-PR-001", title:"Python", field:"Programming", definition:"لغة برمجة عالية المستوى تستخدم في تطوير التطبيقات والذكاء الاصطناعي.", keywords:["python","programming","coding","ai"], author:"badriah", year:"2026", example_code:`print("Hello World")`},
+{code:"SC-PR-002", title:"Algorithm", field:"Programming", definition:"مجموعة خطوات منطقية تستخدم لحل مشكلة برمجية.", keywords:["algorithm","logic","steps"], author:"badriah", year:"2026", example_code:`def factorial(n): return 1 if n==0 else n*factorial(n-1)`},
+{code:"SC-PR-003", title:"Variable", field:"Programming", definition:"مكان في الذاكرة لتخزين البيانات داخل البرنامج.", keywords:["variable","data","value","memory"], author:"badriah", year:"2026", example_code:`x = 10\ny = 20\nprint(x + y)`},
+{code:"SC-PR-004", title:"Loop", field:"Programming", definition:"بنية برمجية تسمح بتكرار تنفيذ مجموعة أوامر عدة مرات.", keywords:["loop","for","while","iteration"], author:"badriah", year:"2026", example_code:`for i in range(5):\n    print(i)`},
+{code:"SC-PR-005", title:"Function", field:"Programming", definition:"كتلة من الكود يتم تنفيذها عند استدعائها لأداء مهمة محددة.", keywords:["function","method","call","code block"], author:"badriah", year:"2026", example_code:`def greet(name):\n    print(f"Hello {name}")\ngreet("Ahmed")`},
+{code:"SC-PR-006", title:"Class", field:"Programming", definition:"هيكل يستخدم لتعريف كائنات بخصائص وسلوكيات محددة.", keywords:["class","object","oop","blueprint"], author:"badriah", year:"2026", example_code:`class Person:\n    def __init__(self, name):\n        self.name = name\np = Person("Ahmed")\nprint(p.name)`},
+{code:"SC-PR-007", title:"Object", field:"Programming", definition:"نسخة من Class تحتوي على بيانات وسلوكيات محددة.", keywords:["object","instance","class","oop"], author:"badriah", year:"2026", example_code:`class Car:\n    def __init__(self, model):\n        self.model = model\nc = Car("Toyota")\nprint(c.model)`},
+{code:"SC-PR-008", title:"Inheritance", field:"Programming", definition:"آلية تسمح لClass أن يرث خصائص وسلوكيات Class آخر.", keywords:["inheritance","oop","subclass","parent"], author:"badriah", year:"2026", example_code:`class Animal:\n    def speak(self):\n        print("Sound")\nclass Dog(Animal):\n    pass\nd = Dog()\nd.speak()`},
+{code:"SC-PR-009", title:"Encapsulation", field:"Programming", definition:"إخفاء بيانات الكائن والتحكم بالوصول إليها.", keywords:["encapsulation","oop","private","protected"], author:"badriah", year:"2026", example_code:`class Bank:\n    def __init__(self):\n        self.__balance = 0\n    def deposit(self, amt):\n        self.__balance += amt\nb = Bank()\nb.deposit(100)`},
+{code:"SC-PR-010", title:"API", field:"Programming", definition:"واجهة تسمح للتطبيقات بالتواصل مع بعضها.", keywords:["api","interface","integration"], author:"badriah", year:"2026", example_code:`import requests\nresponse = requests.get("https://api.example.com")\nprint(response.status_code)`},
+{code:"SC-PR-011", title:"Database", field:"Programming", definition:"مكان لتخزين البيانات بشكل منظم يمكن الوصول إليه واسترجاعه.", keywords:["database","data","storage"], author:"badriah", year:"2026", example_code:`import sqlite3\nconn = sqlite3.connect("test.db")\ncursor = conn.cursor()`},
+{code:"SC-PR-012", title:"JSON", field:"Programming", definition:"تنسيق بيانات خفيف يستخدم لتبادل المعلومات بين الخادم والعميل.", keywords:["json","data","format","api"], author:"badriah", year:"2026", example_code:`import json\ndata = {"name":"Ahmed"}\nprint(json.dumps(data))`},
+{code:"SC-PR-013", title:"HTTP", field:"Networking", definition:"بروتوكول لنقل البيانات عبر الشبكة.", keywords:["http","protocol","network"], author:"badriah", year:"2026", example_code:`import requests\nr = requests.get("http://example.com")\nprint(r.text)`},
+{code:"SC-PR-014", title:"HTTPS", field:"Networking", definition:"نسخة آمنة من HTTP تستخدم تشفير SSL/TLS.", keywords:["https","secure","protocol","ssl"], author:"badriah", year:"2026", example_code:`import requests\nr = requests.get("https://example.com")\nprint(r.status_code)`},
+{code:"SC-PR-015", title:"TCP/IP", field:"Networking", definition:"بروتوكولات أساسية لنقل البيانات عبر الشبكات.", keywords:["tcp","ip","protocol","network"], author:"badriah", year:"2026", example_code:`# مثال تعليمي فقط\n# لاختبار اتصال TCP/IP\nimport socket\ns = socket.socket()\ns.connect(("example.com",80))`},
+{code:"SC-PR-016", title:"Firewall", field:"Cyber Security", definition:"جدار حماية يحمي الأنظمة من الهجمات والشبكات غير المصرح بها.", keywords:["firewall","security","network","protection"], author:"badriah", year:"2026", example_code:`# مثال وهمي\nfirewall_rules = ["allow 80","deny 23"]\nprint(firewall_rules)`},
+{code:"SC-PR-017", title:"Malware", field:"Cyber Security", definition:"برمجيات خبيثة تهدف إلى اختراق الأنظمة أو سرقة البيانات.", keywords:["malware","virus","trojan","attack","hack"], author:"badriah", year:"2026", example_code:`malicious_files = ["virus.exe","trojan.exe"]\nfor file in malicious_files:\n    print(f"Scanning {file}")`},
+{code:"SC-PR-018", title:"Virus", field:"Cyber Security", definition:"برنامج ضار يمكن أن يكرر نفسه ويخرب النظام.", keywords:["virus","malware","infection"], author:"badriah", year:"2026", example_code:`# مثال حماية\ninfected = ["file1","file2"]\nfor f in infected:\n    print(f"Checking {f}")`},
+{code:"SC-PR-019", title:"Trojan", field:"Cyber Security", definition:"برنامج خبيث يخفي نفسه داخل برامج شرعية.", keywords:["trojan","malware","backdoor"], author:"badriah", year:"2026", example_code:`# مثال وهمي\ntrojan_files = ["app.exe"]\nfor t in trojan_files:\n    print(f"Analyzing {t}")`},
+{code:"SC-PR-020", title:"Phishing", field:"Cyber Security", definition:"هجمات تهدف لخداع المستخدم وسرقة معلوماته الحساسة.", keywords:["phishing","scam","email"], author:"badriah", year:"2026", example_code:`# مثال\ndef check_email(email):\n    if "bank" in email:\n        print("Phishing attempt")`},
+{code:"SC-PR-021", title:"Encryption", field:"Cyber Security", definition:"عملية تحويل البيانات إلى صيغة مشفرة لحمايتها.", keywords:["encryption","security","crypto"], author:"badriah", year:"2026", example_code:`from cryptography.fernet import Fernet\nkey = Fernet.generate_key()\ncipher = Fernet(key)`},
+{code:"SC-PR-022", title:"Decryption", field:"Cyber Security", definition:"عملية فك التشفير لإعادة البيانات الأصلية.", keywords:["decryption","crypto","security"], author:"badriah", year:"2026", example_code:`# مثال\ndata_encrypted = b"..."\n# فك التشفير هنا`},
+{code:"SC-PR-023", title:"Hashing", field:"Cyber Security", definition:"تحويل البيانات إلى قيمة ثابتة لزيادة الأمان.", keywords:["hashing","security","crypto"], author:"badriah", year:"2026", example_code:`import hashlib\nhashlib.sha256(b"data").hexdigest()`},
+{code:"SC-PR-024", title:"SSL", field:"Cyber Security", definition:"بروتوكول لتشفير البيانات وتأمين الاتصال بين الخادم والعميل.", keywords:["ssl","https","security"], author:"badriah", year:"2026", example_code:`# مثال\ndata = "Hello"\nssl_encrypted = "..."`},
+{code:"SC-PR-025", title:"TLS", field:"Cyber Security", definition:"بروتوكول آمن لتبادل البيانات المشفرة.", keywords:["tls","https","security"], author:"badriah", year:"2026", example_code:`# مثال\ndata = "Hello"\nsecure = "..."`},
+{code:"SC-PR-026", title:"HTML", field:"Web Development", definition:"لغة ترميز لإنشاء صفحات الويب.", keywords:["html","web","markup"], author:"badriah", year:"2026", example_code:`<h1>Hello World</h1>`},
+{code:"SC-PR-027", title:"CSS", field:"Web Development", definition:"لغة تنسيق لتصميم صفحات الويب.", keywords:["css","web","style"], author:"badriah", year:"2026", example_code:`body { background-color: #fff; }`},
+{code:"SC-PR-028", title:"JavaScript", field:"Web Development", definition:"لغة برمجة لإضافة التفاعلية لصفحات الويب.", keywords:["javascript","web","programming"], author:"badriah", year:"2026", example_code:`console.log("Hello JS");`},
+{code:"SC-PR-029", title:"DOM", field:"Web Development", definition:"هيكل يمثل عناصر صفحة الويب ويمكن التحكم بها عبر JavaScript.", keywords:["dom","javascript","html"], author:"badriah", year:"2026", example_code:`document.getElementById("demo").innerText = "Hello";`},
+{code:"SC-PR-030", title:"Node.js", field:"Web Development", definition:"بيئة تشغيل JavaScript على الخادم.", keywords:["node","javascript","server"], author:"badriah", year:"2026", example_code:`const http = require("http");`},
+{code:"SC-PR-031", title:"Express.js", field:"Web Development", definition:"إطار عمل لتطبيقات Node.js على الويب.", keywords:["express","node","javascript"], author:"badriah", year:"2026", example_code:`const express = require("express");\nconst app = express();`},
+{code:"SC-PR-032", title:"React.js", field:"Web Development", definition:"مكتبة لإنشاء واجهات المستخدم التفاعلية.", keywords:["react","javascript","frontend"], author:"badriah", year:"2026", example_code:`import React from 'react';`},
+{code:"SC-PR-033", title:"Vue.js", field:"Web Development", definition:"إطار عمل لإنشاء واجهات المستخدم.", keywords:["vue","javascript","frontend"], author:"badriah", year:"2026", example_code:`import Vue from 'vue';`},
+{code:"SC-PR-034", title:"Angular", field:"Web Development", definition:"إطار عمل لإنشاء تطبيقات ويب متقدمة.", keywords:["angular","javascript","frontend"], author:"badriah", year:"2026", example_code:`import { Component } from '@angular/core';`},
+{code:"SC-PR-035", title:"Bootstrap", field:"Web Development", definition:"إطار لتصميم صفحات الويب بسرعة وسهولة.", keywords:["bootstrap","css","framework"], author:"badriah", year:"2026", example_code:`<link rel="stylesheet" href="bootstrap.css">`},
+{code:"SC-PR-036", title:"jQuery", field:"Web Development", definition:"مكتبة لتسهيل التعامل مع JavaScript.", keywords:["jquery","javascript","library"], author:"badriah", year:"2026", example_code:`$("#demo").hide();`},
+{code:"SC-PR-037", title:"Git", field:"Version Control", definition:"أداة للتحكم بالإصدارات ومتابعة التغييرات في الملفات.", keywords:["git","version control","repository"], author:"badriah", year:"2026", example_code:`git status`},
+{code:"SC-PR-038", title:"GitHub", field:"Version Control", definition:"منصة لاستضافة المستودعات ومشاركة المشاريع.", keywords:["github","git","repository"], author:"badriah", year:"2026", example_code:`# مثال على clone\ngit clone https://github.com/user/repo.git`},
+{code:"SC-PR-039", title:"Command Line", field:"Development Tools", definition:"واجهة نصية للتعامل مع النظام والأوامر.", keywords:["command line","cli","terminal"], author:"badriah", year:"2026", example_code:`cd /path/to/folder`},
+{code:"SC-PR-040", title:"Terminal", field:"Development Tools", definition:"واجهة لإدخال الأوامر وتشغيل البرامج.", keywords:["terminal","cli","command line"], author:"badriah", year:"2026", example_code:`ls -la`},
+{code:"SC-PR-041", title:"IDE", field:"Development Tools", definition:"بيئة تطوير متكاملة لكتابة وتشغيل البرامج.", keywords:["ide","development","editor"], author:"badriah", year:"2026", example_code:`# فتح مشروع في IDE`},
+{code:"SC-PR-042", title:"Debugger", field:"Development Tools", definition:"أداة لتصحيح الأخطاء البرمجية.", keywords:["debugger","tools","programming"], author:"badriah", year:"2026", example_code:`# breakpoint example`},
+{code:"SC-PR-043", title:"Stack Overflow", field:"Development Tools", definition:"منصة للأسئلة والأجوبة في البرمجة.", keywords:["stackoverflow","programming","qa"], author:"badriah", year:"2026", example_code:`# search question`},
+{code:"SC-PR-044", title:"API Documentation", field:"Development Tools", definition:"مستندات توضح كيفية استخدام واجهات البرمجة.", keywords:["api","documentation","guide"], author:"badriah", year:"2026", example_code:`# read docs`},
+{code:"SC-PR-045", title:"JSON Web Token", field:"Cyber Security", definition:"رمز للتحقق من الهوية وتأمين البيانات بين العميل والخادم.", keywords:["jwt","security","token"], author:"badriah", year:"2026", example_code:`import jwt\nencoded = jwt.encode({"user":"ahmed"},"secret")`},
+{code:"SC-PR-046", title:"OAuth", field:"Cyber Security", definition:"بروتوكول لتفويض الوصول إلى الموارد دون مشاركة كلمة المرور.", keywords:["oauth","security","authentication"], author:"badriah", year:"2026", example_code:`# oauth example`},
+{code:"SC-PR-047", title:"Session", field:"Cyber Security", definition:"آلية لتخزين بيانات الجلسة للمستخدم مؤقتًا.", keywords:["session","security","cookies"], author:"badriah", year:"2026", example_code:`session = {}`},
+{code:"SC-PR-048", title:"Cookie", field:"Cyber Security", definition:"ملف صغير يخزن بيانات المستخدم على جهازه.", keywords:["cookie","session","security"], author:"badriah", year:"2026", example_code:`document.cookie = "user=ahmed"`},
+{code:"SC-PR-049", title:"Local Storage", field:"Web Development", definition:"آلية لتخزين البيانات على متصفح المستخدم بشكل مؤقت.", keywords:["local storage","web","data"], author:"badriah", year:"2026", example_code:`localStorage.setItem("user","ahmed")`},
+{code:"SC-PR-050", title:"Responsive Design", field:"Web Development", definition:"تصميم صفحات ويب تتكيف مع جميع الأجهزة.", keywords:["responsive","web","design"], author:"badriah", year:"2026", example_code:`@media (max-width: 600px) { body { font-size: 14px; } }`}
+];;
