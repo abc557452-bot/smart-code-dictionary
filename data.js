@@ -3,7 +3,8 @@ const dictionary =[
 code:"SC-PY-001",
 title:"Python",
 field:"Programming",
-definition:"لغة برمجة تستخدم في الذكاء الاصطناعي وتحليل البيانات.",
+  definition:"لغة برمجة تستخدم في الذكاء الاصطناعي وتحليل البيانات.",
+  keywords:["python","programming","coding","ai"],
 author:"badriah",
 year:"2026"
 },
@@ -13,6 +14,7 @@ code:"SC-PY-002",
 title:"Algorithm",
 field:"Programming",
 definition:"مجموعة خطوات منطقية لحل مشكلة برمجية.",
+  keywords:["algorithm","logic","steps"],
 author:"badriah",
 year:"2026"
 },
