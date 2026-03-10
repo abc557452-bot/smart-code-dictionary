@@ -4,106 +4,120 @@ const suggestionsBox = document.getElementById("suggestions");
 
 function searchTerm(){
 
-let input = document.getElementById("searchInput").value.toLowerCase();
+    let input = document.getElementById("searchInput").value.toLowerCase();
 
-if(input === ""){
-result.innerHTML = "";
-suggestionsBox.innerHTML = "";
-return;
-}
+    if(input === ""){
+        result.innerHTML = "";
+        suggestionsBox.innerHTML = "";
+        return;
+    }
 
-let found = false;
+    let found = false;
 
-for(let key in dictionary){
+    for(let key in dictionary){
 
-let d = dictionary[key];
+        let d = dictionary[key];
 
-if(
-key.toLowerCase() === input ||
-(d.title && d.title.toLowerCase().includes(input)) ||
-(d.definition && d.definition.toLowerCase().includes(input)) ||
-(d.field && d.field.toLowerCase().includes(input))
-){
+        if(
+            key.toLowerCase() === input ||
+            (d.title && d.title.toLowerCase().includes(input)) ||
+            (d.definition && d.definition.toLowerCase().includes(input)) ||
+            (d.field && d.field.toLowerCase().includes(input))
+        ){
 
-result.innerHTML =
-"<h3>"+d.code+"</h3>"+
-"<h2>"+d.title+"</h2>"+
-"<p><b>المجال:</b> "+d.field+"</p>"+
-"<p>"+d.definition+"</p>"+
-"<hr>"+
-"<p style='font-size:14px;color:#ccc;'>تم إعداده من قبل "+d.author+" | "+d.year+"</p>";
+            result.innerHTML =
+                "<h3>"+d.code+"</h3>"+
+                "<h2>"+d.title+"</h2>"+
+                "<p><b>المجال:</b> "+d.field+"</p>"+
+                "<p>"+d.definition+"</p>"+
+                (d.example_code ? "<pre id='code-"+d.code+"' style='background:#f0f0f0;padding:10px;'>"+d.example_code+"</pre>"+
+                "<button onclick='copyCode(\"code-"+d.code+"\")'>نسخ الكود</button>" : "")+
+                "<hr>"+
+                "<p style='font-size:14px;color:#ccc;'>تم إعداده من قبل "+d.author+" | "+d.year+"</p>";
 
-suggestionsBox.innerHTML = "";
-found = true;
-break;
+            suggestionsBox.innerHTML = "";
+            found = true;
+            break;
 
-}
+        }
 
-}
+    }
 
-if(!found){
-result.innerHTML = "<p style='color:red;'>لم يتم العثور على المصطلح</p>";
-}
+    if(!found){
+        result.innerHTML = "<p style='color:red;'>لم يتم العثور على المصطلح</p>";
+    }
 
 }
 
 function clearSearch(){
 
-document.getElementById("searchInput").value = "";
-result.innerHTML = "";
-suggestionsBox.innerHTML = "";
+    document.getElementById("searchInput").value = "";
+    result.innerHTML = "";
+    suggestionsBox.innerHTML = "";
 
 }
 
 function suggestWords(){
 
-let input = document.getElementById("searchInput").value.toLowerCase();
-let suggestions = "";
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let suggestions = "";
 
-if(input === ""){
-suggestionsBox.innerHTML = "";
-return;
-}
+    if(input === ""){
+        suggestionsBox.innerHTML = "";
+        return;
+    }
 
-for(let key in dictionary){
+    for(let key in dictionary){
 
-if(key.startsWith(input)){
-suggestions += "<p style='cursor:pointer;margin:0;padding:5px;' onclick='fillInput(\""+key+"\")'>"+dictionary[key].title+"</p>";
-}
+        if(key.startsWith(input)){
+            suggestions += "<p style='cursor:pointer;margin:0;padding:5px;' onclick='fillInput(\""+key+"\")'>"+dictionary[key].title+"</p>";
+        }
 
-}
+    }
 
-suggestionsBox.innerHTML = suggestions;
+    suggestionsBox.innerHTML = suggestions;
 
 }
 
 function fillInput(word){
 
-document.getElementById("searchInput").value = word;
-searchTerm();
+    document.getElementById("searchInput").value = word;
+    searchTerm();
 
 }
+
 function showAllTerms(){
 
-let output = "";
+    let output = "";
 
-for(let key in dictionary){
+    for(let key in dictionary){
 
-let d = dictionary[key];
+        let d = dictionary[key];
 
-output +=
-"<h3>"+d.code+"</h3>"+
-"<h2>"+d.title+"</h2>"+
-"<p><b>المجال:</b> "+d.field+"</p>"+
-"<p>"+d.definition+"</p>"+
-"<hr>";
+        output +=
+            "<h3>"+d.code+"</h3>"+
+            "<h2>"+d.title+"</h2>"+
+            "<p><b>المجال:</b> "+d.field+"</p>"+
+            "<p>"+d.definition+"</p>"+
+            (d.example_code ? "<pre id='code-"+d.code+"' style='background:#f0f0f0;padding:10px;'>"+d.example_code+"</pre>"+
+            "<button onclick='copyCode(\"code-"+d.code+"\")'>نسخ الكود</button>" : "")+
+            "<hr>";
+
+    }
+
+    result.innerHTML = output;
+    suggestionsBox.innerHTML = "";
 
 }
 
-result.innerHTML = output;
-suggestionsBox.innerHTML = "";
-
+// دالة نسخ الكود
+function copyCode(id) {
+    const code = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(code).then(() => {
+        alert("تم نسخ الكود!");
+    });
 }
+
 
 
 
