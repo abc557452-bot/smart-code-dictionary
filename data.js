@@ -49,5 +49,520 @@ const dictionary =[
 {code:"SC-PR-047", title:"Session", field:"Cyber Security", definition:"آلية لتخزين بيانات الجلسة للمستخدم مؤقتًا.", keywords:["session","security","cookies"], author:"badriah", year:"2026", example_code:`session = {}`},
 {code:"SC-PR-048", title:"Cookie", field:"Cyber Security", definition:"ملف صغير يخزن بيانات المستخدم على جهازه.", keywords:["cookie","session","security"], author:"badriah", year:"2026", example_code:`document.cookie = "user=ahmed"`},
 {code:"SC-PR-049", title:"Local Storage", field:"Web Development", definition:"آلية لتخزين البيانات على متصفح المستخدم بشكل مؤقت.", keywords:["local storage","web","data"], author:"badriah", year:"2026", example_code:`localStorage.setItem("user","ahmed")`},
-{code:"SC-PR-050", title:"Responsive Design", field:"Web Development", definition:"تصميم صفحات ويب تتكيف مع جميع الأجهزة.", keywords:["responsive","web","design"], author:"badriah", year:"2026", example_code:`@media (max-width: 600px) { body { font-size: 14px; } }`}
+{code:"SC-PR-050", title:"Responsive Design", field:"Web Development", definition:"تصميم صفحات ويب تتكيف مع جميع الأجهزة.", keywords:["responsive","web","design"], author:"badriah", year:"2026", example_code:`@media (max-width: 600px) { body { font-size: 14px; } }`},
+  {
+  code:"NAV-001",
+  title:"GPS",
+  field:"Navigation",
+  definition:"نظام تحديد المواقع العالمي لتحديد المواقع بدقة.",
+  keywords:["gps","navigation","location"],
+  author:"badriah",
+  year:"2026",
+  example_code:`import geopy
+location = geopy.geocoders.Nominatim(user_agent="geoapi").geocode("Kuwait")
+print(location.latitude, location.longitude)`
+},
+{
+  code:"NAV-002",
+  title:"Waypoint",
+  field:"Navigation",
+  definition:"نقطة محددة على الخريطة يستخدمها الطيار أو القارب للتنقل.",
+  keywords:["waypoint","navigation","coordinates"],
+  author:"badriah",
+  year:"2026",
+  example_code:`waypoints = [(29.3697, 47.9783), (29.3765, 48.0050)]
+print(waypoints)`
+},
+{
+  code:"NAV-003",
+  title:"Compass",
+  field:"Navigation",
+  definition:"أداة لتحديد الاتجاهات على الأرض.",
+  keywords:["compass","direction","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`direction = "N"
+print("Current heading:", direction)`
+},
+{
+  code:"NAV-004",
+  title:"Bearing",
+  field:"Navigation",
+  definition:"الزاوية بين الاتجاه الشمالي ونقطة معينة على الخريطة.",
+  keywords:["bearing","angle","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`bearing = 45
+print("Bearing:", bearing)`
+},
+{
+  code:"NAV-005",
+  title:"Course",
+  field:"Navigation",
+  definition:"مسار الرحلة الذي يتبعه الطيار أو القارب.",
+  keywords:["course","navigation","route"],
+  author:"badriah",
+  year:"2026",
+  example_code:`course = [29.3697, 47.9783]
+print(course)`
+},
+{
+  code:"NAV-006",
+  title:"Latitude",
+  field:"Navigation",
+  definition:"خطوط العرض على الكرة الأرضية.",
+  keywords:["latitude","coordinates","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`lat = 29.3697
+print(lat)`
+},
+{
+  code:"NAV-007",
+  title:"Longitude",
+  field:"Navigation",
+  definition:"خطوط الطول على الكرة الأرضية.",
+  keywords:["longitude","coordinates","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`lon = 47.9783
+print(lon)`
+},
+{
+  code:"NAV-008",
+  title:"Dead Reckoning",
+  field:"Navigation",
+  definition:"طريقة تحديد الموقع عن طريق الحسابات الرياضية لمسافة واتجاه الرحلة.",
+  keywords:["dead reckoning","navigation","calculation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# distance and heading calculations`
+},
+{
+  code:"NAV-009",
+  title:"Chart",
+  field:"Navigation",
+  definition:"خريطة بحرية أو جوية لتحديد المواقع والمسارات.",
+  keywords:["chart","map","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`charts = ["nav_chart1","nav_chart2"]
+print(charts)`
+},
+{
+  code:"NAV-010",
+  title:"Radar",
+  field:"Navigation",
+  definition:"جهاز يستخدم موجات الراديو لاكتشاف الأجسام والمسافة.",
+  keywords:["radar","detection","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# radar scan simulation`
+},
+{
+  code:"NAV-011",
+  title:"AIS",
+  field:"Navigation",
+  definition:"نظام معلومات تتبع السفن لتجنب التصادم.",
+  keywords:["ais","ships","tracking"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# ais example: receive ship positions`
+},
+{
+  code:"NAV-012",
+  title:"Sonar",
+  field:"Navigation",
+  definition:"نظام يستخدم الموجات الصوتية لتحديد عمق المياه أو الأجسام.",
+  keywords:["sonar","depth","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# sonar depth reading`
+},
+{
+  code:"NAV-013",
+  title:"Autopilot",
+  field:"Navigation",
+  definition:"نظام لتوجيه السفينة أو الطائرة تلقائياً حسب المسار المحدد.",
+  keywords:["autopilot","navigation","automatic"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# autopilot set course`
+},
+{
+  code:"NAV-014",
+  title:"Gyroscope",
+  field:"Navigation",
+  definition:"أداة لقياس أو الحفاظ على الاتجاه.",
+  keywords:["gyroscope","direction","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# gyro heading`
+},
+{
+  code:"NAV-015",
+  title:"Magnetic Declination",
+  field:"Navigation",
+  definition:"الفرق بين الشمال الحقيقي والشمال المغناطيسي.",
+  keywords:["magnetic declination","compass","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`declination = 2.5
+print(declination)`
+},
+{
+  code:"NAV-016",
+  title:"Nautical Mile",
+  field:"Navigation",
+  definition:"وحدة قياس المسافة في البحر.",
+  keywords:["nautical mile","distance","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`nm = 1.852 # km
+print(nm)`
+},
+{
+  code:"NAV-017",
+  title:"Knot",
+  field:"Navigation",
+  definition:"وحدة قياس سرعة السفن والطيارات البحرية.",
+  keywords:["knot","speed","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`speed = 20 # knots
+print(speed)`
+},
+{
+  code:"NAV-018",
+  title:"Heading",
+  field:"Navigation",
+  definition:"الاتجاه الذي تتحرك نحوه السفينة أو الطائرة.",
+  keywords:["heading","direction","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`heading = 90
+print(heading)`
+},
+{
+  code:"NAV-019",
+  title:"Track",
+  field:"Navigation",
+  definition:"المسار الذي اتبعته السفينة أو الطائرة.",
+  keywords:["track","path","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`track = [(29.36,47.97),(29.37,48.00)]
+print(track)`
+},
+{
+  code:"NAV-020",
+  title:"Waypoint Navigation",
+  field:"Navigation",
+  definition:"التنقل باستخدام نقاط محددة للوصول للهدف.",
+  keywords:["waypoint","navigation","gps"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# follow waypoints list`
+},
+{
+  code:"NAV-021",
+  title:"Chart Plotter",
+  field:"Navigation",
+  definition:"جهاز إلكتروني يعرض الخرائط البحرية والمسار.",
+  keywords:["chart plotter","navigation","device"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# chart plotting simulation`
+},
+{
+  code:"NAV-022",
+  title:"Hydrography",
+  field:"Navigation",
+  definition:"دراسة وتخطيط الأعماق البحرية.",
+  keywords:["hydrography","depth","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# hydrographic data`
+},
+{
+  code:"NAV-023",
+  title:"Celestial Navigation",
+  field:"Navigation",
+  definition:"تحديد الموقع باستخدام النجوم والكواكب.",
+  keywords:["celestial navigation","stars","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# sextant reading simulation`
+},
+{
+  code:"NAV-024",
+  title:"Dead Reckoning Log",
+  field:"Navigation",
+  definition:"سجل لحساب الموقع والمسافة المقطوعة باستخدام Dead Reckoning.",
+  keywords:["log","dead reckoning","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# log entries`
+},
+{
+  code:"NAV-025",
+  title:"VHF Radio",
+  field:"Navigation",
+  definition:"راديو يستخدم للتواصل بين السفن والموانئ.",
+  keywords:["vhf radio","communication","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# vhf radio message`
+},
+{
+  code:"NAV-026",
+  title:"Radar Reflector",
+  field:"Navigation",
+  definition:"جهاز يعكس موجات الرادار لزيادة الرؤية.",
+  keywords:["radar reflector","navigation","safety"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# reflector placement`
+},
+{
+  code:"NAV-027",
+  title:"Tide Table",
+  field:"Navigation",
+  definition:"جدول يوضح المد والجزر حسب التوقيت والموقع.",
+  keywords:["tide","table","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# read tide table`
+},
+{
+  code:"NAV-028",
+  title:"Pilot Chart",
+  field:"Navigation",
+  definition:"خريطة تعرض الظروف الجوية والتيارات والموانئ.",
+  keywords:["pilot chart","map","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# display pilot chart`
+},
+{
+  code:"NAV-029",
+  title:"Buoy",
+  field:"Navigation",
+  definition:"عوامة تستخدم كمرجع أو تحذير في البحر.",
+  keywords:["buoy","marker","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# buoy position`
+},
+{
+  code:"NAV-030",
+  title:"LORAN",
+  field:"Navigation",
+  definition:"نظام ملاحي يستخدم الإشارات الراديوية لتحديد الموقع.",
+  keywords:["loran","radio","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# loran signal decoding`
+},
+{
+  code:"NAV-031",
+  title:"Radar Chart",
+  field:"Navigation",
+  definition:"عرض بيانات الرادار بشكل رسومي.",
+  keywords:["radar chart","navigation","display"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# radar chart plot`
+},
+{
+  code:"NAV-032",
+  title:"Magnetometer",
+  field:"Navigation",
+  definition:"أداة لقياس المجال المغناطيسي للأرض.",
+  keywords:["magnetometer","navigation","magnetic"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# magnetometer reading`
+},
+{
+  code:"NAV-033",
+  title:"Echo Sounder",
+  field:"Navigation",
+  definition:"جهاز لقياس عمق المياه باستخدام الموجات الصوتية.",
+  keywords:["echo sounder","depth","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# echo sounder reading`
+},
+{
+  code:"NAV-034",
+  title:"Gyrocompass",
+  field:"Navigation",
+  definition:"بوصلة تعتمد على الدوران وتحدد الشمال الحقيقي.",
+  keywords:["gyrocompass","navigation","direction"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# gyrocompass heading`
+},
+{
+  code:"NAV-035",
+  title:"Chart Datum",
+  field:"Navigation",
+  definition:"خط أساس العمق في الخرائط البحرية.",
+  keywords:["chart datum","navigation","depth"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# chart datum example`
+},
+{
+  code:"NAV-036",
+  title:"Course Over Ground",
+  field:"Navigation",
+  definition:"المسار الفعلي للسفينة على الأرض.",
+  keywords:["cog","navigation","course"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# COG calculation`
+},
+{
+  code:"NAV-037",
+  title:"Speed Over Ground",
+  field:"Navigation",
+  definition:"سرعة السفينة الفعلية على الأرض.",
+  keywords:["sog","navigation","speed"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# SOG measurement`
+},
+{
+  code:"NAV-038",
+  title:"Drift",
+  field:"Navigation",
+  definition:"انحراف السفينة أو الطائرة عن المسار بسبب التيارات أو الرياح.",
+  keywords:["drift","navigation","currents"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# drift correction`
+},
+{
+  code:"NAV-039",
+  title:"Fix",
+  field:"Navigation",
+  definition:"تحديد الموقع بدقة باستخدام أدوات متعددة.",
+  keywords:["fix","position","navigation"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# position fix example`
+},
+{
+  code:"NAV-040",
+  title:"Position Line",
+  field:"Navigation",
+  definition:"خط على الخريطة يوضح موقع السفينة بناءً على ملاحظات.",
+  keywords:["position line","navigation","chart"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# plot position line`
+},
+{
+  code:"NAV-041",
+  title:"Radar Plot",
+  field:"Navigation",
+  definition:"تمثيل بيانات الرادار على الخريطة.",
+  keywords:["radar plot","navigation","chart"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# radar plot data`
+},
+{
+  code:"NAV-042",
+  title:"Navigational Aid",
+  field:"Navigation",
+  definition:"أداة تساعد السفن على تحديد الموقع والمسار.",
+  keywords:["navaid","navigation","aid"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# navaid signal check`
+},
+{
+  code:"NAV-043",
+  title:"Seamark",
+  field:"Navigation",
+  definition:"علامة بحرية لتحديد المسار أو التحذير.",
+  keywords:["seamark","navigation","marker"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# seamark identification`
+},
+{
+  code:"NAV-044",
+  title:"VTS",
+  field:"Navigation",
+  definition:"نظام مراقبة السفن وإرشادها في الموانئ.",
+  keywords:["vts","navigation","traffic"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# VTS data monitor`
+},
+{
+  code:"NAV-045",
+  title:"Pilot",
+  field:"Navigation",
+  definition:"شخص متمرس يقود السفينة داخل الموانئ.",
+  keywords:["pilot","navigation","harbor"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# pilot instructions`
+},
+{
+  code:"NAV-046",
+  title:"Harbor",
+  field:"Navigation",
+  definition:"ميناء أو منطقة لرسو السفن.",
+  keywords:["harbor","navigation","port"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# harbor map`
+},
+{
+  code:"NAV-047",
+  title:"Buoyage System",
+  field:"Navigation",
+  definition:"نظام العوامات لتحديد المسارات والتحذيرات.",
+  keywords:["buoyage","navigation","system"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# buoyage check`
+},
+{
+  code:"NAV-048",
+  title:"Chart Scale",
+  field:"Navigation",
+  definition:"مقياس الخريطة الذي يوضح العلاقة بين المسافة على الخريطة والحقيقة.",
+  keywords:["chart scale","navigation","map"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# chart scale example`
+},
+{
+  code:"NAV-049",
+  title:"Echo Sounding",
+  field:"Navigation",
+  definition:"قياس عمق المياه باستخدام الموجات الصوتية.",
+  keywords:["echo sounding","navigation","depth"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# echo sounding reading`
+},
+{
+  code:"NAV-050",
+  title:"Satellite Navigation",
+  field:"Navigation",
+  definition:"تحديد الموقع باستخدام الأقمار الصناعية.",
+  keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
+  example_code:`# satellite position reading`
+}
+
 ];;
