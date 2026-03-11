@@ -22,8 +22,6 @@
     padding: 5px 10px;
     cursor: pointer;
 }
-#codeTester { border:1px solid #ccc; padding:10px; margin-top:20px; }
-#output { background:#f0f0f0; padding:10px; margin-top:10px; white-space:pre-wrap; }
 </style>
 </head>
 <body>
@@ -41,73 +39,14 @@
 <div id="suggestions"></div>
 <div id="results"></div>
 
-<!-- صندوق تجربة الكود -->
-<div id="codeTester">
-    <h3>تجربة الكود</h3>
-    <label>اختر اللغة:</label>
-    <select id="codeLang">
-        <option value="js">JavaScript</option>
-        <option value="py">Python</option>
-    </select>
-    <textarea id="testCode" rows="8" style="width:100%;"></textarea>
-    <br>
-    <button id="runCode">تشغيل الكود</button>
-    <button id="clearCode">مسح الكود</button>
-    <div id="output"></div>
 </div>
 
 <script src="data.js"></script>
 <script src="script.js"></script>
 
-<!-- سكربت تجربة الكود متعدد اللغات -->
-<script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
-<script>
-let pyodideReady = false;
-let pyodide = null;
-async function loadPyodideAndPackages() {
-    pyodide = await loadPyodide();
-    pyodideReady = true;
-}
-loadPyodideAndPackages();
-
-document.getElementById("runCode").addEventListener("click", async () => {
-    const code = document.getElementById("testCode").value;
-    const lang = document.getElementById("codeLang").value;
-    const output = document.getElementById("output");
-    output.innerText = "";
-
-    if(lang === "js"){
-        // JS التنفيذ كما هو
-        try {
-            const result = eval(code);
-            if(result !== undefined) output.innerText += result;
-        } catch(err){
-            output.innerText = "خطأ: " + err;
-        }
-    } else if(lang === "py"){
-        // Python عبر Pyodide
-        if(!pyodideReady){
-            output.innerText = "انتظر تحميل Pyodide...";
-            return;
-        }
-        try{
-            pyodide.stdout = (msg) => { output.innerText += msg + "\n"; };
-            pyodide.stderr = (msg) => { output.innerText += "خطأ: " + msg + "\n"; };
-            await pyodide.runPythonAsync(code);
-        } catch(err){
-            output.innerText += "خطأ: " + err;
-        }
-    }
-});
-
-document.getElementById("clearCode").addEventListener("click", () => {
-    document.getElementById("testCode").value = "";
-    document.getElementById("output").innerText = "";
-});
-</script>
-
 </body>
 </html>
+
 
 
 
