@@ -118,6 +118,39 @@ function copyCode(id) {
     });
 }
 
+// ===== عداد المصطلحات والتحقق من التكرار (خاص بك فقط) =====
+(function(){
+    // هذا الجزء يعمل لك فقط إذا فتح الصفحة مع Console مفتوح
+    let isOwner = true; // غيره لـ false إذا تريد تعطيله نهائياً للزوار
+
+    if(isOwner){
+        if(!dictionary || dictionary.length === 0){
+            console.log("القاموس فارغ");
+            return;
+        }
+
+        // عداد المصطلحات
+        console.log("🔹 عدد المصطلحات الكلي: " + dictionary.length);
+
+        // التحقق من تكرار العناوين
+        let titles = {};
+        let duplicates = [];
+        dictionary.forEach(d => {
+            let t = d.title.toLowerCase();
+            if(titles[t]){
+                duplicates.push(d.title);
+            } else {
+                titles[t] = true;
+            }
+        });
+
+        if(duplicates.length > 0){
+            console.warn("⚠️ المصطلحات المكررة: ", duplicates);
+        } else {
+            console.log("✅ لا توجد مصطلحات مكررة");
+        }
+    }
+})();
 
 
 
