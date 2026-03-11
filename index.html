@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="ar">
-
 <head>
 <meta charset="UTF-8">
 <title>Smart Code Dictionary</title>
 
 <!-- CSS لتنسيق القاموس والكود -->
 <style>
-/* تنسيق عرض المصطلحات */
 .term pre {
-    background-color: #f4f4f4;  
-    border: 1px solid #ccc;      
-    padding: 10px;                
-    overflow-x: auto;             
-    white-space: pre-wrap;        
-    font-family: monospace;       
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    padding: 10px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    font-family: monospace;
 }
 .term button {
     margin-top: 5px;
@@ -26,8 +24,7 @@
     padding: 5px 10px;
     cursor: pointer;
 }
-
-/* تنسيق صندوق تجربة الكود */
+/* صندوق تجربة الكود */
 #codeTester {
     border: 1px solid #ccc;
     padding: 10px;
@@ -72,13 +69,16 @@
 <div id="suggestions"></div>
 <div id="results"></div>
 
-<!-- ====== صندوق تجربة الكود الجديد ====== -->
+<!-- ====== صندوق تجربة الكود متعدد اللغات ====== -->
 <div id="codeTester">
   <h3>تجربة الكود</h3>
-  <select id="termSelector">
-    <option value="">اختر مصطلح لتجربة الكود</option>
+  <label>اختر اللغة:</label>
+  <select id="codeLang">
+    <option value="js">JavaScript</option>
+    <option value="py">Python</option>
+    <!-- يمكن إضافة لغات أخرى لاحقًا -->
   </select>
-  <textarea id="testCode" placeholder="الكود سيظهر هنا"></textarea>
+  <textarea id="testCode" placeholder="ضع كودك هنا"></textarea>
   <button id="runCode">تشغيل الكود</button>
   <button id="clearCode">مسح الكود</button>
   <pre id="output"></pre>
@@ -89,34 +89,45 @@
 <script src="data.js"></script>
 <script src="script.js"></script>
 
+<!-- Pyodide لتشغيل Python في المتصفح -->
+<script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+
 <script>
-// تعبئة قائمة المصطلحات التي تحتوي على كود
-const selector = document.getElementById("termSelector");
-for (let key in dictionary) {
-    if (dictionary[key].example_code) {
-        let option = document.createElement("option");
-        option.value = key;
-        option.text = dictionary[key].title;
-        selector.appendChild(option);
-    }
+// إعداد Pyodide لتشغيل Python
+let pyodideReady = false;
+let pyodide = null;
+async function loadPyodideAndPackages() {
+    pyodide = await loadPyodide();
+    pyodideReady = true;
 }
+loadPyodideAndPackages();
 
-// عند اختيار مصطلح، عرض الكود في الصندوق
-selector.addEventListener("change", () => {
-    const key = selector.value;
-    document.getElementById("testCode").value = key ? dictionary[key].example_code : "";
-    document.getElementById("output").innerText = "";
-});
-
-// تشغيل الكود وتجربة النتيجة
-document.getElementById("runCode").addEventListener("click", () => {
+// زر تشغيل الكود متعدد اللغات
+document.getElementById("runCode").addEventListener("click", async () => {
     const code = document.getElementById("testCode").value;
+    const lang = document.getElementById("codeLang").value;
     const output = document.getElementById("output");
-    try {
-        let result = eval(code);
-        output.innerText = result === undefined ? "تم التنفيذ بدون قيمة إرجاع" : result;
-    } catch (err) {
-        output.innerText = "خطأ: " + err;
+    output.innerText = "";
+
+    if(lang === "js"){
+        try {
+            const result = eval(code);
+            output.innerText = result === undefined ? "تم التنفيذ بدون قيمة إرجاع" : result;
+        } catch(err){
+            output.innerText = "خطأ: " + err;
+        }
+    } else if(lang === "py"){
+        if(!pyodideReady){
+            output.innerText = "انتظر تحميل Python...";
+            return;
+        }
+        try {
+            pyodide.stdout = (msg) => { output.innerText += msg + "\n"; };
+            pyodide.stderr = (msg) => { output.innerText += "خطأ: " + msg + "\n"; };
+            await pyodide.runPythonAsync(code);
+        } catch(err) {
+            output.innerText += "خطأ: " + err;
+        }
     }
 });
 
