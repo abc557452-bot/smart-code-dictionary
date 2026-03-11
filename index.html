@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <title>Smart Code Dictionary</title>
 
-<!-- CSS لتنسيق القاموس والكود -->
 <style>
+/* تنسيق القاموس القديم */
 .term pre {
     background-color: #f4f4f4;
     border: 1px solid #ccc;
@@ -24,6 +24,7 @@
     padding: 5px 10px;
     cursor: pointer;
 }
+
 /* صندوق تجربة الكود */
 #codeTester {
     border: 1px solid #ccc;
@@ -69,14 +70,13 @@
 <div id="suggestions"></div>
 <div id="results"></div>
 
-<!-- ====== صندوق تجربة الكود متعدد اللغات ====== -->
+<!-- صندوق تجربة الكود متعدد اللغات -->
 <div id="codeTester">
   <h3>تجربة الكود</h3>
   <label>اختر اللغة:</label>
   <select id="codeLang">
     <option value="js">JavaScript</option>
     <option value="py">Python</option>
-    <!-- يمكن إضافة لغات أخرى لاحقًا -->
   </select>
   <textarea id="testCode" placeholder="ضع كودك هنا"></textarea>
   <button id="runCode">تشغيل الكود</button>
@@ -86,23 +86,25 @@
 
 </div>
 
+<!-- القاموس القديم -->
 <script src="data.js"></script>
 <script src="script.js"></script>
 
-<!-- Pyodide لتشغيل Python في المتصفح -->
+<!-- Pyodide لتشغيل Python -->
 <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
 
 <script>
-// إعداد Pyodide لتشغيل Python
+// تحميل Pyodide لتجربة Python
 let pyodideReady = false;
 let pyodide = null;
 async function loadPyodideAndPackages() {
     pyodide = await loadPyodide();
     pyodideReady = true;
+    console.log("✅ Pyodide جاهز لتشغيل Python");
 }
 loadPyodideAndPackages();
 
-// زر تشغيل الكود متعدد اللغات
+// تشغيل الكود متعدد اللغات
 document.getElementById("runCode").addEventListener("click", async () => {
     const code = document.getElementById("testCode").value;
     const lang = document.getElementById("codeLang").value;
@@ -118,14 +120,16 @@ document.getElementById("runCode").addEventListener("click", async () => {
         }
     } else if(lang === "py"){
         if(!pyodideReady){
-            output.innerText = "انتظر تحميل Python...";
+            output.innerText = "⚠️ انتظر تحميل Python...";
             return;
         }
-        try {
+        try{
+            output.innerText = "";
             pyodide.stdout = (msg) => { output.innerText += msg + "\n"; };
             pyodide.stderr = (msg) => { output.innerText += "خطأ: " + msg + "\n"; };
             await pyodide.runPythonAsync(code);
-        } catch(err) {
+            if(output.innerText === "") output.innerText = "تم التنفيذ بدون قيمة إرجاع";
+        } catch(err){
             output.innerText += "خطأ: " + err;
         }
     }
