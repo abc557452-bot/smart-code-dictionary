@@ -118,10 +118,15 @@ function copyCode(id) {
     });
 }
 
-// ===== عداد المصطلحات والتحقق من التكرار (خاص بك فقط) =====
+// ======== كود البحث والاقتراح والنسخ كما كان عندك ========
+// (لا تغيير على كل الكود الذي أرسلته سابقًا)
+// مثال: searchTerm, clearSearch, suggestWords, fillInput, showAllTerms, copyCode
+// .........................................................
+
+// ======== إضافة آمنة للعداد والتحقق من التكرار ========
 (function(){
-    // هذا الجزء يعمل لك فقط إذا فتح الصفحة مع Console مفتوح
-    let isOwner = true; // غيره لـ false إذا تريد تعطيله نهائياً للزوار
+    // فقط لك أنت في Console
+    let isOwner = true;
 
     if(isOwner){
         if(!dictionary || dictionary.length === 0){
@@ -151,6 +156,4 @@ function copyCode(id) {
         }
     }
 })();
-
-
 
