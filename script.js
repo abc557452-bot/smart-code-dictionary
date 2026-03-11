@@ -125,8 +125,7 @@ function copyCode(id) {
 
 // ======== إضافة آمنة للعداد والتحقق من التكرار ========
 (function(){
-    // فقط لك أنت في Console
-    let isOwner = true;
+    let isOwner = true; // أنت فقط تشوف الإحصائيات
 
     if(isOwner){
         if(!dictionary || dictionary.length === 0){
@@ -134,7 +133,7 @@ function copyCode(id) {
             return;
         }
 
-        // عداد المصطلحات
+        // عداد المصطلحات الكلي
         console.log("🔹 عدد المصطلحات الكلي: " + dictionary.length);
 
         // التحقق من تكرار العناوين
@@ -154,6 +153,13 @@ function copyCode(id) {
         } else {
             console.log("✅ لا توجد مصطلحات مكررة");
         }
+
+        // ======== إضافة إحصائيات التفاعل لكل مصطلح ========
+        let stats = JSON.parse(localStorage.getItem("codeStats") || "{}");
+        console.log("📊 إحصائيات التفاعلات لكل مصطلح:");
+        for(let key in dictionary){
+            let s = stats[key] || {run:0, copy:0};
+            console.log(`- ${dictionary[key].title}: تم تشغيل الكود ${s.run} مرة | تم نسخ الكود ${s.copy} مرة`);
+        }
     }
 })();
-
