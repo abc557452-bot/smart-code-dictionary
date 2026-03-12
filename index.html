@@ -95,14 +95,78 @@
 
 <script>
 // تحميل Pyodide لتجربة Python
-let pyodideReady = false;
 let pyodide = null;
+
 async function loadPyodideAndPackages() {
+    document.getElementById("output").innerText = "جاري تحميل Python...";
     pyodide = await loadPyodide();
-    pyodideReady = true;
-    console.log("✅ Pyodide جاهز لتشغيل Python");
+    document.getElementById("output").innerText = "Python جاهز للتجربة";
 }
+
 loadPyodideAndPackages();
+
+document.getElementById("runCode").addEventListener("click", async () => {
+
+    const code = document.getElementById("testCode").value;
+    const lang = document.getElementById("codeLang").value;
+    const output = document.getElementById("output");
+
+    output.innerText = "";
+
+    // تشغيل JavaScript
+    if(lang === "js"){
+        try{
+            const result = eval(code);
+            if(result !== undefined){
+                output.innerText = result;
+            }else{
+                output.innerText = "تم التنفيذ بنجاح";
+            }
+        }catch(err){
+            output.innerText = "خطأ: " + err.message;
+        }
+    }
+
+    // تشغيل Python
+    if(lang === "py"){
+
+        if(!pyodide){
+            output.innerText = "Python مازال يحمل...";
+            return;
+        }
+
+        try{
+
+            // التقاط print
+            pyodide.runPython(`
+import sys
+from io import StringIO
+sys.stdout = StringIO()
+`);
+
+            await pyodide.runPythonAsync(code);
+
+            const result = pyodide.runPython("sys.stdout.getvalue()");
+
+            if(result.trim() === ""){
+                output.innerText = "تم التنفيذ بدون مخرجات";
+            }else{
+                output.innerText = result;
+            }
+
+        }catch(err){
+            output.innerText = "خطأ: " + err;
+        }
+    }
+
+});
+
+// مسح الكود
+document.getElementById("clearCode").addEventListener("click", () => {
+    document.getElementById("testCode").value = "";
+    document.getElementById("output").innerText = "";
+});
+</script>
 
 // تشغيل الكود متعدد اللغات
 document.getElementById("runCode").addEventListener("click", async () => {
