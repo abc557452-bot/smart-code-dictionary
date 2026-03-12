@@ -35,11 +35,6 @@ function searchTerm(){
                 (d.example_code ? "<pre id='code-"+d.code+"' style='background:#f0f0f0;padding:10px;'>"+d.example_code+"</pre>"+
                 "<button onclick='copyCode(\"code-"+d.code+"\")'>نسخ الكود</button>" : "")+
                 "<hr>"+
-<pre>print("Hello World")</pre>
-
-<button onclick="tryExample(`print('Hello World')`,'py')">
-جرب المثال
-</button>
 
                 "<p style='font-size:14px;color:#ccc;'>تم إعداده من قبل "+d.author+" | "+d.year+"</p>";
 
