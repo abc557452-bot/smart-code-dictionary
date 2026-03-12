@@ -1,5 +1,6 @@
 
 
+
 const result = document.getElementById("results");
 const suggestionsBox = document.getElementById("suggestions");
 
@@ -34,6 +35,11 @@ function searchTerm(){
                 (d.example_code ? "<pre id='code-"+d.code+"' style='background:#f0f0f0;padding:10px;'>"+d.example_code+"</pre>"+
                 "<button onclick='copyCode(\"code-"+d.code+"\")'>نسخ الكود</button>" : "")+
                 "<hr>"+
+               
+
+<button onclick="tryExample(`print(\"code-"+d.code+"\")`,'py')">
+جرب المثال
+</button>
                 "<p style='font-size:14px;color:#ccc;'>تم إعداده من قبل "+d.author+" | "+d.year+"</p>";
 
             suggestionsBox.innerHTML = "";
