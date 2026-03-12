@@ -1,4 +1,5 @@
 
+
 const result = document.getElementById("results");
 const suggestionsBox = document.getElementById("suggestions");
 
@@ -104,7 +105,17 @@ function showAllTerms(){
             "<hr>";
 
     }
+function tryExample(code, lang){
+    document.getElementById("testCode").value = code;
 
+    if(lang === "py"){
+        document.getElementById("codeLang").value = "py";
+    }else{
+        document.getElementById("codeLang").value = "js";
+    }
+
+    document.getElementById("output").innerText = "تم تحميل المثال. اضغط تشغيل الكود.";
+}
     result.innerHTML = output;
     suggestionsBox.innerHTML = "";
 
