@@ -647,3 +647,55 @@ year:"2026"
 }
 
 ];;
+// 1️⃣ القاموس القديم: 109 مصطلح
+const dictionary = {
+
+malware:{
+code:"SC-CY-003",
+title:"Malware",
+field:"Cyber Security",
+definition:"برمجيات خبيثة تهدف إلى اختراق الأنظمة.",
+author:"badriah",
+year:"2026"
+},
+
+encryption:{
+code:"SC-CY-004",
+title:"Encryption",
+field:"Cyber Security",
+definition:"تحويل البيانات إلى صيغة مشفرة لحمايتها.",
+author:"badriah",
+year:"2026"
+},
+
+// ... هنا باقي المصطلحات القديمة حتى 109 ...
+};
+
+// 2️⃣ القاموس الفارغ الجديد الذي سنملأه تلقائياً
+const fields = ["Python","JavaScript","Cyber Security","Navigation","AI"];
+
+function generateTerms(num, startIndex){
+  for(let i=startIndex; i<startIndex+num; i++){
+    const field = fields[Math.floor(Math.random()*fields.length)];
+    const code = `CODE-${i.toString().padStart(4,'0')}`;
+    const title = `Term ${i}`;
+    const definition = `تعريف مصطلح رقم ${i} في مجال ${field}`;
+    const author = "badriah";
+    const year = 2026;
+
+    dictionary[`term${i}`] = {
+      code,
+      title,
+      field,
+      definition,
+      author,
+      year
+    };
+  }
+}
+
+// توليد 500 مصطلح إضافي بعد المصطلحات القديمة
+generateTerms(500, 110); // 110 لأننا بدأنا بعد الـ109 مصطلح القديم
+
+console.log("تم توليد", Object.keys(dictionary).length, "مصطلح في القاموس");
+
