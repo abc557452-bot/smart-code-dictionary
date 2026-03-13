@@ -646,7 +646,7 @@ year:"2026"
   example_code:`# satellite position reading`
 }
 
-];;
+
 // 1️⃣ القاموس القديم: 109 مصطلح
 const dictionary = {
 
