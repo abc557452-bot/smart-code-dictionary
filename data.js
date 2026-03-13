@@ -645,7 +645,7 @@ year:"2026"
   year:"2026",
   example_code:`# satellite position reading`
 }
-];
+];;
 // توليد مصطلحات جديدة تلقائياً
 const fields = ["Python","JavaScript","Cyber Security","Navigation","AI"];
 
@@ -661,7 +661,7 @@ function generateTerms(num, startIndex){
     });
   }
 }
-];;
+
 // توليد 500 مصطلح جديد بعد المصطلحات القديمة
 generateTerms(500, 110);
 
