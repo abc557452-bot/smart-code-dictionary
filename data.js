@@ -709,7 +709,6 @@ function generateTerms(num, startIndex){
 generateTerms(1000, 110);
 
 console.log("تم توليد", dictionary.length, "مصطلح في القاموس");
-console.log("تم توليد", dictionary.length, "مصطلح في القاموس");
 
 // مثال: عرض أول 5 مصطلحات بعد التوليد
 console.log("أول 5 مصطلحات:", dictionary.slice(0,5));
