@@ -645,7 +645,7 @@ year:"2026"
   year:"2026",
   example_code:`# satellite position reading`
 }
-];;
+]
 // توليد مصطلحات جديدة تلقائياً
 const fields = ["Python","JavaScript","Cyber Security","Navigation","AI"];
 
