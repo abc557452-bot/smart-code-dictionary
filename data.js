@@ -645,68 +645,95 @@ year:"2026"
   year:"2026",
   example_code:`# satellite position reading`
 }
-]
-// توليد مصطلحات جديدة تلقائياً
-const fields = ["Python","JavaScript","Cyber Security","Navigation","AI"];
-
-function generateTerms(num, startIndex){
-  for(let i=startIndex; i<startIndex+num; i++){
-    dictionary.push({
-      code:`CODE-${i.toString().padStart(4,'0')}`,
-      title:`Term ${i}`,
-      field:fields[Math.floor(Math.random()*fields.length)],
-      definition:`تعريف مصطلح رقم ${i} في مجال ${fields[Math.floor(Math.random()*fields.length)]}`,
-      author:"badriah",
-      year:2026
-    });
-  }
-}
-
-// توليد 500 مصطلح جديد بعد المصطلحات القديمة
-generateTerms(500, 110);
-
-console.log("تم توليد", dictionary.length, "مصطلح في القاموس");
-/ 1️⃣ القاموس القديم 109 مصطلح
-const dictionary = [
-  { code:"NAV-050", title:"Satellite Navigation", field:"Navigation", definition:"...", author:"badriah", year:2026, example_code:`# ...` },
-  { code:"SC-CY-003", title:"Malware", field:"Cyber Security", definition:"...", author:"badriah", year:2026, example_code:`// ...` },
-  { code:"SC-CY-004", title:"Encryption", field:"Cyber Security", definition:"...", author:"badriah", year:2026, example_code:`// ...` }
-  // … باقي المصطلحات القديمة
+];
+/ المجالات المتاحة
+const fields = [
+"Python",
+"JavaScript",
+"Cyber Security",
+"Navigation",
+"Artificial Intelligence"
 ];
 
-// 2️⃣ كود توليد المصطلحات الجديدة ← ضعها **آخر شيء في الملف**
-const fields = ["Python","JavaScript","Cyber Security","Navigation","AI"];
+// توليد مثال كود
+function getExampleCode(field,index){
 
-function getExampleCode(field, index){
-  if(field==="Python") return `# Example Python code ${index}\nprint("Hello Python ${index}")`;
-  if(field==="JavaScript") return `// Example JS code ${index}\nconsole.log("Hello JS ${index}");`;
-  return "";
+if(field==="Python"){
+return `# Example Python ${index}
+print("Hello Python ${index}")`
 }
 
-const oldTitles = dictionary.map(term => term.title);
-
-function generateTerms(num, startIndex){
-  let count = 0;
-  let i = startIndex;
-  while(count < num){
-    const field = fields[Math.floor(Math.random()*fields.length)];
-    const title = `Term ${i}`;
-    if(oldTitles.includes(title)){ i++; continue; }
-    dictionary.push({
-      code:`CODE-${i.toString().padStart(4,'0')}`,
-      title:title,
-      field:field,
-      definition:`تعريف مصطلح رقم ${i} في مجال ${field}`,
-      author:"badriah",
-      year:2026,
-      example_code:getExampleCode(field,i)
-    });
-    count++; i++;
-  }
+if(field==="JavaScript"){
+return `// Example JS ${index}
+console.log("Hello JS ${index}")`
 }
 
-// توليد 1000 مصطلح جديد
-generateTerms(1000, 110);
+if(field==="Cyber Security"){
+return `# security example ${index}
+print("Scanning system...")`
+}
 
-console.log("تم توليد", dictionary.length, "مصطلح في القاموس");
+if(field==="Navigation"){
+return `# navigation example ${index}
+lat,lon = 29.37,47.98
+print(lat,lon)`
+}
+
+if(field==="Artificial Intelligence"){
+return `# AI example ${index}
+model = "neural network"
+print(model)`
+}
+
+return ""
+}
+
+
+// منع تكرار العناوين
+const existingTitles = dictionary.map(t => t.title);
+
+
+// توليد مصطلحات
+function generateTerms(num,startIndex){
+
+let count = 0
+let i = startIndex
+
+while(count < num){
+
+const field = fields[Math.floor(Math.random()*fields.length)]
+const title = `Term ${i}`
+
+if(existingTitles.includes(title)){
+i++
+continue
+}
+
+dictionary.push({
+
+code:`CODE-${i.toString().padStart(4,'0')}`,
+title:title,
+field:field,
+definition:`تعريف مصطلح رقم ${i} في مجال ${field}`,
+keywords:[field.toLowerCase(),"code","programming"],
+author:"badriah",
+year:2026,
+example_code:getExampleCode(field,i)
+
+})
+
+count++
+i++
+
+}
+
+}
+
+
+// توليد 500 مصطلح إضافي
+generateTerms(500,110)
+
+console.log("عدد المصطلحات في القاموس:",dictionary.length)
+
+
 
