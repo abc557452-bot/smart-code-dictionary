@@ -113,6 +113,7 @@ background:#f2f2f2;
 id="searchInput"
 placeholder="ابحث عن مصطلح..."
 onkeyup="searchTerm();suggestWords();">
+<div id="suggestions"></div>
 
 <button onclick="searchTerm()">بحث</button>
 <button onclick="clearSearch()">مسح</button>
@@ -138,9 +139,6 @@ onkeyup="searchTerm();suggestWords();">
 
 <div id="termCounter"></div>
 
-<input type="text" id="searchInput" placeholder="ابحث عن مصطلح...">
-
-<div id="suggestions"></div>
 
 <div id="results"></div>
 
