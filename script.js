@@ -176,49 +176,5 @@ function copyCode(id) {
         }
     }
 })();
-const searchInput = document.getElementById("searchInput");
-const suggestionsBox = document.getElementById("suggestions");
-
-searchInput.addEventListener("input", function(){
-
-const query = this.value.toLowerCase();
-
-suggestionsBox.innerHTML = "";
-
-if(query.length < 2) return;
-
-const results = dictionary.filter(term =>
-
-term.title.toLowerCase().includes(query) ||
-
-(term.keywords && term.keywords.join(" ").toLowerCase().includes(query))
-
-).slice(0,10);
-
-
-results.forEach(term => {
-
-const div = document.createElement("div");
-
-div.className = "suggestion-item";
-
-div.innerText = term.title;
-
-div.onclick = function(){
-
-searchInput.value = term.title;
-
-suggestionsBox.innerHTML = "";
-
-showTerm(term);
-
-};
-
-suggestionsBox.appendChild(div);
-
-});
-
-});
-
 
 
