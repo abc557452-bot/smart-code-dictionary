@@ -35,7 +35,7 @@ d.title.toLowerCase().includes(input) ||
 d.definition.toLowerCase().includes(input) ||
 d.field.toLowerCase().includes(input)
   }
-},
+'}'
 
 result.innerHTML=
 "<h3>"+d.code+"</h3>"+
