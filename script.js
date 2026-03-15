@@ -173,3 +173,48 @@ function copyCode(id) {
         }
     }
 })();
+
+// 1️⃣ القاموس القديم 109 مصطلح
+const dictionary = [
+  { code:"NAV-050", title:"Satellite Navigation", field:"Navigation", definition:"...", author:"badriah", year:2026, example_code:`# ...` },
+  { code:"SC-CY-003", title:"Malware", field:"Cyber Security", definition:"...", author:"badriah", year:2026, example_code:`// ...` },
+  { code:"SC-CY-004", title:"Encryption", field:"Cyber Security", definition:"...", author:"badriah", year:2026, example_code:`// ...` }
+  // … باقي المصطلحات القديمة
+];
+
+// 2️⃣ كود توليد المصطلحات الجديدة ← ضعها **آخر شيء في الملف**
+const fields = ["Python","JavaScript","Cyber Security","Navigation","AI"];
+
+function getExampleCode(field, index){
+  if(field==="Python") return `# Example Python code ${index}\nprint("Hello Python ${index}")`;
+  if(field==="JavaScript") return `// Example JS code ${index}\nconsole.log("Hello JS ${index}");`;
+  return "";
+}
+
+const oldTitles = dictionary.map(term => term.title);
+
+function generateTerms(num, startIndex){
+  let count = 0;
+  let i = startIndex;
+  while(count < num){
+    const field = fields[Math.floor(Math.random()*fields.length)];
+    const title = `Term ${i}`;
+    if(oldTitles.includes(title)){ i++; continue; }
+    dictionary.push({
+      code:`CODE-${i.toString().padStart(4,'0')}`,
+      title:title,
+      field:field,
+      definition:`تعريف مصطلح رقم ${i} في مجال ${field}`,
+      author:"badriah",
+      year:2026,
+      example_code:getExampleCode(field,i)
+    });
+    count++; i++;
+  }
+}
+
+// توليد 1000 مصطلح جديد
+generateTerms(1000, 110);
+
+console.log("تم توليد", dictionary.length, "مصطلح في القاموس");
+
