@@ -32,7 +32,9 @@ function searchTerm(){
                 (d.example_code ? "<pre id='code-"+d.code+"' style='background:#f0f0f0;padding:10px;'>"+d.example_code+"</pre>"+
                 "<button onclick='copyCode(\"code-"+d.code+"\")'>نسخ الكود</button>" : "")+
                 "<hr>"+
-
+<button onclick="loadExample(term.example_code,'py')">
+تجربة الكود
+</button>
                 "<p style='font-size:14px;color:#ccc;'>تم إعداده من قبل "+d.author+" | "+d.year+"</p>";
 
             suggestionsBox.innerHTML = "";
@@ -217,4 +219,14 @@ function generateTerms(num, startIndex){
 generateTerms(1000, 110);
 
 console.log("تم توليد", dictionary.length, "مصطلح في القاموس");
+function loadExample(code,lang){
 
+document.getElementById("testCode").value = code;
+
+document.getElementById("codeLang").value = lang;
+
+document.getElementById("codeTester").scrollIntoView({
+behavior:"smooth"
+});
+
+}
