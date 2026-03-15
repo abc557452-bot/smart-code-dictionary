@@ -1,7 +1,7 @@
 
 
 
- ====================
+// ====================
 // قاموس البيانات
 // ====================
 const dictionary = [
@@ -11,7 +11,7 @@ const dictionary = [
 ];
 
 // ====================
-// العناصر في الصفحة
+//العناصر في الصفحة
 // ====================
 const listContainer = document.getElementById('dictionary-list');
 const totalCount = document.getElementById('total-count');
