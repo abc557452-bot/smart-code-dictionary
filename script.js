@@ -1,15 +1,5 @@
 // ======== القاموس ========
 
-const dictionary = [
-{ code:"NAV-050", title:"Satellite Navigation", field:"Navigation", definition:"...", author:"badriah", year:2026, example_code:`# Example Python
-print("Hello Navigation")` },
-
-{ code:"SC-CY-003", title:"Malware", field:"Cyber Security", definition:"...", author:"badriah", year:2026, example_code:`// Malware example
-console.log("Malware example");` },
-
-{ code:"SC-CY-004", title:"Encryption", field:"Cyber Security", definition:"...", author:"badriah", year:2026, example_code:`// Encryption example
-console.log("Encryption example");` }
-];
 
 const result = document.getElementById("results");
 const suggestionsBox = document.getElementById("suggestions");
@@ -35,7 +25,7 @@ d.title.toLowerCase().includes(input) ||
 d.definition.toLowerCase().includes(input) ||
 d.field.toLowerCase().includes(input)
   }
-
+}
 result.innerHTML=
 "<h3>"+d.code+"</h3>"+
 "<h2>"+d.title+"</h2>"+
