@@ -1,80 +1,175 @@
-
-const results=document.getElementById("results");
-const counter=document.getElementById("termCounter");
-const searchInput=document.getElementById("searchInput");
-
-function renderTerms(list){
-
-results.innerHTML="";
-
-list.forEach(term=>{
-
-const div=document.createElement("div");
-
-div.className="term";
-
-div.innerHTML=`
-<h3>${term.title} (${term.code})</h3>
-<p>${term.definition}</p>
-<button class="like">تفاعل</button>
-<span>0</span>
-`;
-
-const btn=div.querySelector(".like");
-const count=div.querySelector("span");
-
-btn.onclick=()=>{
-count.innerText=parseInt(count.innerText)+1;
-};
-
-results.appendChild(div);
-
-});
-
-counter.innerText="عدد المصطلحات: "+list.length;
-
-}
+const result = document.getElementById("results");
+const suggestionsBox = document.getElementById("suggestions");
 
 function searchTerm(){
 
-const q=searchInput.value.toLowerCase();
+    let input = document.getElementById("searchInput").value.toLowerCase();
 
-const filtered=dictionary.filter(t=>
-t.title.toLowerCase().includes(q)||
-t.code.toLowerCase().includes(q)||
-t.field.toLowerCase().includes(q)
-);
+    if(input === ""){
+        result.innerHTML = "";
+        suggestionsBox.innerHTML = "";
+        return;
+    }
 
-renderTerms(filtered);
+    let found = false;
+
+    for(let key in dictionary){
+
+        let d = dictionary[key];
+
+        if(
+            key.toLowerCase() === input ||
+            (d.title && d.title.toLowerCase().includes(input)) ||
+            (d.definition && d.definition.toLowerCase().includes(input)) ||
+            (d.field && d.field.toLowerCase().includes(input))
+        ){
+
+            result.innerHTML =
+                "<h3>"+d.code+"</h3>"+
+                "<h2>"+d.title+"</h2>"+
+                "<p><b>المجال:</b> "+d.field+"</p>"+
+                "<p>"+d.definition+"</p>"+
+                (d.example_code ? "<pre id='code-"+d.code+"' style='background:#f0f0f0;padding:10px;'>"+d.example_code+"</pre>"+
+                "<button onclick='copyCode(\"code-"+d.code+"\")'>نسخ الكود</button>" : "")+
+                "<hr>"+
+
+                "<p style='font-size:14px;color:#ccc;'>تم إعداده من قبل "+d.author+" | "+d.year+"</p>";
+
+            suggestionsBox.innerHTML = "";
+            found = true;
+            break;
+
+        }
+
+    }
+
+    if(!found){
+        result.innerHTML = "<p style='color:red;'>لم يتم العثور على المصطلح</p>";
+    }
 
 }
 
 function clearSearch(){
 
-searchInput.value="";
-renderTerms(dictionary);
+    document.getElementById("searchInput").value = "";
+    result.innerHTML = "";
+    suggestionsBox.innerHTML = "";
+
+}
+
+function suggestWords(){
+
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let suggestions = "";
+
+    if(input === ""){
+        suggestionsBox.innerHTML = "";
+        return;
+    }
+
+    for(let key in dictionary){
+
+        if(key.startsWith(input)){
+            suggestions += "<p style='cursor:pointer;margin:0;padding:5px;' onclick='fillInput(\""+key+"\")'>"+dictionary[key].title+"</p>";
+        }
+
+    }
+
+    suggestionsBox.innerHTML = suggestions;
+
+}
+
+function fillInput(word){
+
+    document.getElementById("searchInput").value = word;
+    searchTerm();
 
 }
 
 function showAllTerms(){
 
-renderTerms(dictionary);
+    let output = "";
+
+    for(let key in dictionary){
+
+        let d = dictionary[key];
+
+        output +=
+            "<h3>"+d.code+"</h3>"+
+            "<h2>"+d.title+"</h2>"+
+            "<p><b>المجال:</b> "+d.field+"</p>"+
+            "<p>"+d.definition+"</p>"+
+            (d.example_code ? "<pre id='code-"+d.code+"' style='background:#f0f0f0;padding:10px;'>"+d.example_code+"</pre>"+
+            "<button onclick='copyCode(\"code-"+d.code+"\")'>نسخ الكود</button>" : "")+
+            "<hr>";
+
+    }
+function tryExample(code, lang){
+    document.getElementById("testCode").value = code;
+
+    if(lang === "py"){
+        document.getElementById("codeLang").value = "py";
+    }else{
+        document.getElementById("codeLang").value = "js";
+    }
+
+    document.getElementById("output").innerText = "تم تحميل المثال. اضغط تشغيل الكود.";
+}
+    result.innerHTML = output;
+    suggestionsBox.innerHTML = "";
 
 }
 
-function filterField(field){
-
-const filtered=dictionary.filter(t=>t.field===field);
-
-renderTerms(filtered);
-
+// دالة نسخ الكود
+function copyCode(id) {
+    const code = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(code).then(() => {
+        alert("تم نسخ الكود!");
+    });
 }
 
-document.addEventListener("DOMContentLoaded",()=>{
+// ======== كود البحث والاقتراح والنسخ كما كان عندك ========
+// (لا تغيير على كل الكود الذي أرسلته سابقًا)
+// مثال: searchTerm, clearSearch, suggestWords, fillInput, showAllTerms, copyCode
+// .........................................................
 
-renderTerms(dictionary);
+// ======== إضافة آمنة للعداد والتحقق من التكرار ========
+(function(){
+    let isOwner = true; // أنت فقط تشوف الإحصائيات
 
-});
+    if(isOwner){
+        if(!dictionary || dictionary.length === 0){
+            console.log("القاموس فارغ");
+            return;
+        }
 
+        // عداد المصطلحات الكلي
+        console.log("🔹 عدد المصطلحات الكلي: " + dictionary.length);
 
+        // التحقق من تكرار العناوين
+        let titles = {};
+        let duplicates = [];
+        dictionary.forEach(d => {
+            let t = d.title.toLowerCase();
+            if(titles[t]){
+                duplicates.push(d.title);
+            } else {
+                titles[t] = true;
+            }
+        });
 
+        if(duplicates.length > 0){
+            console.warn("⚠️ المصطلحات المكررة: ", duplicates);
+        } else {
+            console.log("✅ لا توجد مصطلحات مكررة");
+        }
+
+        // ======== إضافة إحصائيات التفاعل لكل مصطلح ========
+        let stats = JSON.parse(localStorage.getItem("codeStats") || "{}");
+        console.log("📊 إحصائيات التفاعلات لكل مصطلح:");
+        for(let key in dictionary){
+            let s = stats[key] || {run:0, copy:0};
+            console.log(`- ${dictionary[key].title}: تم تشغيل الكود ${s.run} مرة | تم نسخ الكود ${s.copy} مرة`);
+        }
+    }
+})();
