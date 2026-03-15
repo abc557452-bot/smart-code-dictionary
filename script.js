@@ -1,29 +1,25 @@
-     // ====================
+// ====================
 // قاموس البيانات
 // ====================
 const dictionary = [
     { code: "SC-CY-003", title: "Malware", field: "Cyber Security", definition: "برمجيات خبيثة تهدف إلى اختراق الأنظمة.", author: "badriah", year: 2026 },
     { code: "NAV-050", title: "Satellite Navigation", field: "Navigation", definition: "تقنيات الملاحة عبر الأقمار الصناعية.", author: "badriah", year: 2026 },
-    { code: "JS-001", title: "Closure", field: "JavaScript", definition: "وظائف يمكنها الوصول للمتغيرات من خارج نطاقها.", author: "badriah", year: 2026 },
-    { code: "PY-010", title: "List Comprehension", field: "Python", definition: "طريقة مختصرة لإنشاء القوائم.", author: "badriah", year: 2026 },
+    // أضف بقية المصطلحات هنا
 ];
 
 // ====================
 // العناصر في الصفحة
 // ====================
-const listContainer = document.getElementById('dictionary-list'); // مكان عرض المصطلحات
-const totalCount = document.getElementById('termCounter');       // عداد المصطلحات
-const searchInput = document.getElementById('searchInput');      // البحث العام
-const filterButtons = document.querySelectorAll('.filter-box button'); // أزرار الفلترة
-const searchBtn = document.querySelector('.search-box button[onclick="searchTerm()"]');
-const clearBtn = document.querySelector('.search-box button[onclick="clearSearch()"]');
-const showAllBtn = document.querySelector('.search-box button[onclick="showAllTerms()"]');
+const listContainer = document.getElementById('dictionary-list');
+const totalCount = document.getElementById('termCounter');
+const searchInput = document.getElementById('searchInput');
+const filterButtons = document.querySelectorAll('.filter-box button');
 
 // ====================
 // دالة عرض المصطلحات
 // ====================
 function renderDictionary(list) {
-    listContainer.innerHTML = ""; // تنظيف العرض قبل الإضافة
+    listContainer.innerHTML = "";
     list.forEach(term => {
         const item = document.createElement('div');
         item.className = "term";
@@ -56,7 +52,7 @@ function updateTotalCount(list) {
 // ====================
 function searchTerm() {
     const query = searchInput.value.toLowerCase();
-    const filtered = dictionary.filter(term => 
+    const filtered = dictionary.filter(term =>
         term.title.toLowerCase().includes(query) ||
         term.code.toLowerCase().includes(query) ||
         term.field.toLowerCase().includes(query)
@@ -75,7 +71,7 @@ function clearSearch() {
 }
 
 // ====================
-// عرض جميع المصطلحات
+// عرض كل المصطلحات
 // ====================
 function showAllTerms() {
     renderDictionary(dictionary);
@@ -95,17 +91,13 @@ function filterField(field) {
 // ربط الأحداث عند تحميل الصفحة
 // ====================
 document.addEventListener('DOMContentLoaded', () => {
-    // عرض كل المصطلحات أول مرة
     renderDictionary(dictionary);
     updateTotalCount(dictionary);
 
-    // التركيز على حقل البحث
-    if (searchInput) searchInput.focus();
-
-    // ربط الأزرار القديمة
-    if (searchBtn) searchBtn.addEventListener('click', searchTerm);
-    if (clearBtn) clearBtn.addEventListener('click', clearSearch);
-    if (showAllBtn) showAllBtn.addEventListener('click', showAllTerms);
+    // ربط أزرار البحث والمسح والعرض الكل
+    document.getElementById('searchBtn').addEventListener('click', searchTerm);
+    document.getElementById('clearBtn').addEventListener('click', clearSearch);
+    document.getElementById('showAllBtn').addEventListener('click', showAllTerms);
 
     // ربط أزرار الفلترة
     filterButtons.forEach(btn => {
@@ -114,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', () => {
                 filterField(field);
             });
-        } else if (btn.textContent.trim() === "عرض الكل") {
+        } else if (btn.id === "filterAll") {
             btn.addEventListener('click', showAllTerms);
         }
     });
@@ -122,3 +114,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // البحث عند الكتابة
     searchInput.addEventListener('input', searchTerm);
 });
+
