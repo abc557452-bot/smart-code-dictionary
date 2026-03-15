@@ -1,4 +1,4 @@
-// ====================
+     // ====================
 // قاموس البيانات
 // ====================
 const dictionary = [
@@ -11,20 +11,19 @@ const dictionary = [
 // ====================
 // العناصر في الصفحة
 // ====================
-const listContainer = document.getElementById('dictionary-list');
-const totalCount = document.getElementById('termCounter');
-const searchInput = document.getElementById('search');
-const filterButtons = document.querySelectorAll('.filter-btn');
-const searchBtn = document.getElementById('searchBtn');
-const clearBtn = document.getElementById('clearBtn');
-const showAllBtn = document.getElementById('showAllBtn');
-const filterAll = document.getElementById('filterAll');
+const listContainer = document.getElementById('dictionary-list'); // مكان عرض المصطلحات
+const totalCount = document.getElementById('termCounter');       // عداد المصطلحات
+const searchInput = document.getElementById('searchInput');      // البحث العام
+const filterButtons = document.querySelectorAll('.filter-box button'); // أزرار الفلترة
+const searchBtn = document.querySelector('.search-box button[onclick="searchTerm()"]');
+const clearBtn = document.querySelector('.search-box button[onclick="clearSearch()"]');
+const showAllBtn = document.querySelector('.search-box button[onclick="showAllTerms()"]');
 
 // ====================
-// عرض المصطلحات
+// دالة عرض المصطلحات
 // ====================
 function renderDictionary(list) {
-    listContainer.innerHTML = "";
+    listContainer.innerHTML = ""; // تنظيف العرض قبل الإضافة
     list.forEach(term => {
         const item = document.createElement('div');
         item.className = "term";
@@ -36,6 +35,7 @@ function renderDictionary(list) {
         `;
         listContainer.appendChild(item);
 
+        // ربط زر التفاعل لكل مصطلح
         const btn = item.querySelector('.like-btn');
         const count = item.querySelector('.like-count');
         btn.addEventListener('click', () => {
@@ -56,7 +56,7 @@ function updateTotalCount(list) {
 // ====================
 function searchTerm() {
     const query = searchInput.value.toLowerCase();
-    const filtered = dictionary.filter(term =>
+    const filtered = dictionary.filter(term => 
         term.title.toLowerCase().includes(query) ||
         term.code.toLowerCase().includes(query) ||
         term.field.toLowerCase().includes(query)
@@ -75,7 +75,7 @@ function clearSearch() {
 }
 
 // ====================
-// عرض كل المصطلحات
+// عرض جميع المصطلحات
 // ====================
 function showAllTerms() {
     renderDictionary(dictionary);
@@ -92,27 +92,33 @@ function filterField(field) {
 }
 
 // ====================
-// الأحداث
+// ربط الأحداث عند تحميل الصفحة
 // ====================
 document.addEventListener('DOMContentLoaded', () => {
+    // عرض كل المصطلحات أول مرة
     renderDictionary(dictionary);
     updateTotalCount(dictionary);
+
+    // التركيز على حقل البحث
     if (searchInput) searchInput.focus();
 
-    // ربط الأزرار
-    searchBtn.addEventListener('click', searchTerm);
-    clearBtn.addEventListener('click', clearSearch);
-    showAllBtn.addEventListener('click', showAllTerms);
-    filterAll.addEventListener('click', showAllTerms);
+    // ربط الأزرار القديمة
+    if (searchBtn) searchBtn.addEventListener('click', searchTerm);
+    if (clearBtn) clearBtn.addEventListener('click', clearSearch);
+    if (showAllBtn) showAllBtn.addEventListener('click', showAllTerms);
 
+    // ربط أزرار الفلترة
     filterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterField(btn.dataset.field);
-        });
+        const field = btn.dataset.field;
+        if (field) {
+            btn.addEventListener('click', () => {
+                filterField(field);
+            });
+        } else if (btn.textContent.trim() === "عرض الكل") {
+            btn.addEventListener('click', showAllTerms);
+        }
     });
 
     // البحث عند الكتابة
     searchInput.addEventListener('input', searchTerm);
 });
-
-
