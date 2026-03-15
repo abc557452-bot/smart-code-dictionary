@@ -7,60 +7,60 @@
 <style>
 /* التنسيق القديم محفوظ */
 .term pre{
-    background:#f4f4f4;
-    border:1px solid #ccc;
-    padding:10px;
-    overflow-x:auto;
-    white-space:pre-wrap;
-    font-family:monospace;
+background:#f4f4f4;
+border:1px solid #ccc;
+padding:10px;
+overflow-x:auto;
+white-space:pre-wrap;
+font-family:monospace;
 }
 
 .term button{
-    margin-top:5px;
-    padding:5px 10px;
-    cursor:pointer;
+margin-top:5px;
+padding:5px 10px;
+cursor:pointer;
 }
 
 .search-box button{
-    margin-left:5px;
-    padding:5px 10px;
-    cursor:pointer;
+margin-left:5px;
+padding:5px 10px;
+cursor:pointer;
 }
 
 .filter-box{
-    margin-top:10px;
+margin-top:10px;
 }
 
 .filter-box button{
-    margin:3px;
-    padding:5px 10px;
-    cursor:pointer;
+margin:3px;
+padding:5px 10px;
+cursor:pointer;
 }
 
 #termCounter{
-    margin-top:10px;
-    font-weight:bold;
-    color:#444;
+margin-top:10px;
+font-weight:bold;
+color:#444;
 }
 
 #suggestions{
-    background:white;
-    border:1px solid #ccc;
-    max-height:200px;
-    overflow-y:auto;
-    position:absolute;
-    width:300px;
-    z-index:1000;
+background:white;
+border:1px solid #ccc;
+max-height:200px;
+overflow-y:auto;
+position:absolute;
+width:300px;
+z-index:1000;
 }
 
 .suggestion-item{
-    padding:8px;
-    cursor:pointer;
-    border-bottom:1px solid #eee;
+padding:8px;
+cursor:pointer;
+border-bottom:1px solid #eee;
 }
 
 .suggestion-item:hover{
-    background:#f2f2f2;
+background:#f2f2f2;
 }
 </style>
 
@@ -72,7 +72,6 @@
 
 <h1>Smart Code Dictionary</h1>
 
-<!-- صندوق البحث -->
 <div class="search-box">
 <input type="text" id="searchInput" placeholder="ابحث عن مصطلح...">
 <div id="suggestions"></div>
@@ -81,7 +80,6 @@
 <button id="showAllBtn">عرض جميع المصطلحات</button>
 </div>
 
-<!-- فلترة المجالات -->
 <div class="filter-box">
 <button data-field="Python">Python</button>
 <button data-field="JavaScript">JavaScript</button>
@@ -90,16 +88,17 @@
 <button id="filterAll">عرض الكل</button>
 </div>
 
-<!-- عداد المصطلحات -->
 <div id="termCounter"></div>
 
-<!-- مكان عرض المصطلحات -->
 <div id="dictionary-list"></div>
 
 </div>
 
-<!-- ربط السكريبت الجديد -->
+<!-- ربط السكريبت المصحح -->
 <script src="script.js"></script>
 
 </body>
 </html>
+
+
+
