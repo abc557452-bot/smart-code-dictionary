@@ -1,180 +1,89 @@
 
 
 
-const result = document.getElementById("results");
-const suggestionsBox = document.getElementById("suggestions");
+ ====================
+// قاموس البيانات
+// ====================
+const dictionary = [
+    { code: "SC-CY-003", title: "Malware", field: "Cyber Security", definition: "برمجيات خبيثة تهدف إلى اختراق الأنظمة.", author: "badriah", year: 2026 },
+    { code: "NAV-050", title: "Satellite Navigation", field: "Navigation", definition: "تقنيات الملاحة عبر الأقمار الصناعية.", author: "badriah", year: 2026 },
+    // أضف بقية المصطلحات هنا
+];
 
-function searchTerm(){
+// ====================
+// العناصر في الصفحة
+// ====================
+const listContainer = document.getElementById('dictionary-list');
+const totalCount = document.getElementById('total-count');
+const searchInput = document.getElementById('search');
+const filterButtons = document.querySelectorAll('.filter-btn');
 
-    let input = document.getElementById("searchInput").value.toLowerCase();
+// ====================
+// دالة عرض المصطلحات
+// ====================
+function renderDictionary(list) {
+    listContainer.innerHTML = "";
+    list.forEach(term => {
+        const item = document.createElement('div');
+        item.className = "term";
+        item.innerHTML = `
+            <h3>${term.title} (${term.code})</h3>
+            <p>${term.definition}</p>
+            <button class="like-btn">تفاعل</button>
+            <span class="like-count">0</span>
+        `;
+        listContainer.appendChild(item);
 
-    if(input === ""){
-        result.innerHTML = "";
-        suggestionsBox.innerHTML = "";
-        return;
-    }
-
-    let found = false;
-
-    for(let key in dictionary){
-
-        let d = dictionary[key];
-
-        if(
-            key.toLowerCase() === input ||
-            (d.title && d.title.toLowerCase().includes(input)) ||
-            (d.definition && d.definition.toLowerCase().includes(input)) ||
-            (d.field && d.field.toLowerCase().includes(input))
-        ){
-
-            result.innerHTML =
-                "<h3>"+d.code+"</h3>"+
-                "<h2>"+d.title+"</h2>"+
-                "<p><b>المجال:</b> "+d.field+"</p>"+
-                "<p>"+d.definition+"</p>"+
-                (d.example_code ? "<pre id='code-"+d.code+"' style='background:#f0f0f0;padding:10px;'>"+d.example_code+"</pre>"+
-                "<button onclick='copyCode(\"code-"+d.code+"\")'>نسخ الكود</button>" : "")+
-                "<hr>"+
-
-                "<p style='font-size:14px;color:#ccc;'>تم إعداده من قبل "+d.author+" | "+d.year+"</p>";
-
-            suggestionsBox.innerHTML = "";
-            found = true;
-            break;
-
-        }
-
-    }
-
-    if(!found){
-        result.innerHTML = "<p style='color:red;'>لم يتم العثور على المصطلح</p>";
-    }
-
-}
-
-function clearSearch(){
-
-    document.getElementById("searchInput").value = "";
-    result.innerHTML = "";
-    suggestionsBox.innerHTML = "";
-
-}
-
-function suggestWords(){
-
-    let input = document.getElementById("searchInput").value.toLowerCase();
-    let suggestions = "";
-
-    if(input === ""){
-        suggestionsBox.innerHTML = "";
-        return;
-    }
-
-    for(let key in dictionary){
-
-        if(key.startsWith(input)){
-            suggestions += "<p style='cursor:pointer;margin:0;padding:5px;' onclick='fillInput(\""+key+"\")'>"+dictionary[key].title+"</p>";
-        }
-
-    }
-
-    suggestionsBox.innerHTML = suggestions;
-
-}
-
-function fillInput(word){
-
-    document.getElementById("searchInput").value = word;
-    searchTerm();
-
-}
-
-function showAllTerms(){
-
-    let output = "";
-
-    for(let key in dictionary){
-
-        let d = dictionary[key];
-
-        output +=
-            "<h3>"+d.code+"</h3>"+
-            "<h2>"+d.title+"</h2>"+
-            "<p><b>المجال:</b> "+d.field+"</p>"+
-            "<p>"+d.definition+"</p>"+
-            (d.example_code ? "<pre id='code-"+d.code+"' style='background:#f0f0f0;padding:10px;'>"+d.example_code+"</pre>"+
-            "<button onclick='copyCode(\"code-"+d.code+"\")'>نسخ الكود</button>" : "")+
-            "<hr>";
-
-    }
-function tryExample(code, lang){
-    document.getElementById("testCode").value = code;
-
-    if(lang === "py"){
-        document.getElementById("codeLang").value = "py";
-    }else{
-        document.getElementById("codeLang").value = "js";
-    }
-
-    document.getElementById("output").innerText = "تم تحميل المثال. اضغط تشغيل الكود.";
-}
-    result.innerHTML = output;
-    suggestionsBox.innerHTML = "";
-
-}
-
-// دالة نسخ الكود
-function copyCode(id) {
-    const code = document.getElementById(id).innerText;
-    navigator.clipboard.writeText(code).then(() => {
-        alert("تم نسخ الكود!");
+        // ربط زر التفاعل لكل مصطلح
+        const btn = item.querySelector('.like-btn');
+        const count = item.querySelector('.like-count');
+        btn.addEventListener('click', () => {
+            count.textContent = parseInt(count.textContent) + 1;
+        });
     });
 }
 
-// ======== كود البحث والاقتراح والنسخ كما كان عندك ========
-// (لا تغيير على كل الكود الذي أرسلته سابقًا)
-// مثال: searchTerm, clearSearch, suggestWords, fillInput, showAllTerms, copyCode
-// .........................................................
+// ====================
+// تحديث عداد المصطلحات
+// ====================
+function updateTotalCount(list) {
+    totalCount.textContent = list.length;
+}
 
-// ======== إضافة آمنة للعداد والتحقق من التكرار ========
-(function(){
-    let isOwner = true; // أنت فقط تشوف الإحصائيات
+// ====================
+// البحث العام
+// ====================
+searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+    const filtered = dictionary.filter(term => 
+        term.title.toLowerCase().includes(query) ||
+        term.code.toLowerCase().includes(query) ||
+        term.field.toLowerCase().includes(query)
+    );
+    renderDictionary(filtered);
+    updateTotalCount(filtered);
+});
 
-    if(isOwner){
-        if(!dictionary || dictionary.length === 0){
-            console.log("القاموس فارغ");
-            return;
-        }
+// ====================
+// فلترة حسب التخصص
+// ====================
+filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const field = btn.dataset.field; // مثلا data-field="Navigation"
+        const filtered = dictionary.filter(term => term.field === field);
+        renderDictionary(filtered);
+        updateTotalCount(filtered);
+    });
+});
 
-        // عداد المصطلحات الكلي
-        console.log("🔹 عدد المصطلحات الكلي: " + dictionary.length);
+// ====================
+// عند تحميل الصفحة
+// ====================
+document.addEventListener('DOMContentLoaded', () => {
+    // عرض كل المصطلحات أول مرة
+    renderDictionary(dictionary);
+    updateTotalCount(dictionary);
 
-        // التحقق من تكرار العناوين
-        let titles = {};
-        let duplicates = [];
-        dictionary.forEach(d => {
-            let t = d.title.toLowerCase();
-            if(titles[t]){
-                duplicates.push(d.title);
-            } else {
-                titles[t] = true;
-            }
-        });
-
-        if(duplicates.length > 0){
-            console.warn("⚠️ المصطلحات المكررة: ", duplicates);
-        } else {
-            console.log("✅ لا توجد مصطلحات مكررة");
-        }
-
-        // ======== إضافة إحصائيات التفاعل لكل مصطلح ========
-        let stats = JSON.parse(localStorage.getItem("codeStats") || "{}");
-        console.log("📊 إحصائيات التفاعلات لكل مصطلح:");
-        for(let key in dictionary){
-            let s = stats[key] || {run:0, copy:0};
-            console.log(`- ${dictionary[key].title}: تم تشغيل الكود ${s.run} مرة | تم نسخ الكود ${s.copy} مرة`);
-        }
-    }
-})();
-
-
+    // إعطاء التركيز لحقل البحث العام
+    if (searchInput) searchInput.focus();
+});
