@@ -2,7 +2,7 @@
 // ======== عناصر DOM ========
 const result = document.getElementById("results");
 const suggestionsBox = document.getElementById("suggestions");
-//
+
 // ======== البحث ========
 function searchTerm(){ ... }
 function clearSearch(){ ... }
