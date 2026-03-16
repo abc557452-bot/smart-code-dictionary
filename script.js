@@ -1,9 +1,3 @@
-// ======== القاموس (كما هو عندك) ========
-const dictionary = [
-  { code:"NAV-050", title:"Satellite Navigation", field:"Navigation", definition:"...", author:"badriah", year:2026, example_code:`# Example Python\nprint("Hello Navigation")` },
-  { code:"SC-CY-003", title:"Malware", field:"Cyber Security", definition:"...", author:"badriah", year:2026, example_code:`// Malware example\nconsole.log("Malware example");` },
-  { code:"SC-CY-004", title:"Encryption", field:"Cyber Security", definition:"...", author:"badriah", year:2026, example_code:`// Encryption example\nconsole.log("Encryption example");` }
-];
 
 // ======== عناصر DOM ========
 const result = document.getElementById("results");
