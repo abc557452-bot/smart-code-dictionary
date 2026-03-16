@@ -645,7 +645,7 @@ year:"2026"
   year:"2026",
   example_code:`# satellite position reading`
 }
-];;
+];
 // المجالات المتاحة
 const fields = [
 "Python",
