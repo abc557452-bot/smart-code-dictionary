@@ -2,7 +2,33 @@
 // ======== عناصر DOM ========
 const result = document.getElementById("results");
 const suggestionsBox = document.getElementById("suggestions");
-
+//
+// ======== البحث ========
+function searchTerm(){ ... }
+function clearSearch(){ ... }
+function suggestWords(){ ... }
+function fillInput(){ ... }
+function showAllTerms(){ ... }
+// ======== الفلترة حسب المجال ========
+function filterField(fieldName){
+  let output = "";
+  for(let d of dictionary){
+    if(d.field === fieldName){
+      output += `
+        <h3>${d.code}</h3>
+        <h2>${d.title}</h2>
+        <p><b>المجال:</b> ${d.field}</p>
+        <p>${d.definition}</p>
+        ${d.example_code ? `<pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
+        <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
+        <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>` : ""}
+        <hr>`;
+    }
+  }
+  if(output === "") output = '<p style="color:red;">لا توجد مصطلحات في هذا المجال</p>';
+  result.innerHTML = output;
+  suggestionsBox.innerHTML = "";
+}
 // ======== البحث ========
 function searchTerm() {
   let input = document.getElementById("searchInput").value.toLowerCase();
