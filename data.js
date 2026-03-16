@@ -1254,6 +1254,67 @@ i++
 generateTerms(500,110)
 
 console.log("عدد المصطلحات في القاموس:",dictionary.length)
+// =======================
+// الدفعة الآمنة الأخيرة 50 مصطلح
+// يمكن حذفها بسهولة إذا حصل أي خطأ
 
+function safeAddTerm(term){
+   const existingCodes = dictionary.map(t => t.code);
+   if(existingCodes.includes(term.code)){
+       console.warn("⚠️ الكود موجود مسبقاً:", term.code);
+       return false;
+   }
+   dictionary.push(term);
+   console.log("✅ تم إضافة المصطلح:", term.code);
+   return true;
+}
+
+// =======================
+// إضافة الدفعة 50 مصطلح
+const newTerms = [
+{code:"NAV-081",title:"Lidar Navigation",field:"Navigation",definition:"استخدام الليدار لتحديد موقع المركبة.",keywords:["navigation","lidar"],author:"badriah",year:2026,example_code:"# Python\nposition = lidar.read()"},
+{code:"NAV-082",title:"Dead Reckoning",field:"Navigation",definition:"تحديد الموقع باستخدام السرعة والاتجاه بدون GPS.",keywords:["navigation","dead reckoning"],author:"badriah",year:2026,example_code:"# Python\nposition = dead_reckon()"},
+{code:"NAV-083",title:"Waypoint Planning",field:"Navigation",definition:"تخطيط نقاط مسار للمركبات والطائرات.",keywords:["navigation","waypoint"],author:"badriah",year:2026,example_code:"# Python\nwaypoints = plan_route()"},
+{code:"NAV-084",title:"GNSS Integrity Monitoring",field:"Navigation",definition:"مراقبة صحة إشارات GNSS.",keywords:["navigation","gnss"],author:"badriah",year:2026,example_code:"# Python\ncheck_integrity()"},
+{code:"NAV-085",title:"Kalman Filter",field:"Navigation",definition:"فلترة بيانات الملاحة للحصول على موقع دقيق.",keywords:["navigation","kalman"],author:"badriah",year:2026,example_code:"# Python\nposition = kalman_filter(data)"},
+{code:"NAV-086",title:"Marine Radar",field:"Navigation",definition:"رادار لتحديد مواقع السفن والموانئ.",keywords:["navigation","radar"],author:"badriah",year:2026,example_code:"# Python\nradar.scan()"},
+{code:"NAV-087",title:"Autopilot Systems",field:"Navigation",definition:"أنظمة الطيار الآلي للتحكم بالمركبات.",keywords:["navigation","autopilot"],author:"badriah",year:2026,example_code:"# Python\nautopilot.engage()"},
+{code:"NAV-088",title:"Inertial Navigation System",field:"Navigation",definition:"نظام الملاحة بالقصور الذاتي.",keywords:["navigation","ins"],author:"badriah",year:2026,example_code:"# Python\nins_data = read_ins()"},
+{code:"NAV-089",title:"Route Optimization",field:"Navigation",definition:"تحسين المسار لتقليل الوقت والوقود.",keywords:["navigation","optimization"],author:"badriah",year:2026,example_code:"# Python\noptimal_path = optimize_route()"},
+{code:"NAV-090",title:"Positioning Sensor Fusion",field:"Navigation",definition:"دمج بيانات حساسات مختلفة لتحديد الموقع.",keywords:["navigation","sensor fusion"],author:"badriah",year:2026,example_code:"# Python\nposition = fuse_sensors()"},
+{code:"SC-CY-031",title:"RSA Encryption",field:"Cyber Security",definition:"خوارزمية تشفير باستخدام المفاتيح العامة.",keywords:["encryption","rsa"],author:"badriah",year:2026,example_code:"# Python\ncipher = RSA_encrypt(data)"},
+{code:"SC-CY-032",title:"AES Encryption",field:"Cyber Security",definition:"خوارزمية تشفير متقدمة تعتمد على AES.",keywords:["encryption","aes"],author:"badriah",year:2026,example_code:"# Python\ncipher = AES_encrypt(data)"},
+{code:"SC-CY-033",title:"Diffie-Hellman Key Exchange",field:"Cyber Security",definition:"تبادل مفاتيح بشكل آمن عبر قناة غير آمنة.",keywords:["encryption","dh"],author:"badriah",year:2026,example_code:"# Python\nkey = dh_exchange()"},
+{code:"SC-CY-034",title:"SHA-256 Hashing",field:"Cyber Security",definition:"تشفير البيانات باستخدام SHA-256.",keywords:["hashing","sha256"],author:"badriah",year:2026,example_code:"# Python\nhash = hashlib.sha256(data.encode()).hexdigest()"},
+{code:"SC-CY-035",title:"HMAC Authentication",field:"Cyber Security",definition:"تأكيد هوية الرسائل باستخدام HMAC.",keywords:["security","hmac"],author:"badriah",year:2026,example_code:"# Python\nh = hmac.new(key,msg,hashlib.sha256).hexdigest()"},
+{code:"SC-CY-036",title:"Certificate Authority",field:"Cyber Security",definition:"جهة تصدر الشهادات الرقمية.",keywords:["security","certificate"],author:"badriah",year:2026,example_code:"# Python\ncert = ca.issue_certificate()"},
+{code:"SC-CY-037",title:"Digital Signature",field:"Cyber Security",definition:"توقيع رقمي للتحقق من البيانات.",keywords:["security","digital signature"],author:"badriah",year:2026,example_code:"# Python\nsign(data)"},
+{code:"SC-CY-038",title:"Two-Factor Authentication",field:"Cyber Security",definition:"مصادقة ثنائية لزيادة الأمان.",keywords:["security","2fa"],author:"badriah",year:2026,example_code:"# Python\nverify_2fa(user)"},
+{code:"SC-CY-039",title:"VPN Tunneling",field:"Cyber Security",definition:"قناة اتصال آمنة عبر الإنترنت.",keywords:["security","vpn"],author:"badriah",year:2026,example_code:"# Python\nvpn.connect()"},
+{code:"SC-CY-040",title:"Firewall Configuration",field:"Cyber Security",definition:"إعداد جدار الحماية لمنع الهجمات.",keywords:["security","firewall"],author:"badriah",year:2026,example_code:"# Python\nfirewall.setup()"},
+{code:"NAV-091",title:"GNSS Error Modeling",field:"Navigation",definition:"نمذجة أخطاء GNSS لتحسين الدقة.",keywords:["navigation","gnss","error"],author:"badriah",year:2026,example_code:"# Python\nerrors = model_gnss_error()"},
+{code:"NAV-092",title:"Marine Navigation Charts",field:"Navigation",definition:"خرائط الملاحة البحرية لتحديد المسارات.",keywords:["navigation","charts"],author:"badriah",year:2026,example_code:"# Python\ncharts = read_charts()"},
+{code:"NAV-093",title:"Dynamic Positioning",field:"Navigation",definition:"تثبيت موقع السفينة تلقائيًا باستخدام الدفع الذاتي.",keywords:["navigation","dynamic positioning"],author:"badriah",year:2026,example_code:"# Python\nposition_ship()"},
+{code:"NAV-094",title:"Autonomous Surface Vehicles",field:"Navigation",definition:"مركبات سطحية ذاتية التحكم.",keywords:["navigation","autonomous"],author:"badriah",year:2026,example_code:"# Python\nasv.drive()"},
+{code:"NAV-095",title:"Emergency Navigation Systems",field:"Navigation",definition:"أنظمة ملاحة للطوارئ.",keywords:["navigation","emergency"],author:"badriah",year:2026,example_code:"# Python\nactivate_emergency_system()"},
+{code:"NAV-096",title:"Collision Avoidance Systems",field:"Navigation",definition:"أنظمة لتجنب الاصطدامات.",keywords:["navigation","collision"],author:"badriah",year:2026,example_code:"# Python\navoid_collisions()"},
+{code:"NAV-097",title:"Navigation Data Logging",field:"Navigation",definition:"تسجيل بيانات الملاحة للتحليل.",keywords:["navigation","logging"],author:"badriah",year:2026,example_code:"# Python\nlog_navigation_data()"},
+{code:"NAV-098",title:"Integrated Bridge Systems",field:"Navigation",definition:"نظام جسر متكامل للسفن.",keywords:["navigation","bridge"],author:"badriah",year:2026,example_code:"# Python\nintegrate_bridge()"},
+{code:"NAV-099",title:"Automatic Identification System",field:"Navigation",definition:"نظام تحديد تلقائي للسفن.",keywords:["navigation","ais"],author:"badriah",year:2026,example_code:"# Python\nread_ais()"},
+{code:"NAV-100",title:"Electronic Chart Display",field:"Navigation",definition:"عرض خرائط الملاحة الإلكترونية.",keywords:["navigation","ecd"],author:"badriah",year:2026,example_code:"# Python\ndisplay_charts()"},
+{code:"SC-CY-041",title:"Quantum Key Distribution",field:"Cyber Security",definition:"توزيع مفاتيح آمنة باستخدام الخصائص الكمومية.",keywords:["encryption","quantum"],author:"badriah",year:2026,example_code:"# Python\nsecure_key = quantum_generate_key()"},
+{code:"SC-CY-042",title:"Zero Knowledge Proofs",field:"Cyber Security",definition:"إثبات معرفة دون كشف البيانات.",keywords:["encryption","zkp"],author:"badriah",year:2026,example_code:"# Python\nzkp_prove(data)"},
+{code:"SC-CY-043",title:"Digital Envelope",field:"Cyber Security",definition:"تشفير الرسائل بطريقة مزدوجة.",keywords:["encryption","digital envelope"],author:"badriah",year:2026,example_code:"# Python\nencrypted = digital_envelope_encrypt(message)"},
+{code:"SC-CY-044",title:"Password Hashing",field:"Cyber Security",definition:"تشفير كلمات المرور.",keywords:["encryption","hash"],author:"badriah",year:2026,example_code:"# Python\nhashed = hashlib.sha256(password.encode()).hexdigest()"},
+{code:"SC-CY-045",title:"Secure Shell (SSH)",field:"Cyber Security",definition:"تأمين الاتصال عن بعد.",keywords:["security","ssh"],author:"badriah",year:2026,example_code:"# Python\nssh.connect()"},
+{code:"SC-CY-046",title:"Key Management",field:"Cyber Security",definition:"إدارة المفاتيح الرقمية.",keywords:["encryption","key management"],author:"badriah",year:2026,example_code:"# Python\nmanage_keys()"},
+{code:"SC-CY-047",title:"Certificate Pinning",field:"Cyber Security",definition:"تثبيت الشهادات لمنع الهجمات الوسيطة.",keywords:["security","certificate"],author:"badriah",year:2026,example_code:"# Python\npin_certificate()"},
+{code:"SC-CY-048",title:"PKI Infrastructure",field:"Cyber Security",definition:"البنية التحتية للمفاتيح والشهادات الرقمية.",keywords:["security","pki"],author:"badriah",year:2026,example_code:"# Python\npki.setup()"},
+{code:"SC-CY-049",title:"Secure Boot",field:"Cyber Security",definition:"التحقق من سلامة الجهاز عند التشغيل.",keywords:["security","boot"],author:"badriah",year:2026,example_code:"# Python\nsecure_boot_check()"},
+{code:"SC-CY-050",title:"Two-Factor Authentication",field:"Cyber Security",definition:"مصادقة ثنائية.",keywords:["security","2fa"],author:"badriah",year:2026,example_code:"# Python\nverify_2fa(user)"}
+];
+
+// إضافة كل المصطلحات الجديدة بطريقة آمنة
+newTerms.forEach(term => safeAddTerm(term));
 
 
