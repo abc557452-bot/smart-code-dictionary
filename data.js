@@ -1251,7 +1251,7 @@ i++
 
 
 // توليد 500 مصطلح إضافي
-generateTerms(500,110)
+generateTerms(500,500)
 
 console.log("عدد المصطلحات في القاموس:",dictionary.length)
 // =======================
