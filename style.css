@@ -44,7 +44,16 @@ button:hover {
     background: #333;
     color: white;
 }
+button {
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+}
 
+button.active {
+  background-color: #00c3ff;
+  color: white;
+}
 #suggestions {
     margin-top: 10px;
     color: #ddd;
