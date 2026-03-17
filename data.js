@@ -1154,10 +1154,14 @@ year:"2026"
   year:2026,
   example_code:`# Example code\nsecure_boot_check()`
 },
-{code:"NAV-081",title:"Lidar Navigation",field:"Navigation",definition:"استخدام الليدار لتحديد موقع المركبة.",keywords:["navigation","lidar"],author:"badriah",year:2026,example_code:"# Python\nposition = lidar.read()"},
-{code:"NAV-082",title:"Dead Reckoning",field:"Navigation",definition:"تحديد الموقع باستخدام السرعة والاتجاه بدون GPS.",keywords:["navigation","dead reckoning"],author:"badriah",year:2026,example_code:"# Python\nposition = dead_reckon()"},
-{code:"NAV-083",title:"Waypoint Planning",field:"Navigation",definition:"تخطيط نقاط مسار للمركبات والطائرات.",keywords:["navigation","waypoint"],author:"badriah",year:2026,example_code:"# Python\nwaypoints = plan_route()"},{
-  code:"NAV-050",
+{
+  code:"NAV-081",title:"Lidar Navigation",field:"Navigation",definition:"استخدام الليدار لتحديد موقع المركبة.",keywords:["navigation","lidar"],author:"badriah",year:2026,example_code:"# Python\nposition = lidar.read()"},
+{
+  code:"NAV-082",title:"Dead Reckoning",field:"Navigation",definition:"تحديد الموقع باستخدام السرعة والاتجاه بدون GPS.",keywords:["navigation","dead reckoning"],author:"badriah",year:2026,example_code:"# Python\nposition = dead_reckon()"},
+{
+  code:"NAV-083",title:"Waypoint Planning",field:"Navigation",definition:"تخطيط نقاط مسار للمركبات والطائرات.",keywords:["navigation","waypoint"],author:"badriah",year:2026,example_code:"# Python\nwaypoints = plan_route()"},
+  { 
+    code:"NAV-050",
   title:"Satellite Navigation",
   field:"Navigation",
   definition:"تحديد الموقع باستخدام الأقمار الصناعية.",
