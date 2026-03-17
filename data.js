@@ -109,7 +109,7 @@ print(course)`
 {
   code:"NAV-006",
   title:"Latitude",
-  field:"Navigation"
+  field:"Navigation",
   definition:"خطوط العرض على الكرة الأرضية.",
   keywords:["latitude","coordinates","navigation"],
   author:"badriah",
