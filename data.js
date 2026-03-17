@@ -1154,6 +1154,99 @@ year:"2026"
   year:2026,
   example_code:`# Example code\nsecure_boot_check()`
 },
+  {
+  code:"AI-010",
+  title:"Neural Network",
+  field:"Artificial Intelligence",
+  definition:"نموذج حاسوبي مستوحى من الدماغ البشري يُستخدم في التعلم الآلي."
+},
+
+{
+  code:"AI-011",
+  title:"Deep Learning",
+  field:"Artificial Intelligence",
+  definition:"نوع من التعلم الآلي يعتمد على الشبكات العصبية العميقة."
+},
+
+{
+  code:"AI-012",
+  title:"Dataset",
+  field:"Artificial Intelligence",
+  definition:"مجموعة بيانات تُستخدم لتدريب واختبار النماذج."
+},
+
+{
+  code:"AI-013",
+  title:"Overfitting",
+  field:"Artificial Intelligence",
+  definition:"حالة يتعلم فيها النموذج البيانات بشكل زائد مما يؤثر على أدائه في بيانات جديدة."
+},
+
+{
+  code:"AI-014",
+  title:"Model Training",
+  field:"Artificial Intelligence",
+  definition:"عملية تعليم النموذج باستخدام البيانات."
+},
+
+{
+  code:"PY-010",
+  title:"List Comprehension",
+  field:"Programming",
+  definition:"طريقة مختصرة لإنشاء القوائم في بايثون باستخدام تعبير واحد.",
+  example_code:`numbers = [x for x in range(10)]`
+},
+
+{
+  code:"PY-011",
+  title:"Lambda Function",
+  field:"Programming",
+  definition:"دالة صغيرة بدون اسم تُستخدم لتنفيذ عمليات سريعة.",
+  example_code:`square = lambda x: x*x`
+},
+
+{
+  code:"CY-010",
+  title:"Phishing",
+  field:"Cyber Security",
+  definition:"هجوم إلكتروني يهدف إلى سرقة المعلومات عبر مواقع أو رسائل مزيفة."
+},
+
+{
+  code:"CY-011",
+  title:"Firewall",
+  field:"Cyber Security",
+  definition:"نظام أمني يراقب ويتحكم في حركة البيانات بين الشبكات."
+},
+
+{
+  code:"CY-012",
+  title:"Encryption",
+  field:"Cyber Security",
+  definition:"عملية تحويل البيانات إلى شكل غير مقروء لحمايتها."
+},
+
+{
+  code:"NAV-010",
+  title:"Dead Reckoning",
+  field:"Navigation",
+  definition:"طريقة لتحديد الموقع اعتمادًا على الموقع السابق والسرعة والاتجاه."
+},
+
+{
+  code:"NAV-011",
+  title:"Bearing",
+  field:"Navigation",
+  definition:"زاوية الاتجاه من نقطة إلى أخرى بالنسبة للشمال."
+},
+
+{
+  code:"NAV-012",
+  title:"Waypoint",
+  field:"Navigation",
+  definition:"نقطة محددة تُستخدم لتوجيه المسار في الملاحة."
+},
+
  { 
     code:"NAV-050",
   title:"Satellite Navigation",
