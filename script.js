@@ -6,9 +6,8 @@ const suggestionsBox = document.getElementById("suggestions");
 function searchTerm() {
   
 
-  let result = document.getElementById("result"); 
-  // ✅ هذا المهم
-
+  let result = document.getElementById("result"); // ✅ هنا
+  let suggestionsBox = document.getElementById("suggestionsBox"); // (إذا تستخدمه)
   let input = document.getElementById("searchInput").value.toLowerCase();
   let found = false;
   let input = document.getElementById("searchInput").value.toLowerCase();
