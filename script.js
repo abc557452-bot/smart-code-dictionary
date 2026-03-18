@@ -7,7 +7,6 @@ function searchTerm() {
   
 
   let result = document.getElementById("result");ا
-  let suggestionsBox = document.getElementById("suggestionsBox"); 
   let input = document.getElementById("searchInput").value.toLowerCase();
   let found = false;
   let input = document.getElementById("searchInput").value.toLowerCase();
