@@ -39,6 +39,9 @@ function searchTerm() {
   }
   if (!found) result.innerHTML = '<p style="color:red;">لم يتم العثور على المصطلح</p>';
 }
+ // ✅ هذا المهم
+  document.getElementById("count").innerText = dictionary.length;
+}
 
 // ======== مسح البحث ========
 function clearSearch() {
@@ -116,6 +119,8 @@ function filterField(fieldName) {
   result.innerHTML = output;
   suggestionsBox.innerHTML = "";
 }
+ // ✅ هنا العداد يتغير حسب الفلتر
+  document.getElementById("count").innerText = filtered.length;
 
 // ======== تجربة الكود ========
 function tryExample(code, lang) {
