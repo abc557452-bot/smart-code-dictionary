@@ -4,9 +4,6 @@ const suggestionsBox = document.getElementById("suggestions");
 
 // ======== البحث ========
 function searchTerm() {
-  
-
-  let result = document.getElementById("result");
 
   let input = document.getElementById("searchInput").value.toLowerCase();
   let found = false;
