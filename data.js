@@ -1365,7 +1365,15 @@ function safeAddTerm(term){
 // إضافة الدفعة 50 مصطلح
 const newTerms = [
 {
-  code:"NAV-081",title:"Lidar Navigation",field:"Navigation",definition:"استخدام الليدار لتحديد موقع المركبة.",keywords:["navigation","lidar"],author:"badriah",year:2026,example_code:"# Python\nposition = lidar.read()"},
+  code:"NAV-081",
+  title:"Lidar Navigation",
+  field:"Navigation",
+  definition:"استخدام الليدار لتحديد موقع المركبة.",
+  keywords:["navigation","lidar"],
+  author:"badriah",
+  year:2026,
+  example_code:"# Python\nposition = lidar.read()"
+},
 {
   code:"NAV-082",title:"Dead Reckoning",field:"Navigation",definition:"تحديد الموقع باستخدام السرعة والاتجاه بدون GPS.",keywords:["navigation","dead reckoning"],author:"badriah",year:2026,example_code:"# Python\nposition = dead_reckon()"},
 {
