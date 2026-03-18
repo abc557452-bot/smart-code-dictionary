@@ -4,6 +4,13 @@ const suggestionsBox = document.getElementById("suggestions");
 
 // ======== البحث ========
 function searchTerm() {
+  
+
+  let result = document.getElementById("result"); 
+  // ✅ هذا المهم
+
+  let input = document.getElementById("searchInput").value.toLowerCase();
+  let found = false;
   let input = document.getElementById("searchInput").value.toLowerCase();
   if (input === "") {
     result.innerHTML = "";
