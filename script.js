@@ -1,7 +1,9 @@
 // ======== عناصر DOM ========
 const result = document.getElementById("results");
 const suggestionsBox = document.getElementById("suggestions");
-
+// ✅ هذا المهم
+  document.getElementById("count").innerText = dictionary.length;
+}
 // ======== البحث ========
 function searchTerm() {
 
@@ -42,9 +44,7 @@ function searchTerm() {
   }
   if (!found) result.innerHTML = '<p style="color:red;">لم يتم العثور على المصطلح</p>';
 }
- // ✅ هذا المهم
-  document.getElementById("count").innerText = dictionary.length;
-}
+ 
 
 // ======== مسح البحث ========
 function clearSearch() {
