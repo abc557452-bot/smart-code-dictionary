@@ -7,14 +7,13 @@ function searchTerm() {
 
   let input = document.getElementById("searchInput").value.toLowerCase();
   let found = false;
-  let input = document.getElementById("searchInput").value.toLowerCase();
+
   if (input === "") {
     result.innerHTML = "";
     suggestionsBox.innerHTML = "";
     return;
   }
 
-  let found = false;
   for (let d of dictionary) {
     if (
       d.title.toLowerCase().includes(input) ||
@@ -40,10 +39,10 @@ function searchTerm() {
       break;
     }
   }
+
   if (!found) result.innerHTML = '<p style="color:red;">لم يتم العثور على المصطلح</p>';
-  
 }
- 
+
 
 // ======== مسح البحث ========
 function clearSearch() {
