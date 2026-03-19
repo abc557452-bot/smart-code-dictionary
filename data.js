@@ -1440,7 +1440,5 @@ const newTerms = [
 
 // إضافة كل المصطلحات الجديدة بطريقة آمنة
 newTerms.forEach(term => safeAddTerm(term));
-// ✅ هذا المهم
-  document.getElementById("count").innerText = dictionary.length;
-}
+
 
