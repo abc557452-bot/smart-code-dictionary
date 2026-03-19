@@ -684,16 +684,7 @@ year:"2026"
   year:2026,
   example_code:`# Python example\ngnss_data = read_gnss()\nprint(gnss_data)`
 },
-{
-  code:"SC-CY-007",
-  title:"Hashing",
-  field:"Cyber Security",
-  definition:"تحويل البيانات إلى قيمة ثابتة يصعب عكسها.",
-  keywords:["encryption","hash","security"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Python example\nimport hashlib\nhashlib.sha256(b"data").hexdigest()`
-},
+
 {
   code:"SC-CY-008",
   title:"Digital Signature",
@@ -715,7 +706,7 @@ year:"2026"
   example_code:`# Python example\nkey = "mysecretkey"`
 },
 {
-  code:"SC-CY-010",
+  code:"SC-CY-110",
   title:"Asymmetric Key",
   field:"Cyber Security",
   definition:"زوج مفاتيح (عام/خاص) لتشفير وفك التشفير.",
@@ -1205,12 +1196,6 @@ year:"2026"
   example_code:`square = lambda x: x*x`
 },
 
-{
-  code:"CY-010",
-  title:"Phishing",
-  field:"Cyber Security",
-  definition:"هجوم إلكتروني يهدف إلى سرقة المعلومات عبر مواقع أو رسائل مزيفة."
-},
 
 {
   code:"CY-011",
@@ -1226,12 +1211,6 @@ year:"2026"
   definition:"عملية تحويل البيانات إلى شكل غير مقروء لحمايتها."
 },
 
-{
-  code:"NAV-010",
-  title:"Dead Reckoning",
-  field:"Navigation",
-  definition:"طريقة لتحديد الموقع اعتمادًا على الموقع السابق والسرعة والاتجاه."
-},
 
 {
   code:"NAV-011",
