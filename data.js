@@ -1375,11 +1375,31 @@ const newTerms = [
   example_code:"# Python\nposition = lidar.read()"
 },
 {
-  code:"NAV-082",title:"Dead Reckoning",field:"Navigation",definition:"تحديد الموقع باستخدام السرعة والاتجاه بدون GPS.",keywords:["navigation","dead reckoning"],author:"badriah",year:2026,example_code:"# Python\nposition = dead_reckon()"},
+  code:"NAV-082",
+  title:"Dead Reckoning",
+  field:"Navigation",
+  definition:"تحديد الموقع باستخدام السرعة والاتجاه بدون GPS.",
+  keywords:["navigation","dead reckoning"],
+  author:"badriah",
+  year:2026,example_code:"# Python\nposition = dead_reckon()"
+},
 {
-  code:"NAV-083",title:"Waypoint Planning",field:"Navigation",definition:"تخطيط نقاط مسار للمركبات والطائرات.",keywords:["navigation","waypoint"],author:"badriah",year:2026,example_code:"# Python\nwaypoints = plan_route()"},
+  code:"NAV-083",
+  title:"Waypoint Planning",
+  field:"Navigation",
+  definition:"تخطيط نقاط مسار للمركبات والطائرات.",
+  keywords:["navigation","waypoint"],
+  author:"badriah",year:2026,example_code:"# Python\nwaypoints = plan_route()"
+},
+
  
-{code:"NAV-084",title:"GNSS Integrity Monitoring",field:"Navigation",definition:"مراقبة صحة إشارات GNSS.",keywords:["navigation","gnss"],author:"badriah",year:2026,example_code:"# Python\ncheck_integrity()"},
+{code:"NAV-084",
+ title:"GNSS Integrity Monitoring",
+ field:"Navigation",
+ definition:"مراقبة صحة إشارات GNSS.",
+ keywords:["navigation","gnss"],
+ author:"badriah",year:2026,example_code:"# Python\ncheck_integrity()"
+},
 {code:"NAV-085",title:"Kalman Filter",field:"Navigation",definition:"فلترة بيانات الملاحة للحصول على موقع دقيق.",keywords:["navigation","kalman"],author:"badriah",year:2026,example_code:"# Python\nposition = kalman_filter(data)"},
 {code:"NAV-086",title:"Marine Radar",field:"Navigation",definition:"رادار لتحديد مواقع السفن والموانئ.",keywords:["navigation","radar"],author:"badriah",year:2026,example_code:"# Python\nradar.scan()"},
 {code:"NAV-087",title:"Autopilot Systems",field:"Navigation",definition:"أنظمة الطيار الآلي للتحكم بالمركبات.",keywords:["navigation","autopilot"],author:"badriah",year:2026,example_code:"# Python\nautopilot.engage()"},
@@ -1420,5 +1440,7 @@ const newTerms = [
 
 // إضافة كل المصطلحات الجديدة بطريقة آمنة
 newTerms.forEach(term => safeAddTerm(term));
-
+// ✅ هذا المهم
+  document.getElementById("count").innerText = dictionary.length;
+}
 
