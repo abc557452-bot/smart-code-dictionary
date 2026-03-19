@@ -41,9 +41,7 @@ function searchTerm() {
     }
   }
   if (!found) result.innerHTML = '<p style="color:red;">لم يتم العثور على المصطلح</p>';
-  // ✅ هذا المهم
-  document.getElementById("count").innerText = dictionary.length;
-}
+  
 }
  
 
