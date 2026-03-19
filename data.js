@@ -623,7 +623,7 @@ definition:"نموذج حاسوبي مستوحى من طريقة عمل الدم
 keywords:["satellite","navigation","gps"],
   author:"badriah",
   year:"2026",
-
+  },
 {
 code:"SC-AI-017",
 title:"Training Data",
