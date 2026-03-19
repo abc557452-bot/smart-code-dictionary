@@ -550,6 +550,7 @@ print(track)`
   field:"Navigation",
   definition:"قياس عمق المياه باستخدام الموجات الصوتية.",
   keywords:["echo sounding","navigation","depth"],
+  keywords:["satellite","navigation","gps"],
   author:"badriah",
   year:"2026",
   example_code:`# echo sounding reading`
@@ -559,8 +560,9 @@ code:"SC-CY-010",
 title:"Zero Day",
 field:"Cyber Security",
 definition:"ثغرة أمنية غير معروفة للمطورين ويتم استغلالها قبل إصلاحها.",
-author:"badriah",
-year:"2026"
+keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
 },
 
 {
@@ -568,8 +570,9 @@ code:"SC-CY-011",
 title:"Brute Force Attack",
 field:"Cyber Security",
 definition:"محاولة اختراق تعتمد على تجربة جميع كلمات المرور الممكنة حتى يتم العثور على الصحيحة.",
-author:"badriah",
-year:"2026"
+keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
 },
 
 {
@@ -577,8 +580,9 @@ code:"SC-CY-012",
 title:"SQL Injection",
 field:"Cyber Security",
 definition:"هجوم يتم عبر إدخال أوامر SQL خبيثة داخل مدخلات الموقع.",
-author:"badriah",
-year:"2026"
+keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
 },
 
 {
@@ -586,8 +590,9 @@ code:"SC-NET-013",
 title:"Packet Sniffing",
 field:"Networking",
 definition:"عملية مراقبة وتحليل حزم البيانات المارة عبر الشبكة.",
-author:"badriah",
-year:"2026"
+keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
 },
 
 {
@@ -595,8 +600,9 @@ code:"SC-NET-014",
 title:"MAC Address",
 field:"Networking",
 definition:"عنوان فريد يتم تعيينه لكل جهاز شبكة للتعرف عليه داخل الشبكة المحلية.",
-author:"badriah",
-year:"2026"
+keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
 },
 
 {
@@ -604,8 +610,9 @@ code:"SC-NET-015",
 title:"Subnet",
 field:"Networking",
 definition:"تقسيم شبكة كبيرة إلى شبكات أصغر لتحسين الإدارة والأمان.",
-author:"badriah",
-year:"2026"
+keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
 },
 
 {
@@ -613,17 +620,18 @@ code:"SC-AI-016",
 title:"Neural Network",
 field:"Artificial Intelligence",
 definition:"نموذج حاسوبي مستوحى من طريقة عمل الدماغ البشري يستخدم في التعلم الآلي.",
-author:"badriah",
-year:"2026"
-},
+keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
 
 {
 code:"SC-AI-017",
 title:"Training Data",
 field:"Artificial Intelligence",
 definition:"البيانات المستخدمة لتدريب نموذج التعلم الآلي.",
-author:"badriah",
-year:"2026"
+keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
 },
 
 {
@@ -631,8 +639,9 @@ code:"SC-AI-018",
 title:"Overfitting",
 field:"Artificial Intelligence",
 definition:"حالة يتعلم فيها النموذج البيانات التدريبية بشكل مفرط مما يقلل دقته على بيانات جديدة.",
-author:"badriah",
-year:"2026"
+keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
 },
 {
   code:"NAV-053",
