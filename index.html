@@ -5,7 +5,7 @@
 <title>Smart Code Dictionary</title>
 
 <style>
-/* التنسيق القديم محفوظ */
+//---التنسيق القديم محفوظ --//
 .term pre{
   background:#f4f4f4;
   border:1px solid #ccc;
@@ -35,7 +35,7 @@
   color:#444;
 }
 
-/* صندوق تجربة الكود */
+//--- صندوق تجربة الكود --//
 #codeTester{
   border:1px solid #ccc;
   padding:10px;
@@ -75,20 +75,20 @@
     <button onclick="showAllTerms()">عرض جميع المصطلحات</button>
   </div>
 
-  /* اقتراح الكلمات */
+ //-- اقتراح الكلمات --//
   <div id="suggestions"></div>
 
-  /* عداد المصطلحات */
+ //-- عداد المصطلحات --//
   <div id="termCounter"></div>
-/* 🔘 الأزرار هنا */
+// 🔘 الأزرار هنا --//
 <button onclick="setActive(this); showAllTerms()">الكل</button>
 <button onclick="setActive(this); filterField('Artificial Intelligence')">AI</button>
 
-/* عرض النتائج */
+//-- عرض النتائج --//
  <button onclick="filterField('Navigation')">Navigation</button>
 
 <div id="results"></div>
- /*- فلترة المجالات */
+//-- فلترة المجالات --//
   <div class="filter-box">
     <button onclick="filterField('Python')">Python</button>
     <button onclick="filterField('JavaScript')">JavaScript</button>
@@ -97,7 +97,7 @@
     <button onclick="showAllTerms()">عرض الكل</button>
   </div>
 
- /*- صندوق تجربة الكود */
+//-- صندوق تجربة الكود --//
   <div id="codeTester">
     <h3>تجربة الكود</h3>
     <label>اختر اللغة:</label>
@@ -114,7 +114,7 @@
 
 </div>
 
-/*- ملفات القاموس والكود -*/
+//-- ملفات القاموس والكود --//
 <script src="data.js"></script>
 <script src="script.js"></script>
 
