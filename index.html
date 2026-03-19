@@ -80,22 +80,14 @@
 
   <!-- عداد المصطلحات -->
   <div id="termCounter"></div>
-<!-- 🔘 الأزرار هنا -->
-<button onclick="setActive(this); showAllTerms()">الكل</button>
-<button onclick="setActive(this); filterField('Artificial Intelligence')">AI</button>
 
-  <!-- عرض النتائج -->
- <button onclick="filterField('Navigation')">Navigation</button>
-
-<div id="results"></div>
   <!-- فلترة المجالات -->
-  <div class="filter-box">
-    <button onclick="filterField('Python')">Python</button>
-    <button onclick="filterField('JavaScript')">JavaScript</button>
-    <button onclick="filterField('Cyber Security')">Cyber Security</button>
-    <button onclick="filterField('Navigation')">Navigation</button>
-    <button onclick="showAllTerms()">عرض الكل</button>
-  </div>
+<div class="filter-box">
+  <button onclick="setActive(this); showAllTerms()">الكل</button>
+  <button onclick="setActive(this); filterField('Artificial Intelligence')">AI</button>
+  <button onclick="setActive(this); filterField('Navigation')">Navigation</button>
+  <button onclick="setActive(this); filterField('Cyber Security')">Cyber</button>
+</div>
 
   <!-- صندوق تجربة الكود -->
   <div id="codeTester">
