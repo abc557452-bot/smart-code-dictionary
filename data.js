@@ -335,7 +335,7 @@ print(track)`
   example_code:`# read tide table`
 },
 {
-  code:"NAV-088",
+  code:"NAV-028",
   title:"Pilot Chart",
   field:"Navigation",
   definition:"خريطة تعرض الظروف الجوية والتيارات والموانئ.",
@@ -366,7 +366,7 @@ print(track)`
 },
 
   {
-  code:"NAV-032",
+  code:"NAV-062",
   title:"Magnetometer",
   field:"Navigation",
   definition:"أداة لقياس المجال المغناطيسي للأرض.",
