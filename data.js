@@ -364,17 +364,8 @@ print(track)`
   year:"2026",
   example_code:`# loran signal decoding`
 },
-{
-  code:"NAV-031",
-  title:"Radar Chart",
-  field:"Navigation",
-  definition:"عرض بيانات الرادار بشكل رسومي.",
-  keywords:["radar chart","navigation","display"],
-  author:"badriah",
-  year:"2026",
-  example_code:`# radar chart plot`
-},
-{
+
+  {
   code:"NAV-032",
   title:"Magnetometer",
   field:"Navigation",
