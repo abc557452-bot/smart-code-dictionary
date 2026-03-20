@@ -1416,17 +1416,52 @@ const newTerms = [
 },
 
  
-{code:"NAV-084",
+{
+  code:"NAV-084",
  title:"GNSS Integrity Monitoring",
  field:"Navigation",
  definition:"مراقبة صحة إشارات GNSS.",
  keywords:["navigation","gnss"],
  author:"badriah",year:2026,example_code:"# Python\ncheck_integrity()"
 },
-{code:"NAV-085",title:"Kalman Filter",field:"Navigation",definition:"فلترة بيانات الملاحة للحصول على موقع دقيق.",keywords:["navigation","kalman"],author:"badriah",year:2026,example_code:"# Python\nposition = kalman_filter(data)"},
-{code:"NAV-086",title:"Marine Radar",field:"Navigation",definition:"رادار لتحديد مواقع السفن والموانئ.",keywords:["navigation","radar"],author:"badriah",year:2026,example_code:"# Python\nradar.scan()"},
-{code:"NAV-087",title:"Autopilot Systems",field:"Navigation",definition:"أنظمة الطيار الآلي للتحكم بالمركبات.",keywords:["navigation","autopilot"],author:"badriah",year:2026,example_code:"# Python\nautopilot.engage()"},
-{code:"NAV-088",title:"Inertial Navigation System",field:"Navigation",definition:"نظام الملاحة بالقصور الذاتي.",keywords:["navigation","ins"],author:"badriah",year:2026,example_code:"# Python\nins_data = read_ins()"},
+{
+  code:"NAV-085",
+  title:"Kalman Filter",
+  field:"Navigation",definition:"فلترة بيانات الملاحة للحصول على موقع دقيق.",
+  keywords:["navigation","kalman"],
+  author:"badriah",
+  year:2026,
+  example_code:"# Python\nposition = kalman_filter(data)"
+},
+{
+  code:"NAV-086",
+  title:"Marine Radar",
+  field:"Navigation",
+  definition:"رادار لتحديد مواقع السفن والموانئ.",
+  keywords:["navigation","radar"],
+  author:"badriah",
+  year:2026,
+  example_code:"# Python\nradar.scan()"
+},
+{
+  code:"NAV-087",
+  title:"Autopilot Systems",
+  field:"Navigation",
+  definition:"أنظمة الطيار الآلي للتحكم بالمركبات.",
+  keywords:["navigation","autopilot"],
+  author:"badriah",
+  year:2026,
+  example_code:"# Python\nautopilot.engage()"
+},
+{
+  code:"NAV-088",
+  title:"Inertial Navigation System",
+  field:"Navigation",definition:"نظام الملاحة بالقصور الذاتي.",
+  keywords:["navigation","ins"],
+  author:"badriah",
+  year:2026,
+  example_code:"# Python\nins_data = read_ins()"
+},
 {code:"NAV-089",title:"Route Optimization",field:"Navigation",definition:"تحسين المسار لتقليل الوقت والوقود.",keywords:["navigation","optimization"],author:"badriah",year:2026,example_code:"# Python\noptimal_path = optimize_route()"},
 {code:"NAV-090",title:"Positioning Sensor Fusion",field:"Navigation",definition:"دمج بيانات حساسات مختلفة لتحديد الموقع.",keywords:["navigation","sensor fusion"],author:"badriah",year:2026,example_code:"# Python\nposition = fuse_sensors()"},
 {code:"SC-CY-031",title:"RSA Encryption",field:"Cyber Security",definition:"خوارزمية تشفير باستخدام المفاتيح العامة.",keywords:["encryption","rsa"],author:"badriah",year:2026,example_code:"# Python\ncipher = RSA_encrypt(data)"},
@@ -1447,18 +1482,123 @@ const newTerms = [
 {code:"NAV-096",title:"Collision Avoidance Systems",field:"Navigation",definition:"أنظمة لتجنب الاصطدامات.",keywords:["navigation","collision"],author:"badriah",year:2026,example_code:"# Python\navoid_collisions()"},
 {code:"NAV-097",title:"Navigation Data Logging",field:"Navigation",definition:"تسجيل بيانات الملاحة للتحليل.",keywords:["navigation","logging"],author:"badriah",year:2026,example_code:"# Python\nlog_navigation_data()"},
 {code:"NAV-098",title:"Integrated Bridge Systems",field:"Navigation",definition:"نظام جسر متكامل للسفن.",keywords:["navigation","bridge"],author:"badriah",year:2026,example_code:"# Python\nintegrate_bridge()"},
-{code:"NAV-099",title:"Automatic Identification System",field:"Navigation",definition:"نظام تحديد تلقائي للسفن.",keywords:["navigation","ais"],author:"badriah",year:2026,example_code:"# Python\nread_ais()"},
-{code:"NAV-100",title:"Electronic Chart Display",field:"Navigation",definition:"عرض خرائط الملاحة الإلكترونية.",keywords:["navigation","ecd"],author:"badriah",year:2026,example_code:"# Python\ndisplay_charts()"},
-{code:"SC-CY-041",title:"Quantum Key Distribution",field:"Cyber Security",definition:"توزيع مفاتيح آمنة باستخدام الخصائص الكمومية.",keywords:["encryption","quantum"],author:"badriah",year:2026,example_code:"# Python\nsecure_key = quantum_generate_key()"},
-{code:"SC-CY-042",title:"Zero Knowledge Proofs",field:"Cyber Security",definition:"إثبات معرفة دون كشف البيانات.",keywords:["encryption","zkp"],author:"badriah",year:2026,example_code:"# Python\nzkp_prove(data)"},
-{code:"SC-CY-043",title:"Digital Envelope",field:"Cyber Security",definition:"تشفير الرسائل بطريقة مزدوجة.",keywords:["encryption","digital envelope"],author:"badriah",year:2026,example_code:"# Python\nencrypted = digital_envelope_encrypt(message)"},
-{code:"SC-CY-044",title:"Password Hashing",field:"Cyber Security",definition:"تشفير كلمات المرور.",keywords:["encryption","hash"],author:"badriah",year:2026,example_code:"# Python\nhashed = hashlib.sha256(password.encode()).hexdigest()"},
-{code:"SC-CY-045",title:"Secure Shell (SSH)",field:"Cyber Security",definition:"تأمين الاتصال عن بعد.",keywords:["security","ssh"],author:"badriah",year:2026,example_code:"# Python\nssh.connect()"},
-{code:"SC-CY-046",title:"Key Management",field:"Cyber Security",definition:"إدارة المفاتيح الرقمية.",keywords:["encryption","key management"],author:"badriah",year:2026,example_code:"# Python\nmanage_keys()"},
-{code:"SC-CY-047",title:"Certificate Pinning",field:"Cyber Security",definition:"تثبيت الشهادات لمنع الهجمات الوسيطة.",keywords:["security","certificate"],author:"badriah",year:2026,example_code:"# Python\npin_certificate()"},
-{code:"SC-CY-048",title:"PKI Infrastructure",field:"Cyber Security",definition:"البنية التحتية للمفاتيح والشهادات الرقمية.",keywords:["security","pki"],author:"badriah",year:2026,example_code:"# Python\npki.setup()"},
-{code:"SC-CY-049",title:"Secure Boot",field:"Cyber Security",definition:"التحقق من سلامة الجهاز عند التشغيل.",keywords:["security","boot"],author:"badriah",year:2026,example_code:"# Python\nsecure_boot_check()"},
-{code:"SC-CY-050",title:"Two-Factor Authentication",field:"Cyber Security",definition:"مصادقة ثنائية.",keywords:["security","2fa"],author:"badriah",year:2026,example_code:"# Python\nverify_2fa(user)"}
+{
+  code:"NAV-099",
+  title:"Automatic Identification System",
+  field:"Navigation",definition:"نظام تحديد تلقائي للسفن.",
+  keywords:["navigation","ais"],
+  author:"badriah",
+  year:2026,
+  example_code:"# Python\nread_ais()"
+},
+{
+  code:"NAV-100",
+  title:"Electronic Chart Display",
+  field:"Navigation",definition:"عرض خرائط الملاحة الإلكترونية.",
+  keywords:["navigation","ecd"],
+  author:"badriah",
+  year:2026,
+  example_code:"# Python\ndisplay_charts()"
+},
+{
+  code:"SC-CY-041",
+  title:"Quantum Key Distribution",
+  field:"Cyber Security",
+  definition:"توزيع مفاتيح آمنة باستخدام الخصائص الكمومية.",
+  keywords:["encryption","quantum"],
+  author:"badriah",
+  year:2026,
+  example_code:"# Python\nsecure_key = quantum_generate_key()"
+},
+{
+  code:"SC-CY-042",
+  title:"Zero Knowledge Proofs",
+  field:"Cyber Security",
+  definition:"إثبات معرفة دون كشف البيانات.",
+  keywords:["encryption","zkp"],
+  author:"badriah",
+  year:2026,example_code:"# Python\nzkp_prove(data)"
+},
+{
+  
+  code:"SC-CY-043",
+  title:"Digital Envelope",
+  field:"Cyber Security",
+  definition:"تشفير الرسائل بطريقة مزدوجة.",
+  keywords:["encryption","digital envelope"],
+  author:"badriah",
+  year:2026,
+  example_code:"# Python\nencrypted = digital_envelope_encrypt(message)"
+},
+{
+  code:"SC-CY-044",
+  title:"Password Hashing",
+  field:"Cyber Security",
+  definition:"تشفير كلمات المرور.",
+  keywords:["encryption","hash"],
+  author:"badriah",
+  year:2026,
+  example_code:"# Python\nhashed = hashlib.sha256(password.encode()).hexdigest()"
+},
+{
+  code:"SC-CY-045",
+  title:"Secure Shell (SSH)",
+  field:"Cyber Security",
+  definition:"تأمين الاتصال عن بعد.",
+  keywords:["security","ssh"],
+  author:"badriah",
+  year:2026,
+  example_code:"# Python\nssh.connect()"
+},
+{
+  code:"SC-CY-046",
+  title:"Key Management",
+  field:"Cyber Security",
+  definition:"إدارة المفاتيح الرقمية.",
+  keywords:["encryption","key management"],
+  author:"badriah",
+  year:2026,
+  example_code:"# Python\nmanage_keys()"
+},
+{
+  code:"SC-CY-047",
+ title:"Certificate Pinning",
+ field:"Cyber Security",
+ definition:"تثبيت الشهادات لمنع الهجمات الوسيطة.",
+ keywords:["security","certificate"],
+ author:"badriah",
+ year:2026,
+ example_code:"# Python\npin_certificate()"
+},
+{
+  code:"SC-CY-048",
+ title:"PKI Infrastructure",
+ field:"Cyber Security",
+ definition:"البنية التحتية للمفاتيح والشهادات الرقمية.",
+ keywords:["security","pki"],
+ author:"badriah",
+ year:2026,
+ example_code:"# Python\npki.setup()"
+},
+{
+  code:"SC-CY-049",
+ title:"Secure Boot",
+ field:"Cyber Security",
+ definition:"التحقق من سلامة الجهاز عند التشغيل.",
+ keywords:["security","boot"],
+ author:"badriah",
+ year:2026,
+ example_code:"# Python\nsecure_boot_check()"
+},
+{code:"SC-CY-050",
+ title:"Two-Factor Authentication",
+ field:"Cyber Security",
+ definition:"مصادقة ثنائية.",
+ keywords:["security","2fa"],
+ author:"badriah",
+ year:2026,
+ example_code:"# Python\nverify_2fa(user)"
+}
 ];
 
 // إضافة كل المصطلحات الجديدة بطريقة آمنة
