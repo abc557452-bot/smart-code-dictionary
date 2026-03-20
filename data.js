@@ -1598,23 +1598,3 @@ dictionary.forEach(item => {
 
 console.log("بعد التنظيف:", uniqueDictionary.length);
 
-// =======================
-// يمكن حذفها بسهولة إذا حصل أي خطأ
-
-function safeAddTerm(term){
-   let existingCodes = dictionary.map(t => t.code);
-
-   let baseCode = term.code;
-   let counter = 1;
-
-   while(existingCodes.includes(term.code)){
-       term.code = baseCode + "-" + counter;
-       counter++;
-   }
-
-   uniqueDictionary.push(term);
-   console.log("✅ تم إضافة:", term.code);
-}
-const newTerms = [ ... ];
-newTerms.forEach(term => safeAddTerm(term));
-
