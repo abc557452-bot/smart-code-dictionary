@@ -1278,10 +1278,8 @@ keywords:["satellite","navigation","gps"],
   author:"badriah",
   year:"2026",
   example_code:`# satellite position reading`
-}
-];
-// إضافة الدفعة 50 مصطلح
-const newTerms = [
+},
+
 {
   code:"NAV-081",
   title:"Lidar Navigation",
