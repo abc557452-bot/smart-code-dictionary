@@ -335,7 +335,7 @@ print(track)`
   example_code:`# read tide table`
 },
 {
-  code:"NAV-028",
+  code:"NAV-088",
   title:"Pilot Chart",
   field:"Navigation",
   definition:"خريطة تعرض الظروف الجوية والتيارات والموانئ.",
