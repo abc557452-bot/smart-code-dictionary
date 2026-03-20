@@ -1483,7 +1483,8 @@ keywords:["satellite","navigation","gps"],
  year:2026,
  example_code:"# Python\nsecure_boot_check()"
 },
-{code:"SC-CY-050",
+{
+  code:"SC-CY-050",
  title:"Two-Factor Authentication",
  field:"Cyber Security",
  definition:"مصادقة ثنائية.",
@@ -1493,10 +1494,6 @@ keywords:["satellite","navigation","gps"],
  example_code:"# Python\nverify_2fa(user)"
 }
 ];
-
-// إضافة كل المصطلحات الجديدة بطريقة آمنة
-newTerms.forEach(term => safeAddTerm(term));
-
 
 
 // المجالات المتاحة
@@ -1544,7 +1541,7 @@ return ""
 
 
 // منع تكرار العناوين
-const existingTitles = dictionary.map(t => t.title);
+const existingTitles = uniqueDictionary.map(t => t.title);
 
 
 // توليد مصطلحات
@@ -1563,7 +1560,7 @@ i++
 continue
 }
 
-dictionary.push({
+uniqueDictionary.push({
 
 code:`CODE-${i.toString().padStart(4,'0')}`,
 title:title,
@@ -1586,7 +1583,7 @@ i++
 
 generateTerms(500,500)
 
-console.log("عدد المصطلحات في القاموس:",dictionary.length)
+console.log("عدد المصطلحات في القاموس:",uniqueDictionary.length)
 
 // 👇👇 هنا تحطه
 const uniqueDictionary = [];
@@ -1615,7 +1612,7 @@ function safeAddTerm(term){
        counter++;
    }
 
-   dictionary.push(term);
+   uniqueDictionary.push(term);
    console.log("✅ تم إضافة:", term.code);
 }
 const newTerms = [ ... ];
