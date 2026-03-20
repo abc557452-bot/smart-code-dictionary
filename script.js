@@ -14,7 +14,7 @@ function searchTerm() {
     return;
   }
 
-  for (let d of dictionary) {
+  for (let d of uniqueDictionary) {
     if (
       d.title.toLowerCase().includes(input) ||
       d.definition.toLowerCase().includes(input) ||
@@ -70,14 +70,14 @@ function suggestWords() {
 
 // ======== ملء البحث عند اختيار الاقتراح ========
 function fillInput(index) {
-  document.getElementById("searchInput").value = dictionary[index].title;
+  document.getElementById("searchInput").value = uniqueDictionary[index].title;
   searchTerm();
 }
 
 // ======== عرض جميع المصطلحات ========
 function showAllTerms() {
   let output = "";
-  for (let d of dictionary) {
+  for (let d of uniqueDictionary) {
     output += `
       <h3>${d.code}</h3>
       <h2>${d.title}</h2>
@@ -99,7 +99,7 @@ function showAllTerms() {
 // ======== فلترة حسب المجال ========
 function filterField(fieldName) {
   let output = "";
-  for (let d of dictionary) {
+  for (let d of uniqueDictionary) {
     if (d.field === fieldName) {
       output += `
         <h3>${d.code}</h3>
