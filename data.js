@@ -1374,15 +1374,20 @@ console.log("عدد المصطلحات في القاموس:",dictionary.length)
 // يمكن حذفها بسهولة إذا حصل أي خطأ
 
 function safeAddTerm(term){
-   const existingCodes = dictionary.map(t => t.code);
-   if(existingCodes.includes(term.code)){
-       console.warn("⚠️ الكود موجود مسبقاً:", term.code);
-       return false;
+   let existingCodes = dictionary.map(t => t.code);
+
+   let baseCode = term.code;
+   let counter = 1;
+
+   while(existingCodes.includes(term.code)){
+       term.code = baseCode + "-" + counter;
+       counter++;
    }
+
    dictionary.push(term);
-   console.log("✅ تم إضافة المصطلح:", term.code);
-   return true;
+   console.log("✅ تم إضافة:", term.code);
 }
+
 
 // =======================
 // إضافة الدفعة 50 مصطلح
