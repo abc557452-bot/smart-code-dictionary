@@ -1280,130 +1280,6 @@ keywords:["satellite","navigation","gps"],
   example_code:`# satellite position reading`
 }
 ];
-// المجالات المتاحة
-const fields = [
-"Programming",
-"Web Development",
-"Cyber Security",
-"Navigation",
-"Artificial Intelligence",
-"Networking"
-];
-
-// توليد مثال كود
-function getExampleCode(field,index){
-
-if(field==="Python"){
-return `# Example Python ${index}
-print("Hello Python ${index}")`
-}
-
-if(field==="JavaScript"){
-return `// Example JS ${index}
-console.log("Hello JS ${index}")`
-}
-
-if(field==="Cyber Security"){
-return `# security example ${index}
-print("Scanning system...")`
-}
-
-if(field==="Navigation"){
-return `# navigation example ${index}
-lat,lon = 29.37,47.98
-print(lat,lon)`
-}
-
-if(field==="Artificial Intelligence"){
-return `# AI example ${index}
-model = "neural network"
-print(model)`
-}
-
-return ""
-}
-
-
-// منع تكرار العناوين
-const existingTitles = dictionary.map(t => t.title);
-
-
-// توليد مصطلحات
-function generateTerms(num,startIndex){
-
-let count = 0
-let i = startIndex
-
-while(count < num){
-
-const field = fields[Math.floor(Math.random()*fields.length)]
-const title = `Term ${i}`
-
-if(existingTitles.includes(title)){
-i++
-continue
-}
-
-dictionary.push({
-
-code:`CODE-${i.toString().padStart(4,'0')}`,
-title:title,
-field:field,
-definition:`تعريف مصطلح رقم ${i} في مجال ${field}`,
-keywords:[field.toLowerCase(),"code","programming"],
-author:"badriah",
-year:2026,
-example_code:getExampleCode(field,i)
-
-})
-
-count++
-i++
-
-}
-
-}
-
-
-generateTerms(500,500)
-
-console.log("عدد المصطلحات في القاموس:",dictionary.length)
-
-// 👇👇 هنا تحطه
-const uniqueDictionary = [];
-const seenCodes = new Set();
-
-dictionary.forEach(item => {
-  if(item.code && !seenCodes.has(item.code)){
-    seenCodes.add(item.code);
-    uniqueDictionary.push(item);
-  }
-});
-
-console.log("بعد التنظيف:", uniqueDictionary.length);
-
-// =======================
-// الدفعة الآمنة الأخيرة 50 مصطلح
-// يمكن حذفها بسهولة إذا حصل أي خطأ
-
-function safeAddTerm(term){
-   let existingCodes = dictionary.map(t => t.code);
-
-   let baseCode = term.code;
-   let counter = 1;
-
-   while(existingCodes.includes(term.code)){
-       term.code = baseCode + "-" + counter;
-       counter++;
-   }
-
-   dictionary.push(term);
-   console.log("✅ تم إضافة:", term.code);
-}
-const newTerms = [ ... ];
-newTerms.forEach(term => safeAddTerm(term));
-
-// =======================
 // إضافة الدفعة 50 مصطلح
 const newTerms = [
 {
@@ -1623,4 +1499,127 @@ const newTerms = [
 // إضافة كل المصطلحات الجديدة بطريقة آمنة
 newTerms.forEach(term => safeAddTerm(term));
 
+
+
+// المجالات المتاحة
+const fields = [
+"Programming",
+"Web Development",
+"Cyber Security",
+"Navigation",
+"Artificial Intelligence",
+"Networking"
+];
+
+// توليد مثال كود
+function getExampleCode(field,index){
+
+if(field==="Python"){
+return `# Example Python ${index}
+print("Hello Python ${index}")`
+}
+
+if(field==="JavaScript"){
+return `// Example JS ${index}
+console.log("Hello JS ${index}")`
+}
+
+if(field==="Cyber Security"){
+return `# security example ${index}
+print("Scanning system...")`
+}
+
+if(field==="Navigation"){
+return `# navigation example ${index}
+lat,lon = 29.37,47.98
+print(lat,lon)`
+}
+
+if(field==="Artificial Intelligence"){
+return `# AI example ${index}
+model = "neural network"
+print(model)`
+}
+
+return ""
+}
+
+
+// منع تكرار العناوين
+const existingTitles = dictionary.map(t => t.title);
+
+
+// توليد مصطلحات
+function generateTerms(num,startIndex){
+
+let count = 0
+let i = startIndex
+
+while(count < num){
+
+const field = fields[Math.floor(Math.random()*fields.length)]
+const title = `Term ${i}`
+
+if(existingTitles.includes(title)){
+i++
+continue
+}
+
+dictionary.push({
+
+code:`CODE-${i.toString().padStart(4,'0')}`,
+title:title,
+field:field,
+definition:`تعريف مصطلح رقم ${i} في مجال ${field}`,
+keywords:[field.toLowerCase(),"code","programming"],
+author:"badriah",
+year:2026,
+example_code:getExampleCode(field,i)
+
+})
+
+count++
+i++
+
+}
+
+}
+
+
+generateTerms(500,500)
+
+console.log("عدد المصطلحات في القاموس:",dictionary.length)
+
+// 👇👇 هنا تحطه
+const uniqueDictionary = [];
+const seenCodes = new Set();
+
+dictionary.forEach(item => {
+  if(item.code && !seenCodes.has(item.code)){
+    seenCodes.add(item.code);
+    uniqueDictionary.push(item);
+  }
+});
+
+console.log("بعد التنظيف:", uniqueDictionary.length);
+
+// =======================
+// يمكن حذفها بسهولة إذا حصل أي خطأ
+
+function safeAddTerm(term){
+   let existingCodes = dictionary.map(t => t.code);
+
+   let baseCode = term.code;
+   let counter = 1;
+
+   while(existingCodes.includes(term.code)){
+       term.code = baseCode + "-" + counter;
+       counter++;
+   }
+
+   dictionary.push(term);
+   console.log("✅ تم إضافة:", term.code);
+}
+const newTerms = [ ... ];
+newTerms.forEach(term => safeAddTerm(term));
 
