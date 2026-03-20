@@ -1365,10 +1365,23 @@ i++
 }
 
 
-// توليد 500 مصطلح إضافي
 generateTerms(500,500)
 
 console.log("عدد المصطلحات في القاموس:",dictionary.length)
+
+// 👇👇 هنا تحطه
+const uniqueDictionary = [];
+const seenCodes = new Set();
+
+dictionary.forEach(item => {
+  if(item.code && !seenCodes.has(item.code)){
+    seenCodes.add(item.code);
+    uniqueDictionary.push(item);
+  }
+});
+
+console.log("بعد التنظيف:", uniqueDictionary.length);
+
 // =======================
 // الدفعة الآمنة الأخيرة 50 مصطلح
 // يمكن حذفها بسهولة إذا حصل أي خطأ
@@ -1387,7 +1400,8 @@ function safeAddTerm(term){
    dictionary.push(term);
    console.log("✅ تم إضافة:", term.code);
 }
-
+const newTerms = [ ... ];
+newTerms.forEach(term => safeAddTerm(term));
 
 // =======================
 // إضافة الدفعة 50 مصطلح
