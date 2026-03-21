@@ -1586,6 +1586,7 @@ dictionary.forEach(item => {
     uniqueDictionary.push(item);
   }
 });
-
+//
+dictionary=uniqueDictionary;
 console.log("بعد التنظيف:", uniqueDictionary.length);
 
