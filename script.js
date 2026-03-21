@@ -2,6 +2,9 @@
 const result = document.getElementById("results");
 const suggestionsBox = document.getElementById("suggestions");
 
+// ✅ إزالة التكرار
+let uniqueDictionary = [...new Map(dictionary.map(item => [item.code, item])).values()];
+
 // ======== البحث ========
 function searchTerm() {
 
@@ -11,10 +14,11 @@ function searchTerm() {
   if (input === "") {
     result.innerHTML = "";
     suggestionsBox.innerHTML = "";
+    document.getElementById("count").innerText = 0;
     return;
   }
 
-  {
+  for (let d of uniqueDictionary) {
     if (
       d.title.toLowerCase().includes(input) ||
       d.definition.toLowerCase().includes(input) ||
@@ -33,14 +37,22 @@ function searchTerm() {
             : ""
         }
         <hr>
-        <p style="font-size:14px;color:#888;">تم إعداده من قبل ${d.author} | ${d.year}</p>`;
+        <p style="font-size:14px;color:#888;">${d.author} | ${d.year}</p>`;
+
       suggestionsBox.innerHTML = "";
       found = true;
+
+      // ✅ تحديث العداد
+      document.getElementById("count").innerText = 1;
+
       break;
     }
   }
 
-  if (!found) result.innerHTML = '<p style="color:red;">لم يتم العثور على المصطلح</p>';
+  if (!found) {
+    result.innerHTML = '<p style="color:red;">لم يتم العثور على المصطلح</p>';
+    document.getElementById("count").innerText = 0;
+  }
 }
 
 
@@ -49,6 +61,7 @@ function clearSearch() {
   document.getElementById("searchInput").value = "";
   result.innerHTML = "";
   suggestionsBox.innerHTML = "";
+  document.getElementById("count").innerText = 0;
 }
 
 // ======== اقتراح الكلمات ========
@@ -65,18 +78,20 @@ function suggestWords() {
       suggestions += `<p style="cursor:pointer;padding:5px;margin:0" onclick="fillInput(${i})">${d.title}</p>`;
     }
   });
+
   suggestionsBox.innerHTML = suggestions;
 }
 
-// ======== ملء البحث عند اختيار الاقتراح ========
+// ======== ملء البحث ========
 function fillInput(index) {
-  document.getElementById("searchInput").value = uniqueDictionary[index].title;
+  document.getElementById("searchInput").value = dictionary[index].title;
   searchTerm();
 }
 
-// ======== عرض جميع المصطلحات ========
+// ======== عرض الكل ========
 function showAllTerms() {
   let output = "";
+
   for (let d of uniqueDictionary) {
     output += `
       <h3>${d.code}</h3>
@@ -92,13 +107,16 @@ function showAllTerms() {
       }
       <hr>`;
   }
+
   result.innerHTML = output;
   suggestionsBox.innerHTML = "";
-}
-//
-document.getElementById("count").innerText = uniqueDictionary.length;
 
-// ======== فلترة حسب المجال ========
+  // ✅ العداد
+  document.getElementById("count").innerText = uniqueDictionary.length;
+}
+
+
+// ======== فلترة ========
 function filterField(fieldName) {
   let output = "";
   let count = 0;
@@ -123,32 +141,28 @@ function filterField(fieldName) {
     }
   }
 
-  if (output === "") output = '<p style="color:red;">لا توجد مصطلحات في هذا المجال</p>';
+  if (output === "") output = '<p style="color:red;">لا توجد مصطلحات</p>';
 
   result.innerHTML = output;
   suggestionsBox.innerHTML = "";
 
-  // ✅ العداد الصحيح
+  // ✅ العداد
   document.getElementById("count").innerText = count;
 }
+
 
 // ======== تجربة الكود ========
 function tryExample(code, lang) {
   document.getElementById("testCode").value = code;
-  document.getElementById("codeLang").value = lang;
-  document.getElementById("output").innerText = "تم تحميل المثال. اضغط تشغيل الكود.";
-  document.getElementById("codeTester").scrollIntoView({ behavior: "smooth" });
 }
 
-// ======== نسخ الكود ========
+// ======== نسخ ========
 function copyCode(id) {
   const code = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(code).then(() => {
-    alert("تم نسخ الكود");
-  });
+  navigator.clipboard.writeText(code);
 }
 
-// ======== حماية النصوص ========
+// ======== حماية ========
 function escapeQuotes(text) {
   return text.replace(/"/g, '\\"').replace(/\n/g, "\\n");
 }
