@@ -1573,7 +1573,6 @@ i++
 
 generateTerms(500,500)
 
-console.log("عدد المصطلحات في القاموس:",uniqueDictionary.length)
 
 // 👇👇 هنا تحطه
 const uniqueDictionary = [];
