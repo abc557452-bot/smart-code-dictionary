@@ -1,173 +1,118 @@
-// ======== عناصر DOM ========
-const result = document.getElementById("results");
-const suggestionsBox = document.getElementById("suggestions");
+// ======== بيانات القاموس ========
+const dictionary = [
+    { code:"NAV-001", title:"Satellite Navigation", field:"Navigation", definition:"نظام الملاحة عبر الأقمار الصناعية", example_code:"# مثال Python\nprint('GPS')"},
+    { code:"AI-001", title:"Machine Learning", field:"Artificial Intelligence", definition:"تعلم الآلة لتدريب النماذج", example_code:"# مثال Python\nmodel.fit(X, y)"},
+    { code:"CY-001", title:"Malware", field:"Cyber Security", definition:"برمجيات خبيثة تهدد النظام", example_code:"// JavaScript\nconsole.log('Malware')"},
+    // أضف المزيد هنا حسب الحاجة
+];
 
-// ✅ إزالة التكرار
-let uniqueDictionary = [...new Map(dictionary.map(item => [item.code, item])).values()];
+// ======== عرض جميع المصطلحات ========
+function showAllTerms(){
+    const displayDiv = document.getElementById("termsList");
+    displayDiv.innerHTML = "";
+    dictionary.forEach(term=>{
+        const div = document.createElement("div");
+        div.className = "term";
+        div.innerHTML = `<h3>${term.title} (${term.code})</h3>
+                         <p><strong>المجال:</strong> ${term.field}</p>
+                         <p>${term.definition}</p>
+                         <pre>${term.example_code || ""}</pre>`;
+        displayDiv.appendChild(div);
+    });
+    document.getElementById("termCounter").innerText = "عدد المصطلحات: " + dictionary.length;
+}
+
+// ======== فلترة المجالات ========
+function filterField(fieldName){
+    const displayDiv = document.getElementById("termsList");
+    displayDiv.innerHTML = "";
+    const filtered = dictionary.filter(t => t.field === fieldName);
+    filtered.forEach(term=>{
+        const div = document.createElement("div");
+        div.className = "term";
+        div.innerHTML = `<h3>${term.title} (${term.code})</h3>
+                         <p><strong>المجال:</strong> ${term.field}</p>
+                         <p>${term.definition}</p>
+                         <pre>${term.example_code || ""}</pre>`;
+        displayDiv.appendChild(div);
+    });
+    document.getElementById("termCounter").innerText = "عدد المصطلحات: " + filtered.length;
+}
+
+// ======== تفعيل زر محدد ========
+function setActive(button){
+    document.querySelectorAll(".filter-box button").forEach(btn=>btn.classList.remove("active"));
+    button.classList.add("active");
+}
 
 // ======== البحث ========
-function searchTerm() {
-
-  let input = document.getElementById("searchInput").value.toLowerCase();
-  let found = false;
-
-  if (input === "") {
-    result.innerHTML = "";
-    suggestionsBox.innerHTML = "";
-    document.getElementById("count").innerText = 0;
-    return;
-  }
-
-  for (let d of uniqueDictionary) {
-    if (
-      d.title.toLowerCase().includes(input) ||
-      d.definition.toLowerCase().includes(input) ||
-      d.field.toLowerCase().includes(input)
-    ) {
-      result.innerHTML = `
-        <h3>${d.code}</h3>
-        <h2>${d.title}</h2>
-        <p><b>المجال:</b> ${d.field}</p>
-        <p>${d.definition}</p>
-        ${
-          d.example_code
-            ? `<pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
-        <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
-        <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>`
-            : ""
-        }
-        <hr>
-        <p style="font-size:14px;color:#888;">${d.author} | ${d.year}</p>`;
-
-      suggestionsBox.innerHTML = "";
-      found = true;
-      updateCount(1);
-      updateCount(0);
-
-      // ✅ تحديث العداد
-      document.getElementById("count").innerText = 1;
-
-      break;
-    }
-  }
-
-  if (!found) {
-    result.innerHTML = '<p style="color:red;">لم يتم العثور على المصطلح</p>';
-    document.getElementById("count").innerText = 0;
-  }
+function searchTerm(){
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const displayDiv = document.getElementById("termsList");
+    displayDiv.innerHTML = "";
+    const filtered = dictionary.filter(t => t.title.toLowerCase().includes(input) || t.code.toLowerCase().includes(input));
+    filtered.forEach(term=>{
+        const div = document.createElement("div");
+        div.className = "term";
+        div.innerHTML = `<h3>${term.title} (${term.code})</h3>
+                         <p><strong>المجال:</strong> ${term.field}</p>
+                         <p>${term.definition}</p>
+                         <pre>${term.example_code || ""}</pre>`;
+        displayDiv.appendChild(div);
+    });
+    document.getElementById("termCounter").innerText = "عدد المصطلحات: " + filtered.length;
 }
-
 
 // ======== مسح البحث ========
-function clearSearch() {
-  document.getElementById("searchInput").value = "";
-  result.innerHTML = "";
-  suggestionsBox.innerHTML = "";
-  document.getElementById("count").innerText = 0;
-}
-
-// ======== اقتراح الكلمات ========
-function suggestWords() {
-  let input = document.getElementById("searchInput").value.toLowerCase();
-  if (input === "") {
-    suggestionsBox.innerHTML = "";
-    return;
-  }
-
-  let suggestions = "";
-  dictionary.forEach((d, i) => {
-    if (d.title.toLowerCase().startsWith(input)) {
-      suggestions += `<p style="cursor:pointer;padding:5px;margin:0" onclick="fillInput(${i})">${d.title}</p>`;
-    }
-  });
-
-  suggestionsBox.innerHTML = suggestions;
-}
-
-// ======== ملء البحث ========
-function fillInput(index) {
-  document.getElementById("searchInput").value = dictionary[index].title;
-  searchTerm();
-}
-
-// ======== عرض الكل ========
-function showAllTerms() {
-  let output = "";
-
-  for (let d of uniqueDictionary) {
-    output += `
-      <h3>${d.code}</h3>
-      <h2>${d.title}</h2>
-      <p><b>المجال:</b> ${d.field}</p>
-      <p>${d.definition}</p>
-      ${
-        d.example_code
-          ? `<pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
-      <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
-      <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>`
-          : ""
-      }
-      <hr>`;
-  }
-
-  result.innerHTML = output;
-  suggestionsBox.innerHTML = "";
-updateCount(uniqueDictionary.length);
-
-  // ✅ العداد
- function updateCount(number){
-  document.getElementById("count").innerText = number;
-}
-
-  document.getElementById("count").innerText = uniqueDictionary.length;
-}
-
-
-// ======== فلترة ========
-function filterField(fieldName) {
-  let output = "";
-  let filtered = [];
-
-  for (let d of uniqueDictionary) {
-    if (d.field === fieldName) {
-      filtered.push(d);
-      output += `
-        <h3>${d.code}</h3>
-        <h2>${d.title}</h2>
-        <p><b>المجال:</b> ${d.field}</p>
-        <p>${d.definition}</p>
-        <hr>`;
-    }
-  }
-
-  if (output === "") output = '<p style="color:red;">لا توجد مصطلحات</p>';
-
-  result.innerHTML = output;
-  suggestionsBox.innerHTML = "";
-
-  // ✅ تحديث العداد
-  updateCount(filtered.length);
+function clearSearch(){
+    document.getElementById("searchInput").value = "";
+    showAllTerms();
 }
 
 // ======== تجربة الكود ========
-function tryExample(code, lang) {
-  document.getElementById("testCode").value = code;
+let pyodide = null;
+async function loadPyodideAndPackages(){
+    document.getElementById("output").innerText = "جاري تحميل Python...";
+    pyodide = await loadPyodide();
+    document.getElementById("output").innerText = "Python جاهز للتجربة";
 }
+loadPyodideAndPackages();
 
-// ======== نسخ ========
-function copyCode(id) {
-  const code = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(code);
-}
+document.getElementById("runCode").addEventListener("click", async ()=>{
+    const code = document.getElementById("testCode").value;
+    const lang = document.getElementById("codeLang").value;
+    const output = document.getElementById("output");
+    output.innerText = "";
 
-// ======== حماية ========
-function escapeQuotes(text) {
-  return text.replace(/"/g, '\\"').replace(/\n/g, "\\n");
-}
-function escapeHTML(text) {
-  return text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
+    if(lang==="js"){
+        try{
+            const result = eval(code);
+            output.innerText = (result !== undefined) ? result : "تم التنفيذ بنجاح";
+        }catch(err){ output.innerText = "خطأ: " + err.message; }
+    }
 
-window.onload = function(){
-  updateCount(uniqueDictionary.length);
-};
+    if(lang==="py"){
+        if(!pyodide){ output.innerText="Python مازال يحمل..."; return; }
+        try{
+            pyodide.runPython(`import sys\nfrom io import StringIO\nsys.stdout=StringIO()`);
+            await pyodide.runPythonAsync(code);
+            const result = pyodide.runPython("sys.stdout.getvalue()");
+            output.innerText = result.trim() === "" ? "تم التنفيذ بدون مخرجات" : result;
+        }catch(err){ output.innerText = "خطأ: "+err; }
+    }
+});
+
+document.getElementById("clearCode").addEventListener("click", ()=>{
+    document.getElementById("testCode").value="";
+    document.getElementById("output").innerText="";
+});
+
+document.getElementById("copyCode").addEventListener("click", ()=>{
+    const code = document.getElementById("testCode");
+    code.select();
+    document.execCommand("copy");
+    alert("تم نسخ الكود");
+});
+
+// ======== عرض كل المصطلحات عند تحميل الصفحة ========
+window.onload = showAllTerms;
