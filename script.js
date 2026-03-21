@@ -14,7 +14,7 @@ function searchTerm() {
     return;
   }
 
-  for (let d of uniqueDictionary) {
+  {
     if (
       d.title.toLowerCase().includes(input) ||
       d.definition.toLowerCase().includes(input) ||
@@ -95,12 +95,18 @@ function showAllTerms() {
   result.innerHTML = output;
   suggestionsBox.innerHTML = "";
 }
+//
+document.getElementById("count").innerText = uniqueDictionary.length;
 
 // ======== فلترة حسب المجال ========
 function filterField(fieldName) {
   let output = "";
+  let count = 0;
+
   for (let d of uniqueDictionary) {
     if (d.field === fieldName) {
+      count++;
+
       output += `
         <h3>${d.code}</h3>
         <h2>${d.title}</h2>
@@ -116,12 +122,15 @@ function filterField(fieldName) {
         <hr>`;
     }
   }
+
   if (output === "") output = '<p style="color:red;">لا توجد مصطلحات في هذا المجال</p>';
+
   result.innerHTML = output;
   suggestionsBox.innerHTML = "";
+
+  // ✅ العداد الصحيح
+  document.getElementById("count").innerText = count;
 }
- // ✅ هنا العداد يتغير حسب الفلتر
-  document.getElementById("count").innerText = filtered.length;
 
 // ======== تجربة الكود ========
 function tryExample(code, lang) {
