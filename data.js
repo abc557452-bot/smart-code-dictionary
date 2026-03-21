@@ -1571,13 +1571,10 @@ i++
 }
 
 
-generateTerms(500,500)
-
 
 // 👇👇 هنا تحطه
 const uniqueDictionary = [];
 const seenCodes = new Set();
-
 dictionary.forEach(item => {
   if(item.code && !seenCodes.has(item.code)){
     seenCodes.add(item.code);
@@ -1589,3 +1586,4 @@ dictionary = uniqueDictionary;
 
 // 👇 حطه هنا بالضبط
 console.log("عدد النهائي:", dictionary.length);
+generateTerms(500,500)
