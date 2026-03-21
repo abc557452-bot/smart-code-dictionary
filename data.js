@@ -1,4 +1,4 @@
-const Dictionary =[
+const uniqueDictionary =[
 
 {code:"SC-PR-001", title:"Python", field:"Programming", definition:"لغة برمجة عالية المستوى تستخدم في تطوير التطبيقات والذكاء الاصطناعي.", keywords:["python","programming","coding","ai"], author:"badriah", year:"2026", example_code:`print("Hello World")`},
 {code:"SC-PR-002", title:"Algorithm", field:"Programming", definition:"مجموعة خطوات منطقية تستخدم لحل مشكلة برمجية.", keywords:["algorithm","logic","steps"], author:"badriah", year:"2026", example_code:`def factorial(n): return 1 if n==0 else n*factorial(n-1)`},
