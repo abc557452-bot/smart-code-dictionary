@@ -41,6 +41,8 @@ function searchTerm() {
 
       suggestionsBox.innerHTML = "";
       found = true;
+      updateCount(1);
+      updateCount(0);
 
       // ✅ تحديث العداد
       document.getElementById("count").innerText = 1;
@@ -110,8 +112,13 @@ function showAllTerms() {
 
   result.innerHTML = output;
   suggestionsBox.innerHTML = "";
+updateCount(uniqueDictionary.length);
 
   // ✅ العداد
+ function updateCount(number){
+  document.getElementById("count").innerText = number;
+}
+
   document.getElementById("count").innerText = uniqueDictionary.length;
 }
 
@@ -119,24 +126,16 @@ function showAllTerms() {
 // ======== فلترة ========
 function filterField(fieldName) {
   let output = "";
-  let count = 0;
+  let filtered = [];
 
   for (let d of uniqueDictionary) {
     if (d.field === fieldName) {
-      count++;
-
+      filtered.push(d);
       output += `
         <h3>${d.code}</h3>
         <h2>${d.title}</h2>
         <p><b>المجال:</b> ${d.field}</p>
         <p>${d.definition}</p>
-        ${
-          d.example_code
-            ? `<pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
-        <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
-        <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>`
-            : ""
-        }
         <hr>`;
     }
   }
@@ -146,10 +145,9 @@ function filterField(fieldName) {
   result.innerHTML = output;
   suggestionsBox.innerHTML = "";
 
-  // ✅ العداد
-  document.getElementById("count").innerText = count;
+  // ✅ تحديث العداد
+  updateCount(filtered.length);
 }
-
 
 // ======== تجربة الكود ========
 function tryExample(code, lang) {
@@ -170,3 +168,6 @@ function escapeHTML(text) {
   return text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
+window.onload = function(){
+  updateCount(uniqueDictionary.length);
+};
