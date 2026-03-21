@@ -541,7 +541,6 @@ print(track)`
   field:"Navigation",
   definition:"قياس عمق المياه باستخدام الموجات الصوتية.",
   keywords:["echo sounding","navigation","depth"],
-  keywords:["satellite","navigation","gps"],
   author:"badriah",
   year:"2026",
   example_code:`# echo sounding reading`
@@ -1586,7 +1585,8 @@ dictionary.forEach(item => {
     uniqueDictionary.push(item);
   }
 });
-//
-dictionary=uniqueDictionary;
-console.log("بعد التنظيف:", uniqueDictionary.length);
 
+dictionary = uniqueDictionary;
+
+// 👇 حطه هنا بالضبط
+console.log("عدد النهائي:", dictionary.length);
