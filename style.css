@@ -1,83 +1,57 @@
 
-
-const result = document.getElementById("results");
-const suggestionsBox = document.getElementById("suggestions");
-const termCounter = document.getElementById("termCounter");
-
-// بحث
-function searchTerm() {
-  const input = document.getElementById("searchInput").value.toLowerCase();
-
-  if (!input) {
-    result.innerHTML = "";
-    termCounter.innerText = "";
-    return;
-  }
-
-  for (let d of dictionary) {
-    if (d.title.toLowerCase().includes(input)) {
-      result.innerHTML = `
-        <h3>${d.code}</h3>
-        <h2>${d.title}</h2>
-        <p>${d.definition}</p>
-      `;
-      termCounter.innerText = "تم العثور";
-      return;
-    }
-  }
-
-  result.innerHTML = "لا يوجد";
+body {
+  font-family: Arial;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color: white;
+  text-align: center;
+  margin: 0;
 }
 
-// عرض الكل
-function showAllTerms() {
-  let out = "";
-  dictionary.forEach(d => {
-    out += `<h3>${d.title}</h3><hr>`;
-  });
-  result.innerHTML = out;
-  termCounter.innerText = dictionary.length;
+.container {
+  margin-top: 80px;
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
 }
 
-// فلترة
-function filterField(field) {
-  let out = "";
-  let count = 0;
-
-  dictionary.forEach(d => {
-    if (d.field === field) {
-      out += `<h3>${d.title}</h3><hr>`;
-      count++;
-    }
-  });
-
-  result.innerHTML = out;
-  termCounter.innerText = count;
+.search-box input {
+  padding: 8px;
+  width: 200px;
 }
 
-// مسح
-function clearSearch() {
-  document.getElementById("searchInput").value = "";
-  result.innerHTML = "";
+button {
+  margin: 5px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-// اقتراح
-function suggestWords() {
-  const input = document.getElementById("searchInput").value.toLowerCase();
-  let sug = "";
-
-  dictionary.forEach((d,i) => {
-    if (d.title.toLowerCase().startsWith(input)) {
-      sug += `<p onclick="fillInput(${i})">${d.title}</p>`;
-    }
-  });
-
-  suggestionsBox.innerHTML = sug;
+#results {
+  margin-top: 20px;
+  background: white;
+  color: black;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: left;
 }
 
-function fillInput(i) {
-  document.getElementById("searchInput").value = dictionary[i].title;
-  searchTerm();
+.filter-box {
+  margin-top: 15px;
+}
+
+#suggestions {
+  background: white;
+  color: black;
+  width: 200px;
+  margin: auto;
+  text-align: left;
+}
+
+pre {
+  background:#f4f4f4;
+  padding:10px;
+  border:1px solid #ccc;
 }
 
 
