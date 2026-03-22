@@ -6,44 +6,55 @@ const termCounter = document.getElementById("termCounter");
 // ======== البحث ========
 function searchTerm() {
   const input = document.getElementById("searchInput").value.toLowerCase();
-  if (!input) {
+
+  if (input === "") {
     result.innerHTML = "";
     suggestionsBox.innerHTML = "";
     termCounter.innerText = "";
     return;
   }
 
-  const filtered = dictionary.filter(d =>
-    d.title.toLowerCase().includes(input) ||
-    d.definition.toLowerCase().includes(input) ||
-    d.field.toLowerCase().includes(input)
-  );
+  let found = false;
 
-  if (filtered.length > 0) {
-    let output = "";
-    filtered.forEach(d => {
-      output += `
+  for (let d of dictionary) {
+    if (
+      d.title.toLowerCase().includes(input) ||
+      d.definition.toLowerCase().includes(input) ||
+      d.field.toLowerCase().includes(input)
+    ) {
+
+      result.innerHTML = `
         <h3>${d.code}</h3>
         <h2>${d.title}</h2>
         <p><b>المجال:</b> ${d.field}</p>
         <p>${d.definition}</p>
-        ${d.example_code ? `<pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
-        <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
-        <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>` : ""}
+
+        ${d.example_code ? `
+          <pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
+          <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
+          <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>
+        ` : ""}
+
         <hr>
-        <p style="font-size:14px;color:#888;">تم إعداده من قبل ${d.author} | ${d.year}</p>`;
-    });
-    result.innerHTML = output;
-    termCounter.innerText = `عدد النتائج: ${filtered.length}`;
-    suggestionsBox.innerHTML = "";
-  } else {
+        <p style="font-size:14px;color:#888;">
+          ${d.author || ""} | ${d.year || ""}
+        </p>
+      `;
+
+      termCounter.innerText = "تم العثور على نتيجة";
+      suggestionsBox.innerHTML = "";
+      found = true;
+      break;
+    }
+  }
+
+  if (!found) {
     result.innerHTML = '<p style="color:red;">لم يتم العثور على المصطلح</p>';
-    termCounter.innerText = "عدد النتائج: 0";
-    suggestionsBox.innerHTML = "";
+    termCounter.innerText = "";
   }
 }
 
-// ======== مسح البحث ========
+// ======== مسح ========
 function clearSearch() {
   document.getElementById("searchInput").value = "";
   result.innerHTML = "";
@@ -51,7 +62,63 @@ function clearSearch() {
   termCounter.innerText = "";
 }
 
-// ======== اقتراح الكلمات ========
+// ======== عرض الكل ========
+function showAllTerms() {
+  let output = "";
+
+  for (let d of dictionary) {
+    output += `
+      <h3>${d.code}</h3>
+      <h2>${d.title}</h2>
+      <p><b>المجال:</b> ${d.field}</p>
+      <p>${d.definition}</p>
+
+      ${d.example_code ? `
+        <pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
+        <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
+        <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>
+      ` : ""}
+
+      <hr>
+    `;
+  }
+
+  result.innerHTML = output;
+  termCounter.innerText = `عدد المصطلحات: ${dictionary.length}`;
+  suggestionsBox.innerHTML = "";
+}
+
+// ======== فلترة ========
+function filterField(fieldName) {
+  let output = "";
+  let count = 0;
+
+  for (let d of dictionary) {
+    if (d.field === fieldName) {
+      output += `
+        <h3>${d.code}</h3>
+        <h2>${d.title}</h2>
+        <p><b>المجال:</b> ${d.field}</p>
+        <p>${d.definition}</p>
+
+        ${d.example_code ? `
+          <pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
+          <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
+          <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>
+        ` : ""}
+
+        <hr>
+      `;
+      count++;
+    }
+  }
+
+  result.innerHTML = output || '<p style="color:red;">لا توجد مصطلحات</p>';
+  termCounter.innerText = count > 0 ? `عدد النتائج: ${count}` : "";
+  suggestionsBox.innerHTML = "";
+}
+
+// ======== اقتراح ========
 function suggestWords() {
   const input = document.getElementById("searchInput").value.toLowerCase();
   if (!input) {
@@ -62,89 +129,37 @@ function suggestWords() {
   let suggestions = "";
   dictionary.forEach((d, i) => {
     if (d.title.toLowerCase().startsWith(input)) {
-      suggestions += `<p style="cursor:pointer;padding:5px;margin:0" onclick="fillInput(${i})">${d.title}</p>`;
+      suggestions += `<p onclick="fillInput(${i})">${d.title}</p>`;
     }
   });
+
   suggestionsBox.innerHTML = suggestions;
 }
 
-// ======== ملء البحث عند اختيار الاقتراح ========
-function fillInput(index) {
-  document.getElementById("searchInput").value = dictionary[index].title;
+function fillInput(i) {
+  document.getElementById("searchInput").value = dictionary[i].title;
   searchTerm();
 }
 
-// ======== عرض جميع المصطلحات ========
-function showAllTerms() {
-  let output = "";
-  dictionary.forEach(d => {
-    output += `
-      <h3>${d.code}</h3>
-      <h2>${d.title}</h2>
-      <p><b>المجال:</b> ${d.field}</p>
-      <p>${d.definition}</p>
-      ${d.example_code ? `<pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
-      <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
-      <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>` : ""}
-      <hr>
-      <p style="font-size:14px;color:#888;">تم إعداده من قبل ${d.author} | ${d.year}</p>`;
-  });
-  result.innerHTML = output;
-  termCounter.innerText = `عدد المصطلحات: ${dictionary.length}`;
-  suggestionsBox.innerHTML = "";
+// ======== نسخ ========
+function copyCode(id) {
+  const code = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(code);
+  alert("تم النسخ");
 }
 
-// ======== فلترة حسب المجال ========
-function filterField(fieldName) {
-  const filtered = dictionary.filter(d => d.field === fieldName);
-  if (filtered.length === 0) {
-    result.innerHTML = '<p style="color:red;">لا توجد مصطلحات في هذا المجال</p>';
-    termCounter.innerText = "عدد النتائج: 0";
-    suggestionsBox.innerHTML = "";
-    return;
-  }
-
-  let output = "";
-  filtered.forEach(d => {
-    output += `
-      <h3>${d.code}</h3>
-      <h2>${d.title}</h2>
-      <p><b>المجال:</b> ${d.field}</p>
-      <p>${d.definition}</p>
-      ${d.example_code ? `<pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
-      <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
-      <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>` : ""}
-      <hr>
-      <p style="font-size:14px;color:#888;">تم إعداده من قبل ${d.author} | ${d.year}</p>`;
-  });
-  result.innerHTML = output;
-  termCounter.innerText = `عدد النتائج: ${filtered.length}`;
-  suggestionsBox.innerHTML = "";
-}
-
-// ======== تجربة الكود ========
+// ======== تجربة ========
 function tryExample(code, lang) {
   document.getElementById("testCode").value = code;
   document.getElementById("codeLang").value = lang;
-  document.getElementById("output").innerText = "تم تحميل المثال. اضغط تشغيل الكود.";
-  document.getElementById("codeTester").scrollIntoView({ behavior: "smooth" });
 }
 
-// ======== نسخ الكود ========
-function copyCode(id) {
-  const code = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(code).then(() => {
-    alert("تم نسخ الكود");
-  });
-}
-
-// ======== حماية النصوص ========
+// ======== حماية ========
 function escapeQuotes(text) {
   return text.replace(/"/g, '\\"').replace(/\n/g, "\\n");
 }
+
 function escapeHTML(text) {
   return text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-// ======== تشغيل عرض كل المصطلحات عند تحميل الصفحة ========
-window.onload = showAllTerms;
