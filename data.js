@@ -1565,9 +1565,7 @@ function generateTerms(num,startIndex){
 }
 
 // ======== استبدال القاموس الأصلي بالقاموس الفريد + توليد المصطلحات الجديدة ========
-dictionary = uniqueDictionary;
 generateTerms(500,500);
 
-// ======== التحقق من العدد النهائي ========
 console.log("عدد النهائي:", dictionary.length);
 
