@@ -1,139 +1,78 @@
-// ======== عناصر DOM ========
+
+
 const result = document.getElementById("results");
 const suggestionsBox = document.getElementById("suggestions");
 const termCounter = document.getElementById("termCounter");
 
-// ======== البحث ========
+// بحث
 function searchTerm() {
   const input = document.getElementById("searchInput").value.toLowerCase();
 
-  if (input === "") {
+  if (!input) {
     result.innerHTML = "";
-    suggestionsBox.innerHTML = "";
     termCounter.innerText = "";
     return;
   }
 
-  let found = false;
-
   for (let d of dictionary) {
-    if (
-      d.title.toLowerCase().includes(input) ||
-      d.definition.toLowerCase().includes(input) ||
-      d.field.toLowerCase().includes(input)
-    ) {
-
+    if (d.title.toLowerCase().includes(input)) {
       result.innerHTML = `
         <h3>${d.code}</h3>
         <h2>${d.title}</h2>
-        <p><b>المجال:</b> ${d.field}</p>
         <p>${d.definition}</p>
-
-        ${d.example_code ? `
-          <pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
-          <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
-          <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>
-        ` : ""}
-
-        <hr>
-        <p style="font-size:14px;color:#888;">
-          ${d.author || ""} | ${d.year || ""}
-        </p>
       `;
-
-      termCounter.innerText = "تم العثور على نتيجة";
-      suggestionsBox.innerHTML = "";
-      found = true;
-      break;
+      termCounter.innerText = "تم العثور";
+      return;
     }
   }
 
-  if (!found) {
-    result.innerHTML = '<p style="color:red;">لم يتم العثور على المصطلح</p>';
-    termCounter.innerText = "";
-  }
+  result.innerHTML = "لا يوجد";
 }
 
-// ======== مسح ========
-function clearSearch() {
-  document.getElementById("searchInput").value = "";
-  result.innerHTML = "";
-  suggestionsBox.innerHTML = "";
-  termCounter.innerText = "";
-}
-
-// ======== عرض الكل ========
+// عرض الكل
 function showAllTerms() {
-  let output = "";
-
-  for (let d of dictionary) {
-    output += `
-      <h3>${d.code}</h3>
-      <h2>${d.title}</h2>
-      <p><b>المجال:</b> ${d.field}</p>
-      <p>${d.definition}</p>
-
-      ${d.example_code ? `
-        <pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
-        <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
-        <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>
-      ` : ""}
-
-      <hr>
-    `;
-  }
-
-  result.innerHTML = output;
-  termCounter.innerText = `عدد المصطلحات: ${dictionary.length}`;
-  suggestionsBox.innerHTML = "";
+  let out = "";
+  dictionary.forEach(d => {
+    out += `<h3>${d.title}</h3><hr>`;
+  });
+  result.innerHTML = out;
+  termCounter.innerText = dictionary.length;
 }
 
-// ======== فلترة ========
-function filterField(fieldName) {
-  let output = "";
+// فلترة
+function filterField(field) {
+  let out = "";
   let count = 0;
 
-  for (let d of dictionary) {
-    if (d.field === fieldName) {
-      output += `
-        <h3>${d.code}</h3>
-        <h2>${d.title}</h2>
-        <p><b>المجال:</b> ${d.field}</p>
-        <p>${d.definition}</p>
-
-        ${d.example_code ? `
-          <pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
-          <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
-          <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>
-        ` : ""}
-
-        <hr>
-      `;
+  dictionary.forEach(d => {
+    if (d.field === field) {
+      out += `<h3>${d.title}</h3><hr>`;
       count++;
-    }
-  }
-
-  result.innerHTML = output || '<p style="color:red;">لا توجد مصطلحات</p>';
-  termCounter.innerText = count > 0 ? `عدد النتائج: ${count}` : "";
-  suggestionsBox.innerHTML = "";
-}
-
-// ======== اقتراح ========
-function suggestWords() {
-  const input = document.getElementById("searchInput").value.toLowerCase();
-  if (!input) {
-    suggestionsBox.innerHTML = "";
-    return;
-  }
-
-  let suggestions = "";
-  dictionary.forEach((d, i) => {
-    if (d.title.toLowerCase().startsWith(input)) {
-      suggestions += `<p onclick="fillInput(${i})">${d.title}</p>`;
     }
   });
 
-  suggestionsBox.innerHTML = suggestions;
+  result.innerHTML = out;
+  termCounter.innerText = count;
+}
+
+// مسح
+function clearSearch() {
+  document.getElementById("searchInput").value = "";
+  result.innerHTML = "";
+}
+
+// اقتراح
+function suggestWords() {
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  let sug = "";
+
+  dictionary.forEach((d,i) => {
+    if (d.title.toLowerCase().startsWith(input)) {
+      sug += `<p onclick="fillInput(${i})">${d.title}</p>`;
+    }
+  });
+
+  suggestionsBox.innerHTML = sug;
 }
 
 function fillInput(i) {
@@ -141,25 +80,6 @@ function fillInput(i) {
   searchTerm();
 }
 
-// ======== نسخ ========
-function copyCode(id) {
-  const code = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(code);
-  alert("تم النسخ");
-}
 
-// ======== تجربة ========
-function tryExample(code, lang) {
-  document.getElementById("testCode").value = code;
-  document.getElementById("codeLang").value = lang;
-}
 
-// ======== حماية ========
-function escapeQuotes(text) {
-  return text.replace(/"/g, '\\"').replace(/\n/g, "\\n");
-}
-
-function escapeHTML(text) {
-  return text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
 
