@@ -1,4 +1,4 @@
-const uniqueDictionary =[
+const dictionary =[
 
 {code:"SC-PR-001", title:"Python", field:"Programming", definition:"لغة برمجة عالية المستوى تستخدم في تطوير التطبيقات والذكاء الاصطناعي.", keywords:["python","programming","coding","ai"], author:"badriah", year:"2026", example_code:`print("Hello World")`},
 {code:"SC-PR-002", title:"Algorithm", field:"Programming", definition:"مجموعة خطوات منطقية تستخدم لحل مشكلة برمجية.", keywords:["algorithm","logic","steps"], author:"badriah", year:"2026", example_code:`def factorial(n): return 1 if n==0 else n*factorial(n-1)`},
@@ -1486,95 +1486,21 @@ keywords:["satellite","navigation","gps"],
 ];
 
 
-// المجالات المتاحة
+// ======== المجالات المتاحة ========
 const fields = [
-"Programming",
-"Web Development",
-"Cyber Security",
-"Navigation",
-"Artificial Intelligence",
-"Networking"
+  "Programming",
+  "Web Development",
+  "Cyber Security",
+  "Navigation",
+  "Artificial Intelligence",
+  "Networking"
 ];
 
-// توليد مثال كود
-function getExampleCode(field,index){
-
-if(field==="Python"){
-return `# Example Python ${index}
-print("Hello Python ${index}")`
-}
-
-if(field==="JavaScript"){
-return `// Example JS ${index}
-console.log("Hello JS ${index}")`
-}
-
-if(field==="Cyber Security"){
-return `# security example ${index}
-print("Scanning system...")`
-}
-
-if(field==="Navigation"){
-return `# navigation example ${index}
-lat,lon = 29.37,47.98
-print(lat,lon)`
-}
-
-if(field==="Artificial Intelligence"){
-return `# AI example ${index}
-model = "neural network"
-print(model)`
-}
-
-return ""
-}
-
-
-// منع تكرار العناوين
-const existingTitles = uniqueDictionary.map(t => t.title);
-
-
-// توليد مصطلحات
-function generateTerms(num,startIndex){
-
-let count = 0
-let i = startIndex
-
-while(count < num){
-
-const field = fields[Math.floor(Math.random()*fields.length)]
-const title = `Term ${i}`
-
-if(existingTitles.includes(title)){
-i++
-continue
-}
-
-uniqueDictionary.push({
-
-code:`CODE-${i.toString().padStart(4,'0')}`,
-title:title,
-field:field,
-definition:`تعريف مصطلح رقم ${i} في مجال ${field}`,
-keywords:[field.toLowerCase(),"code","programming"],
-author:"badriah",
-year:2026,
-example_code:getExampleCode(field,i)
-
-})
-
-count++
-i++
-
-}
-
-}
-
-
-
-// 👇👇 هنا تحطه
+// ======== القاموس الفريد ========
 const uniqueDictionary = [];
 const seenCodes = new Set();
+
+// نسخ المصطلحات الأصلية بدون تكرار
 dictionary.forEach(item => {
   if(item.code && !seenCodes.has(item.code)){
     seenCodes.add(item.code);
@@ -1582,8 +1508,66 @@ dictionary.forEach(item => {
   }
 });
 
-dictionary = uniqueDictionary;
+// ======== قائمة العناوين لمنع التكرار ========
+const existingTitles = uniqueDictionary.map(t => t.title);
 
-// 👇 حطه هنا بالضبط
+// ======== توليد مثال كود ========
+function getExampleCode(field,index){
+  if(field==="Python"){
+    return `# Example Python ${index}\nprint("Hello Python ${index}")`;
+  }
+  if(field==="JavaScript"){
+    return `// Example JS ${index}\nconsole.log("Hello JS ${index}")`;
+  }
+  if(field==="Cyber Security"){
+    return `# security example ${index}\nprint("Scanning system...")`;
+  }
+  if(field==="Navigation"){
+    return `# navigation example ${index}\nlat,lon = 29.37,47.98\nprint(lat,lon)`;
+  }
+  if(field==="Artificial Intelligence"){
+    return `# AI example ${index}\nmodel = "neural network"\nprint(model)`;
+  }
+  return "";
+}
+
+// ======== توليد مصطلحات جديدة ========
+function generateTerms(num,startIndex){
+  let count = 0;
+  let i = startIndex;
+
+  while(count < num){
+    const field = fields[Math.floor(Math.random()*fields.length)];
+    const title = `Term ${i}`;
+
+    if(existingTitles.includes(title)){
+      i++;
+      continue;
+    }
+
+    uniqueDictionary.push({
+      code:`CODE-${i.toString().padStart(4,'0')}`,
+      title:title,
+      field:field,
+      definition:`تعريف مصطلح رقم ${i} في مجال ${field}`,
+      keywords:[field.toLowerCase(),"code","programming"],
+      author:"badriah",
+      year:2026,
+      example_code:getExampleCode(field,i)
+    });
+
+    // أضف العنوان لقائمة existingTitles لمنع التكرار
+    existingTitles.push(title);
+
+    count++;
+    i++;
+  }
+}
+
+// ======== استبدال القاموس الأصلي بالقاموس الفريد + توليد المصطلحات الجديدة ========
+dictionary = uniqueDictionary;
+generateTerms(500,500);
+
+// ======== التحقق من العدد النهائي ========
 console.log("عدد النهائي:", dictionary.length);
-generateTerms(500,500)
+
