@@ -1473,6 +1473,29 @@ keywords:["satellite","navigation","gps"],
  year:2026,
  example_code:"# Python\nsecure_boot_check()"
 },
+  code: "NAV-202",
+    title: "GPS Basics",
+    field: "Navigation",
+    definition: "مبادئ أساسية لتحديد الموقع باستخدام GPS.",
+    author: "Badriah",
+    year: 2026,
+    example_code: `# مثال بايثون
+import gps
+gps.get_location()`
+  },
+  {
+    code: "AI-102",
+    title: "Deep Learning",
+    field: "Artificial Intelligence",
+    definition: "شبكات عصبية عميقة لمعالجة البيانات المعقدة.",
+    author: "Badriah",
+    year: 2026,
+    example_code: `# مثال بايثون
+import tensorflow as tf
+model = tf.keras.Sequential()`
+  },
+
+
 {
   code:"SC-CY-050",
  title:"Two-Factor Authentication",
