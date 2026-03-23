@@ -50,6 +50,326 @@ const dictionary =[
 {code:"SC-PR-048", title:"Cookie", field:"Cyber Security", definition:"ملف صغير يخزن بيانات المستخدم على جهازه.", keywords:["cookie","session","security"], author:"badriah", year:"2026", example_code:`document.cookie = "user=ahmed"`},
 {code:"SC-PR-049", title:"Local Storage", field:"Web Development", definition:"آلية لتخزين البيانات على متصفح المستخدم بشكل مؤقت.", keywords:["local storage","web","data"], author:"badriah", year:"2026", example_code:`localStorage.setItem("user","ahmed")`},
 {code:"SC-PR-050", title:"Responsive Design", field:"Web Development", definition:"تصميم صفحات ويب تتكيف مع جميع الأجهزة.", keywords:["responsive","web","design"], author:"badriah", year:"2026", example_code:`@media (max-width: 600px) { body { font-size: 14px; } }`},
+{
+code:"SC-CY-051",
+title:"Zero Day",
+field:"Cyber Security",
+definition:"ثغرة أمنية غير معروفة للمطورين ويتم استغلالها قبل إصلاحها.",
+keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
+},
+  
+{
+code:"SC-CY-052",
+title:"Brute Force Attack",
+field:"Cyber Security",
+definition:"محاولة اختراق تعتمد على تجربة جميع كلمات المرور الممكنة حتى يتم العثور على الصحيحة.",
+keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
+},
+
+{
+code:"SC-CY-053",
+title:"SQL Injection",
+field:"Cyber Security",
+definition:"هجوم يتم عبر إدخال أوامر SQL خبيثة داخل مدخلات الموقع.",
+keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
+},
+{
+code:"SC-NET-054",
+title:"Packet Sniffing",
+field:"Networking",
+definition:"عملية مراقبة وتحليل حزم البيانات المارة عبر الشبكة.",
+keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
+},
+
+{
+code:"SC-NET-055",
+title:"MAC Address",
+field:"Networking",
+definition:"عنوان فريد يتم تعيينه لكل جهاز شبكة للتعرف عليه داخل الشبكة المحلية.",
+keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
+},
+
+{
+code:"SC-NET-056",
+title:"Subnet",
+field:"Networking",
+definition:"تقسيم شبكة كبيرة إلى شبكات أصغر لتحسين الإدارة والأمان.",
+keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
+},
+
+{
+code:"SC-AI-057",
+title:"Neural Network",
+field:"Artificial Intelligence",
+definition:"نموذج حاسوبي مستوحى من طريقة عمل الدماغ البشري يستخدم في التعلم الآلي.",
+keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
+  },
+{
+code:"SC-AI-058",
+title:"Training Data",
+field:"Artificial Intelligence",
+definition:"البيانات المستخدمة لتدريب نموذج التعلم الآلي.",
+keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
+},
+
+{
+code:"SC-AI-059",
+title:"Overfitting",
+field:"Artificial Intelligence",
+definition:"حالة يتعلم فيها النموذج البيانات التدريبية بشكل مفرط مما يقلل دقته على بيانات جديدة.",
+keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
+},
+  {
+  code:"SC-CY-060",
+  title:"Digital Signature",
+  field:"Cyber Security",
+  definition:"آلية لتوثيق صحة البيانات والمرسل.",
+  keywords:["encryption","signature","security"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Python example\nsign(data, private_key)`
+},
+{
+  code:"SC-CY-061",
+  title:"Symmetric Key",
+  field:"Cyber Security",
+  definition:"مفتاح تشفير واحد يستخدم للتشفير وفك التشفير.",
+  keywords:["encryption","symmetric","security"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Python example\nkey = "mysecretkey"`
+},
+{
+  code:"SC-CY-062",
+  title:"Asymmetric Key",
+  field:"Cyber Security",
+  definition:"زوج مفاتيح (عام/خاص) لتشفير وفك التشفير.",
+  keywords:["encryption","asymmetric","security"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Python example\n(public_key, private_key) = generate_keys()`
+},
+{
+  code:"SC-CY-063",
+  title:"TLS Protocol",
+  field:"Cyber Security",
+  definition:"بروتوكول تأمين الاتصال عبر الإنترنت.",
+  keywords:["encryption","tls","security"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Example code\nsecure_connection = TLS.connect("server")`
+},
+  {
+  code:"SC-CY-064",
+  title:"Digital Signature",
+  field:"Cyber Security",
+  definition:"آلية لتوثيق صحة البيانات والمرسل.",
+  keywords:["encryption","signature","security"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Python example\nsign(data, private_key)`
+},
+{
+  code:"SC-CY-065",
+  title:"Symmetric Key",
+  field:"Cyber Security",
+  definition:"مفتاح تشفير واحد يستخدم للتشفير وفك التشفير.",
+  keywords:["encryption","symmetric","security"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Python example\nkey = "mysecretkey"`
+},
+{
+  code:"SC-CY-066",
+  title:"Asymmetric Key",
+  field:"Cyber Security",
+  definition:"زوج مفاتيح (عام/خاص) لتشفير وفك التشفير.",
+  keywords:["encryption","asymmetric","security"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Python example\n(public_key, private_key) = generate_keys()`
+},
+{
+  code:"SC-CY-067",
+  title:"TLS Protocol",
+  field:"Cyber Security",
+  definition:"بروتوكول تأمين الاتصال عبر الإنترنت.",
+  keywords:["encryption","tls","security"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Example code\nsecure_connection = TLS.connect("server")`
+},
+  {
+  code:"SC-CY-068",
+  title:"Elliptic Curve Cryptography",
+  field:"Cyber Security",
+  definition:"خوارزمية تشفير قوية تعتمد على منحنيات إهليلجية.",
+  keywords:["encryption","ecc","security"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Python example\nkey = ecc.generate_key()`
+},
+{
+  code:"SC-CY-069",
+  title:"Two-Factor Authentication",
+  field:"Cyber Security",
+  definition:"آلية أمان تتطلب عاملين لتسجيل الدخول.",
+  keywords:["security","2fa","authentication"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Example code\nverify_2fa(user)`
+},
+{
+  code:"SC-CY-070",
+  title:"HMAC",
+  field:"Cyber Security",
+  definition:"رمز تحقق يعتمد على خوارزمية هاش ومفتاح سري.",
+  keywords:["encryption","hmac","security"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Python example\nimport hmac\nh = hmac.new(key, msg, hashlib.sha256).hexdigest()`
+},
+{
+  code:"SC-CY-071",
+  title:"Certificate Authority",
+  field:"Cyber Security",
+  definition:"جهة تصدر شهادات رقمية لتوثيق الهوية.",
+  keywords:["security","certificate","ca"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Example code\ncert = ca.issue_certificate(user)`
+},
+{
+  code:"SC-CY-072",
+  title:"Secure Shell (SSH)",
+  field:"Cyber Security",
+  definition:"بروتوكول لتأمين الاتصال عن بعد بين الأجهزة.",
+  keywords:["security","ssh","encryption"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Example code\nssh.connect(server)`
+},
+  
+{
+  code:"SC-CY-073",
+  title:"Quantum Cryptography",
+  field:"Cyber Security",
+  definition:"استخدام المبادئ الكمومية لتأمين الاتصال.",
+  keywords:["encryption","quantum","security"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Python example\nsecure_key = quantum_generate_key()`
+},
+{
+  code:"SC-CY-074",
+  title:"Zero-Knowledge Proof",
+  field:"Cyber Security",
+  definition:"آلية لإثبات صحة معلومة دون كشفها.",
+  keywords:["encryption","zkp","security"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Python example\nzkp_prove(data)`
+},
+{
+  code:"SC-CY-075",
+  title:"Digital Envelope",
+  field:"Cyber Security",
+  definition:"طريقة لتأمين الرسائل باستخدام تشفير مزدوج.",
+  keywords:["encryption","digital envelope","security"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Python example\nencrypted = digital_envelope_encrypt(message)`
+},
+{
+  code:"SC-CY-076",
+  title:"Password Hashing",
+  field:"Cyber Security",
+  definition:"تشفير كلمات المرور لتأمينها ضد الاختراق.",
+  keywords:["encryption","hash","password"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Python example\nhashed = hashlib.sha256(password.encode()).hexdigest()`
+},
+{
+  code:"SC-CY-077",
+  title:"VPN Tunneling",
+  field:"Cyber Security",
+  definition:"إنشاء قناة اتصال آمنة عبر شبكة الإنترنت.",
+  keywords:["security","vpn","tunneling"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Python example\nvpn.connect()`
+},
+  
+{
+  code:"SC-CY-078",
+  title:"Certificate Pinning",
+  field:"Cyber Security",
+  definition:"تثبيت الشهادة الرقمية لمنع الهجمات الوسيطة.",
+  keywords:["security","certificate","pinning"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Example code\npin_certificate()`
+},
+{
+  code:"SC-CY-079",
+  title:"Key Escrow",
+  field:"Cyber Security",
+  definition:"آلية لتخزين مفاتيح التشفير بطريقة آمنة.",
+  keywords:["encryption","key","escrow"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Python example\nstore_key_securely(key)`
+},
+{
+  code:"SC-CY-080",
+  title:"Certificate Revocation",
+  field:"Cyber Security",
+  definition:"إلغاء صلاحية الشهادات الرقمية عند الحاجة.",
+  keywords:["security","certificate","revocation"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Example code\nrevoke_certificate(cert)`
+},
+{
+  code:"SC-CY-081",
+  title:"PKI Infrastructure",
+  field:"Cyber Security",
+  definition:"البنية التحتية لإدارة المفاتيح والشهادات الرقمية.",
+  keywords:["encryption","pki","security"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Example code\npki.setup()`
+},
+{
+  code:"SC-CY-082",
+  title:"Secure Boot",
+  field:"Cyber Security",
+  definition:"آلية للتحقق من سلامة الجهاز أثناء التشغيل.",
+  keywords:["security","boot","secure"],
+  author:"badriah",
+  year:2026,
+  example_code:`# Example code\nsecure_boot_check()`
+},
+
   {
   code:"NAV-001",
   title:"GPS",
@@ -366,7 +686,7 @@ print(track)`
 },
 
   {
-  code:"NAV-062",
+  code:"NAV-032",
   title:"Magnetometer",
   field:"Navigation",
   definition:"أداة لقياس المجال المغناطيسي للأرض.",
@@ -545,94 +865,9 @@ print(track)`
   year:"2026",
   example_code:`# echo sounding reading`
 },
-  {
-code:"SC-CY-010",
-title:"Zero Day",
-field:"Cyber Security",
-definition:"ثغرة أمنية غير معروفة للمطورين ويتم استغلالها قبل إصلاحها.",
-keywords:["satellite","navigation","gps"],
-  author:"badriah",
-  year:"2026",
-},
+  
 
-{
-code:"SC-CY-011",
-title:"Brute Force Attack",
-field:"Cyber Security",
-definition:"محاولة اختراق تعتمد على تجربة جميع كلمات المرور الممكنة حتى يتم العثور على الصحيحة.",
-keywords:["satellite","navigation","gps"],
-  author:"badriah",
-  year:"2026",
-},
 
-{
-code:"SC-CY-012",
-title:"SQL Injection",
-field:"Cyber Security",
-definition:"هجوم يتم عبر إدخال أوامر SQL خبيثة داخل مدخلات الموقع.",
-keywords:["satellite","navigation","gps"],
-  author:"badriah",
-  year:"2026",
-},
-
-{
-code:"SC-NET-013",
-title:"Packet Sniffing",
-field:"Networking",
-definition:"عملية مراقبة وتحليل حزم البيانات المارة عبر الشبكة.",
-keywords:["satellite","navigation","gps"],
-  author:"badriah",
-  year:"2026",
-},
-
-{
-code:"SC-NET-014",
-title:"MAC Address",
-field:"Networking",
-definition:"عنوان فريد يتم تعيينه لكل جهاز شبكة للتعرف عليه داخل الشبكة المحلية.",
-keywords:["satellite","navigation","gps"],
-  author:"badriah",
-  year:"2026",
-},
-
-{
-code:"SC-NET-015",
-title:"Subnet",
-field:"Networking",
-definition:"تقسيم شبكة كبيرة إلى شبكات أصغر لتحسين الإدارة والأمان.",
-keywords:["satellite","navigation","gps"],
-  author:"badriah",
-  year:"2026",
-},
-
-{
-code:"SC-AI-016",
-title:"Neural Network",
-field:"Artificial Intelligence",
-definition:"نموذج حاسوبي مستوحى من طريقة عمل الدماغ البشري يستخدم في التعلم الآلي.",
-keywords:["satellite","navigation","gps"],
-  author:"badriah",
-  year:"2026",
-  },
-{
-code:"SC-AI-017",
-title:"Training Data",
-field:"Artificial Intelligence",
-definition:"البيانات المستخدمة لتدريب نموذج التعلم الآلي.",
-keywords:["satellite","navigation","gps"],
-  author:"badriah",
-  year:"2026",
-},
-
-{
-code:"SC-AI-018",
-title:"Overfitting",
-field:"Artificial Intelligence",
-definition:"حالة يتعلم فيها النموذج البيانات التدريبية بشكل مفرط مما يقلل دقته على بيانات جديدة.",
-keywords:["satellite","navigation","gps"],
-  author:"badriah",
-  year:"2026",
-},
 {
   code:"NAV-053",
   title:"Inertial Navigation",
@@ -684,46 +919,7 @@ keywords:["satellite","navigation","gps"],
   example_code:`# Python example\ngnss_data = read_gnss()\nprint(gnss_data)`
 },
 
-{
-  code:"SC-CY-008",
-  title:"Digital Signature",
-  field:"Cyber Security",
-  definition:"آلية لتوثيق صحة البيانات والمرسل.",
-  keywords:["encryption","signature","security"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Python example\nsign(data, private_key)`
-},
-{
-  code:"SC-CY-009",
-  title:"Symmetric Key",
-  field:"Cyber Security",
-  definition:"مفتاح تشفير واحد يستخدم للتشفير وفك التشفير.",
-  keywords:["encryption","symmetric","security"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Python example\nkey = "mysecretkey"`
-},
-{
-  code:"SC-CY-110",
-  title:"Asymmetric Key",
-  field:"Cyber Security",
-  definition:"زوج مفاتيح (عام/خاص) لتشفير وفك التشفير.",
-  keywords:["encryption","asymmetric","security"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Python example\n(public_key, private_key) = generate_keys()`
-},
-{
-  code:"SC-CY-011",
-  title:"TLS Protocol",
-  field:"Cyber Security",
-  definition:"بروتوكول تأمين الاتصال عبر الإنترنت.",
-  keywords:["encryption","tls","security"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Example code\nsecure_connection = TLS.connect("server")`
-},
+
 {
   code:"NAV-058",
   title:"Route Planning",
@@ -774,46 +970,7 @@ keywords:["satellite","navigation","gps"],
   year:2026,
   example_code:`# Python example\ncurrent_pos = gps.read()\nmap_pos = map.match(current_pos)`
 },
-{
-  code:"SC-CY-012",
-  title:"PGP Encryption",
-  field:"Cyber Security",
-  definition:"تشفير البريد الإلكتروني باستخدام PGP.",
-  keywords:["encryption","pgp","security"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Python example\npgp.encrypt(email)`
-},
-{
-  code:"SC-CY-013",
-  title:"Diffie-Hellman",
-  field:"Cyber Security",
-  definition:"تبادل المفاتيح بشكل آمن بين طرفين.",
-  keywords:["encryption","diffie-hellman","security"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Python example\nkey = diffie_hellman_generate()`
-},
-{
-  code:"SC-CY-014",
-  title:"SHA-256",
-  field:"Cyber Security",
-  definition:"خوارزمية هاش آمنة.",
-  keywords:["encryption","sha256","security"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Python example\nhash = hashlib.sha256(b"data").hexdigest()`
-},
-{
-  code:"SC-CY-015",
-  title:"Blockchain Encryption",
-  field:"Cyber Security",
-  definition:"تأمين البيانات باستخدام سلسلة الكتل.",
-  keywords:["encryption","blockchain","security"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Example code\nblockchain.encrypt(data)`
-},
+
 {
   code:"NAV-063",
   title:"Radar Altimeter",
@@ -864,56 +1021,7 @@ keywords:["satellite","navigation","gps"],
   year:2026,
   example_code:`# Python example\nposition = fuse(ins_data, gps_data)\nprint(position)`
 },
-{
-  code:"SC-CY-016",
-  title:"Elliptic Curve Cryptography",
-  field:"Cyber Security",
-  definition:"خوارزمية تشفير قوية تعتمد على منحنيات إهليلجية.",
-  keywords:["encryption","ecc","security"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Python example\nkey = ecc.generate_key()`
-},
-{
-  code:"SC-CY-017",
-  title:"Two-Factor Authentication",
-  field:"Cyber Security",
-  definition:"آلية أمان تتطلب عاملين لتسجيل الدخول.",
-  keywords:["security","2fa","authentication"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Example code\nverify_2fa(user)`
-},
-{
-  code:"SC-CY-018",
-  title:"HMAC",
-  field:"Cyber Security",
-  definition:"رمز تحقق يعتمد على خوارزمية هاش ومفتاح سري.",
-  keywords:["encryption","hmac","security"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Python example\nimport hmac\nh = hmac.new(key, msg, hashlib.sha256).hexdigest()`
-},
-{
-  code:"SC-CY-019",
-  title:"Certificate Authority",
-  field:"Cyber Security",
-  definition:"جهة تصدر شهادات رقمية لتوثيق الهوية.",
-  keywords:["security","certificate","ca"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Example code\ncert = ca.issue_certificate(user)`
-},
-{
-  code:"SC-CY-020",
-  title:"Secure Shell (SSH)",
-  field:"Cyber Security",
-  definition:"بروتوكول لتأمين الاتصال عن بعد بين الأجهزة.",
-  keywords:["security","ssh","encryption"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Example code\nssh.connect(server)`
-},
+
 {
   code:"NAV-068",
   title:"Autonomous Vehicle Navigation",
@@ -995,56 +1103,6 @@ keywords:["satellite","navigation","gps"],
   example_code:`# Python example\nposition = calculate_position(data)`
 },
 {
-  code:"SC-CY-021",
-  title:"Quantum Cryptography",
-  field:"Cyber Security",
-  definition:"استخدام المبادئ الكمومية لتأمين الاتصال.",
-  keywords:["encryption","quantum","security"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Python example\nsecure_key = quantum_generate_key()`
-},
-{
-  code:"SC-CY-022",
-  title:"Zero-Knowledge Proof",
-  field:"Cyber Security",
-  definition:"آلية لإثبات صحة معلومة دون كشفها.",
-  keywords:["encryption","zkp","security"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Python example\nzkp_prove(data)`
-},
-{
-  code:"SC-CY-023",
-  title:"Digital Envelope",
-  field:"Cyber Security",
-  definition:"طريقة لتأمين الرسائل باستخدام تشفير مزدوج.",
-  keywords:["encryption","digital envelope","security"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Python example\nencrypted = digital_envelope_encrypt(message)`
-},
-{
-  code:"SC-CY-024",
-  title:"Password Hashing",
-  field:"Cyber Security",
-  definition:"تشفير كلمات المرور لتأمينها ضد الاختراق.",
-  keywords:["encryption","hash","password"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Python example\nhashed = hashlib.sha256(password.encode()).hexdigest()`
-},
-{
-  code:"SC-CY-025",
-  title:"VPN Tunneling",
-  field:"Cyber Security",
-  definition:"إنشاء قناة اتصال آمنة عبر شبكة الإنترنت.",
-  keywords:["security","vpn","tunneling"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Python example\nvpn.connect()`
-},
-{
   code:"NAV-076",
   title:"Sensor Fusion",
   field:"Navigation",
@@ -1093,56 +1151,6 @@ keywords:["satellite","navigation","gps"],
   author:"badriah",
   year:2026,
   example_code:`# Python example\nsync_time()`
-},
-{
-  code:"SC-CY-026",
-  title:"Certificate Pinning",
-  field:"Cyber Security",
-  definition:"تثبيت الشهادة الرقمية لمنع الهجمات الوسيطة.",
-  keywords:["security","certificate","pinning"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Example code\npin_certificate()`
-},
-{
-  code:"SC-CY-027",
-  title:"Key Escrow",
-  field:"Cyber Security",
-  definition:"آلية لتخزين مفاتيح التشفير بطريقة آمنة.",
-  keywords:["encryption","key","escrow"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Python example\nstore_key_securely(key)`
-},
-{
-  code:"SC-CY-028",
-  title:"Certificate Revocation",
-  field:"Cyber Security",
-  definition:"إلغاء صلاحية الشهادات الرقمية عند الحاجة.",
-  keywords:["security","certificate","revocation"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Example code\nrevoke_certificate(cert)`
-},
-{
-  code:"SC-CY-029",
-  title:"PKI Infrastructure",
-  field:"Cyber Security",
-  definition:"البنية التحتية لإدارة المفاتيح والشهادات الرقمية.",
-  keywords:["encryption","pki","security"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Example code\npki.setup()`
-},
-{
-  code:"SC-CY-030",
-  title:"Secure Boot",
-  field:"Cyber Security",
-  definition:"آلية للتحقق من سلامة الجهاز أثناء التشغيل.",
-  keywords:["security","boot","secure"],
-  author:"badriah",
-  year:2026,
-  example_code:`# Example code\nsecure_boot_check()`
 },
   {
   code:"AI-010",
@@ -1217,17 +1225,6 @@ keywords:["satellite","navigation","gps"],
 },
   
 
-
-{
-  code:"CY-011",
-  title:"Firewall",
-  field:"Cyber Security",
-  definition:"نظام أمني يراقب ويتحكم في حركة البيانات بين الشبكات.",
-  keywords:["satellite","navigation","gps"],
-  author:"badriah",
-  year:"2026",
-},
-
 {
   code:"CY-012",
   title:"Encryption",
@@ -1238,7 +1235,15 @@ keywords:["satellite","navigation","gps"],
   year:"2026",
 },
 
-
+{
+  code:"CY-013",
+  title:"Firewall",
+  field:"Cyber Security",
+  definition:"نظام أمني يراقب ويتحكم في حركة البيانات بين الشبكات.",
+  keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
+},
 {
   code:"NAV-011",
   title:"Bearing",
@@ -1473,7 +1478,8 @@ keywords:["satellite","navigation","gps"],
  year:2026,
  example_code:"# Python\nsecure_boot_check()"
 },
-  code: "NAV-202",
+  {
+    code: "NAV-202",
     title: "GPS Basics",
     field: "Navigation",
     definition: "مبادئ أساسية لتحديد الموقع باستخدام GPS.",
