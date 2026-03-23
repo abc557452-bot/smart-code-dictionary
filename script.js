@@ -105,8 +105,15 @@ function displayTerms(data){
     if(item.type==="term"){
       container.innerHTML+=`
         <div class="term">
-          <h3>${item.title}</h3>
+          <h3>${item.code} - ${item.title}</h3>
+          <p><b>المجال:</b> ${item.field}</p>
           <pre>${item.definition}</pre>
+          ${item.example_code
+            ? `<pre id="code-${item.code}">${escapeHTML(item.example_code)}</pre>
+               <button onclick='copyCode("code-${item.code}")'>نسخ الكود</button>
+               <button onclick='tryExample("${escapeQuotes(item.example_code)}","js")'>تجربة الكود</button>`
+            : ""}
+          <hr>
         </div>
       `;
     } else if(item.type==="qa"){
@@ -119,7 +126,41 @@ function displayTerms(data){
     }
   });
 
-  document.getElementById("termCounter").innerText = `عدد المصطلحات: ${data.length}`;
+  // تحديث العداد للـ type "term" فقط
+  const termCount = data.filter(d => d.type === "term").length;
+  const countEl = document.getElementById("count");
+  if (countEl) countEl.innerText = termCount;
+}
+
+// عرض كل المصطلحات
+function showAllTerms() {
+  displayTerms(dictionary.filter(item => item.type === "term"));
+}
+
+// فلترة حسب المجال
+function filterField(fieldName) {
+  const filtered = dictionary.filter(item => item.field === fieldName && item.type === "term");
+  displayTerms(filtered);
+}
+
+// بعد انتهاء Quiz
+function checkAnswer(selected, correct, index){
+  if(selected===correct){
+    alert("✅ إجابة صحيحة");
+  } else {
+    alert("❌ إجابة خاطئة");
+  }
+
+  const quiz = dictionary.filter(item => item.type==="quiz");
+  const nextIndex = index + 1;
+
+  if(nextIndex < quiz.length){
+    showQuestion(quiz,nextIndex);
+  } else {
+    alert("🎯 انتهى الاختبار");
+    // إعادة عرض كل المصطلحات بعد الاختبار
+    showAllTerms();
+  }
 }
 
 // ======== عرض الكل ========
