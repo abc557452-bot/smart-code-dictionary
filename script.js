@@ -124,7 +124,12 @@ function displayTerms(data){
 
 // ======== عرض الكل ========
 function showAllTerms() {
-  displayTerms(dictionary.filter(item => item.type === "term"));
+  const allTerms = dictionary.filter(item => item.type === "term");
+  displayTerms(allTerms);
+
+  // تحديث العداد بشكل صحيح لجميع المصطلحات من نوع "term"
+  const countEl = document.getElementById("count");
+  if (countEl) countEl.innerText = allTerms.length;
 }
 
 // ======== فلترة حسب المجال ========
