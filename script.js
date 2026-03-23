@@ -1,3 +1,4 @@
+   
 // ======== عناصر DOM ========
 const result = document.getElementById("results");
 const suggestionsBox = document.getElementById("suggestions");
@@ -71,62 +72,20 @@ function fillInput(index) {
   searchTerm();
 }
 
-// ======== عرض جميع المصطلحات ========
-function showAllTerms() {
-  let output = "";
-  for (let d of dictionary) {
-    output += `
-      <h3>${d.code}</h3>
-      <h2>${d.title}</h2>
-      <p><b>المجال:</b> ${d.field}</p>
-      <p>${d.definition}</p>
-      ${
-        d.example_code
-          ? `<pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
-      <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
-      <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>`
-          : ""
-      }
-      <hr>`;
-  }
-  result.innerHTML = output;
-  suggestionsBox.innerHTML = "";
-  updateCount(dictionary); // تحديث العداد لجميع المصطلحات
-}
-
-// ======== فلترة حسب المجال ========
-function filterField(fieldName) {
-  let output = "";
-  const filtered = dictionary.filter(d => d.field === fieldName);
-
-  filtered.forEach(d => {
-    output += `
-      <h3>${d.code}</h3>
-      <h2>${d.title}</h2>
-      <p><b>المجال:</b> ${d.field}</p>
-      <p>${d.definition}</p>
-      ${
-        d.example_code
-          ? `<pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
-      <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
-      <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>`
-          : ""
-      }
-      <hr>`;
+// ======== نسخ الكود ========
+function copyCode(id) {
+  const code = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(code).then(() => {
+    alert("تم نسخ الكود");
   });
-
-  if (output === "") output = '<p style="color:red;">لا توجد مصطلحات في هذا المجال</p>';
-  result.innerHTML = output;
-  suggestionsBox.innerHTML = "";
-
-  updateCount(filtered); // تحديث العداد حسب الفلتر
 }
 
-// ======== تحديث العداد ========
-function updateCount(array) {
-  const unique = Array.from(new Set(array.map(d => d.code)));
-  const countEl = document.getElementById("count");
-  if (countEl) countEl.innerText = unique.length;
+// ======== حماية النصوص ========
+function escapeQuotes(text) {
+  return text.replace(/"/g, '\\"').replace(/\n/g, "\\n");
+}
+function escapeHTML(text) {
+  return text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
 // ======== تجربة الكود ========
@@ -136,7 +95,8 @@ function tryExample(code, lang) {
   document.getElementById("output").innerText = "تم تحميل المثال. اضغط تشغيل الكود.";
   document.getElementById("codeTester").scrollIntoView({ behavior: "smooth" });
 }
- // عرض القاموس + Q&A
+
+// ======== عرض القاموس + Q&A ========
 function displayTerms(data){
   const container = document.getElementById("results");
   container.innerHTML="";
@@ -162,24 +122,14 @@ function displayTerms(data){
   document.getElementById("termCounter").innerText = `عدد المصطلحات: ${data.length}`;
 }
 
-// فلترة حسب المجال
-function filterField(field){
-  const filtered = dictionary.filter(item=>item.field===field && item.type==="term");
-  displayTerms(filtered);
+// ======== عرض الكل ========
+function showAllTerms() {
+  displayTerms(dictionary.filter(item => item.type === "term"));
 }
 
-// عرض الكل
-function showAllTerms(){
-  displayTerms(dictionary.filter(item=>item.type==="term"));
-}
-
-// بحث
-function searchTerm(){
-  const val = document.getElementById("searchInput").value.toLowerCase();
-  const filtered = dictionary.filter(item=>
-    (item.title.toLowerCase().includes(val) || item.definition.toLowerCase().includes(val))
-    && item.type==="term"
-  );
+// ======== فلترة حسب المجال ========
+function filterField(fieldName) {
+  const filtered = dictionary.filter(item => item.field === fieldName && item.type === "term");
   displayTerms(filtered);
 }
 
@@ -210,33 +160,27 @@ function checkAnswer(selected,correct,index){
   } else {
     alert("❌ إجابة خاطئة");
   }
-  const quiz = dictionary.filter(item=>item.type==="quiz");
-  if(index+1<quiz.length){
-    showQuestion(quiz,index+1);
+
+  const quiz = dictionary.filter(item => item.type==="quiz");
+  const nextIndex = index + 1;
+
+  if(nextIndex < quiz.length){
+    showQuestion(quiz,nextIndex);
   } else {
     alert("🎯 انتهى الاختبار");
-    showAllTerms(); // ترجع عرض القاموس بعد الاختبار
+    // إعادة عرض المصطلحات بعد انتهاء الاختبار
+    displayTerms(dictionary.filter(item => item.type === "term"));
   }
-}
-
-// ======== نسخ الكود ========
-function copyCode(id) {
-  const code = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(code).then(() => {
-    alert("تم نسخ الكود");
-  });
-}
-
-// ======== حماية النصوص ========
-function escapeQuotes(text) {
-  return text.replace(/"/g, '\\"').replace(/\n/g, "\\n");
-}
-function escapeHTML(text) {
-  return text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
 // ======== تحديث العداد عند التحميل ========
 document.addEventListener("DOMContentLoaded", () => {
   updateCount(dictionary);
 });
+
+function updateCount(array) {
+  const unique = Array.from(new Set(array.map(d => d.code)));
+  const countEl = document.getElementById("count");
+  if (countEl) countEl.innerText = unique.length;
+}
 
