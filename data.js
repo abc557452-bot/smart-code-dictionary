@@ -1521,6 +1521,33 @@ model = tf.keras.Sequential()`
 
 ];
 
+// مصطلحات
+dictionary.push(
+  { code:"PY-002", title:"Print في Python", field:"Python", definition:"تستخدم لطباعة النصوص والمخرجات", type:"term" },
+  { code:"JS-001", title:"Console.log", field:"JavaScript", definition:"تستخدم لعرض المخرجات في Console", type:"term" }
+);
+
+// أسئلة/جواب
+dictionary.push(
+  { code:"Q-001", title:"ما الفرق بين HTML و JavaScript؟", field:"Basics", definition:"HTML للهيكل و JavaScript لإضافة التفاعل", type:"qa" }
+);
+
+// Quiz
+dictionary.push(
+  {
+    code:"QZ-001",
+    title:"ما وظيفة HTML؟",
+    field:"Basics",
+    options:[
+      "برمجة السيرفر",
+      "تصميم هيكل الصفحة",
+      "الذكاء الاصطناعي",
+      "قواعد البيانات"
+    ],
+    correct:1,
+    type:"quiz"
+  }
+);
 
 // ======== المجالات المتاحة ========
 const fields = [
