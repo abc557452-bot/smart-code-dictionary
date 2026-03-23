@@ -97,13 +97,13 @@ function tryExample(code, lang) {
 }
 
 // ======== عرض القاموس + Q&A ========
-function displayTerms(data){
+function displayTerms(data) {
   const container = document.getElementById("results");
-  container.innerHTML="";
+  container.innerHTML = "";
 
-  data.forEach(item=>{
-    if(item.type==="term"){
-      container.innerHTML+=`
+  data.forEach(item => {
+    if (item.type === "term") {
+      container.innerHTML += `
         <div class="term">
           <h3>${item.code} - ${item.title}</h3>
           <p><b>المجال:</b> ${item.field}</p>
@@ -116,8 +116,8 @@ function displayTerms(data){
           <hr>
         </div>
       `;
-    } else if(item.type==="qa"){
-      container.innerHTML+=`
+    } else if (item.type === "qa") {
+      container.innerHTML += `
         <div class="term qa">
           <h3>❓ ${item.title}</h3>
           <pre>✅ ${item.definition}</pre>
@@ -126,10 +126,12 @@ function displayTerms(data){
     }
   });
 
-  // تحديث العداد للـ type "term" فقط
-  const termCount = data.filter(d => d.type === "term").length;
+  // تحديث العداد لجميع المصطلحات من type "term"
   const countEl = document.getElementById("count");
-  if (countEl) countEl.innerText = termCount;
+  if (countEl) {
+    const termCount = data.filter(d => d.type === "term").length;
+    countEl.innerText = termCount;
+  }
 }
 
 // عرض كل المصطلحات
