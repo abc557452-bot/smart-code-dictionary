@@ -125,9 +125,9 @@ function displayTerms(data){
 // ======== عرض الكل ========
 function showAllTerms() {
   const allTerms = dictionary.filter(item => item.type === "term");
-  displayTerms(allTerms);
+  displayTerms(allTerms); // عرض كل المصطلحات
 
-  // تحديث العداد بشكل صحيح لجميع المصطلحات من نوع "term"
+  // تحديث العداد بشكل صحيح
   const countEl = document.getElementById("count");
   if (countEl) countEl.innerText = allTerms.length;
 }
