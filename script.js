@@ -136,6 +136,88 @@ function tryExample(code, lang) {
   document.getElementById("output").innerText = "تم تحميل المثال. اضغط تشغيل الكود.";
   document.getElementById("codeTester").scrollIntoView({ behavior: "smooth" });
 }
+ // عرض القاموس + Q&A
+function displayTerms(data){
+  const container = document.getElementById("results");
+  container.innerHTML="";
+
+  data.forEach(item=>{
+    if(item.type==="term"){
+      container.innerHTML+=`
+        <div class="term">
+          <h3>${item.title}</h3>
+          <pre>${item.definition}</pre>
+        </div>
+      `;
+    } else if(item.type==="qa"){
+      container.innerHTML+=`
+        <div class="term qa">
+          <h3>❓ ${item.title}</h3>
+          <pre>✅ ${item.definition}</pre>
+        </div>
+      `;
+    }
+  });
+
+  document.getElementById("termCounter").innerText = `عدد المصطلحات: ${data.length}`;
+}
+
+// فلترة حسب المجال
+function filterField(field){
+  const filtered = dictionary.filter(item=>item.field===field && item.type==="term");
+  displayTerms(filtered);
+}
+
+// عرض الكل
+function showAllTerms(){
+  displayTerms(dictionary.filter(item=>item.type==="term"));
+}
+
+// بحث
+function searchTerm(){
+  const val = document.getElementById("searchInput").value.toLowerCase();
+  const filtered = dictionary.filter(item=>
+    (item.title.toLowerCase().includes(val) || item.definition.toLowerCase().includes(val))
+    && item.type==="term"
+  );
+  displayTerms(filtered);
+}
+
+// ======== Quiz ========
+function startQuiz(){
+  const quiz = dictionary.filter(item=>item.type==="quiz");
+  if(quiz.length===0){ alert("لا توجد أسئلة للاختبار"); return; }
+  showQuestion(quiz,0);
+}
+
+function showQuestion(quiz,index){
+  const container = document.getElementById("results");
+  const q = quiz[index];
+  container.innerHTML=`
+    <div class="term">
+      <h3>${q.title}</h3>
+      ${q.options.map((opt,i)=>
+        `<button onclick="checkAnswer(${i},${q.correct},${index})">${opt}</button>`
+      ).join("")}
+    </div>
+  `;
+  document.getElementById("termCounter").innerText=`السؤال ${index+1} من ${quiz.length}`;
+}
+
+function checkAnswer(selected,correct,index){
+  if(selected===correct){
+    alert("✅ إجابة صحيحة");
+  } else {
+    alert("❌ إجابة خاطئة");
+  }
+  const quiz = dictionary.filter(item=>item.type==="quiz");
+  if(index+1<quiz.length){
+    showQuestion(quiz,index+1);
+  } else {
+    alert("🎯 انتهى الاختبار");
+    showAllTerms(); // ترجع عرض القاموس بعد الاختبار
+  }
+}
 
 // ======== نسخ الكود ========
 function copyCode(id) {
