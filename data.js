@@ -1421,7 +1421,7 @@ gps.get_location()`
 },
 
 {
-  code:"AI-011",
+  code:"AI-001",
   title:"Deep Learning",
   field:"Artificial Intelligence",
   definition:"نوع من التعلم الآلي يعتمد على الشبكات العصبية العميقة.",
@@ -1431,7 +1431,7 @@ gps.get_location()`
 },
 
 {
-  code:"AI-012",
+  code:"AI-002",
   title:"Dataset",
   field:"Artificial Intelligence",
   definition:"مجموعة بيانات تُستخدم لتدريب واختبار النماذج.",
@@ -1441,7 +1441,7 @@ gps.get_location()`
 },
 
 {
-  code:"AI-013",
+  code:"AI-003",
   title:"Overfitting",
   field:"Artificial Intelligence",
   definition:"حالة يتعلم فيها النموذج البيانات بشكل زائد مما يؤثر على أدائه في بيانات جديدة.",
@@ -1451,7 +1451,7 @@ gps.get_location()`
 },
 
 {
-  code:"AI-014",
+  code:"AI-004",
   title:"Model Training",
   field:"Artificial Intelligence",
   definition:"عملية تعليم النموذج باستخدام البيانات.",
@@ -1460,8 +1460,19 @@ gps.get_location()`
   year:"2026",
 },
 
+  {
+    code: "AI-105",
+    title: "Deep Learning",
+    field: "Artificial Intelligence",
+    definition: "شبكات عصبية عميقة لمعالجة البيانات المعقدة.",
+    author: "Badriah",
+    year: 2026,
+    example_code: `# مثال بايثون
+import tensorflow as tf
+model = tf.keras.Sequential()`
+  },
 {
-  code:"PY-010",
+  code:"PY-001",
   title:"List Comprehension",
   field:"Programming",
   definition:"طريقة مختصرة لإنشاء القوائم في بايثون باستخدام تعبير واحد.",
@@ -1472,7 +1483,7 @@ gps.get_location()`
 },
 
 {
-  code:"PY-011",
+  code:"PY-002",
   title:"Lambda Function",
   field:"Programming",
   definition:"دالة صغيرة بدون اسم تُستخدم لتنفيذ عمليات سريعة.",
@@ -1484,7 +1495,7 @@ gps.get_location()`
   
 
 {
-  code:"CY-012",
+  code:"CY-001",
   title:"Encryption",
   field:"Cyber Security",
   definition:"عملية تحويل البيانات إلى شكل غير مقروء لحمايتها.",
@@ -1494,28 +1505,17 @@ gps.get_location()`
 },
 
 {
-  code:"CY-013",
+  code:"CY-002",
   title:"Firewall",
   field:"Cyber Security",
   definition:"نظام أمني يراقب ويتحكم في حركة البيانات بين الشبكات.",
   keywords:["satellite","navigation","gps"],
   author:"badriah",
   year:"2026",
-},
+}
 
 
 
-  {
-    code: "AI-102",
-    title: "Deep Learning",
-    field: "Artificial Intelligence",
-    definition: "شبكات عصبية عميقة لمعالجة البيانات المعقدة.",
-    author: "Badriah",
-    year: 2026,
-    example_code: `# مثال بايثون
-import tensorflow as tf
-model = tf.keras.Sequential()`
-  }
 
 
 
