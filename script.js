@@ -97,34 +97,46 @@ function tryExample(code, lang) {
 }
 
 // ======== عرض القاموس + Q&A ========
-function displayTerms(data) {
+function displayTerms(data){
   const container = document.getElementById("results");
-  container.innerHTML = "";
+  container.innerHTML="";
 
-  data.forEach(item => {
-    if (item.type === "term") {
-      container.innerHTML += `
-        <div class="term">
-          <h3>${item.code} - ${item.title}</h3>
-          <p><b>المجال:</b> ${item.field}</p>
-          <pre>${item.definition}</pre>
-          ${item.example_code
-            ? `<pre id="code-${item.code}">${escapeHTML(item.example_code)}</pre>
-               <button onclick='copyCode("code-${item.code}")'>نسخ الكود</button>
-               <button onclick='tryExample("${escapeQuotes(item.example_code)}","js")'>تجربة الكود</button>`
-            : ""}
-          <hr>
-        </div>
-      `;
-    } else if (item.type === "qa") {
-      container.innerHTML += `
+  data.forEach(item=>{
+
+    // إذا كان سؤال
+    if(item.type==="qa"){
+      container.innerHTML+=`
         <div class="term qa">
           <h3>❓ ${item.title}</h3>
           <pre>✅ ${item.definition}</pre>
         </div>
       `;
     }
+
+    // إذا كان Quiz تجاهله هنا
+    else if(item.type==="quiz"){
+      return;
+    }
+
+    // أي شيء ثاني (مصطلح سواء فيه type أو لا)
+    else{
+      container.innerHTML+=`
+        <div class="term">
+          <h3>${item.code} - ${item.title}</h3>
+          <p><b>المجال:</b> ${item.field}</p>
+          <pre>${item.definition}</pre>
+        </div>
+      `;
+    }
+
   });
+
+  // العداد
+  const countEl = document.getElementById("count");
+  if(countEl) countEl.innerText = data.length;
+}
+
+
 
   // تحديث العداد لجميع المصطلحات من type "term"
   const countEl = document.getElementById("count");
