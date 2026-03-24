@@ -15,33 +15,30 @@ function searchTerm() {
   }
 
   for (let d of dictionary) {
+
+    const title = d.title ? d.title.toLowerCase() : "";
+    const def = d.definition ? d.definition.toLowerCase() : "";
+    const field = d.field ? d.field.toLowerCase() : "";
+
     if (
-      d.title.toLowerCase().includes(input) ||
-      d.definition.toLowerCase().includes(input) ||
-      d.field.toLowerCase().includes(input)
+      title.includes(input) ||
+      def.includes(input) ||
+      field.includes(input)
     ) {
       result.innerHTML = `
         <h3>${d.code}</h3>
         <h2>${d.title}</h2>
         <p><b>المجال:</b> ${d.field}</p>
         <p>${d.definition}</p>
-        ${
-          d.example_code
-            ? `<pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
-        <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
-        <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>`
-            : ""
-        }
-        <hr>
-        <p style="font-size:14px;color:#888;">تم إعداده من قبل ${d.author} | ${d.year}</p>`;
+        <hr>`;
       suggestionsBox.innerHTML = "";
       found = true;
       break;
     }
   }
+
   if (!found) result.innerHTML = '<p style="color:red;">لم يتم العثور على المصطلح</p>';
 }
-
 // ======== مسح البحث ========
 function clearSearch() {
   document.getElementById("searchInput").value = "";
