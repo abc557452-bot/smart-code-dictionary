@@ -137,51 +137,6 @@ function tryExample(code, lang) {
   document.getElementById("codeTester").scrollIntoView({ behavior: "smooth" });
 }
  // عرض القاموس + Q&A
-function displayTerms(data){
-  const container = document.getElementById("results");
-  container.innerHTML="";
-
-  data.forEach(item=>{
-    if(item.type==="term"){
-      container.innerHTML+=`
-        <div class="term">
-          <h3>${item.title}</h3>
-          <pre>${item.definition}</pre>
-        </div>
-      `;
-    } else if(item.type==="qa"){
-      container.innerHTML+=`
-        <div class="term qa">
-          <h3>❓ ${item.title}</h3>
-          <pre>✅ ${item.definition}</pre>
-        </div>
-      `;
-    }
-  });
-
-  document.getElementById("termCounter").innerText = `عدد المصطلحات: ${data.length}`;
-}
-
-// فلترة حسب المجال
-function filterField(field){
-  const filtered = dictionary.filter(item=>item.field===field && item.type==="term");
-  displayTerms(filtered);
-}
-
-// عرض الكل
-function showAllTerms(){
-  displayTerms(dictionary.filter(item=>item.type==="term"));
-}
-
-// بحث
-function searchTerm(){
-  const val = document.getElementById("searchInput").value.toLowerCase();
-  const filtered = dictionary.filter(item=>
-    (item.title.toLowerCase().includes(val) || item.definition.toLowerCase().includes(val))
-    && item.type==="term"
-  );
-  displayTerms(filtered);
-}
 
 // ======== Quiz ========
 function startQuiz(){
