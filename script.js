@@ -1,4 +1,3 @@
-   
 // ======== عناصر DOM ========
 const result = document.getElementById("results");
 const suggestionsBox = document.getElementById("suggestions");
@@ -16,22 +15,29 @@ function searchTerm() {
 
   for (let d of dictionary) {
     if (
-      (d.title && d.title.toLowerCase().includes(input)) ||
-      (d.definition && d.definition.toLowerCase().includes(input)) ||
-      (d.field && d.field.toLowerCase().includes(input))
+      d.title.toLowerCase().includes(input) ||
+      d.definition.toLowerCase().includes(input) ||
+      d.field.toLowerCase().includes(input)
     ) {
       result.innerHTML = `
         <h3>${d.code}</h3>
         <h2>${d.title}</h2>
         <p><b>المجال:</b> ${d.field}</p>
         <p>${d.definition}</p>
-        <hr>`;
+        ${
+          d.example_code
+            ? `<pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
+        <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
+        <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>`
+            : ""
+        }
+        <hr>
+        <p style="font-size:14px;color:#888;">تم إعداده من قبل ${d.author} | ${d.year}</p>`;
       suggestionsBox.innerHTML = "";
       found = true;
       break;
     }
   }
-
   if (!found) result.innerHTML = '<p style="color:red;">لم يتم العثور على المصطلح</p>';
 }
 
@@ -65,20 +71,62 @@ function fillInput(index) {
   searchTerm();
 }
 
-// ======== نسخ الكود ========
-function copyCode(id) {
-  const code = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(code).then(() => {
-    alert("تم نسخ الكود");
-  });
+// ======== عرض جميع المصطلحات ========
+function showAllTerms() {
+  let output = "";
+  for (let d of dictionary) {
+    output += `
+      <h3>${d.code}</h3>
+      <h2>${d.title}</h2>
+      <p><b>المجال:</b> ${d.field}</p>
+      <p>${d.definition}</p>
+      ${
+        d.example_code
+          ? `<pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
+      <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
+      <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>`
+          : ""
+      }
+      <hr>`;
+  }
+  result.innerHTML = output;
+  suggestionsBox.innerHTML = "";
+  updateCount(dictionary); // تحديث العداد لجميع المصطلحات
 }
 
-// ======== حماية النصوص ========
-function escapeQuotes(text) {
-  return text.replace(/"/g, '\\"').replace(/\n/g, "\\n");
+// ======== فلترة حسب المجال ========
+function filterField(fieldName) {
+  let output = "";
+  const filtered = dictionary.filter(d => d.field === fieldName);
+
+  filtered.forEach(d => {
+    output += `
+      <h3>${d.code}</h3>
+      <h2>${d.title}</h2>
+      <p><b>المجال:</b> ${d.field}</p>
+      <p>${d.definition}</p>
+      ${
+        d.example_code
+          ? `<pre id="code-${d.code}">${escapeHTML(d.example_code)}</pre>
+      <button onclick='copyCode("code-${d.code}")'>نسخ الكود</button>
+      <button onclick='tryExample("${escapeQuotes(d.example_code)}","js")'>تجربة الكود</button>`
+          : ""
+      }
+      <hr>`;
+  });
+
+  if (output === "") output = '<p style="color:red;">لا توجد مصطلحات في هذا المجال</p>';
+  result.innerHTML = output;
+  suggestionsBox.innerHTML = "";
+
+  updateCount(filtered); // تحديث العداد حسب الفلتر
 }
-function escapeHTML(text) {
-  return text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+// ======== تحديث العداد ========
+function updateCount(array) {
+  const unique = Array.from(new Set(array.map(d => d.code)));
+  const countEl = document.getElementById("count");
+  if (countEl) countEl.innerText = unique.length;
 }
 
 // ======== تجربة الكود ========
@@ -88,16 +136,20 @@ function tryExample(code, lang) {
   document.getElementById("output").innerText = "تم تحميل المثال. اضغط تشغيل الكود.";
   document.getElementById("codeTester").scrollIntoView({ behavior: "smooth" });
 }
-
-// ======== عرض القاموس + Q&A ========
+ // عرض القاموس + Q&A
 function displayTerms(data){
   const container = document.getElementById("results");
   container.innerHTML="";
 
   data.forEach(item=>{
-
-    // إذا كان سؤال
-    if(item.type==="qa"){
+    if(item.type==="term"){
+      container.innerHTML+=`
+        <div class="term">
+          <h3>${item.title}</h3>
+          <pre>${item.definition}</pre>
+        </div>
+      `;
+    } else if(item.type==="qa"){
       container.innerHTML+=`
         <div class="term qa">
           <h3>❓ ${item.title}</h3>
@@ -105,86 +157,29 @@ function displayTerms(data){
         </div>
       `;
     }
-
-    // إذا كان Quiz تجاهله هنا
-    else if(item.type==="quiz"){
-      return;
-    }
-
-    // أي شيء ثاني (مصطلح سواء فيه type أو لا)
-    else{
-      container.innerHTML+=`
-        <div class="term">
-          <h3>${item.code} - ${item.title}</h3>
-          <p><b>المجال:</b> ${item.field}</p>
-          <pre>${item.definition}</pre>
-        </div>
-      `;
-    }
-
   });
 
-  // العداد
-  const countEl = document.getElementById("count");
-  if(countEl) countEl.innerText = data.length;
+  document.getElementById("termCounter").innerText = `عدد المصطلحات: ${data.length}`;
 }
-
-
-
-  // تحديث العداد لجميع المصطلحات من type "term"
-  const countEl = document.getElementById("count");
-  if (countEl) {
-    const termCount = data.filter(d => d.type === "term").length;
-    countEl.innerText = termCount;
-  }
-}
-
-// عرض كل المصطلحات
-function showAllTerms() {
-  const allTerms = dictionary.filter(item => item.type === "term");
-  displayTerms(allTerms);
-}
-
 
 // فلترة حسب المجال
-function filterField(fieldName) {
-  const filtered = dictionary.filter(item => item.field === fieldName && item.type === "term");
+function filterField(field){
+  const filtered = dictionary.filter(item=>item.field===field && item.type==="term");
   displayTerms(filtered);
 }
 
-// بعد انتهاء Quiz
-function checkAnswer(selected, correct, index){
-  if(selected===correct){
-    alert("✅ إجابة صحيحة");
-  } else {
-    alert("❌ إجابة خاطئة");
-  }
-
-  const quiz = dictionary.filter(item => item.type==="quiz");
-  const nextIndex = index + 1;
-
-  if(nextIndex < quiz.length){
-    showQuestion(quiz,nextIndex);
-  } else {
-    alert("🎯 انتهى الاختبار");
-    // إعادة عرض كل المصطلحات بعد الاختبار
-    showAllTerms();
-  }
+// عرض الكل
+function showAllTerms(){
+  displayTerms(dictionary.filter(item=>item.type==="term"));
 }
 
-// ======== عرض الكل ========
-function showAllTerms() {
-  const allTerms = dictionary.filter(item => item.type === "term");
-  displayTerms(allTerms); // عرض كل المصطلحات
-
-  // تحديث العداد بشكل صحيح
-  const countEl = document.getElementById("count");
-  if (countEl) countEl.innerText = allTerms.length;
-}
-
-// ======== فلترة حسب المجال ========
-function filterField(fieldName) {
-  const filtered = dictionary.filter(item => item.field === fieldName && item.type === "term");
+// بحث
+function searchTerm(){
+  const val = document.getElementById("searchInput").value.toLowerCase();
+  const filtered = dictionary.filter(item=>
+    (item.title.toLowerCase().includes(val) || item.definition.toLowerCase().includes(val))
+    && item.type==="term"
+  );
   displayTerms(filtered);
 }
 
@@ -215,17 +210,29 @@ function checkAnswer(selected,correct,index){
   } else {
     alert("❌ إجابة خاطئة");
   }
-
-  const quiz = dictionary.filter(item => item.type==="quiz");
-  const nextIndex = index + 1;
-
-  if(nextIndex < quiz.length){
-    showQuestion(quiz,nextIndex);
+  const quiz = dictionary.filter(item=>item.type==="quiz");
+  if(index+1<quiz.length){
+    showQuestion(quiz,index+1);
   } else {
     alert("🎯 انتهى الاختبار");
-    // إعادة عرض المصطلحات بعد انتهاء الاختبار
-    displayTerms(dictionary.filter(item => item.type === "term"));
+    showAllTerms(); // ترجع عرض القاموس بعد الاختبار
   }
+}
+
+// ======== نسخ الكود ========
+function copyCode(id) {
+  const code = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(code).then(() => {
+    alert("تم نسخ الكود");
+  });
+}
+
+// ======== حماية النصوص ========
+function escapeQuotes(text) {
+  return text.replace(/"/g, '\\"').replace(/\n/g, "\\n");
+}
+function escapeHTML(text) {
+  return text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
 // ======== تحديث العداد عند التحميل ========
@@ -233,9 +240,4 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCount(dictionary);
 });
 
-function updateCount(array) {
-  const unique = Array.from(new Set(array.map(d => d.code)));
-  const countEl = document.getElementById("count");
-  if (countEl) countEl.innerText = unique.length;
-}
-
+   
