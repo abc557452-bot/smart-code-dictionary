@@ -136,8 +136,10 @@ function displayTerms(data) {
 
 // عرض كل المصطلحات
 function showAllTerms() {
-  displayTerms(dictionary.filter(item => item.type === "term"));
+  const allTerms = dictionary.filter(item => item.type === "term");
+  displayTerms(allTerms);
 }
+
 
 // فلترة حسب المجال
 function filterField(fieldName) {
