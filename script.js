@@ -13,13 +13,14 @@ function searchTerm() {
     return;
   }
 
-  for (let d of dictionary) {
-    if (
-      d.title.toLowerCase().includes(input) ||
-      d.definition.toLowerCase().includes(input) ||
-      d.field.toLowerCase().includes(input)
-    ) {
-      result.innerHTML = `
+
+for (let d of dictionary) {
+  if (
+    (d.title && d.title.toLowerCase().includes(input)) ||
+    (d.definition && d.definition.toLowerCase().includes(input)) ||
+    (d.field && d.field.toLowerCase().includes(input))
+  ) {   
+    result.innerHTML = `
         <h3>${d.code}</h3>
         <h2>${d.title}</h2>
         <p><b>المجال:</b> ${d.field}</p>
