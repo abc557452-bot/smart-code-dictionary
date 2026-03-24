@@ -15,15 +15,10 @@ function searchTerm() {
   }
 
   for (let d of dictionary) {
-
-    const title = d.title ? d.title.toLowerCase() : "";
-    const def = d.definition ? d.definition.toLowerCase() : "";
-    const field = d.field ? d.field.toLowerCase() : "";
-
     if (
-      title.includes(input) ||
-      def.includes(input) ||
-      field.includes(input)
+      (d.title && d.title.toLowerCase().includes(input)) ||
+      (d.definition && d.definition.toLowerCase().includes(input)) ||
+      (d.field && d.field.toLowerCase().includes(input))
     ) {
       result.innerHTML = `
         <h3>${d.code}</h3>
@@ -39,6 +34,7 @@ function searchTerm() {
 
   if (!found) result.innerHTML = '<p style="color:red;">لم يتم العثور على المصطلح</p>';
 }
+
 // ======== مسح البحث ========
 function clearSearch() {
   document.getElementById("searchInput").value = "";
