@@ -1415,6 +1415,8 @@ gps.get_location()`
   title:"GPS",
   field:"Navigation",
   definition:"نظام تحديد المواقع العالمي باستخدام الأقمار الصناعية",
+      author:"badriah",
+  year:"2026",
 },
 
 
@@ -1470,11 +1472,13 @@ gps.get_location()`
 import tensorflow as tf
 model = tf.keras.Sequential()`
   },
-  
+  {
   code:"AI-106",
   title:"Machine Learning",
   field:"Artificial Intelligence",
   definition:"فرع من الذكاء الاصطناعي يسمح للأنظمة بالتعلم من البيانات بدون برمجة مباشرة",
+   author: "Badriah",
+    year: 2026,
 },
 
 {
@@ -1482,6 +1486,8 @@ model = tf.keras.Sequential()`
   title:"Neural Network",
   field:"Artificial Intelligence",
   definition:"نموذج يحاكي عمل الدماغ البشري لمعالجة البيانات",
+   author: "Badriah",
+    year: 2026,
 },
   {
   code:"AI-108",
@@ -1498,6 +1504,8 @@ model = tf.keras.Sequential()`
   title:"Variable",
   field:"Programming",
   definition:"مكان لتخزين البيانات داخل البرنامج",
+    author:"badriah",
+  year:"2026",
 },
 
 {
@@ -1505,6 +1513,8 @@ model = tf.keras.Sequential()`
   title:"Function",
   field:"Programming",
   definition:"مجموعة أوامر تنفذ مهمة معينة",
+    author:"badriah",
+  year:"2026",
 },
 
 {
@@ -1557,6 +1567,8 @@ model = tf.keras.Sequential()`
   title:"Phishing",
   field:"Cyber Security",
   definition:"هجوم يحاول سرقة معلومات المستخدم عبر مواقع مزيفة",
+    author:"badriah",
+  year:"2026",
 }
 
 
