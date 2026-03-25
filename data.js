@@ -1411,15 +1411,14 @@ gps.get_location()`
 },
 
   {
-  code:"AI-010",
-  title:"Neural Network",
-  field:"Artificial Intelligence",
-  definition:"نموذج حاسوبي مستوحى من الدماغ البشري يُستخدم في التعلم الآلي.",
-    keywords:["satellite","navigation","gps"],
-  author:"badriah",
-  year:"2026",
+  code:"NAV-104",
+  title:"GPS",
+  field:"Navigation",
+  definition:"نظام تحديد المواقع العالمي باستخدام الأقمار الصناعية",
 },
 
+
+  
 {
   code:"AI-001",
   title:"Deep Learning",
@@ -1471,7 +1470,45 @@ gps.get_location()`
 import tensorflow as tf
 model = tf.keras.Sequential()`
   },
+  
+  code:"AI-106",
+  title:"Machine Learning",
+  field:"Artificial Intelligence",
+  definition:"فرع من الذكاء الاصطناعي يسمح للأنظمة بالتعلم من البيانات بدون برمجة مباشرة",
+},
+
 {
+  code:"AI-107",
+  title:"Neural Network",
+  field:"Artificial Intelligence",
+  definition:"نموذج يحاكي عمل الدماغ البشري لمعالجة البيانات",
+},
+  {
+  code:"AI-108",
+  title:"Neural Network",
+  field:"Artificial Intelligence",
+  definition:"نموذج حاسوبي مستوحى من الدماغ البشري يُستخدم في التعلم الآلي.",
+    keywords:["satellite","navigation","gps"],
+  author:"badriah",
+  year:"2026",
+},
+
+{
+  code:"PR-201",
+  title:"Variable",
+  field:"Programming",
+  definition:"مكان لتخزين البيانات داخل البرنامج",
+},
+
+{
+  code:"PR-202",
+  title:"Function",
+  field:"Programming",
+  definition:"مجموعة أوامر تنفذ مهمة معينة",
+},
+
+{
+  
   code:"PY-001",
   title:"List Comprehension",
   field:"Programming",
@@ -1512,10 +1549,15 @@ model = tf.keras.Sequential()`
   keywords:["satellite","navigation","gps"],
   author:"badriah",
   year:"2026",
+},
+
+
+{
+  code:"CY-003",
+  title:"Phishing",
+  field:"Cyber Security",
+  definition:"هجوم يحاول سرقة معلومات المستخدم عبر مواقع مزيفة",
 }
-
-
-
 
 
 
