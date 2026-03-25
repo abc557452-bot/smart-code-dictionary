@@ -1607,6 +1607,21 @@ dictionary.push(
   }
 
 );
+‫; let currentQuestion
+
+function loadQuestion() {
+  currentQuestion = questions[Math.floor(Math.random() * questions.length)];
+  document.getElementById("question").innerText = currentQuestion.question;
+}
+function checkAnswer() {
+  let userAnswer = document.getElementById("answer").value;
+
+  if (userAnswer.includes(currentQuestion.answer)) {
+    document.getElementById("result").innerText = "✅ صح!";
+  } else {
+    document.getElementById("result").innerText = "❌ حاول مرة ثانية";
+  }
+}
 
 // ======== المجالات المتاحة ========
 const fields = [
