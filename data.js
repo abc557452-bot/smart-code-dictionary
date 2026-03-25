@@ -1595,7 +1595,17 @@ dictionary.push(
     ],
     correct:1,
     type:"quiz"
+  },
+ 
+  {
+    question: "ما معنى Variable؟",
+    answer: "مكان لتخزين البيانات"
+  },
+  {
+    question: "ما هو GPS؟",
+    answer: "نظام تحديد المواقع"
   }
+
 );
 
 // ======== المجالات المتاحة ========
