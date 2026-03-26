@@ -1599,16 +1599,15 @@ dictionary.push({
 });
 
 // ================= نظام الأسئلة (منفصل) =================
-const questions = [
-  {
-    question: "ما معنى Variable؟",
-    answer: "مكان لتخزين البيانات"
-  },
-  {
-    question: "ما هو GPS؟",
-    answer: "نظام تحديد المواقع"
-  }
-];
+// 3️⃣ 👇 هنا تحط الكود الجديد
+const questions = dictionary
+  .filter(item => item.definition)
+  .map(item => {
+    return {
+      question: item.title,
+      answer: item.definition
+    };
+  });
 
 // ================= الكويز =================
 let currentQuestion;
