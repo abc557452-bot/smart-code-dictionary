@@ -1563,40 +1563,43 @@ model = tf.keras.Sequential()`
 
 
 {
-  code:"CY-003",
-  title:"Phishing",
-  field:"Cyber Security",
-  definition:"هجوم يحاول سرقة معلومات المستخدم عبر مواقع مزيفة",
+    code:"CY-003",
+    title:"Phishing",
+    field:"Cyber Security",
+    definition:"هجوم يحاول سرقة معلومات المستخدم عبر مواقع مزيفة",
     author:"badriah",
-  year:"2026",
-}
-
-
-
+    year:"2026"
+  }
 ];
 
+// ================= أسئلة القاموس =================
 
-// أسئلة/جواب
-dictionary.push(
-  { code:"Q-001", title:"ما الفرق بين HTML و JavaScript؟", field:"Basics", definition:"HTML للهيكل و JavaScript لإضافة التفاعل", type:"qa" }
-);
+// سؤال/جواب
+dictionary.push({
+  code:"Q-001",
+  title:"ما الفرق بين HTML و JavaScript؟",
+  field:"Basics",
+  definition:"HTML للهيكل و JavaScript لإضافة التفاعل",
+  type:"qa"
+});
 
-// Quiz
-dictionary.push(
-  {
-    code:"QZ-001",
-    title:"ما وظيفة HTML؟",
-    field:"Basics",
-    options:[
-      "برمجة السيرفر",
-      "تصميم هيكل الصفحة",
-      "الذكاء الاصطناعي",
-      "قواعد البيانات"
-    ],
-    correct:1,
-    type:"quiz"
-  },
- 
+// كويز
+dictionary.push({
+  code:"QZ-001",
+  title:"ما وظيفة HTML؟",
+  field:"Basics",
+  options:[
+    "برمجة السيرفر",
+    "تصميم هيكل الصفحة",
+    "الذكاء الاصطناعي",
+    "قواعد البيانات"
+  ],
+  correct:1,
+  type:"quiz"
+});
+
+// ================= نظام الأسئلة (منفصل) =================
+const questions = [
   {
     question: "ما معنى Variable؟",
     answer: "مكان لتخزين البيانات"
@@ -1605,14 +1608,16 @@ dictionary.push(
     question: "ما هو GPS؟",
     answer: "نظام تحديد المواقع"
   }
+];
 
-);
-‫; let currentQuestion
+// ================= الكويز =================
+let currentQuestion;
 
 function loadQuestion() {
   currentQuestion = questions[Math.floor(Math.random() * questions.length)];
   document.getElementById("question").innerText = currentQuestion.question;
 }
+
 function checkAnswer() {
   let userAnswer = document.getElementById("answer").value;
 
@@ -1622,6 +1627,10 @@ function checkAnswer() {
     document.getElementById("result").innerText = "❌ حاول مرة ثانية";
   }
 }
+
+// تشغيل أول سؤال
+loadQuestion();
+
 
 // ======== المجالات المتاحة ========
 const fields = [
