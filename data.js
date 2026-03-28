@@ -1585,7 +1585,6 @@ model = tf.keras.Sequential()`
 
 // ================= أسئلة القاموس =================
 
-// سؤال/جواب
 dictionary.push({
   code:"Q-001",
   title:"ما الفرق بين HTML و JavaScript؟",
@@ -1594,7 +1593,6 @@ dictionary.push({
   type:"qa"
 });
 
-// كويز
 dictionary.push({
   code:"QZ-001",
   title:"ما وظيفة HTML؟",
@@ -1612,93 +1610,95 @@ dictionary.push({
 
 // ================= Level 1 =================
 const level1Questions = [
-
 {
 question:"ما معنى Encryption؟",
 options:["حذف البيانات","تشفير البيانات","نسخ البيانات","ضغط البيانات"],
 answer:"تشفير البيانات"
 },
-
 {
 question:"ما وظيفة Firewall؟",
 options:["زيادة سرعة الإنترنت","حماية الشبكة","حذف الملفات","تشغيل البرامج"],
 answer:"حماية الشبكة"
 },
-
 {
 question:"ما هو Malware؟",
 options:["برنامج مفيد","برنامج ضار","متصفح","نظام تشغيل"],
 answer:"برنامج ضار"
 },
-
 {
 question:"ما معنى Decryption؟",
 options:["حذف البيانات","فك التشفير","نسخ الملفات","تشفير جديد"],
 answer:"فك التشفير"
 },
-
 {
 question:"ما هو Spyware؟",
 options:["برنامج حماية","برنامج تجسس","لعبة","محرر نصوص"],
 answer:"برنامج تجسس"
 }
-
 ];
 
 
 // ================= Level 2 =================
 const level2Questions = [
-
 {
 question:"أي نوع من الهجمات يعتمد على تجربة جميع كلمات المرور؟",
 options:["Phishing","Brute Force Attack","Malware","Spyware"],
 answer:"Brute Force Attack"
 },
-
 {
 question:"ما الهدف من Two-Factor Authentication؟",
 options:["زيادة الإعلانات","تقليل الأمان","تعزيز الأمان","حذف البيانات"],
 answer:"تعزيز الأمان"
 },
-
 {
 question:"ما هو Botnet؟",
 options:["برنامج تصميم","شبكة أجهزة مخترقة","موقع إلكتروني","نظام حماية"],
 answer:"شبكة أجهزة مخترقة"
 },
-
 {
 question:"أي من التالي يعتبر نوع من Malware؟",
 options:["Firewall","Spyware","Router","Switch"],
 answer:"Spyware"
 },
-
 {
 question:"ما وظيفة Rootkit؟",
 options:["حذف الملفات","إظهار الإعلانات","إخفاء نفسه داخل النظام","تسريع الجهاز"],
 answer:"إخفاء نفسه داخل النظام"
 }
-
 ];
 
 
-// ================= نظام الكويز الجديد =================
+// ================= نظام اللعبة =================
 
 let currentQuiz = [];
 let currentQuestion;
 let score = 0;
 
+let questionCount = 0;
+let maxQuestions = 5;
+
+let timeLeft = 10;
+let timer;
+
+
 // تشغيل Level 1
 function startLevel1(){
   currentQuiz = level1Questions;
-  score = 0;
-  loadQuestion();
+  resetGame();
 }
 
 // تشغيل Level 2
 function startLevel2(){
   currentQuiz = level2Questions;
+  resetGame();
+}
+
+
+// إعادة ضبط اللعبة
+function resetGame(){
   score = 0;
+  questionCount = 0;
+  document.getElementById("score").innerText = "Score: 0";
   loadQuestion();
 }
 
@@ -1706,27 +1706,43 @@ function startLevel2(){
 // تحميل سؤال
 function loadQuestion(){
 
-  if(currentQuiz.length === 0){
-    document.getElementById("question").innerText = "اختر مستوى أولاً";
+  if(questionCount >= maxQuestions){
+    endGame();
     return;
   }
 
   currentQuestion = currentQuiz[Math.floor(Math.random() * currentQuiz.length)];
+  questionCount++;
 
   document.getElementById("question").innerText = currentQuestion.question;
 
   let optionsHTML = "";
-
   currentQuestion.options.forEach(opt => {
     optionsHTML += `<button onclick="selectAnswer('${opt}')">${opt}</button>`;
   });
 
   document.getElementById("options").innerHTML = optionsHTML;
+
+  // المؤقت
+  clearInterval(timer);
+  timeLeft = 10;
+
+  timer = setInterval(()=>{
+    timeLeft--;
+    document.getElementById("timer").innerText = "Time: " + timeLeft;
+
+    if(timeLeft === 0){
+      clearInterval(timer);
+      loadQuestion();
+    }
+  },1000);
 }
 
 
 // اختيار الإجابة
 function selectAnswer(selected){
+
+  clearInterval(timer);
 
   if(selected === currentQuestion.answer){
     score++;
@@ -1735,103 +1751,33 @@ function selectAnswer(selected){
     document.getElementById("result").innerText = "❌ خطأ";
   }
 
-  // عرض السكور
   document.getElementById("score").innerText = "Score: " + score;
 
-  // سؤال جديد بعد ثانية
   setTimeout(loadQuestion,1000);
 }
 
 
+// نهاية اللعبة
+function endGame(){
 
-// ================= نظام الأسئلة القديم (خليه احتياط) =================
-const questions = dictionary
-  .filter(item => item.definition)
-  .map(item => {
-    return {
-      question: item.title,
-      answer: item.definition
-    };
-  });
+  clearInterval(timer);
 
+  let message = "";
 
-
-// ======== المجالات ========
-const fields = [
-  "Programming",
-  "Web Development",
-  "Cyber Security",
-  "Navigation",
-  "Artificial Intelligence",
-  "Networking"
-];
-
-const uniqueDictionary = [];
-const seenCodes = new Set();
-
-dictionary.forEach(item => {
-  if(item.code && !seenCodes.has(item.code)){
-    seenCodes.add(item.code);
-    uniqueDictionary.push(item);
+  if(score === maxQuestions){
+    message = "🏆 ممتاز! فل مارك";
+  } else if(score >= 3){
+    message = "👍 جيد جداً";
+  } else {
+    message = "💀 حاول مرة ثانية";
   }
-});
 
-const existingTitles = uniqueDictionary.map(t => t.title);
-
-
-// ======== مثال كود ========
-function getExampleCode(field,index){
-  if(field==="Python"){
-    return `# Example Python ${index}\nprint("Hello Python ${index}")`;
-  }
-  if(field==="JavaScript"){
-    return `// Example JS ${index}\nconsole.log("Hello JS ${index}")`;
-  }
-  if(field==="Cyber Security"){
-    return `# security example ${index}\nprint("Scanning system...")`;
-  }
-  if(field==="Navigation"){
-    return `# navigation example ${index}\nlat,lon = 29.37,47.98\nprint(lat,lon)`;
-  }
-  if(field==="Artificial Intelligence"){
-    return `# AI example ${index}\nmodel = "neural network"\nprint(model)`;
-  }
-  return "";
-}
-
-
-// ======== توليد مصطلحات ========
-function generateTerms(num,startIndex){
-  let count = 0;
-  let i = startIndex;
-
-  while(count < num){
-    const field = fields[Math.floor(Math.random()*fields.length)];
-    const title = `Term ${i}`;
-
-    if(existingTitles.includes(title)){
-      i++;
-      continue;
-    }
-
-    uniqueDictionary.push({
-      code:`CODE-${i.toString().padStart(4,'0')}`,
-      title:title,
-      field:field,
-      definition:`تعريف مصطلح رقم ${i} في مجال ${field}`,
-      keywords:[field.toLowerCase(),"code","programming"],
-      author:"badriah",
-      year:2026,
-      example_code:getExampleCode(field,i)
-    });
-
-    existingTitles.push(title);
-
-    count++;
-    i++;
-  }
+  document.getElementById("question").innerText = message;
+  document.getElementById("options").innerHTML = "";
+  document.getElementById("timer").innerText = "";
 }
 
 generateTerms(500,500);
 
-console.log("عدد النهائي:", uniqueDictionary.length);
+// 👇 هذا مكان العداد الصح
+document.getElementById("count").innerText = uniqueDictionary.length;
