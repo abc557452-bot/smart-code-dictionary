@@ -1569,7 +1569,18 @@ model = tf.keras.Sequential()`
     definition:"هجوم يحاول سرقة معلومات المستخدم عبر مواقع مزيفة",
     author:"badriah",
     year:"2026"
-  }
+  },
+  
+{code:"CY-022", title:"Encryption", field:"Cyber Security", definition:"تحويل البيانات إلى صيغة غير مفهومة لحمايتها من الوصول غير المصرح به"},
+{code:"CY-023", title:"Decryption", field:"Cyber Security", definition:"إعادة البيانات المشفرة إلى شكلها الأصلي"},
+{code:"CY-024", title:"Brute Force Attack", field:"Cyber Security", definition:"محاولة تخمين كلمة المرور عبر تجربة جميع الاحتمالات"},
+{code:"CY-025", title:"Two-Factor Authentication", field:"Cyber Security", definition:"نظام أمان يتطلب طريقتين للتحقق من هوية المستخدم"},
+{code:"CY-026", title:"Firewall", field:"Cyber Security", definition:"نظام يحمي الشبكة من الدخول غير المصرح به"},
+{code:"CY-027", title:"Malware", field:"Cyber Security", definition:"برمجيات ضارة تهدف إلى إلحاق الضرر بالنظام"},
+{code:"CY-028", title:"Spyware", field:"Cyber Security", definition:"برنامج يتجسس على المستخدم ويجمع معلوماته"},
+{code:"CY-029", title:"Adware", field:"Cyber Security", definition:"برنامج يعرض إعلانات مزعجة للمستخدم"},
+{code:"CY-030", title:"Rootkit", field:"Cyber Security", definition:"برنامج خبيث يخفي نفسه داخل النظام"},
+{code:"CY-031", title:"Botnet", field:"Cyber Security", definition:"شبكة من الأجهزة المخترقة يتم التحكم بها عن بعد"}
 ];
 
 // ================= أسئلة القاموس =================
@@ -1597,6 +1608,75 @@ dictionary.push({
   correct:1,
   type:"quiz"
 });
+
+const level1Questions = [
+
+{
+question:"ما معنى Encryption؟",
+options:["حذف البيانات","تشفير البيانات","نسخ البيانات","ضغط البيانات"],
+answer:"تشفير البيانات"
+},
+
+{
+question:"ما وظيفة Firewall؟",
+options:["زيادة سرعة الإنترنت","حماية الشبكة","حذف الملفات","تشغيل البرامج"],
+answer:"حماية الشبكة"
+},
+
+{
+question:"ما هو Malware؟",
+options:["برنامج مفيد","برنامج ضار","متصفح","نظام تشغيل"],
+answer:"برنامج ضار"
+},
+
+{
+question:"ما معنى Decryption؟",
+options:["حذف البيانات","فك التشفير","نسخ الملفات","تشفير جديد"],
+answer:"فك التشفير"
+},
+
+{
+question:"ما هو Spyware؟",
+options:["برنامج حماية","برنامج تجسس","لعبة","محرر نصوص"],
+answer:"برنامج تجسس"
+}
+
+];
+
+const level2Questions = [
+
+{
+question:"أي نوع من الهجمات يعتمد على تجربة جميع كلمات المرور؟",
+options:["Phishing","Brute Force Attack","Malware","Spyware"],
+answer:"Brute Force Attack"
+},
+
+{
+question:"ما الهدف من Two-Factor Authentication؟",
+options:["زيادة الإعلانات","تقليل الأمان","تعزيز الأمان","حذف البيانات"],
+answer:"تعزيز الأمان"
+},
+
+{
+question:"ما هو Botnet؟",
+options:["برنامج تصميم","شبكة أجهزة مخترقة","موقع إلكتروني","نظام حماية"],
+answer:"شبكة أجهزة مخترقة"
+},
+
+{
+question:"أي من التالي يعتبر نوع من Malware؟",
+options:["Firewall","Spyware","Router","Switch"],
+answer:"Spyware"
+},
+
+{
+question:"ما وظيفة Rootkit؟",
+options:["حذف الملفات","إظهار الإعلانات","إخفاء نفسه داخل النظام","تسريع الجهاز"],
+answer:"إخفاء نفسه داخل النظام"
+}
+
+];
+
 
 // ================= نظام الأسئلة (منفصل) =================
 // 3️⃣ 👇 هنا تحط الكود الجديد
