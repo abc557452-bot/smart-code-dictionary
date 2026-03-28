@@ -1609,6 +1609,8 @@ dictionary.push({
   type:"quiz"
 });
 
+
+// ================= Level 1 =================
 const level1Questions = [
 
 {
@@ -1643,6 +1645,8 @@ answer:"برنامج تجسس"
 
 ];
 
+
+// ================= Level 2 =================
 const level2Questions = [
 
 {
@@ -1678,8 +1682,69 @@ answer:"إخفاء نفسه داخل النظام"
 ];
 
 
-// ================= نظام الأسئلة (منفصل) =================
-// 3️⃣ 👇 هنا تحط الكود الجديد
+// ================= نظام الكويز الجديد =================
+
+let currentQuiz = [];
+let currentQuestion;
+let score = 0;
+
+// تشغيل Level 1
+function startLevel1(){
+  currentQuiz = level1Questions;
+  score = 0;
+  loadQuestion();
+}
+
+// تشغيل Level 2
+function startLevel2(){
+  currentQuiz = level2Questions;
+  score = 0;
+  loadQuestion();
+}
+
+
+// تحميل سؤال
+function loadQuestion(){
+
+  if(currentQuiz.length === 0){
+    document.getElementById("question").innerText = "اختر مستوى أولاً";
+    return;
+  }
+
+  currentQuestion = currentQuiz[Math.floor(Math.random() * currentQuiz.length)];
+
+  document.getElementById("question").innerText = currentQuestion.question;
+
+  let optionsHTML = "";
+
+  currentQuestion.options.forEach(opt => {
+    optionsHTML += `<button onclick="selectAnswer('${opt}')">${opt}</button>`;
+  });
+
+  document.getElementById("options").innerHTML = optionsHTML;
+}
+
+
+// اختيار الإجابة
+function selectAnswer(selected){
+
+  if(selected === currentQuestion.answer){
+    score++;
+    document.getElementById("result").innerText = "✅ صح!";
+  } else {
+    document.getElementById("result").innerText = "❌ خطأ";
+  }
+
+  // عرض السكور
+  document.getElementById("score").innerText = "Score: " + score;
+
+  // سؤال جديد بعد ثانية
+  setTimeout(loadQuestion,1000);
+}
+
+
+
+// ================= نظام الأسئلة القديم (خليه احتياط) =================
 const questions = dictionary
   .filter(item => item.definition)
   .map(item => {
@@ -1689,29 +1754,9 @@ const questions = dictionary
     };
   });
 
-// ================= الكويز =================
-let currentQuestion;
-
-function loadQuestion() {
-  currentQuestion = questions[Math.floor(Math.random() * questions.length)];
-  document.getElementById("question").innerText = currentQuestion.question;
-}
-
-function checkAnswer() {
-  let userAnswer = document.getElementById("answer").value;
-
-  if (userAnswer.includes(currentQuestion.answer)) {
-    document.getElementById("result").innerText = "✅ صح!";
-  } else {
-    document.getElementById("result").innerText = "❌ حاول مرة ثانية";
-  }
-}
-
-// تشغيل أول سؤال
-loadQuestion();
 
 
-// ======== المجالات المتاحة ========
+// ======== المجالات ========
 const fields = [
   "Programming",
   "Web Development",
@@ -1721,11 +1766,9 @@ const fields = [
   "Networking"
 ];
 
-// ======== القاموس الفريد ========
 const uniqueDictionary = [];
 const seenCodes = new Set();
 
-// نسخ المصطلحات الأصلية بدون تكرار
 dictionary.forEach(item => {
   if(item.code && !seenCodes.has(item.code)){
     seenCodes.add(item.code);
@@ -1733,10 +1776,10 @@ dictionary.forEach(item => {
   }
 });
 
-// ======== قائمة العناوين لمنع التكرار ========
 const existingTitles = uniqueDictionary.map(t => t.title);
 
-// ======== توليد مثال كود ========
+
+// ======== مثال كود ========
 function getExampleCode(field,index){
   if(field==="Python"){
     return `# Example Python ${index}\nprint("Hello Python ${index}")`;
@@ -1756,7 +1799,8 @@ function getExampleCode(field,index){
   return "";
 }
 
-// ======== توليد مصطلحات جديدة ========
+
+// ======== توليد مصطلحات ========
 function generateTerms(num,startIndex){
   let count = 0;
   let i = startIndex;
@@ -1781,7 +1825,6 @@ function generateTerms(num,startIndex){
       example_code:getExampleCode(field,i)
     });
 
-    // أضف العنوان لقائمة existingTitles لمنع التكرار
     existingTitles.push(title);
 
     count++;
@@ -1789,8 +1832,6 @@ function generateTerms(num,startIndex){
   }
 }
 
-// ======== استبدال القاموس الأصلي بالقاموس الفريد + توليد المصطلحات الجديدة ========
 generateTerms(500,500);
 
-console.log("عدد النهائي:", dictionary.length);
-
+console.log("عدد النهائي:", uniqueDictionary.length);
