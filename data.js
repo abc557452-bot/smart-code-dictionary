@@ -1783,4 +1783,4 @@ function endGame(){
 
 
 
-document.getElementById("count").innerText = uniqueDictionary.length;
+document.getElementById("count").innerText = dictionary.length;
