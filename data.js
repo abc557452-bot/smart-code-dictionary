@@ -1737,11 +1737,6 @@ function updateCounter() {
     setTimeout(updateCounter, 200);
   }
 }
-
 // استدعاء التحديث
 updateCounter();
-// 👇 تعديل العداد ليعمل مع القاموس الموجود
-window.addEventListener('DOMContentLoaded', () => {
- 
-document.getElementById("count")?.innerText = dictionary.length;
-});
+
