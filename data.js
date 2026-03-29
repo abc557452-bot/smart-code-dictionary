@@ -1584,6 +1584,7 @@ model = tf.keras.Sequential()`
 ];
 
 // ================= أسئلة القاموس =================
+const dictionary = [];
 
 dictionary.push({
   code:"Q-001",
@@ -1607,79 +1608,32 @@ dictionary.push({
   type:"quiz"
 });
 
-
 // ================= Level 1 =================
 const level1Questions = [
-{
-question:"ما معنى Encryption؟",
-options:["حذف البيانات","تشفير البيانات","نسخ البيانات","ضغط البيانات"],
-answer:"تشفير البيانات"
-},
-{
-question:"ما وظيفة Firewall؟",
-options:["زيادة سرعة الإنترنت","حماية الشبكة","حذف الملفات","تشغيل البرامج"],
-answer:"حماية الشبكة"
-},
-{
-question:"ما هو Malware؟",
-options:["برنامج مفيد","برنامج ضار","متصفح","نظام تشغيل"],
-answer:"برنامج ضار"
-},
-{
-question:"ما معنى Decryption؟",
-options:["حذف البيانات","فك التشفير","نسخ الملفات","تشفير جديد"],
-answer:"فك التشفير"
-},
-{
-question:"ما هو Spyware؟",
-options:["برنامج حماية","برنامج تجسس","لعبة","محرر نصوص"],
-answer:"برنامج تجسس"
-}
+  {question:"ما معنى Encryption؟", options:["حذف البيانات","تشفير البيانات","نسخ البيانات","ضغط البيانات"], answer:"تشفير البيانات"},
+  {question:"ما وظيفة Firewall؟", options:["زيادة سرعة الإنترنت","حماية الشبكة","حذف الملفات","تشغيل البرامج"], answer:"حماية الشبكة"},
+  {question:"ما هو Malware؟", options:["برنامج مفيد","برنامج ضار","متصفح","نظام تشغيل"], answer:"برنامج ضار"},
+  {question:"ما معنى Decryption؟", options:["حذف البيانات","فك التشفير","نسخ الملفات","تشفير جديد"], answer:"فك التشفير"},
+  {question:"ما هو Spyware؟", options:["برنامج حماية","برنامج تجسس","لعبة","محرر نصوص"], answer:"برنامج تجسس"}
 ];
-
 
 // ================= Level 2 =================
 const level2Questions = [
-{
-question:"أي نوع من الهجمات يعتمد على تجربة جميع كلمات المرور؟",
-options:["Phishing","Brute Force Attack","Malware","Spyware"],
-answer:"Brute Force Attack"
-},
-{
-question:"ما الهدف من Two-Factor Authentication؟",
-options:["زيادة الإعلانات","تقليل الأمان","تعزيز الأمان","حذف البيانات"],
-answer:"تعزيز الأمان"
-},
-{
-question:"ما هو Botnet؟",
-options:["برنامج تصميم","شبكة أجهزة مخترقة","موقع إلكتروني","نظام حماية"],
-answer:"شبكة أجهزة مخترقة"
-},
-{
-question:"أي من التالي يعتبر نوع من Malware؟",
-options:["Firewall","Spyware","Router","Switch"],
-answer:"Spyware"
-},
-{
-question:"ما وظيفة Rootkit؟",
-options:["حذف الملفات","إظهار الإعلانات","إخفاء نفسه داخل النظام","تسريع الجهاز"],
-answer:"إخفاء نفسه داخل النظام"
-}
+  {question:"أي نوع من الهجمات يعتمد على تجربة جميع كلمات المرور؟", options:["Phishing","Brute Force Attack","Malware","Spyware"], answer:"Brute Force Attack"},
+  {question:"ما الهدف من Two-Factor Authentication؟", options:["زيادة الإعلانات","تقليل الأمان","تعزيز الأمان","حذف البيانات"], answer:"تعزيز الأمان"},
+  {question:"ما هو Botnet؟", options:["برنامج تصميم","شبكة أجهزة مخترقة","موقع إلكتروني","نظام حماية"], answer:"شبكة أجهزة مخترقة"},
+  {question:"أي من التالي يعتبر نوع من Malware؟", options:["Firewall","Spyware","Router","Switch"], answer:"Spyware"},
+  {question:"ما وظيفة Rootkit؟", options:["حذف الملفات","إظهار الإعلانات","إخفاء نفسه داخل النظام","تسريع الجهاز"], answer:"إخفاء نفسه داخل النظام"}
 ];
 
-
 // ================= نظام اللعبة =================
-
 let currentQuiz = [];
 let currentQuestion;
 let score = 0;
-
 let questionCount = 0;
 let maxQuestions = 5;
-
 let timeLeft = 10;
 let timer;
-
 
 // تشغيل Level 1
 function startLevel1(){
@@ -1693,19 +1647,17 @@ function startLevel2(){
   resetGame();
 }
 
-
 // إعادة ضبط اللعبة
 function resetGame(){
   score = 0;
   questionCount = 0;
   document.getElementById("score").innerText = "Score: 0";
+  document.getElementById("result").innerText = "";
   loadQuestion();
 }
 
-
 // تحميل سؤال
 function loadQuestion(){
-
   if(questionCount >= maxQuestions){
     endGame();
     return;
@@ -1726,6 +1678,7 @@ function loadQuestion(){
   // المؤقت
   clearInterval(timer);
   timeLeft = 10;
+  document.getElementById("timer").innerText = "Time: " + timeLeft;
 
   timer = setInterval(()=>{
     timeLeft--;
@@ -1738,10 +1691,8 @@ function loadQuestion(){
   },1000);
 }
 
-
 // اختيار الإجابة
 function selectAnswer(selected){
-
   clearInterval(timer);
 
   if(selected === currentQuestion.answer){
@@ -1756,14 +1707,11 @@ function selectAnswer(selected){
   setTimeout(loadQuestion,1000);
 }
 
-
 // نهاية اللعبة
 function endGame(){
-
   clearInterval(timer);
 
   let message = "";
-
   if(score === maxQuestions){
     message = "🏆 ممتاز! فل مارك";
   } else if(score >= 3){
@@ -1777,10 +1725,7 @@ function endGame(){
   document.getElementById("timer").innerText = "";
 }
 
-
-
-// 👇 هذا مكان العداد الصح
-
-
-
-document.getElementById("count").innerText = dictionary.length;
+// 👇 تعديل العداد ليعمل مع القاموس الموجود
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById("count").innerText = dictionary.length;
+});
