@@ -206,9 +206,3 @@ function checkQuizAnswer(selected, correct, index) {
     showAllTerms();
   }
 }
-
-// 👇 تعديل العداد ليعمل مع القاموس الموجود
-window.addEventListener('DOMContentLoaded', () => {
- 
-document.getElementById("count")?.innerText = dictionary.length;
-});
