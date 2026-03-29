@@ -1725,10 +1725,8 @@ function endGame(){
   document.getElementById("timer").innerText = "";
 }
 
-// 👇 تعديل العداد ليعمل مع القاموس الموجود
-window.addEventListener('DOMContentLoaded', () => {
- 
-});
+
+
 // فقط تحديث العداد بعد التأكد أن العنصر موجود
 function updateCounter() {
   const countEl = document.getElementById("count");
@@ -1746,3 +1744,4 @@ updateCounter();
 window.addEventListener('DOMContentLoaded', () => {
  
 document.getElementById("count")?.innerText = dictionary.length;
+});
