@@ -13,14 +13,13 @@ function searchTerm() {
     return;
   }
 
-
-for (let d of dictionary) {
-  if (
-    (d.title && d.title.toLowerCase().includes(input)) ||
-    (d.definition && d.definition.toLowerCase().includes(input)) ||
-    (d.field && d.field.toLowerCase().includes(input))
-  ) {   
-    result.innerHTML = `
+  for (let d of dictionary) {
+    if (
+      (d.title && d.title.toLowerCase().includes(input)) ||
+      (d.definition && d.definition.toLowerCase().includes(input)) ||
+      (d.field && d.field.toLowerCase().includes(input))
+    ) {
+      result.innerHTML = `
         <h3>${d.code}</h3>
         <h2>${d.title}</h2>
         <p><b>المجال:</b> ${d.field}</p>
@@ -39,6 +38,7 @@ for (let d of dictionary) {
       break;
     }
   }
+
   if (!found) result.innerHTML = '<p style="color:red;">لم يتم العثور على المصطلح</p>';
 }
 
@@ -52,6 +52,7 @@ function clearSearch() {
 // ======== اقتراح الكلمات ========
 function suggestWords() {
   let input = document.getElementById("searchInput").value.toLowerCase();
+
   if (input === "") {
     suggestionsBox.innerHTML = "";
     return;
@@ -63,10 +64,11 @@ function suggestWords() {
       suggestions += `<p style="cursor:pointer;padding:5px;margin:0" onclick="fillInput(${i})">${d.title}</p>`;
     }
   });
+
   suggestionsBox.innerHTML = suggestions;
 }
 
-// ======== ملء البحث عند اختيار الاقتراح ========
+// ======== ملء البحث ========
 function fillInput(index) {
   document.getElementById("searchInput").value = dictionary[index].title;
   searchTerm();
@@ -75,6 +77,7 @@ function fillInput(index) {
 // ======== عرض جميع المصطلحات ========
 function showAllTerms() {
   let output = "";
+
   for (let d of dictionary) {
     output += `
       <h3>${d.code}</h3>
@@ -90,12 +93,13 @@ function showAllTerms() {
       }
       <hr>`;
   }
+
   result.innerHTML = output;
   suggestionsBox.innerHTML = "";
-  updateCount(dictionary); // تحديث العداد لجميع المصطلحات
+  updateCount(dictionary);
 }
 
-// ======== فلترة حسب المجال ========
+// ======== فلترة ========
 function filterField(fieldName) {
   let output = "";
   const filtered = dictionary.filter(d => d.field === fieldName);
@@ -116,14 +120,14 @@ function filterField(fieldName) {
       <hr>`;
   });
 
-  if (output === "") output = '<p style="color:red;">لا توجد مصطلحات في هذا المجال</p>';
+  if (output === "") output = '<p style="color:red;">لا توجد مصطلحات</p>';
+
   result.innerHTML = output;
   suggestionsBox.innerHTML = "";
-
-  updateCount(filtered); // تحديث العداد حسب الفلتر
+  updateCount(filtered);
 }
 
-// ======== تحديث العداد ========
+// ======== العداد ========
 function updateCount(array) {
   const unique = Array.from(new Set(array.map(d => d.code)));
   const countEl = document.getElementById("count");
@@ -137,43 +141,6 @@ function tryExample(code, lang) {
   document.getElementById("output").innerText = "تم تحميل المثال. اضغط تشغيل الكود.";
   document.getElementById("codeTester").scrollIntoView({ behavior: "smooth" });
 }
- // عرض القاموس + Q&A
-
-// ======== Quiz ========
-function startQuiz(){
-  const quiz = dictionary.filter(item=>item.type==="quiz");
-  if(quiz.length===0){ alert("لا توجد أسئلة للاختبار"); return; }
-  showQuestion(quiz,0);
-}
-
-function showQuestion(quiz,index){
-  const container = document.getElementById("results");
-  const q = quiz[index];
-  container.innerHTML=`
-    <div class="term">
-      <h3>${q.title}</h3>
-      ${q.options.map((opt,i)=>
-        `<button onclick="checkAnswer(${i},${q.correct},${index})">${opt}</button>`
-      ).join("")}
-    </div>
-  `;
-  document.getElementById("termCounter").innerText=`السؤال ${index+1} من ${quiz.length}`;
-}
-
-function checkAnswer(selected,correct,index){
-  if(selected===correct){
-    alert("✅ إجابة صحيحة");
-  } else {
-    alert("❌ إجابة خاطئة");
-  }
-  const quiz = dictionary.filter(item=>item.type==="quiz");
-  if(index+1<quiz.length){
-    showQuestion(quiz,index+1);
-  } else {
-    alert("🎯 انتهى الاختبار");
-    showAllTerms(); // ترجع عرض القاموس بعد الاختبار
-  }
-}
 
 // ======== نسخ الكود ========
 function copyCode(id) {
@@ -183,59 +150,64 @@ function copyCode(id) {
   });
 }
 
-// ======== حماية النصوص ========
+// ======== حماية النص ========
 function escapeQuotes(text) {
   return text.replace(/"/g, '\\"').replace(/\n/g, "\\n");
 }
+
 function escapeHTML(text) {
   return text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-// ======== تحديث العداد عند التحميل ========
+// ======== الكويز ========
+function startQuiz() {
+  const quiz = dictionary.filter(item => item.type === "quiz");
+
+  if (quiz.length === 0) {
+    alert("لا توجد أسئلة");
+    return;
+  }
+
+  showQuizQuestion(quiz, 0);
+}
+
+function showQuizQuestion(quiz, index) {
+  const container = document.getElementById("results");
+  const q = quiz[index];
+
+  container.innerHTML = `
+    <div class="term">
+      <h3>${q.title}</h3>
+      ${q.options.map((opt, i) =>
+        `<button onclick="checkQuizAnswer(${i},${q.correct},${index})">${opt}</button>`
+      ).join("")}
+    </div>
+  `;
+
+  const counter = document.getElementById("termCounter");
+  if (counter) {
+    counter.innerText = `السؤال ${index + 1} من ${quiz.length}`;
+  }
+}
+
+function checkQuizAnswer(selected, correct, index) {
+  if (selected === correct) {
+    alert("✅ صحيح");
+  } else {
+    alert("❌ خطأ");
+  }
+
+  const quiz = dictionary.filter(item => item.type === "quiz");
+
+  if (index + 1 < quiz.length) {
+    showQuizQuestion(quiz, index + 1);
+  } else {
+    alert("🎯 انتهى الاختبار");
+    showAllTerms();
+  }
+}
+
+// ======== عند تحميل الصفحة ========
 document.addEventListener("DOMContentLoaded", () => {
   updateCount(dictionary);
 });
-
- let currentQuestion = 0;
-let questions = [];
-
-function startLevel1() {
-  questions = [...uniqueDictionary]; // نفس الداتا عندك
-  currentQuestion = 0;
-  showQuestion();
-}
-
-function showQuestion() {
-  let q = questions[currentQuestion];
-
-  document.getElementById("question").innerText = q.title;
-
-  let optionsHTML = "";
-  questions.slice(0,4).forEach(opt => {
-    optionsHTML += `<button onclick="checkAnswer('${opt.title}')">${opt.title}</button>`;
-  });
-
-  document.getElementById("options").innerHTML = optionsHTML;
-}
-
-function checkAnswer(answer) {
-  let correct = questions[currentQuestion].title;
-
-  if(answer === correct){
-    document.getElementById("result").innerText = "✅ صح";
-  } else {
-    document.getElementById("result").innerText = "❌ خطأ";
-  }
-
-  currentQuestion++;
-
-  if(currentQuestion < questions.length){
-    setTimeout(showQuestion, 1000);
-  } else {
-    document.getElementById("question").innerText = "انتهى الاختبار 🎉";
-  }
-}
-
-
-
-  
