@@ -196,4 +196,46 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCount(dictionary);
 });
 
-   
+ let currentQuestion = 0;
+let questions = [];
+
+function startLevel1() {
+  questions = [...uniqueDictionary]; // نفس الداتا عندك
+  currentQuestion = 0;
+  showQuestion();
+}
+
+function showQuestion() {
+  let q = questions[currentQuestion];
+
+  document.getElementById("question").innerText = q.title;
+
+  let optionsHTML = "";
+  questions.slice(0,4).forEach(opt => {
+    optionsHTML += `<button onclick="checkAnswer('${opt.title}')">${opt.title}</button>`;
+  });
+
+  document.getElementById("options").innerHTML = optionsHTML;
+}
+
+function checkAnswer(answer) {
+  let correct = questions[currentQuestion].title;
+
+  if(answer === correct){
+    document.getElementById("result").innerText = "✅ صح";
+  } else {
+    document.getElementById("result").innerText = "❌ خطأ";
+  }
+
+  currentQuestion++;
+
+  if(currentQuestion < questions.length){
+    setTimeout(showQuestion, 1000);
+  } else {
+    document.getElementById("question").innerText = "انتهى الاختبار 🎉";
+  }
+}
+
+
+
+  
