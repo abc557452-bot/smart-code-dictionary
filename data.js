@@ -1781,7 +1781,6 @@ function endGame(){
 
 // 👇 هذا مكان العداد الصح
 
-generateTerms(500,500);
 
 
 document.getElementById("count").innerText = uniqueDictionary.length;
