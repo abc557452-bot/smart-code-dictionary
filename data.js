@@ -1729,3 +1729,17 @@ function endGame(){
 window.addEventListener('DOMContentLoaded', () => {
   document.getElementById("count").innerText = dictionary.length;
 });
+// فقط تحديث العداد بعد التأكد أن العنصر موجود
+function updateCounter() {
+  const countEl = document.getElementById("count");
+  if(countEl) {
+    countEl.innerText = dictionary.length;
+  } else {
+    // إذا العنصر غير موجود بعد، حاول مرة ثانية بعد 200ms
+    setTimeout(updateCounter, 200);
+  }
+}
+
+// استدعاء التحديث
+updateCounter();
+
