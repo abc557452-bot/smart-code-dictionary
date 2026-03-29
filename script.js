@@ -207,7 +207,8 @@ function checkQuizAnswer(selected, correct, index) {
   }
 }
 
-// ======== عند تحميل الصفحة ========
-document.addEventListener("DOMContentLoaded", () => {
-  updateCount(dictionary);
+// 👇 تعديل العداد ليعمل مع القاموس الموجود
+window.addEventListener('DOMContentLoaded', () => {
+ 
+document.getElementById("count")?.innerText = dictionary.length;
 });
