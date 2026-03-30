@@ -1580,13 +1580,12 @@ model = tf.keras.Sequential()`
 {code:"CY-028", title:"Spyware", field:"Cyber Security", definition:"برنامج يتجسس على المستخدم ويجمع معلوماته"},
 {code:"CY-029", title:"Adware", field:"Cyber Security", definition:"برنامج يعرض إعلانات مزعجة للمستخدم"},
 {code:"CY-030", title:"Rootkit", field:"Cyber Security", definition:"برنامج خبيث يخفي نفسه داخل النظام"},
-{code:"CY-031", title:"Botnet", field:"Cyber Security", definition:"شبكة من الأجهزة المخترقة يتم التحكم بها عن بعد"}
-];
+{code:"CY-031", title:"Botnet", field:"Cyber Security", definition:"شبكة من الأجهزة المخترقة يتم التحكم بها عن بعد"},
 
 // ======== Q&A ========
 {
   code:"Q-001",
-  title:"ما الفرق بين HTML و JavaScript؟ ",
+  title:"ما الفرق بين HTML و JavaScript؟",
   field:"Basics",
   definition:"HTML للهيكل و JavaScript لإضافة التفاعل",
   type:"qa"
