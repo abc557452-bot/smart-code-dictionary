@@ -1584,17 +1584,22 @@ model = tf.keras.Sequential()`
 ];
 
 // ================= أسئلة القاموس =================
-const dictionary = [];
+// ======== القاموس ========
+const dictionary = [
 
-dictionary.push({
+{code:"CY-031", title:"Botnet", field:"Cyber Security", definition:"شبكة من الأجهزة المخترقة يتم التحكم بها عن بعد"},
+
+// ======== Q&A ========
+{
   code:"Q-001",
   title:"ما الفرق بين HTML و JavaScript؟",
   field:"Basics",
   definition:"HTML للهيكل و JavaScript لإضافة التفاعل",
   type:"qa"
-});
+},
 
-dictionary.push({
+// ======== Quiz ========
+{
   code:"QZ-001",
   title:"ما وظيفة HTML؟",
   field:"Basics",
@@ -1606,7 +1611,9 @@ dictionary.push({
   ],
   correct:1,
   type:"quiz"
-});
+}
+
+];
 
 // ================= Level 1 =================
 const level1Questions = [
