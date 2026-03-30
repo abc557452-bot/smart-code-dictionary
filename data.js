@@ -1586,7 +1586,7 @@ model = tf.keras.Sequential()`
 // ======== Q&A ========
 {
   code:"Q-001",
-  title:"ما الفرق بين HTML و JavaScript؟",
+  title:"ما الفرق بين HTML و JavaScript؟ ",
   field:"Basics",
   definition:"HTML للهيكل و JavaScript لإضافة التفاعل",
   type:"qa"
