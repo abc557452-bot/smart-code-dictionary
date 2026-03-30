@@ -229,7 +229,13 @@
 <script src="data.js"></script>
 
 <script src="script.js"></script>
-
+<script>
+document.getElementById("searchInput").addEventListener("keypress", function(e){
+  if(e.key === "Enter"){
+    searchTerm();
+  }
+});
+</script>
 
 
 <!-- Pyodide لتشغيل Python -->
