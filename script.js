@@ -122,5 +122,27 @@ function clearSearch() {
 }
 
 
+function filterField(fieldName) {
+  let output = "";
 
+  for (let d of dictionary) {
+    if (d.field === fieldName) {
+      output += `
+        <h3>${d.code}</h3>
+        <h2>${d.title}</h2>
+        <p>${d.definition}</p>
+        <hr>`;
+    }
+  }
 
+  document.getElementById("results").innerHTML = output || "<p>لا توجد نتائج</p>";
+}
+function fixCounter() {
+  const el = document.getElementById("termCounter");
+  if (el && typeof dictionary !== "undefined") {
+    el.innerText = "عدد المصطلحات: " + dictionary.length;
+  } else {
+    setTimeout(fixCounter, 200);
+  }
+}
+fixCounter();
