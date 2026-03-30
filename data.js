@@ -1584,10 +1584,7 @@ model = tf.keras.Sequential()`
 ];
 
 // ================= أسئلة القاموس =================
-// ======== القاموس ========
-const dictionary = [
 
-{code:"CY-031", title:"Botnet", field:"Cyber Security", definition:"شبكة من الأجهزة المخترقة يتم التحكم بها عن بعد"},
 
 // ======== Q&A ========
 {
