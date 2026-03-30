@@ -86,4 +86,41 @@ function checkQuizAnswer(selected, correct, index) {
     showAllTerms();
   }
 }
+// ======== الاقتراحات ========
+function suggestWords() {
+  let input = document.getElementById("search").value.toLowerCase();
+  let suggestionsBox = document.getElementById("suggestions");
+
+  if (!suggestionsBox) return;
+
+  suggestionsBox.innerHTML = "";
+
+  if (input === "") return;
+
+  let results = dictionary.filter(d =>
+    d.title.toLowerCase().includes(input)
+  );
+
+  results.slice(0,5).forEach(item => {
+    let div = document.createElement("div");
+    div.innerText = item.title;
+    div.onclick = () => {
+      document.getElementById("search").value = item.title;
+      suggestionsBox.innerHTML = "";
+    };
+    suggestionsBox.appendChild(div);
+  });
+}
+
+// ======== مسح البحث ========
+function clearSearch() {
+  let input = document.getElementById("search");
+  let suggestionsBox = document.getElementById("suggestions");
+
+  if (input) input.value = "";
+  if (suggestionsBox) suggestionsBox.innerHTML = "";
+}
+
+
+
 
