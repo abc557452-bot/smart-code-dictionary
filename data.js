@@ -1583,9 +1583,6 @@ model = tf.keras.Sequential()`
 {code:"CY-031", title:"Botnet", field:"Cyber Security", definition:"شبكة من الأجهزة المخترقة يتم التحكم بها عن بعد"}
 ];
 
-// ================= أسئلة القاموس =================
-
-
 // ======== Q&A ========
 {
   code:"Q-001",
