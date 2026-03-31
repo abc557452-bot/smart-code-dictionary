@@ -113,4 +113,12 @@ pre {
     font-family: "Courier New", Courier, monospace;
 }
 
- 
+ .term pre {
+  background:#f4f4f4;
+  border:1px solid #ccc;
+  padding:10px;
+  overflow-x:auto;
+  white-space:pre-wrap;
+  font-family:monospace;
+  margin-top:5px;
+}
