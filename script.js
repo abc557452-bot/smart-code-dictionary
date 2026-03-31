@@ -102,7 +102,6 @@ function filterField(fieldName) {
   document.getElementById("results").innerHTML = output || "<p>لا توجد نتائج</p>";
 }
 
-// دوال البحث والاقتراحات والكويز والعداد كما كانت بدون أي تغيير
 
 
 // ======== الكويز ========
