@@ -70,18 +70,20 @@ function showAllTerms() {
   let output = "";
   dictionary.forEach(d => {
     output += `
-      <h3>${d.code}</h3>
-      <h2>${d.title}</h2>
-      <p>${d.definition}</p>
+      <div class="term">
+        <h3>${d.code}</h3>
+        <h2>${d.title}</h2>
+        <p>${d.definition}</p>
     `;
-    // هذا الجزء يضيف أمثلة الكود إذا موجودة
+    // هنا نضيف الأكواد البرمجية إذا موجودة
     if(d.example){
       output += `<pre>${d.example}</pre>`;
     }
-    output += `<hr>`;
+    output += `</div><hr>`;
   });
   document.getElementById("results").innerHTML = output;
 }
+
 
 
 // ======== الكويز ========
