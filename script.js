@@ -146,3 +146,31 @@ function fixCounter() {
   }
 }
 fixCounter();
+
+
+document.getElementById("searchInput").addEventListener("input", function () {
+  let input = this.value.toLowerCase();
+  let suggestionsBox = document.getElementById("suggestions");
+  suggestionsBox.innerHTML = "";
+
+  if (!input) return;
+
+  let filtered = dictionary.filter(d =>
+    d.title && d.title.toLowerCase().includes(input)
+  );
+
+  filtered.forEach(item => {
+    let div = document.createElement("div");
+    div.innerText = item.title;
+    div.onclick = () => {
+      document.getElementById("searchInput").value = item.title;
+      suggestionsBox.innerHTML = "";
+      searchTerm();
+    };
+    suggestionsBox.appendChild(div);
+  });
+});
+
+
+
+
