@@ -65,7 +65,7 @@ function searchTerm() {
   if (!found) result.innerHTML = '<p style="color:red;">لم يتم العثور على المصطلح</p>';
 }
 
-// ======== عرض الكل ========
+// ======== عرض الكل ========//
 ‫function showAllTerms() {
   let output = "";
   dictionary.forEach(d => {
