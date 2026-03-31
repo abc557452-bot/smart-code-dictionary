@@ -66,7 +66,10 @@ function searchTerm() {
 }
 
 // ======== عرض الكل ========//
-‫function showAllTerms() {
+
+
+
+function showAllTerms() {
   let output = "";
   dictionary.forEach(d => {
     output += `
