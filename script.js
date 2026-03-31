@@ -68,15 +68,21 @@ function searchTerm() {
 // ======== عرض الكل ========
 function showAllTerms() {
   let output = "";
-  for (let d of dictionary) {
+  dictionary.forEach(d => {
     output += `
       <h3>${d.code}</h3>
       <h2>${d.title}</h2>
       <p>${d.definition}</p>
-      <hr>`;
-  }
-  result.innerHTML = output;
+    `;
+    // هذا الجزء يضيف أمثلة الكود إذا موجودة
+    if(d.example){
+      output += `<pre>${d.example}</pre>`;
+    }
+    output += `<hr>`;
+  });
+  document.getElementById("results").innerHTML = output;
 }
+
 
 // ======== الكويز ========
 function startQuiz() {
