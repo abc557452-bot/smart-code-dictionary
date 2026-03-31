@@ -83,7 +83,7 @@ function searchTerm() {
   document.getElementById("results").innerHTML = output;
 }
 
-// مثال: دالة فلترة المجالات
+// // دالة فلترة المجالات
 function filterField(fieldName) {
   let output = "";
   dictionary.forEach(d => {
