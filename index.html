@@ -95,6 +95,78 @@
   </div>
 
 </div>
+  <!-- صندوق تجربة الكود -->
+  <div id="codeTester">
+    <h3>تجربة الكود</h3>
+    <label>اختر اللغة:</label>
+    <select id="codeLang">
+      <option value="js">JavaScript</option>
+      <option value="py">Python</option>
+    </select>
+    <textarea id="testCode" placeholder="ضع كودك هنا"></textarea>
+    <button id="runCode">تشغيل الكود</button>
+    <button id="clearCode">مسح الكود</button>
+    <button id="copyCode">نسخ الكود</button>
+    <pre id="output"></pre>
+  </div>
+
+</div>
+<!-- Pyodide لتشغيل Python -->
+<script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+
+<script>
+// ======== تحميل Python ========
+let pyodide=null;
+async function loadPyodideAndPackages(){
+  document.getElementById("output").innerText="جاري تحميل Python...";
+  pyodide = await loadPyodide();
+  document.getElementById("output").innerText="Python جاهز للتجربة";
+}
+loadPyodideAndPackages();
+
+// ======== تشغيل الكود ========
+document.getElementById("runCode").addEventListener("click", async ()=>{
+  const code = document.getElementById("testCode").value;
+  const lang = document.getElementById("codeLang").value;
+  const output = document.getElementById("output");
+  output.innerText="";
+
+  if(lang==="js"){
+    try{
+      const result = eval(code);
+      output.innerText = (result !== undefined) ? result : "تم التنفيذ بنجاح";
+    }catch(err){
+      output.innerText = "خطأ: " + err.message;
+    }
+  }
+
+  if(lang==="py"){
+    if(!pyodide){ output.innerText="Python مازال يحمل..."; return; }
+    try{
+      pyodide.runPython(`import sys\nfrom io import StringIO\nsys.stdout=StringIO()`);
+      await pyodide.runPythonAsync(code);
+      const result = pyodide.runPython("sys.stdout.getvalue()");
+      output.innerText = result.trim() === "" ? "تم التنفيذ بدون مخرجات" : result;
+    }catch(err){
+      output.innerText = "خطأ: "+err;
+    }
+  }
+});
+
+// ======== مسح الكود ========
+document.getElementById("clearCode").addEventListener("click", ()=>{
+  document.getElementById("testCode").value="";
+  document.getElementById("output").innerText="";
+});
+
+// ======== نسخ الكود ========
+document.getElementById("copyCode").addEventListener("click", ()=>{
+  const code = document.getElementById("testCode");
+  code.select();
+  document.execCommand("copy");
+  alert("تم نسخ الكود");
+});
+</script>
 
 <!-- ملفات القاموس والكود -->
 <script src="data.js"></script>
