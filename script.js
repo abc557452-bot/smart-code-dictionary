@@ -1,6 +1,37 @@
+
 // ======== عناصر DOM ========
-const result = document.getElementById("results");
-const suggestionsBox = document.getElementById("suggestions");
+let result, suggestionsBox;
+
+// نخليها تشتغل بعد تحميل الصفحة
+document.addEventListener("DOMContentLoaded", function () {
+  result = document.getElementById("results");
+  suggestionsBox = document.getElementById("suggestions");
+
+  fixCounter();
+
+  // ======== الاقتراحات (مهم) ========
+  document.getElementById("searchInput").addEventListener("input", function () {
+    let input = this.value.toLowerCase();
+    suggestionsBox.innerHTML = "";
+
+    if (!input) return;
+
+    let filtered = dictionary.filter(d =>
+      d.title && d.title.toLowerCase().includes(input)
+    );
+
+    filtered.slice(0,5).forEach(item => {
+      let div = document.createElement("div");
+      div.innerText = item.title;
+      div.onclick = () => {
+        document.getElementById("searchInput").value = item.title;
+        suggestionsBox.innerHTML = "";
+        searchTerm();
+      };
+      suggestionsBox.appendChild(div);
+    });
+  });
+});
 
 // ======== البحث ========
 function searchTerm() {
@@ -86,42 +117,17 @@ function checkQuizAnswer(selected, correct, index) {
     showAllTerms();
   }
 }
-// ======== الاقتراحات ========
-function suggestWords() {
-  let input = document.getElementById("search").value.toLowerCase();
-  let suggestionsBox = document.getElementById("suggestions");
-
-  if (!suggestionsBox) return;
-
-  suggestionsBox.innerHTML = "";
-
-  if (input === "") return;
-
-  let results = dictionary.filter(d =>
-    d.title.toLowerCase().includes(input)
-  );
-
-  results.slice(0,5).forEach(item => {
-    let div = document.createElement("div");
-    div.innerText = item.title;
-    div.onclick = () => {
-      document.getElementById("search").value = item.title;
-      suggestionsBox.innerHTML = "";
-    };
-    suggestionsBox.appendChild(div);
-  });
-}
 
 // ======== مسح البحث ========
 function clearSearch() {
-  let input = document.getElementById("search");
-  let suggestionsBox = document.getElementById("suggestions");
+  let input = document.getElementById("searchInput");
 
   if (input) input.value = "";
   if (suggestionsBox) suggestionsBox.innerHTML = "";
+  if (result) result.innerHTML = "";
 }
 
-
+// ======== فلترة ========
 function filterField(fieldName) {
   let output = "";
 
@@ -137,6 +143,8 @@ function filterField(fieldName) {
 
   document.getElementById("results").innerHTML = output || "<p>لا توجد نتائج</p>";
 }
+
+// ======== العداد ========
 function fixCounter() {
   const el = document.getElementById("termCounter");
   if (el && typeof dictionary !== "undefined") {
@@ -145,32 +153,4 @@ function fixCounter() {
     setTimeout(fixCounter, 200);
   }
 }
-fixCounter();
-
-
-document.getElementById("searchInput").addEventListener("input", function () {
-  let input = this.value.toLowerCase();
-  let suggestionsBox = document.getElementById("suggestions");
-  suggestionsBox.innerHTML = "";
-
-  if (!input) return;
-
-  let filtered = dictionary.filter(d =>
-    d.title && d.title.toLowerCase().includes(input)
-  );
-
-  filtered.forEach(item => {
-    let div = document.createElement("div");
-    div.innerText = item.title;
-    div.onclick = () => {
-      document.getElementById("searchInput").value = item.title;
-      suggestionsBox.innerHTML = "";
-      searchTerm();
-    };
-    suggestionsBox.appendChild(div);
-  });
-});
-
-
-
 
