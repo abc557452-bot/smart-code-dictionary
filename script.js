@@ -1,5 +1,4 @@
-
-// ======== عناصر DOM ========
+/ ======== عناصر DOM ========
 let result, suggestionsBox;
 
 // نخليها تشتغل بعد تحميل الصفحة
@@ -65,46 +64,24 @@ function searchTerm() {
   if (!found) result.innerHTML = '<p style="color:red;">لم يتم العثور على المصطلح</p>';
 }
 
-// ======== عرض الكل ========//
-
-
-
+// ======== عرض الكل ========
 function showAllTerms() {
   let output = "";
   dictionary.forEach(d => {
     output += `
-      <h3>${d.code}</h3>
-      <h2>${d.title}</h2>
-      <p>${d.definition}</p>
-    `;
-    // عرض الأمثلة البرمجية لو موجودة
-    if(d.example && d.example.trim() !== ""){
-      output += `<pre>${d.example}</pre>`;
-    }
-    output += `<hr>`;
-  });
-  document.getElementById("results").innerHTML = output;
-}
-
-// // دالة فلترة المجالات
-function filterField(fieldName) {
-  let output = "";
-  dictionary.forEach(d => {
-    if(d.field === fieldName){
-      output += `
+      <div> 
         <h3>${d.code}</h3>
         <h2>${d.title}</h2>
         <p>${d.definition}</p>
-      `;
-      if(d.example && d.example.trim() !== ""){
-        output += `<pre>${d.example}</pre>`;
-      }
-      output += `<hr>`;
+    `;
+    // إضافة المثال فقط إذا موجود
+    if(d.example && d.example.trim() !== ""){
+      output += `<pre>${d.example}</pre>`;
     }
+    output += `</div><hr>`;
   });
-  document.getElementById("results").innerHTML = output || "<p>لا توجد نتائج</p>";
+  document.getElementById("results").innerHTML = output;
 }
-
 
 
 // ======== الكويز ========
