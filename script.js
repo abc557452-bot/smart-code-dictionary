@@ -66,23 +66,43 @@ function searchTerm() {
 }
 
 // ======== عرض الكل ========
-function showAllTerms() {
+‫function showAllTerms() {
   let output = "";
   dictionary.forEach(d => {
     output += `
-      <div> 
-        <h3>${d.code}</h3>
-        <h2>${d.title}</h2>
-        <p>${d.definition}</p>
+      <h3>${d.code}</h3>
+      <h2>${d.title}</h2>
+      <p>${d.definition}</p>
     `;
-    // إضافة المثال فقط إذا موجود
+    // عرض الأمثلة البرمجية لو موجودة
     if(d.example && d.example.trim() !== ""){
       output += `<pre>${d.example}</pre>`;
     }
-    output += `</div><hr>`;
+    output += `<hr>`;
   });
   document.getElementById("results").innerHTML = output;
 }
+
+// مثال: دالة فلترة المجالات
+function filterField(fieldName) {
+  let output = "";
+  dictionary.forEach(d => {
+    if(d.field === fieldName){
+      output += `
+        <h3>${d.code}</h3>
+        <h2>${d.title}</h2>
+        <p>${d.definition}</p>
+      `;
+      if(d.example && d.example.trim() !== ""){
+        output += `<pre>${d.example}</pre>`;
+      }
+      output += `<hr>`;
+    }
+  });
+  document.getElementById("results").innerHTML = output || "<p>لا توجد نتائج</p>";
+}
+
+// دوال البحث والاقتراحات والكويز والعداد كما كانت بدون أي تغيير
 
 
 // ======== الكويز ========
