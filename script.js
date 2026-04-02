@@ -1,4 +1,3 @@
-//‫// ======== عناصر DOM ========
 
 
 let result = document.getElementById("results");
