@@ -1,6 +1,8 @@
 // ======== عناصر DOM ========
-let result = document.getElementById("results");
-let suggestionsBox = document.getElementById("suggestions");
+let result, suggestionsBox; // فقط تعريف مرة واحدة
+let quizData = [];
+let timer;       // تعريف مرة واحدة لتجنب الخطأ
+let timeLeft = 10;
 
 // ======== تشغيل بعد تحميل الصفحة ========
 document.addEventListener("DOMContentLoaded", function () {
@@ -29,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         div.onclick = () => {
           searchInput.value = item.title;
           suggestionsBox.innerHTML = "";
-          searchTerm();
+          searchTerm(); // هنا تم التأكد من وجود الدالة قبل الاستدعاء
         };
 
         suggestionsBox.appendChild(div);
@@ -91,7 +93,7 @@ function showAllTerms() {
 
   dictionary.forEach(d => {
     output += `
-      <div> 
+      <div>
         <h3>${d.code}</h3>
         <h2>${d.title}</h2>
         <p>${d.definition}</p>
@@ -108,10 +110,6 @@ function showAllTerms() {
 }
 
 // ======== الكويز ========
-let quizData = [];
-let timer;
-let timeLeft = 10;
-
 function startTimer(index) {
   clearInterval(timer);
   timeLeft = 10;
@@ -160,7 +158,7 @@ function showQuizQuestion(index) {
     ).join("")}
   `;
 
-  startTimer(index); // 🔥 المؤقت يشتغل لكل سؤال
+  startTimer(index); // المؤقت لكل سؤال
 }
 
 function checkQuizAnswer(selected, index) {
