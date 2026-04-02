@@ -1,47 +1,57 @@
-/ ======== عناصر DOM ========
-let result, suggestionsBox;
+// ======== عناصر DOM ========
+let result = document.getElementById("results");
+let suggestionsBox = document.getElementById("suggestions");
 
-// نخليها تشتغل بعد تحميل الصفحة
+// ======== تشغيل بعد تحميل الصفحة ========
 document.addEventListener("DOMContentLoaded", function () {
   result = document.getElementById("results");
   suggestionsBox = document.getElementById("suggestions");
 
   fixCounter();
 
-  // ======== الاقتراحات (مهم) ========
-  document.getElementById("searchInput").addEventListener("input", function () {
-    let input = this.value.toLowerCase();
-    suggestionsBox.innerHTML = "";
+  const searchInput = document.getElementById("searchInput");
 
-    if (!input) return;
+  if (searchInput) {
+    searchInput.addEventListener("input", function () {
+      let input = this.value.toLowerCase();
+      suggestionsBox.innerHTML = "";
 
-    let filtered = dictionary.filter(d =>
-      d.title && d.title.toLowerCase().includes(input)
-    );
+      if (!input || typeof dictionary === "undefined") return;
 
-    filtered.slice(0,5).forEach(item => {
-      let div = document.createElement("div");
-      div.innerText = item.title;
-      div.onclick = () => {
-        document.getElementById("searchInput").value = item.title;
-        suggestionsBox.innerHTML = "";
-        searchTerm();
-      };
-      suggestionsBox.appendChild(div);
+      let filtered = dictionary.filter(d =>
+        d.title && d.title.toLowerCase().includes(input)
+      );
+
+      filtered.slice(0, 5).forEach(item => {
+        let div = document.createElement("div");
+        div.innerText = item.title;
+
+        div.onclick = () => {
+          searchInput.value = item.title;
+          suggestionsBox.innerHTML = "";
+          searchTerm();
+        };
+
+        suggestionsBox.appendChild(div);
+      });
     });
-  });
+  }
 });
 
 // ======== البحث ========
 function searchTerm() {
+  if (typeof dictionary === "undefined") return;
+
   let input = document.getElementById("searchInput").value.toLowerCase();
   let found = false;
 
-  if (input === "") {
+  if (!input) {
     result.innerHTML = "";
     suggestionsBox.innerHTML = "";
     return;
   }
+
+  let output = "";
 
   for (let d of dictionary) {
     if (
@@ -49,24 +59,31 @@ function searchTerm() {
       (d.definition && d.definition.toLowerCase().includes(input)) ||
       (d.field && d.field.toLowerCase().includes(input))
     ) {
-      result.innerHTML = `
-        <h3>${d.code}</h3>
-        <h2>${d.title}</h2>
-        <p><b>المجال:</b> ${d.field}</p>
-        <p>${d.definition}</p>
-        <hr>`;
-      suggestionsBox.innerHTML = "";
+      output += `
+        <div>
+          <h3>${d.code}</h3>
+          <h2>${d.title}</h2>
+          <p><b>المجال:</b> ${d.field}</p>
+          <p>${d.definition}</p>
+        </div><hr>
+      `;
       found = true;
-      break;
     }
   }
 
-  if (!found) result.innerHTML = '<p style="color:red;">لم يتم العثور على المصطلح</p>';
+  result.innerHTML = found 
+    ? output 
+    : '<p style="color:red;">لم يتم العثور على المصطلح</p>';
+
+  suggestionsBox.innerHTML = "";
 }
 
 // ======== عرض الكل ========
 function showAllTerms() {
+  if (typeof dictionary === "undefined") return;
+
   let output = "";
+
   dictionary.forEach(d => {
     output += `
       <div> 
@@ -74,50 +91,55 @@ function showAllTerms() {
         <h2>${d.title}</h2>
         <p>${d.definition}</p>
     `;
-    // إضافة المثال فقط إذا موجود
-    if(d.example && d.example.trim() !== ""){
+
+    if (d.example && d.example.trim() !== "") {
       output += `<pre>${d.example}</pre>`;
     }
+
     output += `</div><hr>`;
   });
-  document.getElementById("results").innerHTML = output;
+
+  result.innerHTML = output;
 }
 
-
 // ======== الكويز ========
-function startQuiz() {
-  const quiz = dictionary.filter(item => item.type === "quiz");
+let quizData = [];
 
-  if (quiz.length === 0) {
+function startQuiz() {
+  if (typeof dictionary === "undefined") return;
+
+  quizData = dictionary.filter(item => item.type === "quiz");
+
+  if (quizData.length === 0) {
     alert("لا توجد أسئلة");
     return;
   }
 
-  showQuizQuestion(quiz, 0);
+  showQuizQuestion(0);
 }
 
-function showQuizQuestion(quiz, index) {
-  const q = quiz[index];
+function showQuizQuestion(index) {
+  const q = quizData[index];
 
   result.innerHTML = `
     <h3>${q.title}</h3>
-    ${q.options.map((opt,i)=>
-      `<button onclick="checkQuizAnswer(${i},${q.correct},${index})">${opt}</button>`
+    ${q.options.map((opt, i) =>
+      `<button onclick="checkQuizAnswer(${i},${index})">${opt}</button>`
     ).join("")}
   `;
 }
 
-function checkQuizAnswer(selected, correct, index) {
-  const quiz = dictionary.filter(item => item.type === "quiz");
+function checkQuizAnswer(selected, index) {
+  const q = quizData[index];
 
-  if (selected === correct) {
+  if (selected === q.correct) {
     alert("✅ صح");
   } else {
     alert("❌ خطأ");
   }
 
-  if (index + 1 < quiz.length) {
-    showQuizQuestion(quiz, index + 1);
+  if (index + 1 < quizData.length) {
+    showQuizQuestion(index + 1);
   } else {
     alert("🎯 انتهى الاختبار");
     showAllTerms();
@@ -135,6 +157,8 @@ function clearSearch() {
 
 // ======== فلترة ========
 function filterField(fieldName) {
+  if (typeof dictionary === "undefined") return;
+
   let output = "";
 
   for (let d of dictionary) {
@@ -147,16 +171,19 @@ function filterField(fieldName) {
     }
   }
 
-  document.getElementById("results").innerHTML = output || "<p>لا توجد نتائج</p>";
+  result.innerHTML = output || "<p>لا توجد نتائج</p>";
 }
 
 // ======== العداد ========
 function fixCounter() {
   const el = document.getElementById("termCounter");
+
   if (el && typeof dictionary !== "undefined") {
     el.innerText = "عدد المصطلحات: " + dictionary.length;
   } else {
     setTimeout(fixCounter, 200);
   }
 }
+
+
 
