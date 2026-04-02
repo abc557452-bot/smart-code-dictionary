@@ -1,4 +1,6 @@
-‫// ======== عناصر DOM ======//=
+//‫// ======== عناصر DOM ========
+
+
 let result = document.getElementById("results");
 let suggestionsBox = document.getElementById("suggestions");
 
