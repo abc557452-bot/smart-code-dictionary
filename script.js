@@ -1,5 +1,4 @@
-
-
+// ======== عناصر DOM ========
 let result = document.getElementById("results");
 let suggestionsBox = document.getElementById("suggestions");
 
@@ -92,7 +91,7 @@ function showAllTerms() {
 
   dictionary.forEach(d => {
     output += `
-      <div> 
+      <div>
         <h3>${d.code}</h3>
         <h2>${d.title}</h2>
         <p>${d.definition}</p>
@@ -233,3 +232,5 @@ function fixCounter() {
     setTimeout(fixCounter, 300);
   }
 }
+
+
