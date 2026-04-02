@@ -104,6 +104,33 @@ function showAllTerms() {
 
 // ======== الكويز ========
 let quizData = [];
+let timer;
+let timeLeft = 10;
+
+function startTimer(index) {
+  clearInterval(timer);
+  timeLeft = 10;
+
+  const timerEl = document.getElementById("timer");
+
+  timer = setInterval(() => {
+    if (timerEl) timerEl.innerText = "Time: " + timeLeft;
+
+    timeLeft--;
+
+    if (timeLeft < 0) {
+      clearInterval(timer);
+      alert("⏰ انتهى الوقت");
+
+      if (index + 1 < quizData.length) {
+        showQuizQuestion(index + 1);
+      } else {
+        alert("🎯 انتهى الاختبار");
+        showAllTerms();
+      }
+    }
+  }, 1000);
+}
 
 function startQuiz() {
   if (typeof dictionary === "undefined") return;
@@ -145,7 +172,17 @@ function checkQuizAnswer(selected, index) {
     showAllTerms();
   }
 }
+function startLevel1() {
+  quizData = dictionary.filter(item => item.level === 1);
+  if (quizData.length === 0) return alert("لا يوجد Level 1");
+  showQuizQuestion(0);
+}
 
+function startLevel2() {
+  quizData = dictionary.filter(item => item.level === 2);
+  if (quizData.length === 0) return alert("لا يوجد Level 2");
+  showQuizQuestion(0);
+}
 // ======== مسح البحث ========
 function clearSearch() {
   let input = document.getElementById("searchInput");
