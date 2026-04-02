@@ -91,7 +91,7 @@ function showAllTerms() {
 
   dictionary.forEach(d => {
     output += `
-      <div>
+      <div> 
         <h3>${d.code}</h3>
         <h2>${d.title}</h2>
         <p>${d.definition}</p>
@@ -160,7 +160,7 @@ function showQuizQuestion(index) {
     ).join("")}
   `;
 
-  startTimer(index); // 🔥 مؤقت يشتغل مع كل سؤال
+  startTimer(index); // 🔥 المؤقت يشتغل لكل سؤال
 }
 
 function checkQuizAnswer(selected, index) {
@@ -232,5 +232,3 @@ function fixCounter() {
     setTimeout(fixCounter, 300);
   }
 }
-
-
