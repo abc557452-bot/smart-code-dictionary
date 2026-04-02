@@ -65,14 +65,19 @@ function searchTerm() {
           <h2>${d.title}</h2>
           <p><b>المجال:</b> ${d.field}</p>
           <p>${d.definition}</p>
-        </div><hr>
       `;
+
+      if (d.example && d.example.trim() !== "") {
+        output += `<pre>${d.example}</pre>`;
+      }
+
+      output += `</div><hr>`;
       found = true;
     }
   }
 
-  result.innerHTML = found 
-    ? output 
+  result.innerHTML = found
+    ? output
     : '<p style="color:red;">لم يتم العثور على المصطلح</p>';
 
   suggestionsBox.innerHTML = "";
@@ -86,7 +91,7 @@ function showAllTerms() {
 
   dictionary.forEach(d => {
     output += `
-      <div> 
+      <div>
         <h3>${d.code}</h3>
         <h2>${d.title}</h2>
         <p>${d.definition}</p>
@@ -154,6 +159,8 @@ function showQuizQuestion(index) {
       `<button onclick="checkQuizAnswer(${i},${index})">${opt}</button>`
     ).join("")}
   `;
+
+  startTimer(index); // 🔥 مؤقت يشتغل مع كل سؤال
 }
 
 function checkQuizAnswer(selected, index) {
@@ -172,6 +179,7 @@ function checkQuizAnswer(selected, index) {
     showAllTerms();
   }
 }
+
 function startLevel1() {
   quizData = dictionary.filter(item => item.level === 1);
   if (quizData.length === 0) return alert("لا يوجد Level 1");
@@ -183,6 +191,7 @@ function startLevel2() {
   if (quizData.length === 0) return alert("لا يوجد Level 2");
   showQuizQuestion(0);
 }
+
 // ======== مسح البحث ========
 function clearSearch() {
   let input = document.getElementById("searchInput");
@@ -215,12 +224,11 @@ function filterField(fieldName) {
 function fixCounter() {
   const el = document.getElementById("termCounter");
 
-  if (el && typeof dictionary !== "undefined") {
+  if (!el) return;
+
+  if (typeof dictionary !== "undefined" && Array.isArray(dictionary)) {
     el.innerText = "عدد المصطلحات: " + dictionary.length;
   } else {
-    setTimeout(fixCounter, 200);
+    setTimeout(fixCounter, 300);
   }
 }
-
-
-
