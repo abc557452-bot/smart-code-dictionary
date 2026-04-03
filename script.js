@@ -9,7 +9,6 @@ window.timeLeft = 10;
 document.addEventListener("DOMContentLoaded", function () {
   window.result = document.getElementById("results");
   window.suggestionsBox = document.getElementById("suggestions");
-
   fixCounter();
 
   const searchInput = document.getElementById("searchInput");
@@ -74,6 +73,7 @@ function searchTerm() {
   window.result.innerHTML = found
     ? output
     : '<p style="color:red;">لم يتم العثور على المصطلح</p>';
+
   window.suggestionsBox.innerHTML = "";
 }
 
@@ -98,11 +98,10 @@ function showAllTerms() {
   window.result.innerHTML = output;
 }
 
-// ======== الكويز مع مؤقت ========
+// ======== الكويز ========
 function startTimer(index) {
   clearInterval(window.timer);
   window.timeLeft = 10;
-
   const timerEl = document.getElementById("timer");
 
   window.timer = setInterval(() => {
@@ -124,10 +123,8 @@ function startTimer(index) {
 
 function startQuiz() {
   if (typeof dictionary === "undefined") return;
-
   window.quizData = dictionary.filter(item => item.type === "quiz");
   if (window.quizData.length === 0) return alert("لا توجد أسئلة");
-
   showQuizQuestion(0);
 }
 
@@ -144,11 +141,15 @@ function showQuizQuestion(index) {
 
 function checkQuizAnswer(selected, index) {
   const q = window.quizData[index];
-  if (selected === q.correct) alert("✅ صح");
-  else alert("❌ خطأ");
+  if (selected === q.correct) {
+    alert("✅ صح");
+  } else {
+    alert("❌ خطأ");
+  }
 
-  if (index + 1 < window.quizData.length) showQuizQuestion(index + 1);
-  else {
+  if (index + 1 < window.quizData.length) {
+    showQuizQuestion(index + 1);
+  } else {
     alert("🎯 انتهى الاختبار");
     showAllTerms();
   }
@@ -174,10 +175,9 @@ function clearSearch() {
   if (window.result) window.result.innerHTML = "";
 }
 
-// ======== فلترة ========
+// ======== فلترة المجالات ========
 function filterField(fieldName) {
   if (typeof dictionary === "undefined") return;
-
   let output = "";
   dictionary.forEach(d => {
     if (d.field === fieldName) {
@@ -185,11 +185,9 @@ function filterField(fieldName) {
         <h3>${d.code}</h3>
         <h2>${d.title}</h2>
         <p>${d.definition}</p>
-        <hr>
-      `;
+        <hr>`;
     }
   });
-
   window.result.innerHTML = output || "<p>لا توجد نتائج</p>";
 }
 
@@ -197,7 +195,6 @@ function filterField(fieldName) {
 function fixCounter() {
   const el = document.getElementById("termCounter");
   if (!el) return;
-
   if (typeof dictionary !== "undefined" && Array.isArray(dictionary)) {
     el.innerText = "عدد المصطلحات: " + dictionary.length;
   } else {
