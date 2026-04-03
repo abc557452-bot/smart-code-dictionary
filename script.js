@@ -1,21 +1,26 @@
-// ======== متغيرات عامة مرة واحدة ========
-window.result = null;
-window.suggestionsBox = null;
-window.quizData = [];
-window.timer = null;
-window.timeLeft = 10;
+// ======== تعريف المتغيرات العامة مرة واحدة ========
+let result, suggestionsBox;
+let quizData = [];
+let timer, timeLeft = 10;
+let currentQuiz = [];
+let currentQuestion;
+let score = 0;
+let questionCount = 0;
+let maxQuestions = 5;
 
 // ======== تشغيل بعد تحميل الصفحة ========
 document.addEventListener("DOMContentLoaded", function () {
-  window.result = document.getElementById("results");
-  window.suggestionsBox = document.getElementById("suggestions");
+  result = document.getElementById("results");
+  suggestionsBox = document.getElementById("suggestions");
+
   fixCounter();
 
   const searchInput = document.getElementById("searchInput");
   if (searchInput) {
     searchInput.addEventListener("input", function () {
       let input = this.value.toLowerCase();
-      window.suggestionsBox.innerHTML = "";
+      suggestionsBox.innerHTML = "";
+
       if (!input || typeof dictionary === "undefined") return;
 
       let filtered = dictionary.filter(d =>
@@ -25,12 +30,14 @@ document.addEventListener("DOMContentLoaded", function () {
       filtered.slice(0, 5).forEach(item => {
         let div = document.createElement("div");
         div.innerText = item.title;
+
         div.onclick = () => {
           searchInput.value = item.title;
-          window.suggestionsBox.innerHTML = "";
-          window.searchTerm();
+          suggestionsBox.innerHTML = "";
+          searchTerm();
         };
-        window.suggestionsBox.appendChild(div);
+
+        suggestionsBox.appendChild(div);
       });
     });
   }
@@ -42,14 +49,16 @@ function searchTerm() {
 
   let input = document.getElementById("searchInput").value.toLowerCase();
   let found = false;
+
   if (!input) {
-    window.result.innerHTML = "";
-    window.suggestionsBox.innerHTML = "";
+    result.innerHTML = "";
+    suggestionsBox.innerHTML = "";
     return;
   }
 
   let output = "";
-  dictionary.forEach(d => {
+
+  for (let d of dictionary) {
     if (
       (d.title && d.title.toLowerCase().includes(input)) ||
       (d.definition && d.definition.toLowerCase().includes(input)) ||
@@ -62,19 +71,21 @@ function searchTerm() {
           <p><b>المجال:</b> ${d.field}</p>
           <p>${d.definition}</p>
       `;
+
       if (d.example && d.example.trim() !== "") {
         output += `<pre>${d.example}</pre>`;
       }
+
       output += `</div><hr>`;
       found = true;
     }
-  });
+  }
 
-  window.result.innerHTML = found
+  result.innerHTML = found
     ? output
     : '<p style="color:red;">لم يتم العثور على المصطلح</p>';
 
-  window.suggestionsBox.innerHTML = "";
+  suggestionsBox.innerHTML = "";
 }
 
 // ======== عرض الكل ========
@@ -82,6 +93,7 @@ function showAllTerms() {
   if (typeof dictionary === "undefined") return;
 
   let output = "";
+
   dictionary.forEach(d => {
     output += `
       <div>
@@ -89,112 +101,106 @@ function showAllTerms() {
         <h2>${d.title}</h2>
         <p>${d.definition}</p>
     `;
+
     if (d.example && d.example.trim() !== "") {
       output += `<pre>${d.example}</pre>`;
     }
+
     output += `</div><hr>`;
   });
 
-  window.result.innerHTML = output;
+  result.innerHTML = output;
 }
 
-// ======== الكويز ========
-function startTimer(index) {
-  clearInterval(window.timer);
-  window.timeLeft = 10;
-  const timerEl = document.getElementById("timer");
+// ======== الكويز Level1/Level2 ========
+function startLevel1() {
+  currentQuiz = dictionary.filter(item => item.level === 1);
+  resetGame();
+}
 
-  window.timer = setInterval(() => {
-    if (timerEl) timerEl.innerText = "Time: " + window.timeLeft;
-    window.timeLeft--;
+function startLevel2() {
+  currentQuiz = dictionary.filter(item => item.level === 2);
+  resetGame();
+}
 
-    if (window.timeLeft < 0) {
-      clearInterval(window.timer);
-      alert("⏰ انتهى الوقت");
-      if (index + 1 < window.quizData.length) {
-        showQuizQuestion(index + 1);
-      } else {
-        alert("🎯 انتهى الاختبار");
-        showAllTerms();
-      }
+function resetGame() {
+  score = 0;
+  questionCount = 0;
+  document.getElementById("score").innerText = "Score: 0";
+  document.getElementById("result").innerText = "";
+  loadQuestion();
+}
+
+function loadQuestion() {
+  if (questionCount >= maxQuestions) {
+    endGame();
+    return;
+  }
+
+  currentQuestion = currentQuiz[Math.floor(Math.random() * currentQuiz.length)];
+  questionCount++;
+
+  document.getElementById("question").innerText = currentQuestion.question;
+
+  let optionsHTML = "";
+  currentQuestion.options.forEach(opt => {
+    optionsHTML += `<button onclick="selectAnswer('${opt}')">${opt}</button>`;
+  });
+  document.getElementById("options").innerHTML = optionsHTML;
+
+  // المؤقت
+  clearInterval(timer);
+  timeLeft = 10;
+  document.getElementById("timer").innerText = "Time: " + timeLeft;
+
+  timer = setInterval(() => {
+    timeLeft--;
+    document.getElementById("timer").innerText = "Time: " + timeLeft;
+
+    if (timeLeft === 0) {
+      clearInterval(timer);
+      loadQuestion();
     }
   }, 1000);
 }
 
-function startQuiz() {
-  if (typeof dictionary === "undefined") return;
-  window.quizData = dictionary.filter(item => item.type === "quiz");
-  if (window.quizData.length === 0) return alert("لا توجد أسئلة");
-  showQuizQuestion(0);
-}
+function selectAnswer(selected) {
+  clearInterval(timer);
 
-function showQuizQuestion(index) {
-  const q = window.quizData[index];
-  window.result.innerHTML = `
-    <h3>${q.title}</h3>
-    ${q.options.map((opt, i) =>
-      `<button onclick="checkQuizAnswer(${i},${index})">${opt}</button>`
-    ).join("")}
-  `;
-  startTimer(index);
-}
-
-function checkQuizAnswer(selected, index) {
-  const q = window.quizData[index];
-  if (selected === q.correct) {
-    alert("✅ صح");
+  if (selected === currentQuestion.answer) {
+    score++;
+    document.getElementById("result").innerText = "✅ صح!";
   } else {
-    alert("❌ خطأ");
+    document.getElementById("result").innerText = "❌ خطأ";
   }
 
-  if (index + 1 < window.quizData.length) {
-    showQuizQuestion(index + 1);
+  document.getElementById("score").innerText = "Score: " + score;
+
+  setTimeout(loadQuestion, 1000);
+}
+
+function endGame() {
+  clearInterval(timer);
+
+  let message = "";
+  if (score === maxQuestions) {
+    message = "🏆 ممتاز! فل مارك";
+  } else if (score >= 3) {
+    message = "👍 جيد جداً";
   } else {
-    alert("🎯 انتهى الاختبار");
-    showAllTerms();
+    message = "💀 حاول مرة ثانية";
   }
-}
 
-function startLevel1() {
-  window.quizData = dictionary.filter(item => item.level === 1);
-  if (window.quizData.length === 0) return alert("لا يوجد Level 1");
-  showQuizQuestion(0);
-}
-
-function startLevel2() {
-  window.quizData = dictionary.filter(item => item.level === 2);
-  if (window.quizData.length === 0) return alert("لا يوجد Level 2");
-  showQuizQuestion(0);
-}
-
-// ======== مسح البحث ========
-function clearSearch() {
-  const input = document.getElementById("searchInput");
-  if (input) input.value = "";
-  if (window.suggestionsBox) window.suggestionsBox.innerHTML = "";
-  if (window.result) window.result.innerHTML = "";
-}
-
-// ======== فلترة المجالات ========
-function filterField(fieldName) {
-  if (typeof dictionary === "undefined") return;
-  let output = "";
-  dictionary.forEach(d => {
-    if (d.field === fieldName) {
-      output += `
-        <h3>${d.code}</h3>
-        <h2>${d.title}</h2>
-        <p>${d.definition}</p>
-        <hr>`;
-    }
-  });
-  window.result.innerHTML = output || "<p>لا توجد نتائج</p>";
+  document.getElementById("question").innerText = message;
+  document.getElementById("options").innerHTML = "";
+  document.getElementById("timer").innerText = "";
 }
 
 // ======== العداد ========
 function fixCounter() {
   const el = document.getElementById("termCounter");
   if (!el) return;
+
   if (typeof dictionary !== "undefined" && Array.isArray(dictionary)) {
     el.innerText = "عدد المصطلحات: " + dictionary.length;
   } else {
@@ -202,8 +208,11 @@ function fixCounter() {
   }
 }
 
-// ======== ربط الدوال عالميًا ========
+// ======== ربط الدوال بالنافذة لل HTML ========
 window.searchTerm = searchTerm;
-window.startQuiz = startQuiz;
+window.showAllTerms = showAllTerms;
 window.startLevel1 = startLevel1;
 window.startLevel2 = startLevel2;
+
+
+
