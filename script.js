@@ -1,8 +1,8 @@
 // ======== عناصر DOM ========
 let result, suggestionsBox;
 let quizData = [];
-let quizTimer;   // 👈 بدل timer
-let timeLeft = 10;
+let quizTimer;        // تم تغيير الاسم
+let quizTimeLeft = 10; // تم تغيير الاسم
 
 // ======== تشغيل بعد تحميل الصفحة ========
 document.addEventListener("DOMContentLoaded", function () {
@@ -85,6 +85,9 @@ function searchTerm() {
   suggestionsBox.innerHTML = "";
 }
 
+// ======== ربط الدالة مع HTML (حل مشكلة onkeyup) ========
+window.searchTerm = searchTerm;
+
 // ======== عرض الكل ========
 function showAllTerms() {
   if (typeof dictionary === "undefined") return;
@@ -112,16 +115,16 @@ function showAllTerms() {
 // ======== الكويز ========
 function startTimer(index) {
   clearInterval(quizTimer);
-  timeLeft = 10;
+  quizTimeLeft = 10;
 
   const timerEl = document.getElementById("timer");
 
   quizTimer = setInterval(() => {
-    if (timerEl) timerEl.innerText = "Time: " + timeLeft;
+    if (timerEl) timerEl.innerText = "Time: " + quizTimeLeft;
 
-    timeLeft--;
+    quizTimeLeft--;
 
-    if (timeLeft < 0) {
+    if (quizTimeLeft < 0) {
       clearInterval(quizTimer);
       alert("⏰ انتهى الوقت");
 
