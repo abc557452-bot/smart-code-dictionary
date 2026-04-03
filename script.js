@@ -1,4 +1,4 @@
-‫// ======== متغيرات عامة //
+//‫// ======== متغيرات عامة ========
 let result, suggestionsBox;
 let quizData = [];
 let timer;
