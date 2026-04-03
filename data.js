@@ -1591,7 +1591,6 @@ model = tf.keras.Sequential()`
   type:"qa"
 },
 
-// ======== Quiz ========
 {
   code:"QZ-001",
   title:"ما وظيفة HTML؟",
