@@ -111,32 +111,10 @@ function showAllTerms() {
 
   result.innerHTML = output;
 }
-
-// ======== الكويز ========
-function startTimer(index) {
-  clearInterval(quizTimer);
-  quizTimeLeft = 10;
-
-  const timerEl = document.getElementById("timer");
-
-  quizTimer = setInterval(() => {
-    if (timerEl) timerEl.innerText = "Time: " + quizTimeLeft;
-
-    quizTimeLeft--;
-
-    if (quizTimeLeft < 0) {
-      clearInterval(quizTimer);
-      alert("⏰ انتهى الوقت");
-
-      if (index + 1 < quizData.length) {
-        showQuizQuestion(index + 1);
-      } else {
-        alert("🎯 انتهى الاختبار");
-        showAllTerms();
-      }
-    }
-  }, 1000);
-}
+// ======== الكويز مع رسائل نهاية الاختبار ========
+let quizData = [];
+let timer;
+let timeLeft = 10;
 
 function startQuiz() {
   if (typeof dictionary === "undefined") return;
@@ -148,24 +126,26 @@ function startQuiz() {
     return;
   }
 
-  showQuizQuestion(0); // تبدأ من السؤال الأول
+  showQuizQuestion(0);
 }
 
 function showQuizQuestion(index) {
   const q = quizData[index];
 
+  // عرض السؤال على الصفحة
   result.innerHTML = `
     <h3>${q.title}</h3>
-    <p><b>المجال:</b> ${q.field || ""}</p>
     ${q.options.map((opt, i) =>
       `<button onclick="checkQuizAnswer(${i},${index})">${opt}</button>`
     ).join("")}
   `;
 
-  startTimer(index); // المؤقت لكل سؤال
+  startTimer(index); // بدء المؤقت لكل سؤال
 }
 
 function checkQuizAnswer(selected, index) {
+  clearInterval(timer); // توقف المؤقت عند الإجابة
+
   const q = quizData[index];
 
   if (selected === q.correct) {
@@ -175,24 +155,68 @@ function checkQuizAnswer(selected, index) {
   }
 
   if (index + 1 < quizData.length) {
-    showQuizQuestion(index + 1); // الانتقال للسؤال التالي
+    showQuizQuestion(index + 1); // السؤال التالي
   } else {
-    alert("🎯 انتهى الاختبار");
-    showAllTerms();
+    // انتهاء الاختبار
+    const messages = [
+      "🎉 أحسنت! لقد أنهيت الاختبار بنجاح!",
+      "👍 حاولت جهدك، يمكن المرة القادمة أفضل!",
+      "🌟 استمر في التعلم، كل يوم أفضل من سابقه!",
+      "💪 حظًا موفقًا في المرات القادمة!"
+    ];
+    // اختر رسالة عشوائية
+    const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+    alert(randomMsg);
+    showAllTerms(); // عرض جميع المصطلحات بعد الاختبار
   }
 }
 
 function startLevel1() {
-  quizData = dictionary.filter(item => item.level === 1);
+  quizData = dictionary.filter(item => item.level === 1 && item.type === "quiz");
   if (quizData.length === 0) return alert("لا يوجد Level 1");
   showQuizQuestion(0);
 }
 
 function startLevel2() {
-  quizData = dictionary.filter(item => item.level === 2);
+  quizData = dictionary.filter(item => item.level === 2 && item.type === "quiz");
   if (quizData.length === 0) return alert("لا يوجد Level 2");
   showQuizQuestion(0);
 }
+
+// ======== المؤقت لكل سؤال ========
+function startTimer(index) {
+  clearInterval(timer);
+  timeLeft = 10;
+
+  const timerEl = document.getElementById("timer");
+  if (timerEl) timerEl.style.display = "block";
+
+  timer = setInterval(() => {
+    if (timerEl) timerEl.innerText = "Time: " + timeLeft;
+
+    timeLeft--;
+
+    if (timeLeft < 0) {
+      clearInterval(timer);
+      alert("⏰ انتهى الوقت!");
+
+      if (index + 1 < quizData.length) {
+        showQuizQuestion(index + 1);
+      } else {
+        const messages = [
+          "🎉 أحسنت! لقد أنهيت الاختبار بنجاح!",
+          "👍 حاولت جهدك، يمكن المرة القادمة أفضل!",
+          "🌟 استمر في التعلم، كل يوم أفضل من سابقه!",
+          "💪 حظًا موفقًا في المرات القادمة!"
+        ];
+        const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+        alert(randomMsg);
+        showAllTerms();
+      }
+    }
+  }, 1000);
+}
+
 
 // ======== مسح البحث ========
 function clearSearch() {
