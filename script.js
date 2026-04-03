@@ -1,7 +1,7 @@
 // ======== عناصر DOM ========
-let result, suggestionsBox; // فقط تعريف مرة واحدة
+let result, suggestionsBox;
 let quizData = [];
-let timer;       // تعريف مرة واحدة لتجنب الخطأ
+let quizTimer;   // 👈 بدل timer
 let timeLeft = 10;
 
 // ======== تشغيل بعد تحميل الصفحة ========
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         div.onclick = () => {
           searchInput.value = item.title;
           suggestionsBox.innerHTML = "";
-          searchTerm(); // هنا تم التأكد من وجود الدالة قبل الاستدعاء
+          searchTerm();
         };
 
         suggestionsBox.appendChild(div);
@@ -111,18 +111,18 @@ function showAllTerms() {
 
 // ======== الكويز ========
 function startTimer(index) {
-  clearInterval(timer);
+  clearInterval(quizTimer);
   timeLeft = 10;
 
   const timerEl = document.getElementById("timer");
 
-  timer = setInterval(() => {
+  quizTimer = setInterval(() => {
     if (timerEl) timerEl.innerText = "Time: " + timeLeft;
 
     timeLeft--;
 
     if (timeLeft < 0) {
-      clearInterval(timer);
+      clearInterval(quizTimer);
       alert("⏰ انتهى الوقت");
 
       if (index + 1 < quizData.length) {
@@ -158,7 +158,7 @@ function showQuizQuestion(index) {
     ).join("")}
   `;
 
-  startTimer(index); // المؤقت لكل سؤال
+  startTimer(index);
 }
 
 function checkQuizAnswer(selected, index) {
