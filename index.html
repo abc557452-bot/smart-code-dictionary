@@ -69,7 +69,7 @@
 
   <!-- صندوق البحث -->
   <div class="search-box">
-    <input type="text" id="searchInput" placeholder="ابحث عن مصطلح..." onkeyup="searchTerm();suggestWords();">
+<input type="text" id="searchInput" placeholder="ابحث عن مصطلح...">
     <button onclick="searchTerm()">بحث</button>
     <button onclick="clearSearch()">مسح</button>
     <button onclick="showAllTerms()">عرض جميع المصطلحات</button>
@@ -170,13 +170,6 @@ document.getElementById("copyCode").addEventListener("click", ()=>{
 <!-- ملفات القاموس والكود -->
 <script src="data.js"></script>
 <script src="script.js"></script>
-<script>
-document.getElementById("searchInput").addEventListener("keypress", function(e){
-  if(e.key === "Enter"){
-    searchTerm();
-  }
-});
-</script>
 
 </body>
 </html>
