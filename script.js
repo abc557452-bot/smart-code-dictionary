@@ -1,8 +1,8 @@
-// ======== عناصر DOM ========
+‫// ======== متغيرات عامة ========
 let result, suggestionsBox;
 let quizData = [];
-let quizTimer;        // تم تغيير الاسم
-let quizTimeLeft = 10; // تم تغيير الاسم
+let timer;
+let timeLeft = 10;
 
 // ======== تشغيل بعد تحميل الصفحة ========
 document.addEventListener("DOMContentLoaded", function () {
@@ -46,7 +46,6 @@ function searchTerm() {
 
   let input = document.getElementById("searchInput").value.toLowerCase();
   let found = false;
-
   if (!input) {
     result.innerHTML = "";
     suggestionsBox.innerHTML = "";
@@ -85,9 +84,6 @@ function searchTerm() {
   suggestionsBox.innerHTML = "";
 }
 
-// ======== ربط الدالة مع HTML (حل مشكلة onkeyup) ========
-window.searchTerm = searchTerm;
-
 // ======== عرض الكل ========
 function showAllTerms() {
   if (typeof dictionary === "undefined") return;
@@ -111,11 +107,8 @@ function showAllTerms() {
 
   result.innerHTML = output;
 }
-// ======== الكويز مع رسائل نهاية الاختبار ========
-let quizData = [];
-let timer;
-let timeLeft = 10;
 
+// ======== الكويز مع مؤقت ورسائل نهاية الاختبار ========
 function startQuiz() {
   if (typeof dictionary === "undefined") return;
 
@@ -132,19 +125,19 @@ function startQuiz() {
 function showQuizQuestion(index) {
   const q = quizData[index];
 
-  // عرض السؤال على الصفحة
   result.innerHTML = `
     <h3>${q.title}</h3>
+    <p><b>المجال:</b> ${q.field || ""}</p>
     ${q.options.map((opt, i) =>
       `<button onclick="checkQuizAnswer(${i},${index})">${opt}</button>`
     ).join("")}
   `;
 
-  startTimer(index); // بدء المؤقت لكل سؤال
+  startTimer(index);
 }
 
 function checkQuizAnswer(selected, index) {
-  clearInterval(timer); // توقف المؤقت عند الإجابة
+  clearInterval(timer);
 
   const q = quizData[index];
 
@@ -155,19 +148,17 @@ function checkQuizAnswer(selected, index) {
   }
 
   if (index + 1 < quizData.length) {
-    showQuizQuestion(index + 1); // السؤال التالي
+    showQuizQuestion(index + 1);
   } else {
-    // انتهاء الاختبار
     const messages = [
       "🎉 أحسنت! لقد أنهيت الاختبار بنجاح!",
       "👍 حاولت جهدك، يمكن المرة القادمة أفضل!",
       "🌟 استمر في التعلم، كل يوم أفضل من سابقه!",
       "💪 حظًا موفقًا في المرات القادمة!"
     ];
-    // اختر رسالة عشوائية
     const randomMsg = messages[Math.floor(Math.random() * messages.length)];
     alert(randomMsg);
-    showAllTerms(); // عرض جميع المصطلحات بعد الاختبار
+    showAllTerms();
   }
 }
 
@@ -217,7 +208,6 @@ function startTimer(index) {
   }, 1000);
 }
 
-
 // ======== مسح البحث ========
 function clearSearch() {
   let input = document.getElementById("searchInput");
@@ -227,7 +217,7 @@ function clearSearch() {
   if (result) result.innerHTML = "";
 }
 
-// ======== فلترة ========
+// ======== فلترة المجالات ========
 function filterField(fieldName) {
   if (typeof dictionary === "undefined") return;
 
@@ -258,6 +248,8 @@ function fixCounter() {
     setTimeout(fixCounter, 300);
   }
 }
+
+// ======== ربط الدوال للعناصر العالمية ========
 window.searchTerm = searchTerm;
 window.startQuiz = startQuiz;
 window.startLevel1 = startLevel1;
