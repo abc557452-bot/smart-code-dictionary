@@ -1,15 +1,5 @@
 
 
-
-
-
-
-
-
-
-
-
-
 const dictionary =[
 
 {code:"SC-PR-001", title:"Python", field:"Programming", definition:"لغة برمجة عالية المستوى تستخدم في تطوير التطبيقات والذكاء الاصطناعي.", keywords:["python","programming","coding","ai"], author:"badriah", year:"2026", example_code:`print("Hello World")`},
