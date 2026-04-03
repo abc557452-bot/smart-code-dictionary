@@ -233,3 +233,7 @@ function fixCounter() {
     setTimeout(fixCounter, 300);
   }
 }
+window.searchTerm = searchTerm;
+window.startQuiz = startQuiz;
+window.startLevel1 = startLevel1;
+window.startLevel2 = startLevel2;
