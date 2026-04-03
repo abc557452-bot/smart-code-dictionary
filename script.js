@@ -148,7 +148,7 @@ function startQuiz() {
     return;
   }
 
-  showQuizQuestion(0);
+  showQuizQuestion(0); // تبدأ من السؤال الأول
 }
 
 function showQuizQuestion(index) {
@@ -156,12 +156,13 @@ function showQuizQuestion(index) {
 
   result.innerHTML = `
     <h3>${q.title}</h3>
+    <p><b>المجال:</b> ${q.field || ""}</p>
     ${q.options.map((opt, i) =>
       `<button onclick="checkQuizAnswer(${i},${index})">${opt}</button>`
     ).join("")}
   `;
 
-  startTimer(index);
+  startTimer(index); // المؤقت لكل سؤال
 }
 
 function checkQuizAnswer(selected, index) {
@@ -174,7 +175,7 @@ function checkQuizAnswer(selected, index) {
   }
 
   if (index + 1 < quizData.length) {
-    showQuizQuestion(index + 1);
+    showQuizQuestion(index + 1); // الانتقال للسؤال التالي
   } else {
     alert("🎯 انتهى الاختبار");
     showAllTerms();
