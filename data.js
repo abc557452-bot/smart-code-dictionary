@@ -1582,7 +1582,6 @@ model = tf.keras.Sequential()`
 {code:"CY-030", title:"Rootkit", field:"Cyber Security", definition:"برنامج خبيث يخفي نفسه داخل النظام"},
 {code:"CY-031", title:"Botnet", field:"Cyber Security", definition:"شبكة من الأجهزة المخترقة يتم التحكم بها عن بعد"},
 
-// ======== Q&A ========
 {
   code:"Q-001",
   title:"ما الفرق بين HTML و JavaScript؟",
