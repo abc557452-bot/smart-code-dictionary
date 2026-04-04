@@ -1,6 +1,8 @@
 // ======== سكربت آمن بدون تعريفات مكررة ========
 (function() {
   // ======== المتغيرات العامة ========
+  window.usedQuestions = window.usedQuestions || [];
+
   window.result = window.result || null;
   window.suggestionsBox = window.suggestionsBox || null;
   window.quizData = window.quizData || [];
@@ -122,30 +124,54 @@
     resetGame();
   };
 
-  function resetGame() {
-    score = 0;
-    questionCount = 0;
-    document.getElementById("score").innerText = "Score: 0";
-    document.getElementById("result").innerText = "";
-    loadQuestion();
-  }
+function resetGame() {
+  score = 0;
+  questionCount = 0;
+  usedQuestions = []; // مهم
+  document.getElementById("score").innerText = "Score: 0";
+  document.getElementById("result").innerText = "";
+  loadQuestion();
+}
 
-  function loadQuestion() {
-    if (questionCount >= maxQuestions) {
-      endGame();
-      return;
-    }
+ function loadQuestion() {
+ if (questionCount >= maxQuestions || usedQuestions.length >= currentQuiz.length) {
+   endGame();
+   return;
+ }
 
-    currentQuestion = currentQuiz[Math.floor(Math.random() * currentQuiz.length)];
-    questionCount++;
+ let available = currentQuiz.filter(q => !usedQuestions.includes(q));
 
-    document.getElementById("question").innerText = currentQuestion.question;
+ currentQuestion = available[Math.floor(Math.random() * available.length)];
+ usedQuestions.push(currentQuestion);
 
-    let optionsHTML = "";
-    currentQuestion.options.forEach(opt => {
-      optionsHTML += `<button onclick="selectAnswer('${opt}')">${opt}</button>`;
-    });
-    document.getElementById("options").innerHTML = optionsHTML;
+ questionCount++;
+
+ document.getElementById("question").innerText = currentQuestion.question;
+
+ let optionsHTML = "";
+ currentQuestion.options.forEach(opt => {
+   optionsHTML += `<button onclick="selectAnswer('${opt}')">${opt}</button>`;
+ });
+ document.getElementById("options").innerHTML = optionsHTML;
+
+ // المؤقت
+ clearInterval(timer);
+ timeLeft = 10;
+ document.getElementById("timer").innerText = "Time: " + timeLeft;
+
+ timer = setInterval(() => {
+   timeLeft--;
+   document.getElementById("timer").innerText = "Time: " + timeLeft;
+
+   if (timeLeft === 0) {
+     clearInterval(timer);
+     loadQuestion();
+   }
+ }, 1000);
+}
+
+
+
 
     // المؤقت
     clearInterval(timer);
