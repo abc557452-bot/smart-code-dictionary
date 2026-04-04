@@ -154,24 +154,6 @@ function resetGame() {
  });
  document.getElementById("options").innerHTML = optionsHTML;
 
- // المؤقت
- clearInterval(timer);
- timeLeft = 10;
- document.getElementById("timer").innerText = "Time: " + timeLeft;
-
- timer = setInterval(() => {
-   timeLeft--;
-   document.getElementById("timer").innerText = "Time: " + timeLeft;
-
-   if (timeLeft === 0) {
-     clearInterval(timer);
-     loadQuestion();
-   }
- }, 1000);
-}
-
-
-
 
     // المؤقت
     clearInterval(timer);
