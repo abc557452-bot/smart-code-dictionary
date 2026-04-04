@@ -126,12 +126,16 @@
 function resetGame() {
   score = 0;
   questionCount = 0;
-  usedQuestions = []; // مهم
-  document.getElementById("score").innerText = "Score: 0";
-  document.getElementById("result").innerText = "";
+  window.usedQuestions = [];
+
+  const scoreEl = document.getElementById("score");
+  const resultEl = document.getElementById("result");
+
+  if (scoreEl) scoreEl.innerText = "Score: 0";
+  if (resultEl) resultEl.innerText = "";
+
   loadQuestion();
 }
-
  function loadQuestion() {
  if (questionCount >= maxQuestions || usedQuestions.length >= currentQuiz.length) {
    endGame();
@@ -215,3 +219,25 @@ optionsHTML += `<button onclick="selectAnswer(this.innerText)">${opt}</button>`;
   }
 
 })();
+window.filterField = function(field) {
+  if (typeof dictionary === "undefined") return;
+
+  let output = "";
+
+  dictionary.forEach(d => {
+    if (d.field === field) {
+      output += `
+        <div>
+          <h3>${d.code}</h3>
+          <h2>${d.title}</h2>
+          <p>${d.definition}</p>
+        </div><hr>
+      `;
+    }
+  });
+
+  result.innerHTML = output;
+};
+
+
+
