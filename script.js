@@ -1,8 +1,7 @@
 // ======== سكربت آمن بدون تعريفات مكررة ========
 (function() {
   // ======== المتغيرات العامة ========
-  window.usedQuestions = window.usedQuestions || [];
-
+  window.usedQuestions = [];
   window.result = window.result || null;
   window.suggestionsBox = window.suggestionsBox || null;
   window.quizData = window.quizData || [];
@@ -150,7 +149,7 @@ function resetGame() {
 
  let optionsHTML = "";
  currentQuestion.options.forEach(opt => {
-   optionsHTML += `<button onclick="selectAnswer('${opt}')">${opt}</button>`;
+optionsHTML += `<button onclick="selectAnswer(this.innerText)">${opt}</button>`;
  });
  document.getElementById("options").innerHTML = optionsHTML;
 
