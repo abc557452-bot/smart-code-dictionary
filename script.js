@@ -112,6 +112,22 @@
 
     result.innerHTML = output;
   };
+  
+window.clearSearch = function() {
+  const input = document.getElementById("searchInput");
+  const result = document.getElementById("results");
+  const suggestions = document.getElementById("suggestions");
+
+  if (input) input.value = "";
+  if (result) result.innerHTML = "";
+  if (suggestions) suggestions.innerHTML = "";
+};
+
+
+
+
+
+
 
   // ======== Level 1 & 2 Quiz ========
   window.startLevel1 = function() {
@@ -268,18 +284,3 @@ window.filterField = function(field) {
 
   result.innerHTML = output;
 };
-
-window.clearSearch = function() {
-  const input = document.getElementById("searchInput");
-  const result = document.getElementById("results");
-  const suggestions = document.getElementById("suggestions");
-
-  if (input) input.value = "";
-  if (result) result.innerHTML = "";
-  if (suggestions) suggestions.innerHTML = "";
-};
-
-
-
-
-
