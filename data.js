@@ -1608,23 +1608,6 @@ model = tf.keras.Sequential()`
 
 ];
 
-// ================= Level 1 =================
-const level1Questions = [
-  {question:"ما معنى Encryption؟", options:["حذف البيانات","تشفير البيانات","نسخ البيانات","ضغط البيانات"], answer:"تشفير البيانات"},
-  {question:"ما وظيفة Firewall؟", options:["زيادة سرعة الإنترنت","حماية الشبكة","حذف الملفات","تشغيل البرامج"], answer:"حماية الشبكة"},
-  {question:"ما هو Malware؟", options:["برنامج مفيد","برنامج ضار","متصفح","نظام تشغيل"], answer:"برنامج ضار"},
-  {question:"ما معنى Decryption؟", options:["حذف البيانات","فك التشفير","نسخ الملفات","تشفير جديد"], answer:"فك التشفير"},
-  {question:"ما هو Spyware؟", options:["برنامج حماية","برنامج تجسس","لعبة","محرر نصوص"], answer:"برنامج تجسس"}
-];
-
-// ================= Level 2 =================
-const level2Questions = [
-  {question:"أي نوع من الهجمات يعتمد على تجربة جميع كلمات المرور؟", options:["Phishing","Brute Force Attack","Malware","Spyware"], answer:"Brute Force Attack"},
-  {question:"ما الهدف من Two-Factor Authentication؟", options:["زيادة الإعلانات","تقليل الأمان","تعزيز الأمان","حذف البيانات"], answer:"تعزيز الأمان"},
-  {question:"ما هو Botnet؟", options:["برنامج تصميم","شبكة أجهزة مخترقة","موقع إلكتروني","نظام حماية"], answer:"شبكة أجهزة مخترقة"},
-  {question:"أي من التالي يعتبر نوع من Malware؟", options:["Firewall","Spyware","Router","Switch"], answer:"Spyware"},
-  {question:"ما وظيفة Rootkit؟", options:["حذف الملفات","إظهار الإعلانات","إخفاء نفسه داخل النظام","تسريع الجهاز"], answer:"إخفاء نفسه داخل النظام"}
-];
 
 // ================= نظام اللعبة =================
 let currentQuiz = [];
@@ -1635,17 +1618,8 @@ let maxQuestions = 5;
 let timeLeft = 10;
 let timer;
 
-// تشغيل Level 1
-function startLevel1(){
-  currentQuiz = level1Questions;
-  resetGame();
-}
 
-// تشغيل Level 2
-function startLevel2(){
-  currentQuiz = level2Questions;
-  resetGame();
-}
+
 
 // إعادة ضبط اللعبة
 function resetGame(){
@@ -1656,77 +1630,9 @@ function resetGame(){
   loadQuestion();
 }
 
-// تحميل سؤال
-function loadQuestion(){
-  if(questionCount >= maxQuestions){
-    endGame();
-    return;
-  }
-
-  currentQuestion = currentQuiz[Math.floor(Math.random() * currentQuiz.length)];
-  questionCount++;
-
-  document.getElementById("question").innerText = currentQuestion.question;
-
-  let optionsHTML = "";
-  currentQuestion.options.forEach(opt => {
-    optionsHTML += `<button onclick="selectAnswer('${opt}')">${opt}</button>`;
-  });
-
-  document.getElementById("options").innerHTML = optionsHTML;
-
-  // المؤقت
-  clearInterval(timer);
-  timeLeft = 10;
-  document.getElementById("timer").innerText = "Time: " + timeLeft;
-
-  timer = setInterval(()=>{
-    timeLeft--;
-    document.getElementById("timer").innerText = "Time: " + timeLeft;
-
-    if(timeLeft === 0){
-      clearInterval(timer);
-      loadQuestion();
-    }
-  },1000);
-}
-
-// اختيار الإجابة
-function selectAnswer(selected){
-  clearInterval(timer);
-
-  if(selected === currentQuestion.answer){
-    score++;
-    document.getElementById("result").innerText = "✅ صح!";
-  } else {
-    document.getElementById("result").innerText = "❌ خطأ";
-  }
-
-  document.getElementById("score").innerText = "Score: " + score;
-
-  setTimeout(loadQuestion,1000);
-}
-
-// نهاية اللعبة
-function endGame(){
-  clearInterval(timer);
-
-  let message = "";
-  if(score === maxQuestions){
-    message = "🏆 ممتاز! فل مارك";
-  } else if(score >= 3){
-    message = "👍 جيد جداً";
-  } else {
-    message = "💀 حاول مرة ثانية";
-  }
-
-  document.getElementById("question").innerText = message;
-  document.getElementById("options").innerHTML = "";
-  document.getElementById("timer").innerText = "";
-}
 
 
-
+  
 // فقط تحديث العداد بعد التأكد أن العنصر موجود
 function updateCounter() {
   const countEl = document.getElementById("count");
