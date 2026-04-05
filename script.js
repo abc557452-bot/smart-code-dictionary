@@ -149,13 +149,23 @@ function resetGame() {
 
  questionCount++;
 
- document.getElementById("question").innerText = currentQuestion.question;
+document.getElementById("question").innerText = "ما معنى: " + currentQuestion.title;
 
- let optionsHTML = "";
- currentQuestion.options.forEach(opt => {
-optionsHTML += `<button onclick="selectAnswer(this.innerText)">${opt}</button>`;
- });
- document.getElementById("options").innerHTML = optionsHTML;
+let options = [
+  currentQuestion.definition,
+  "خيار غلط 1",
+  "خيار غلط 2",
+  "خيار غلط 3"
+];
+
+options.sort(() => Math.random() - 0.5);
+
+options.forEach(opt => {
+  optionsHTML += `<button onclick="selectAnswer(this.innerText)">${opt}</button>`;
+});
+
+if (selected === currentQuestion.definition)
+
 
 
     // المؤقت
@@ -177,7 +187,8 @@ optionsHTML += `<button onclick="selectAnswer(this.innerText)">${opt}</button>`;
   window.selectAnswer = function(selected) {
     clearInterval(timer);
 
-    if (selected === currentQuestion.answer) {
+   if (selected === currentQuestion.definition)
+ {
       score++;
       document.getElementById("result").innerText = "✅ صح!";
     } else {
