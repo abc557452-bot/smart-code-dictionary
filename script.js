@@ -115,7 +115,7 @@
 
   // ======== Level 1 & 2 Quiz ========
   window.startLevel1 = function() {
-    currentQuiz = dictionary.filter(item => item.level === 1);
+    currentQuiz = dictionary;
     resetGame();
   };
   window.startLevel2 = function() {
@@ -136,7 +136,7 @@ function resetGame() {
 
   loadQuestion();
 }
- function loadQuestion() {
+function loadQuestion() {
  if (questionCount >= maxQuestions || usedQuestions.length >= currentQuiz.length) {
    endGame();
    return;
@@ -149,22 +149,41 @@ function resetGame() {
 
  questionCount++;
 
-document.getElementById("question").innerText = "ما معنى: " + currentQuestion.title;
+ document.getElementById("question").innerText = "ما معنى: " + currentQuestion.title;
 
-let options = [
-  currentQuestion.definition,
-  "خيار غلط 1",
-  "خيار غلط 2",
-  "خيار غلط 3"
-];
+ let options = [
+   currentQuestion.definition,
+   "خيار غلط 1",
+   "خيار غلط 2",
+   "خيار غلط 3"
+ ];
 
-options.sort(() => Math.random() - 0.5);
+ options.sort(() => Math.random() - 0.5);
 
-options.forEach(opt => {
-  optionsHTML += `<button onclick="selectAnswer(this.innerText)">${opt}</button>`;
-});
+ let optionsHTML = "";
 
-if (selected === currentQuestion.definition)
+ options.forEach(opt => {
+   optionsHTML += `<button onclick="selectAnswer(this.innerText)">${opt}</button>`;
+ });
+
+ document.getElementById("options").innerHTML = optionsHTML;
+
+ // المؤقت
+ clearInterval(timer);
+ timeLeft = 10;
+ document.getElementById("timer").innerText = "Time: " + timeLeft;
+
+ timer = setInterval(() => {
+   timeLeft--;
+   document.getElementById("timer").innerText = "Time: " + timeLeft;
+
+   if (timeLeft === 0) {
+     clearInterval(timer);
+     loadQuestion();
+   }
+ }, 1000);
+}
+
 
 
 
@@ -249,6 +268,18 @@ window.filterField = function(field) {
 
   result.innerHTML = output;
 };
+
+window.clearSearch = function() {
+  const input = document.getElementById("searchInput");
+  const result = document.getElementById("results");
+  const suggestions = document.getElementById("suggestions");
+
+  if (input) input.value = "";
+  if (result) result.innerHTML = "";
+  if (suggestions) suggestions.innerHTML = "";
+};
+
+
 
 
 
