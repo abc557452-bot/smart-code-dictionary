@@ -165,12 +165,22 @@
     document.getElementById("question").innerText =
       "ما معنى: " + currentQuestion.title;
 
-    let options = [
-      currentQuestion.definition,
-      "خيار غلط 1",
-      "خيار غلط 2",
-      "خيار غلط 3"
-    ];
+    // ======== خيارات احترافية ========
+let options = [currentQuestion.definition];
+
+// نجيب تعريفات عشوائية غلط من القاموس
+let wrongAnswers = dictionary
+  .filter(d => d.definition !== currentQuestion.definition)
+  .sort(() => Math.random() - 0.5)
+  .slice(0, 3)
+  .map(d => d.definition);
+
+// ندمجهم مع الجواب الصحيح
+options = options.concat(wrongAnswers);
+
+// نلخبط الترتيب
+options.sort(() => Math.random() - 0.5);
+
 
     options.sort(() => Math.random() - 0.5);
 
