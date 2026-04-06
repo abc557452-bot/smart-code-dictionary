@@ -1,26 +1,29 @@
-// ======== سكربت آمن بدون تعريفات مكررة ========
+// ======== سكربت آمن بدون أخطاء ========
 (function() {
-  // ======== المتغيرات العامة ========
-  window.usedQuestions = [];
-  window.result = window.result || null;
-  window.suggestionsBox = window.suggestionsBox || null;
-  window.quizData = window.quizData || [];
-  window.timer = window.timer || null;
-  window.timeLeft = window.timeLeft || 10;
 
-  window.currentQuiz = window.currentQuiz || [];
-  window.currentQuestion = window.currentQuestion || null;
-  window.score = window.score || 0;
-  window.questionCount = window.questionCount || 0;
-  window.maxQuestions = window.maxQuestions || 5;
+  // ======== متغيرات عامة ========
+  window.usedQuestions = [];
+  window.quizData = window.quizData || [];
+  window.timer = null;
+  window.timeLeft = 10;
+
+  window.currentQuiz = [];
+  window.currentQuestion = null;
+  window.score = 0;
+  window.questionCount = 0;
+  window.maxQuestions = 5;
+
+  let result, suggestionsBox;
 
   // ======== بعد تحميل الصفحة ========
   document.addEventListener("DOMContentLoaded", function () {
-    window.result = document.getElementById("results");
-    window.suggestionsBox = document.getElementById("suggestions");
+    result = document.getElementById("results");
+    suggestionsBox = document.getElementById("suggestions");
+
     fixCounter();
 
     const searchInput = document.getElementById("searchInput");
+
     if (searchInput) {
       searchInput.addEventListener("input", function () {
         let input = this.value.toLowerCase();
@@ -112,98 +115,73 @@
 
     result.innerHTML = output;
   };
-  
-window.clearSearch = function() {
-  const input = document.getElementById("searchInput");
-  const result = document.getElementById("results");
-  const suggestions = document.getElementById("suggestions");
 
-  if (input) input.value = "";
-  if (result) result.innerHTML = "";
-  if (suggestions) suggestions.innerHTML = "";
-};
+  // ======== مسح البحث ========
+  window.clearSearch = function() {
+    const input = document.getElementById("searchInput");
 
+    if (input) input.value = "";
+    if (result) result.innerHTML = "";
+    if (suggestionsBox) suggestionsBox.innerHTML = "";
+  };
 
-
-
-
-
-
-  // ======== Level 1 & 2 Quiz ========
+  // ======== الكويز ========
   window.startLevel1 = function() {
+    if (typeof dictionary === "undefined") return;
     currentQuiz = dictionary;
     resetGame();
   };
+
   window.startLevel2 = function() {
+    if (typeof dictionary === "undefined") return;
     currentQuiz = dictionary.filter(item => item.level === 2);
     resetGame();
   };
 
-function resetGame() {
-  score = 0;
-  questionCount = 0;
-  window.usedQuestions = [];
+  function resetGame() {
+    score = 0;
+    questionCount = 0;
+    usedQuestions = [];
 
-  const scoreEl = document.getElementById("score");
-  const resultEl = document.getElementById("result");
+    document.getElementById("score").innerText = "Score: 0";
+    document.getElementById("result").innerText = "";
 
-  if (scoreEl) scoreEl.innerText = "Score: 0";
-  if (resultEl) resultEl.innerText = "";
+    loadQuestion();
+  }
 
-  loadQuestion();
-}
-function loadQuestion() {
- if (questionCount >= maxQuestions || usedQuestions.length >= currentQuiz.length) {
-   endGame();
-   return;
- }
+  function loadQuestion() {
+    if (questionCount >= maxQuestions || usedQuestions.length >= currentQuiz.length) {
+      endGame();
+      return;
+    }
 
- let available = currentQuiz.filter(q => !usedQuestions.includes(q));
+    let available = currentQuiz.filter(q => !usedQuestions.includes(q));
 
- currentQuestion = available[Math.floor(Math.random() * available.length)];
- usedQuestions.push(currentQuestion);
+    currentQuestion = available[Math.floor(Math.random() * available.length)];
+    usedQuestions.push(currentQuestion);
 
- questionCount++;
+    questionCount++;
 
- document.getElementById("question").innerText = "ما معنى: " + currentQuestion.title;
+    document.getElementById("question").innerText =
+      "ما معنى: " + currentQuestion.title;
 
- let options = [
-   currentQuestion.definition,
-   "خيار غلط 1",
-   "خيار غلط 2",
-   "خيار غلط 3"
- ];
+    let options = [
+      currentQuestion.definition,
+      "خيار غلط 1",
+      "خيار غلط 2",
+      "خيار غلط 3"
+    ];
 
- options.sort(() => Math.random() - 0.5);
+    options.sort(() => Math.random() - 0.5);
 
- let optionsHTML = "";
+    let optionsHTML = "";
+    options.forEach(opt => {
+      optionsHTML += `<button onclick="selectAnswer(this.innerText)">${opt}</button>`;
+    });
 
- options.forEach(opt => {
-   optionsHTML += `<button onclick="selectAnswer(this.innerText)">${opt}</button>`;
- });
+    document.getElementById("options").innerHTML = optionsHTML;
 
- document.getElementById("options").innerHTML = optionsHTML;
-
- // المؤقت
- clearInterval(timer);
- timeLeft = 10;
- document.getElementById("timer").innerText = "Time: " + timeLeft;
-
- timer = setInterval(() => {
-   timeLeft--;
-   document.getElementById("timer").innerText = "Time: " + timeLeft;
-
-   if (timeLeft === 0) {
-     clearInterval(timer);
-     loadQuestion();
-   }
- }, 1000);
-}
-
-
-
-
-    // المؤقت
+    // ======== المؤقت (المكان الصحيح) ========
     clearInterval(timer);
     timeLeft = 10;
     document.getElementById("timer").innerText = "Time: " + timeLeft;
@@ -222,8 +200,7 @@ function loadQuestion() {
   window.selectAnswer = function(selected) {
     clearInterval(timer);
 
-   if (selected === currentQuestion.definition)
- {
+    if (selected === currentQuestion.definition) {
       score++;
       document.getElementById("result").innerText = "✅ صح!";
     } else {
@@ -239,10 +216,11 @@ function loadQuestion() {
     clearInterval(timer);
 
     let message = "";
+
     if (score === maxQuestions) {
-      message = "🏆 ممتاز! فل مارك";
+      message = "🏆 ممتاز!";
     } else if (score >= 3) {
-      message = "👍 جيد جداً";
+      message = "👍 جيد";
     } else {
       message = "💀 حاول مرة ثانية";
     }
@@ -258,13 +236,15 @@ function loadQuestion() {
     if (!el) return;
 
     if (typeof dictionary !== "undefined" && Array.isArray(dictionary)) {
-      el.innerText = "عدد المصطلحات: " + dictionary.length;
+      el.innerText = dictionary.length;
     } else {
       setTimeout(fixCounter, 300);
     }
   }
 
 })();
+
+// ======== فلترة المجال ========
 window.filterField = function(field) {
   if (typeof dictionary === "undefined") return;
 
@@ -282,5 +262,5 @@ window.filterField = function(field) {
     }
   });
 
-  result.innerHTML = output;
+  document.getElementById("results").innerHTML = output;
 };
