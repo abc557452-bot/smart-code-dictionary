@@ -81,9 +81,11 @@
             <p><b>المجال:</b> ${d.field}</p>
             <p>${d.definition}</p>
         `;
-        if (d.example && d.example.trim() !== "") {
-          output += `<pre>${d.example}</pre>`;
-        }
+       
+if (d.example_code && d.example_code.trim() !== "") {
+  output += `<pre>${d.example_code}</pre>`;
+}
+
         output += `</div><hr>`;
         found = true;
       }
