@@ -53,6 +53,8 @@
 
   // ======== البحث ========
   window.searchTerm = function() {
+    console.log(dictionary[0]);
+
     if (typeof dictionary === "undefined") return;
 
     let input = document.getElementById("searchInput").value.toLowerCase();
