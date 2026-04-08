@@ -18,9 +18,15 @@
 const FREE_LIMIT = 30;
 let isPremium = false;
   // ======== بعد تحميل الصفحة ========
-  document.addEventListener("DOMContentLoaded", function () {
-    result = document.getElementById("results");
-    suggestionsBox = document.getElementById("suggestions");
+ document.addEventListener("DOMContentLoaded", function () {
+
+  // 💾 مهم جداً
+  if (localStorage.getItem("premiumUser") === "true") {
+    isPremium = true;
+  }
+
+  result = document.getElementById("results");
+  suggestionsBox = document.getElementById("suggestions");
 
     fixCounter();
 
@@ -310,5 +316,9 @@ window.filterField = function(field) {
 function upgrade() {
   alert("تم فتح النسخة الكاملة 🔥");
   isPremium = true;
+
+  // 💾 حفظ التفعيل
+  localStorage.setItem("premiumUser", "true");
+
   showAllTerms();
 }
