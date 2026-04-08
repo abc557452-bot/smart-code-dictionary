@@ -153,11 +153,17 @@ window.showAllTerms = function() {
   };
 
   window.startLevel2 = function() {
-    if (typeof dictionary === "undefined") return;
-    currentQuiz = dictionary.filter(item => item.level === 2);
-    resetGame();
-  };
 
+  // 🔒 قفل المستوى الثاني
+  if (!isPremium) {
+    alert("🔒 هذا المستوى مدفوع، قم بالترقية");
+    return;
+  }
+
+  if (typeof dictionary === "undefined") return;
+  currentQuiz = dictionary.filter(item => item.level === 2);
+  resetGame();
+}
   function resetGame() {
     score = 0;
     questionCount = 0;
