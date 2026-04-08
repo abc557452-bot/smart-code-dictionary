@@ -15,6 +15,8 @@
 
   let result, suggestionsBox;
 
+const FREE_LIMIT = 30;
+let isPremium = false;
   // ======== بعد تحميل الصفحة ========
   document.addEventListener("DOMContentLoaded", function () {
     result = document.getElementById("results");
@@ -99,28 +101,41 @@ if (d.example_code && d.example_code.trim() !== "") {
   };
 
   // ======== عرض الكل ========
-  window.showAllTerms = function() {
-    if (typeof dictionary === "undefined") return;
+ 
+window.showAllTerms = function() {
+  if (typeof dictionary === "undefined") return;
 
-    let output = "";
+  let output = "";
 
-    dictionary.forEach(d => {
+  dictionary.forEach((d, index) => {
+
+    // 🔒 قفل المحتوى
+    if (!isPremium && index >= FREE_LIMIT) {
       output += `
-        <div>
-          <h3>${d.code}</h3>
-          <h2>${d.title}</h2>
-          <p>${d.definition}</p>
+        <div style="background:#222;padding:10px;margin:5px;border-radius:8px;color:#fff;">
+          🔒 محتوى مدفوع
+        </div>
+        <hr>
       `;
-     
-if (d.example_code && d.example_code.trim() !== "") {
-  output += `<pre>${d.example_code}</pre>`;
-}
-      output += `</div><hr>`;
-    });
+      return;
+    }
 
-    result.innerHTML = output;
-  };
+    output += `
+      <div>
+        <h3>${d.code}</h3>
+        <h2>${d.title}</h2>
+        <p>${d.definition}</p>
+    `;
 
+    if (d.example_code && d.example_code.trim() !== "") {
+      output += `<pre>${d.example_code}</pre>`;
+    }
+
+    output += `</div><hr>`;
+  });
+
+  result.innerHTML = output;
+};
   // ======== مسح البحث ========
   window.clearSearch = function() {
     const input = document.getElementById("searchInput");
@@ -286,3 +301,8 @@ window.filterField = function(field) {
 
   document.getElementById("results").innerHTML = output;
 };
+function upgrade() {
+  alert("تم فتح النسخة الكاملة 🔥");
+  isPremium = true;
+  showAllTerms();
+}
