@@ -152,9 +152,9 @@ window.showAllTerms = function() {
     resetGame();
   };
 
-  window.startLevel2 = function() {
+ window.startLevel2 = function() {
 
-  // 🔒 قفل المستوى الثاني
+  // 🔒 قفل المستوى
   if (!isPremium) {
     alert("🔒 هذا المستوى مدفوع، قم بالترقية");
     return;
@@ -163,7 +163,7 @@ window.showAllTerms = function() {
   if (typeof dictionary === "undefined") return;
   currentQuiz = dictionary.filter(item => item.level === 2);
   resetGame();
-}
+};
   function resetGame() {
     score = 0;
     questionCount = 0;
