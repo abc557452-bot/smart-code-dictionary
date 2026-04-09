@@ -19,6 +19,17 @@ const FREE_LIMIT = 30;
 let isPremium = false;
   // ======== بعد تحميل الصفحة ========
  document.addEventListener("DOMContentLoaded", function () {
+   // 💾 استرجاع البيانات
+let savedName = localStorage.getItem("username");
+
+if (localStorage.getItem("premiumUser") === "true") {
+  isPremium = true;
+}
+
+if (savedName) {
+  document.getElementById("welcome").innerText = "👋 مرحباً " + savedName;
+}
+
 
   // 💾 مهم جداً
   if (localStorage.getItem("premiumUser") === "true") {
@@ -314,11 +325,20 @@ window.filterField = function(field) {
   document.getElementById("results").innerHTML = output;
 };
 function upgrade() {
-  alert("تم فتح النسخة الكاملة 🔥");
+  let username = prompt("ادخل اسم المستخدم:");
+
+  if (!username || username.trim() === "") {
+    alert("لازم تكتب اسم");
+    return;
+  }
+
   isPremium = true;
 
-  // 💾 حفظ التفعيل
+  // 💾 حفظ البيانات
   localStorage.setItem("premiumUser", "true");
+  localStorage.setItem("username", username);
+
+  alert("🔥 تم التفعيل بنجاح يا " + username);
 
   showAllTerms();
 }
