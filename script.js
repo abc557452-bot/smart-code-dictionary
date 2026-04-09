@@ -325,8 +325,17 @@ window.filterField = function(field) {
   document.getElementById("results").innerHTML = output;
 };
 function upgrade() {
-  let username = prompt("ادخل اسم المستخدم:");
+  let code = prompt("أدخل كود التفعيل:");
 
+  // 👇 حطه هنا بالضبط
+  const validCodes = ["VIP123", "CODE2026", "PRO999"];
+
+  if (!code || !validCodes.includes(code)) {
+    alert("❌ كود غير صحيح");
+    return;
+  }
+
+  let username = prompt("ادخل اسم المستخدم:");
   if (!username || username.trim() === "") {
     alert("لازم تكتب اسم");
     return;
@@ -334,7 +343,6 @@ function upgrade() {
 
   isPremium = true;
 
-  // 💾 حفظ البيانات
   localStorage.setItem("premiumUser", "true");
   localStorage.setItem("username", username);
 
