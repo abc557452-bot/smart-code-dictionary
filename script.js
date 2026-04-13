@@ -350,3 +350,22 @@ function upgrade() {
 
   showAllTerms();
 }
+function askAssistant() {
+  let input = document.getElementById("assistantInput").value.toLowerCase();
+  let resultBox = document.getElementById("assistantResult");
+
+  let found = dictionary.find(d => 
+    d.title.toLowerCase().includes(input) ||
+    d.definition.toLowerCase().includes(input)
+  );
+
+  if (found) {
+    // 👇 هنا تحط الكود حقك
+    resultBox.innerHTML = `
+    🤖: أكيد! هذا تعريف <b>${found.title}</b> 👇<br>
+    ${found.definition}
+    `;
+  } else {
+    resultBox.innerHTML = "❌ ما لقيت إجابة، جرّب كلمة ثانية";
+  }
+}
