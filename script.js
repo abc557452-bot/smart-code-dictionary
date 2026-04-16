@@ -354,10 +354,14 @@ function askAssistant() {
   let input = document.getElementById("assistantInput").value.toLowerCase();
   let resultBox = document.getElementById("assistantResult");
 
-  let found = dictionary.find(d =>
-  (d.title && d.title.toLowerCase().includes(input)) ||
-  (d.definition && d.definition.toLowerCase().includes(input))
-);
+ et found = dictionary.find(d => {
+  if (!d) return false;
+
+  let title = d.title ? d.title.toLowerCase() : "";
+  let definition = d.definition ? d.definition.toLowerCase() : "";
+
+  return title.includes(input) || definition.includes(input);
+});
   if (found) {
     resultBox.innerHTML = `
     🤖: أكيد! هذا تعريف <b>${found.title}</b> 👇<br>
