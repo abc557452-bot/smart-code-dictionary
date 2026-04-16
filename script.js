@@ -355,10 +355,9 @@ function askAssistant() {
   let resultBox = document.getElementById("assistantResult");
 
   let found = dictionary.find(d =>
-    d.title.toLowerCase().includes(input) ||
-    d.definition.toLowerCase().includes(input)
-  );
-
+  (d.title && d.title.toLowerCase().includes(input)) ||
+  (d.definition && d.definition.toLowerCase().includes(input))
+);
   if (found) {
     resultBox.innerHTML = `
     🤖: أكيد! هذا تعريف <b>${found.title}</b> 👇<br>
