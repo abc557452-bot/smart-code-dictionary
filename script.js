@@ -353,6 +353,7 @@ function upgrade() {
 function askAssistant() {
   let input = document.getElementById("assistantInput").value.toLowerCase();
   let resultBox = document.getElementById("assistantResult");
+console.log(dictionary);
 
 let found = dictionary.find(d => {
   if (!d) return false;
