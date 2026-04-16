@@ -376,10 +376,12 @@ function askAssistant() {
   }
 }
 
-function answerYes() {
-  document.getElementById("assistantResult").innerHTML += "<br>🔥 ممتاز! خلنا ننتقل لكلمة ثانية";
-}
+function checkAnswer(answer) {
+  let resultBox = document.getElementById("assistantResult");
 
-function answerNo() {
-  document.getElementById("assistantResult").innerHTML += "<br>😅 عادي، جرب تقراها مرة ثانية أو اسألني عن كلمة ثانية";
+  if (answer === 'A') {
+    resultBox.innerHTML += "<br><br>✅ Correct! Firewall protects the network 🔥";
+  } else {
+    resultBox.innerHTML += "<br><br>❌ Wrong! Try again 😏";
+  }
 }
