@@ -354,19 +354,28 @@ function askAssistant() {
   let input = document.getElementById("assistantInput").value.toLowerCase();
   let resultBox = document.getElementById("assistantResult");
 
-  let found = dictionary.find(d => 
+  let found = dictionary.find(d =>
     d.title.toLowerCase().includes(input) ||
     d.definition.toLowerCase().includes(input)
   );
 
-  resultBox.innerHTML = `
-🤖: أكيد! هذا تعريف <b>${found.title}</b> 👇<br>
-${found.definition}
-<br><br>
-🎯 سؤال سريع: هل فهمت الكلمة؟ 😏
-<button onclick="answerYes()">نعم</button>
-<button onclick="answerNo()">لا</button>
-`;
+  if (found) {
+    resultBox.innerHTML = `
+    🤖: أكيد! هذا تعريف <b>${found.title}</b> 👇<br>
+    ${found.definition}
+    <br><br>
+
+    🎯 Quick question: What does "Firewall" do? 😏<br><br>
+
+    <button onclick="checkAnswer('A')">A) Protects a network from attacks</button><br>
+    <button onclick="checkAnswer('B')">B) Makes the internet faster</button><br>
+    <button onclick="checkAnswer('C')">C) Stores files</button>
+    `;
+  } else {
+    resultBox.innerHTML = "❌ ما لقيت إجابة، جرّب كلمة ثانية";
+  }
+}
+
 function answerYes() {
   document.getElementById("assistantResult").innerHTML += "<br>🔥 ممتاز! خلنا ننتقل لكلمة ثانية";
 }
