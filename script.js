@@ -354,7 +354,7 @@ function askAssistant() {
   let input = document.getElementById("assistantInput").value.toLowerCase();
   let resultBox = document.getElementById("assistantResult");
 
- et found = dictionary.find(d => {
+ let found = dictionary.find(d => {
   if (!d) return false;
 
   let title = d.title ? d.title.toLowerCase() : "";
