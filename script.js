@@ -359,13 +359,18 @@ function askAssistant() {
     d.definition.toLowerCase().includes(input)
   );
 
-  if (found) {
-    // 👇 هنا تحط الكود حقك
-    resultBox.innerHTML = `
-    🤖: أكيد! هذا تعريف <b>${found.title}</b> 👇<br>
-    ${found.definition}
-    `;
-  } else {
-    resultBox.innerHTML = "❌ ما لقيت إجابة، جرّب كلمة ثانية";
-  }
+  resultBox.innerHTML = `
+🤖: أكيد! هذا تعريف <b>${found.title}</b> 👇<br>
+${found.definition}
+<br><br>
+🎯 سؤال سريع: هل فهمت الكلمة؟ 😏
+<button onclick="answerYes()">نعم</button>
+<button onclick="answerNo()">لا</button>
+`;
+function answerYes() {
+  document.getElementById("assistantResult").innerHTML += "<br>🔥 ممتاز! خلنا ننتقل لكلمة ثانية";
+}
+
+function answerNo() {
+  document.getElementById("assistantResult").innerHTML += "<br>😅 عادي، جرب تقراها مرة ثانية أو اسألني عن كلمة ثانية";
 }
