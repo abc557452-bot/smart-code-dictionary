@@ -1,18 +1,18 @@
-name: Build App
+name: Build Android App
 on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Build APK
-        uses: swantzter/render-to-apk@v1.1
+        uses: gearace/pwa-to-apk@v1
         with:
           url: "https://github.io"
-          app_name: "smart-code-dictionary"
+          name: "SmartDictionary"
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
