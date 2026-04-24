@@ -1,4 +1,5 @@
 
+
 name: Build App
 on: [push]
 
@@ -19,4 +20,3 @@ jobs:
         with:
           name: my-app
           path: ./*.apk
-
