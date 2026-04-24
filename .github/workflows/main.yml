@@ -1,5 +1,3 @@
-
-
 name: Build App
 on: [push]
 
@@ -12,11 +10,11 @@ jobs:
       - name: Build APK
         uses: swantzter/render-to-apk@v1.1
         with:
-          url: https://github.io
+          url: "https://github.io"
           app_name: "smart-code-dictionary"
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: my-app
+          name: my-app-apk
           path: ./*.apk
