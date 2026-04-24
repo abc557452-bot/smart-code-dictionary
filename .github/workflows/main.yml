@@ -1,4 +1,5 @@
 
+
 name: Build Android App
 on:
   push:
@@ -14,13 +15,12 @@ jobs:
       - name: Build APK from URL
         uses: swantzter/render-to-apk@v1.1
         with:
-          # رابط موقعك على GitHub Pages
-          url:https://abc557452-bot.github.io/smart-code-dictionary/ 
+          url: https://abc557452-bot.github.io/smart-code-dictionary/
           app_name: "Smart Code Dictionary"
           output_name: "smart-code.apk"
 
-      - name: Upload Artifact
+      - name: Upload APK Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: my-app-bundle
-          path: ./*.apkv
+          name: my-android-app
+          path: ./*.apk
