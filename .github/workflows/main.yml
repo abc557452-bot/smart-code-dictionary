@@ -1,2 +1,17 @@
+name: Build-App
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build APK
+        uses: swantzter/render-to-apk@v1.1
+        with:
+          url: https://github.io
+          app_name: "SmartDictionary"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: my-app
+          path: ./*.apk
 
-name:%20Build%20APK%0Aon%3A%20%5Bpush%5D%0Ajobs%3A%0A%20%20build%3A%0A%20%20%20%20runs-on%3A%20ubuntu-latest%0A%20%20%20%20steps%3A%0A%20%20%20%20%20%20-%20uses%3A%20actions/checkout@v3%0A%20%20%20%20%20%20-%20name:%20Build%20Android%20WebView%0A%20%20%20%20%20%20%20%20uses:%20swantzter/render-to-apk@v1.1%0A%20%20%20%20%20%20%20%20with:%0A%20%20%20%20%20%20%20%20%20%20url:%20https://github.io%0A%20%20%20%20%20%20%20%20%20%20app_name:%20%22Smart%20Dictionary%22%0A%20%20%20%20%20%20-%20uses:%20actions/upload-artifact@v3%0A%20%20%20%20%20%20%20%20with:%0A%20%20%20%20%20%20%20%20%20%20name:%20app-release%0A%20%20%20%20%20%20%20%20%20%20path:%20./*.apk%0A
