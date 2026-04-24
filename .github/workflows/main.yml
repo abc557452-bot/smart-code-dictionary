@@ -1,21 +1,27 @@
-name: Build APK
+name: Build App
 on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Build Android App
-        uses: pwa-builder/pwa-publish@v1
-        with:
-          url: "https://github.io"
-          android: true
+      - name: Install Tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget
+          # تحميل أداة تحويل الروابط لـ APK مباشرة
+          wget https://github.com
+          chmod +x pwa-to-apk
 
-      - name: Upload APK
+      - name: Generate APK
+        run: |
+          ./pwa-to-apk --url "https://github.io" --name "SmartDictionary"
+
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: Smart-Code-APK
+          name: Smart-Code-Dictionary-APK
           path: ./*.apk
