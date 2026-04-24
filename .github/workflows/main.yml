@@ -1,29 +1,21 @@
-name: Build APK
+name: Build App
 on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Create Web to APK
+        uses: flywheel-io/web-to-apk@v1
         with:
-          node-version: '18'
-
-      - name: Install Bubblewrap
-        run: npm install -g @bubblewrap/cli
-
-      - name: Build APK from URL
-        run: |
-          # هذه الأداة ستقوم بتحويل الرابط لتطبيق أندرويد
-          bubblewrap init --url "https://github.io" --manifest "https://github.iomanifest.json" --yes
-          bubblewrap build --yes
+          url: "https://github.io"
+          name: "SmartCode"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: Smart-Dictionary-APK
+          name: app-release
           path: ./*.apk
