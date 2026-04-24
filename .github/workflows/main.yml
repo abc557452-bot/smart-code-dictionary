@@ -1,25 +1,2 @@
 
-name: Build Android App
-on:
-  push:
-    branches: [ main ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Build APK from URL
-        uses: swantzter/render-to-apk@v1.1
-        with:
-          url: https://abc557452-bot.github.io/smart-code-dictionary/
-          app_name: "Smart Code Dictionary"
-          output_name: "smart-code.apk"
-
-      - name: Upload APK Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: my-android-app
-          path: ./*.apk
+name:%20Build%20Android%20App%0Aon%3A%0A%20%20push%3A%0A%20%20%20%20branches%3A%20%5B%20main%20%5D%0A%0Ajobs%3A%0A%20%20build%3A%0A%20%20%20%20runs-on%3A%20ubuntu-latest%0A%20%20%20%20steps%3A%0A%20%20%20%20%20%20-%20name%3A%20Checkout%20Repository%0A%20%20%20%20%20%20%20%20uses%3A%20actions/checkout@v3%0A%0A%20%20%20%20%20%20-%20name:%20Build%20APK%20from%20URL%0A%20%20%20%20%20%20%20%20uses:%20swantzter/render-to-apk@v1.1%0A%20%20%20%20%20%20%20%20with:%0A%20%20%20%20%20%20%20%20%20%20url:%20https://github.io%0A%20%20%20%20%20%20%20%20%20%20app_name:%20%22Smart%20Code%20Dictionary%22%0A%20%20%20%20%20%20%20%20%20%20output_name:%20%22smart-code.apk%22%0A%0A%20%20%20%20%20%20-%20name:%20Upload%20APK%20Artifact%0A%20%20%20%20%20%20%20%20uses:%20actions/upload-artifact@v3%0A%20%20%20%20%20%20%20%20with:%0A%20%20%20%20%20%20%20%20%20%20name:%20my-android-app%0A%20%20%20%20%20%20%20%20%20%20path:%20./*.apk%0A
