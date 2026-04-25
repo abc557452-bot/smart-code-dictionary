@@ -1,27 +1,19 @@
-name: Build App
-on: [push]
+
+name: Deploy Website
+on:
+  push:
+    branches: ["main"]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y wget
-          # تحميل أداة تحويل الروابط لـ APK مباشرة
-          wget https://github.com
-          chmod +x pwa-to-apk
-
-      - name: Generate APK
-        run: |
-          ./pwa-to-apk --url "https://github.io" --name "SmartDictionary"
-
-      - name: Upload
-        uses: actions/upload-artifact@v4
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          name: Smart-Code-Dictionary-APK
-          path: ./*.apk
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
