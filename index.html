@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Smart Code Dictionary</title>
+
+<style>
+/* التنسيق القديم محفوظ */
+.term pre{
+  background:#f4f4f4;
+  border:1px solid #ccc;
+  padding:10px;
+  overflow-x:auto;
+  white-space:pre-wrap;
+  font-family:monospace;
+}
+
+.term button, .search-box button, .filter-box button{
+  margin:3px 5px;
+  padding:5px 10px;
+  cursor:pointer;
+}
+
+.search-box{
+  margin-top:20px;
+}
+
+.filter-box{
+  margin-top:10px;
+}
+
+#termCounter{
+  margin-top:10px;
+  font-weight:bold;
+  color:#444;
+}
+
+/* صندوق تجربة الكود */
+#codeTester{
+  border:1px solid #ccc;
+  padding:10px;
+  margin-top:20px;
+}
+
+#codeTester textarea{
+  width:100%;
+  height:150px;
+  margin-top:10px;
+  font-family:monospace;
+}
+
+#codeTester pre{
+  background:#f5f5f5;
+  padding:10px;
+  margin-top:10px;
+  white-space:pre-wrap;
+  border:1px solid #ccc;
+}
+</style>
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+
+<div class="container">
+
+  <h1>Smart Code Dictionary</h1>
+  <div id="welcome" style="margin:10px;font-weight:bold;"></div>
+
+
+  <!-- صندوق البحث -->
+  <div class="search-box">
+<input type="text" id="searchInput" placeholder="ابحث عن مصطلح...">
+    <button onclick="searchTerm()">بحث</button>
+    <button onclick="clearSearch()">مسح</button>
+    <button onclick="showAllTerms()">عرض جميع المصطلحات</button>
+    <button onclick="upgrade()">🔓 فتح النسخة الكاملة</button>
+
+  </div>
+<div class="assistant-box">
+  <h3>🤖 اسأل المساعد</h3>
+  <input type="text" id="assistantInput" placeholder="اكتب سؤالك هنا...">
+  <button onclick="askAssistant()">اسأل</button>
+  <div id="assistantResult"></div>
+</div>
+  <!-- اقتراح الكلمات -->
+  <div id="suggestions"></div>
+
+  <!-- عداد المصطلحات -->
+  <div id="termCounter"></div>
+
+  <!-- عرض النتائج -->
+  <div id="results"></div>
+
+  <!-- فلترة المجالات -->
+  <div class="filter-box">
+    <button onclick="filterField('Python')">Python</button>
+<button onclick="filterField('JavaScript')">JavaScript</button>
+    <button onclick="filterField('Cyber Security')">Cyber Security</button>
+    <button onclick="filterField('Navigation')">Navigation</button>
+<button onclick="startLevel1()">اختبار</button>
+    <button onclick="startLevel2()">Level 2 🔒</button>
+
+  </div>
+  <h3 id="score">Score: 0</h3>
+<h3 id="result"></h3>
+<h2 id="question"></h2>
+<div id="options"></div>
+<h3 id="timer"></h3>
+  </div>
+
+  <!-- صندوق تجربة الكود -->
+  <div id="codeTester">
+    <h3>تجربة الكود</h3>
+    <label>اختر اللغة:</label>
+    <select id="codeLang">
+      <option value="js">JavaScript</option>
+      <option value="py">Python</option>
+    </select>
+    <textarea id="testCode" placeholder="ضع كودك هنا"></textarea>
+    <button id="runCode">تشغيل الكود</button>
+    <button id="clearCode">مسح الكود</button>
+    <button id="copyCode">نسخ الكود</button>
+    <pre id="output"></pre>
+  </div>
+
+</div>
+<!-- Pyodide لتشغيل Python -->
+<script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+
+<script>
+// ======== تحميل Python ========
+let pyodide=null;
+async function loadPyodideAndPackages(){
+  document.getElementById("output").innerText="جاري تحميل Python...";
+  pyodide = await loadPyodide();
+  document.getElementById("output").innerText="Python جاهز للتجربة";
+}
+loadPyodideAndPackages();
+
+// ======== تشغيل الكود ========
+document.getElementById("runCode").addEventListener("click", async ()=>{
+  const code = document.getElementById("testCode").value;
+  const lang = document.getElementById("codeLang").value;
+  const output = document.getElementById("output");
+  output.innerText="";
+
+  if(lang==="js"){
+    try{
+      const result = eval(code);
+      output.innerText = (result !== undefined) ? result : "تم التنفيذ بنجاح";
+    }catch(err){
+      output.innerText = "خطأ: " + err.message;
+    }
+  }
+
+  if(lang==="py"){
+    if(!pyodide){ output.innerText="Python مازال يحمل..."; return; }
+    try{
+      pyodide.runPython(`import sys\nfrom io import StringIO\nsys.stdout=StringIO()`);
+      await pyodide.runPythonAsync(code);
+      const result = pyodide.runPython("sys.stdout.getvalue()");
+      output.innerText = result.trim() === "" ? "تم التنفيذ بدون مخرجات" : result;
+    }catch(err){
+      output.innerText = "خطأ: "+err;
+    }
+  }
+});
+
+// ======== مسح الكود ========
+document.getElementById("clearCode").addEventListener("click", ()=>{
+  document.getElementById("testCode").value="";
+  document.getElementById("output").innerText="";
+});
+
+// ======== نسخ الكود ========
+document.getElementById("copyCode").addEventListener("click", ()=>{
+  const code = document.getElementById("testCode");
+  code.select();
+  document.execCommand("copy");
+  alert("تم نسخ الكود");
+});
+</script>
+
+<!-- ملفات القاموس والكود -->
+<script src="data.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
