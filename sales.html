@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Smart Code Dictionary</title>
+  
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+</head>
+
+<body style="font-family:Arial;background:#0f172a;color:white;text-align:center;margin:0;padding:0;">
+  <a href="index.html">رجوع</a>
+
+<!-- العنوان -->
+  
+<div style="padding:40px;background:#1e293b;">
+<h1>🔥 Smart Code Dictionary</h1>
+<p>تعلم البرمجة بطريقة سهلة وسريعة</p>
+</div>
+
+<!-- تجربة البحث -->
+<div style="margin-top:40px;">
+<h2>🔍 جرّب قبل الشراء</h2>
+
+<input id="search" placeholder="اكتب API أو Firewall"
+style="padding:12px;width:70%;font-size:18px;border-radius:8px;border:none;">
+
+<br><br>
+
+<button onclick="searchTerm()" style="padding:10px 20px;font-size:16px;">
+بحث
+</button>
+
+<div id="result" style="margin-top:20px;font-size:20px;color:#22c55e;"></div>
+</div>
+
+<!-- مميزات -->
+<div style="margin-top:40px;">
+<h2>✨ مميزات المنتج</h2>
+<p>📚 أكثر من 200 مصطلح</p>
+<p>💻 أمثلة عملية</p>
+<p>🧠 شرح مبسط للمبتدئين</p>
+</div>
+
+<!-- شراء -->
+<hr style="margin-top:40px;">
+
+<h2>💰 اشتر الآن</h2>
+
+<p>ابدأ تعلم البرمجة بطريقة احترافية وسهلة</p>
+
+<a href="mailto:youremail@gmail.com">
+<button style="padding:15px 30px;font-size:18px;background:#22c55e;border:none;color:white;cursor:pointer;">
+شراء المنتج
+</button>
+</a>
+
+<!-- سكربت -->
+<script>
+function searchTerm(){
+let input = document.getElementById("search").value.toLowerCase();
+
+let data = {
+"api": "API: ربط الأنظمة ببعض",
+"firewall": "Firewall: حماية الشبكات",
+"array": "Array: تخزين بيانات متعددة",
+"html": "HTML: بناء صفحات الويب"
+};
+
+document.getElementById("result").innerText =
+data[input] || "غير موجود حالياً - سيتم إضافته قريباً";
+}
+</script>
+
+</body>
+</html>
